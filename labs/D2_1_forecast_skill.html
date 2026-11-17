@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 2.1 · مهارة التنبؤ أمام المناخ المعتاد · الذكاء الاصطناعي في الزراعة والمياه والبيئة</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D2_1_forecast_skill.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day2.html#lab-2-1">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 2.1</span>
+<h1>مهارة التنبؤ أمام المناخ المعتاد</h1>
+<p>تقارن تنبؤات حقيقية سابقة للتبخر نتح المرجعي بمهلة يوم ويومين وثلاثة بقيم ERA5 للأيام نفسها، وتحسب مهارة كل مهلة أمام المناخ المعتاد، وانحياز التنبؤ.</p>
+<div class="meta"><span>20 دقيقة</span><span>اليوم 2</span><span>الجلسة 1: إعادة التحليل والتنبؤ ونماذج الطقس</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="2.1">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>جدول فيه متوسط الخطأ المطلق لتنبؤ التبخر نتح المرجعي بمهلة يوم ويومين وثلاثة، وللمناخ المعتاد.</li>
+    <li>مهارة كل مهلة أمام المناخ المعتاد، وانحياز التنبؤ.</li>
+    <li>سطر واحد لمرشد الري شجاع السرحاني: هل يستحق التنبؤ أن يدخل قرار الري؟</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/weather/et0_forecasts_2024.csv" target="_blank"><b>weather/et0_forecasts_2024.csv</b><span>274 يومًا من فبراير إلى أكتوبر 2024: قيمة ERA5، والتنبؤ الصادر قبل يوم ويومين وثلاثة، والمناخ المعتاد لليوم</span></a>
+  <a href="files/farm/farm_profile.txt" target="_blank"><b>farm/farm_profile.txt</b><span>المزرعة الإرشادية التي ستستعمل التنبؤ في المختبرين 2.2 و2.3</span></a>
+</div>
+<p class="small">البيانات حقيقية عامة لنقطة في الإقليم: التبخر نتح المرجعي اليومي (ET0، بالملم) من إعادة التحليل ERA5، والتنبؤات اليومية كما صدرت فعلًا قبل الموعد، وكلاهما من Open-Meteo.com برخصة CC BY 4.0؛ وأُعدّت قيم ERA5 باستعمال معلومات خدمة كوبرنيكوس لتغير المناخ (2024). المناخ المعتاد متوسط ERA5 لليوم نفسه من السنة في الأعوام 2000 إلى 2023، ضمن نافذة سبعة أيام قبله وبعده. الأداة جدول بيانات. المساعد الذكي مسموح بدور المعلّم: يشرح صيغة، ولا يحسب عنك.</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · افتح الملف واقرأ الأعمدة <span class="min">دقيقتان</span></h3>
+  <p>الأعمدة: <code>C</code> قيمة ERA5 (ما حدث)، و<code>D</code> و<code>E</code> و<code>F</code> التنبؤ بمهلة يوم ويومين وثلاثة، و<code>G</code> المناخ المعتاد. الصفوف من 2 إلى 275. عمود الشهر <code>B</code> رقم من 2 إلى 10.</p>
+</div>
+
+<div class="step">
+  <h3>2 · احسب الخطأ المطلق لكل مهلة وللمناخ المعتاد <span class="min">6 دقائق</span></h3>
+  <p>أربعة أعمدة جديدة، ثم متوسط كل منها:</p>
+  <pre class="code" data-file="et0_forecasts_2024.csv"><code>H2  =ABS(D2-$C2)        lead 1
+I2  =ABS(E2-$C2)        lead 2
+J2  =ABS(F2-$C2)        lead 3
+K2  =ABS(G2-$C2)        climatology
+MAE =AVERAGE(H2:H275)   and the same for I, J, K</code></pre>
+</div>
+
+<div class="step">
+  <h3>3 · احسب المهارة لكل مهلة <span class="min">4 دقائق</span></h3>
+  <p>المهارة نسبة ما يقلّه التنبؤ من خطأ المناخ المعتاد: صفر يعني أنه لا يزيد على المتوسط المعروف سلفًا، وواحد يعني تنبؤًا بلا خطأ.</p>
+  <pre class="code" data-file="et0_forecasts_2024.csv"><code>skill = 1 - MAE_forecast / MAE_climatology</code></pre>
+  <table>
+    <tr><th>المهلة</th><th>متوسط الخطأ المطلق (ملم)</th><th>المهارة</th></tr>
+    <tr><td>يوم</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>يومان</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>ثلاثة أيام</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>المناخ المعتاد</td><td class="fill"></td><td>0</td></tr>
+  </table>
+</div>
+
+<div class="step">
+  <h3>4 · احسب الانحياز وقارن الربيع بالصيف <span class="min">5 دقائق</span></h3>
+  <p>الانحياز: هل يخطئ التنبؤ إلى جهة واحدة؟ ثم احسب مهارة مهلة اليوم في الربيع (الأشهر 3 إلى 5) وفي الصيف (6 إلى 8) وحدهما:</p>
+  <pre class="code" data-file="et0_forecasts_2024.csv"><code>bias          =AVERAGE(D2:D275)-AVERAGE(C2:C275)
+MAE spring    =AVERAGEIFS(H2:H275,B2:B275,"&gt;=3",B2:B275,"&lt;=5")
+MAE summer    =AVERAGEIFS(H2:H275,B2:B275,"&gt;=6",B2:B275,"&lt;=8")</code></pre>
+  <p>كرر الصيغتين الأخيرتين على العمود <code>K</code>، ثم احسب المهارة لكل فصل.</p>
+</div>
+
+<div class="step">
+  <h3>5 · اكتب سطرًا لمرشد الري <span class="min">3 دقائق</span></h3>
+  <p>هل يغلب التنبؤ المناخ المعتاد؟ بكم، وفي أي فصل أقل؟ وماذا يعني الانحياز لمزرعة تروي على التنبؤ؟</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>قاعدة بسيطة أخرى: «غدًا مثل اليوم». ابنِ عمودًا يأخذ قيمة ERA5 للصف السابق، واحسب مهارة التنبؤ أمامها. هل ما زال التنبؤ يستحق؟</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>ما مهارة التنبؤ بمهلة يوم أمام المناخ المعتاد؟ وكيف تتغير المهارة مع المهلة؟</li>
+  <li>هل يقدّر التنبؤ التبخر نتح بأقل أو بأكثر مما حدث؟ وكم في اليوم؟</li>
+  <li>لماذا نقيس المهارة أمام المناخ المعتاد لا أمام الصفر؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب: المفتاح والفخاخ</summary>
+  <ul>
+    <li><b>متوسط الخطأ المطلق:</b> مهلة يوم 0.568 ملم، يومان 0.603، ثلاثة 0.624، المناخ المعتاد 0.776.</li>
+    <li><b>المهارة:</b> 0.268 ثم 0.223 ثم 0.196: تقل مع المهلة.</li>
+    <li><b>الانحياز:</b> نحو 0.51 ملم في اليوم بالسالب: التنبؤ يقدّر أقل من ERA5. جزء منه فرق في طريقة الحساب بين النموذجين، لا خطأ في الطقس وحده: اذكر ذلك.</li>
+    <li><b>الفصول:</b> مهارة مهلة اليوم 0.324 في الربيع و0.179 في الصيف: في الصيف المستقر يقترب المناخ المعتاد من الواقع، فيقل ما يضيفه التنبؤ.</li>
+    <li><b>الفخ:</b> حساب المهارة بالمتوسطات لا بمتوسط الأخطاء (1 ناقص متوسط التنبؤ على متوسط المناخ) يعطي رقمًا بلا معنى.</li>
+    <li>التحقق: <code>uv run labs/solutions/check.py 2.1</code>. الحل في <code>labs/solutions/D2_1_forecast_skill.md</code>.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D1_8_field_campaign.html" rel="prev">→ المختبر السابق</a><a href="D2_2_fixed_schedule.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في الزراعة والمياه والبيئة<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 9c39248</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:17:50Z","version":"2027.1.0","commit":"9c39248"},"course":{"id":"use-sec-211","code":"USE-SEC-211","title":"الذكاء الاصطناعي في الزراعة والمياه والبيئة","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-211/","repo":"SDAIAAcademy/use-sec-211","home":"../index.html"},"lab":{"id":"2.1","title":"مهارة التنبؤ أمام المناخ المعتاد","summary":"تقارن تنبؤات حقيقية سابقة للتبخر نتح المرجعي بمهلة يوم ويومين وثلاثة بقيم ERA5 للأيام نفسها، وتحسب مهارة كل مهلة أمام المناخ المعتاد، وانحياز التنبؤ.","minutes":20,"day":2,"unit":"اليوم 2","session":1,"deck":"../slides/day2.html#lab-2-1","prev":"D1_8_field_campaign.html","next":"D2_2_fixed_schedule.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

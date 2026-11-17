@@ -1,0 +1,9 @@
+﻿threshold,alerts_per_year,alerts_on_confirmed_leaks,alerts_on_meter_faults,alerts_with_nothing_found,median_days_to_alert
+1,1801,48,14,1739,3.0
+2,831,48,14,769,6.0
+3,319,44,14,261,8.0
+4,146,36,8,102,10.0
+5,71,23,6,42,12
+6,35,17,5,13,14
+7,27,15,4,8,16
+8,15,10,2,3,19.0

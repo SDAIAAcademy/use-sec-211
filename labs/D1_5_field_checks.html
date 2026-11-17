@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 1.5 · خطة الزيارات وخطاب المزارع · الذكاء الاصطناعي في الزراعة والمياه والبيئة</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D1_5_field_checks.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day1.html#lab-1-5">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 1.5</span>
+<h1>خطة الزيارات وخطاب المزارع</h1>
+<p>من قائمة التنبيهات الجاهزة تقارن نسبة التنبيه في القطع الصغيرة بالكبيرة، وترتب زيارات أسبوعين بطاقة الفريق، وتكتب خطاب التحقق إلى صاحب قطعة صغيرة.</p>
+<div class="meta"><span>20 دقيقة</span><span>اليوم 1</span><span>الجلسة 5: الفحص الميداني قبل أي جزاء</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="1.5">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>نسبة التنبيه في القطع الصغيرة (أقل من 6 هكتارات) والكبيرة.</li>
+    <li>جدول زيارات لأسبوعين بطاقة فريق التحقق، مرتب بسبب مكتوب.</li>
+    <li>خطاب تحقق إلى حليس الرشدان، صاحب القطعة الصغيرة P51، يطلب ولا يتهم.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/start/flags.csv" target="_blank"><b>start/flags.csv</b><span>قائمة القطع التي لا يتسق نمطها مع تصريحها، بأرقامها الأربعة (نقطة البداية، لا تحتاج المختبر 1.4)</span></a>
+  <a href="files/declarations.csv" target="_blank"><b>declarations.csv</b><span>كل القطع ومساحاتها</span></a>
+  <a href="files/field_team.txt" target="_blank"><b>field_team.txt</b><span>طاقة فريق التحقق وطريقة الزيارة</span></a>
+  <a href="files/authority_profile.txt" target="_blank"><b>authority_profile.txt</b><span>قاعدة الهيئة: لا جزاء بناء على صورة وحدها</span></a>
+</div>
+<p class="small">التصريحات ونتائج الزيارات والأشخاص اصطناعية، والقطع ومكانها توضيحية. أرقام المؤشر في القائمة محسوبة من صور Sentinel-2 (يحتوي على بيانات Copernicus Sentinel معدّلة، 2023 و2024). المساعد الذكي مسموح بدور المعلّم في صياغة الخطاب، على أن تكون الكلمات الأخيرة لك.</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · احسب نسبة التنبيه لكل حجم <span class="min">4 دقائق</span></h3>
+  <pre class="code" data-file="declarations.csv"><code>E2  =IF(COUNTIF(flags!A:A,A2)&gt;0,1,0)     in the flag list
+small: =SUMIFS(E:E,B:B,"&lt;6")/COUNTIFS(B:B,"&lt;6")
+large: =SUMIFS(E:E,B:B,"&gt;=6")/COUNTIFS(B:B,"&gt;=6")</code></pre>
+  <p>نسبة متساوية لا تعني عدلًا متساويًا: السؤال الذي لا تجيب عنه الأرقام بعد هو كم من تنبيهات كل حجم سيتبين أنه خطأ.</p>
+</div>
+
+<div class="step">
+  <h3>2 · رتّب زيارات أسبوعين بطاقة الفريق <span class="min">6 دقائق</span></h3>
+  <p>اقرأ <code>field_team.txt</code>: كم زيارة في الأسبوع، وما القاعدة المقترحة للأولوية. رتّب القطع في عمودين، أسبوع أول وأسبوع ثانٍ، واكتب سبب الترتيب في سطر.</p>
+  <table>
+    <tr><th>الأسبوع</th><th>القطع</th><th>السبب</th></tr>
+    <tr><td>الأول</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>الثاني</td><td class="fill"></td><td class="fill"></td></tr>
+  </table>
+</div>
+
+<div class="step">
+  <h3>3 · اكتب خطاب التحقق <span class="min">7 دقائق</span></h3>
+  <p>إلى حليس الرشدان، صاحب القطعة P51 (3 هكتارات، صرّح بقمح). خمسة أجزاء:</p>
+  <ol>
+    <li>رقم القطعة.</li>
+    <li>ما رأيناه في الصور، بكلمات يفهمها مزارع.</li>
+    <li>ما صرّحتم به.</li>
+    <li>ما نطلبه: موعد زيارة، أو صورة من الحقل.</li>
+    <li>حقكم في الرد، وأن الزيارة لا تعني مخالفة.</li>
+  </ol>
+  <div class="prompt" data-tool="مساعد محادثة عام">راجع هذا الخطاب الموجّه إلى مزارع. أشر إلى كل جملة قد يفهمها اتهامًا أو تهديدًا، واقترح بديلًا يطلب ولا يتهم. لا تضف معلومات غير موجودة: <span class="ph">نص الخطاب</span></div>
+</div>
+
+<div class="step">
+  <h3>4 · راجع الخطاب <span class="min">3 دقائق</span></h3>
+  <p>اقرأه كأنك المزارع وتصريحك صحيح. هل فيه كلمة «مخالفة» أو «غرامة» أو «تلاعب» أو موعد نهائي يهدد؟ هل يقول كيف يرد؟</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>اقترح تعديلًا على قاعدة الهيئة للقطع الصغيرة (حد أدنى أقل، أو زيارة قبل التنبيه، أو استبعادها من الفحص بالصور)، واكتب ما يكلفه وما يخسره.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>ما نسبة التنبيه في القطع الصغيرة؟ وفي الكبيرة؟</li>
+  <li>هل يتسع أسبوعان من الزيارات للقائمة كلها؟</li>
+  <li>ما الجملة في خطابك التي تقول للمزارع إن الزيارة ليست مخالفة؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب: المفتاح والفخاخ</summary>
+  <ul>
+    <li><b>النسبة:</b> الصغيرة 3 من 12 (25%)، والكبيرة 13 من 53 (25% تقريبًا). متساويتان.</li>
+    <li><b>الطاقة:</b> 8 زيارات في الأسبوع، و16 قطعة: أسبوعان بالضبط. ترتيب معقول: الأكبر مساحة أولًا (P10 بمساحة 35.2 هكتار، ثم P03 ثم P59)، مع قطعة صغيرة في كل أسبوع.</li>
+    <li><b>ما ستجده الزيارات</b> (يُكشف في شريحة ما بعد المختبر): القطع الصغيرة الثلاث P04 وP51 وP64 تصريحها صحيح كلها؛ وفي الكبيرة 7 من 13 زُرع فيها غير المصرّح به. نسبة التنبيه متساوية، لكن تنبيهات القطع الصغيرة كلها كاذبة.</li>
+    <li><b>الفخ:</b> خطاب يبدأ بـ«نحيطكم علمًا بوجود مخالفة» أو يذكر غرامة. وفخ أدق: «يجب الرد خلال ثلاثة أيام وإلا...».</li>
+    <li>التحقق: <code>uv run labs/solutions/check.py 1.5</code>. خطاب نموذجي في <code>labs/solutions/D1_5_field_checks.md</code>.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D1_4_plot_flags.html" rel="prev">→ المختبر السابق</a><a href="D1_6_confusion_matrix.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في الزراعة والمياه والبيئة<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 9c39248</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:17:50Z","version":"2027.1.0","commit":"9c39248"},"course":{"id":"use-sec-211","code":"USE-SEC-211","title":"الذكاء الاصطناعي في الزراعة والمياه والبيئة","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-211/","repo":"SDAIAAcademy/use-sec-211","home":"../index.html"},"lab":{"id":"1.5","title":"خطة الزيارات وخطاب المزارع","summary":"من قائمة التنبيهات الجاهزة تقارن نسبة التنبيه في القطع الصغيرة بالكبيرة، وترتب زيارات أسبوعين بطاقة الفريق، وتكتب خطاب التحقق إلى صاحب قطعة صغيرة.","minutes":20,"day":1,"unit":"اليوم 1","session":5,"deck":"../slides/day1.html#lab-1-5","prev":"D1_4_plot_flags.html","next":"D1_6_confusion_matrix.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

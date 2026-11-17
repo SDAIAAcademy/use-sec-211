@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="deck" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>اليوم 1 · من الصورة إلى الحقل · الذكاء الاصطناعي في الزراعة والمياه والبيئة</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="day1.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<div class="deck" data-course="الذكاء الاصطناعي في الزراعة والمياه والبيئة" data-track="fluency" data-day="اليوم 1">
+<section class="slide title" id="title" data-auto="title" data-label="الترحيب" data-n="1">
+  <div class="kicker">أكاديمية سدايا · الذكاء الاصطناعي في الزراعة والمياه والبيئة</div>
+  <h1>من الصورة إلى الحقل</h1>
+  <p class="lead mt">اليوم 1: ما تقيسه الأقمار والمجسات، ومؤشر الغطاء النباتي أمام التصريحات، ودقة خريطة مفتوحة لكل فئة</p>
+  <div class="meta"><span class="track">مسار الطلاقة في البيانات والذكاء الاصطناعي</span><span>يومان تدريبيان + يوم للمشروع الختامي</span><span>8 جلسات · 8 مختبرات</span><span>USE-SEC-211</span></div>
+  <aside class="notes"><p>رحّب، وعرّف بنفسك في جملتين. ثم اسأل القاعة: من في عمله يتخذ قرارًا عن مزرعة أو بئر أو شبكة مياه بناء على شيء لم يره بعينه؟ اطلب ثلاثة أمثلة واكتبها على السبورة. اليوم كله سؤال واحد: كم نثق بما تقوله الصورة أو الخريطة عن الحقل، وكيف نقيس ذلك قبل أن نبني عليه قرارًا؟</p></aside>
+</section>
+
+<section class="slide" id="agenda" data-auto="agenda" data-label="جدول اليوم" data-n="2">
+  <div class="kicker">اليوم</div>
+  <h2>من الصورة إلى الحقل</h2>
+  <div class="agenda"><div class="item"><div><b>الجلسة 1 · ما يقيسه كل مصدر</b><small>الصور والمجسّات والنماذج: ما يقيسه كل منها</small></div></div><div class="item"><div><b>الجلسة 2 · الدقة المكانية والزيارة والغيوم</b><small>البكسل أمام القطعة، والصور الصافية فعلًا</small></div></div><div class="item"><div><b>الجلسة 3 · مؤشر الغطاء النباتي وسلسلته الزمنية</b><small>من الانعكاس إلى المؤشر وسلسلته الزمنية</small></div></div><div class="item"><div><b>الجلسة 4 · القطع التي يخالف نمطها التصريح</b><small>النمط المتوقع والقاعدة التي تقارنه بالتصريح</small></div></div><div class="item"><div><b>الجلسة 5 · الفحص الميداني قبل أي جزاء</b><small>التنبيه سؤال: الزيارات وخطاب المزارع</small></div></div><div class="item"><div><b>الجلسة 6 · خرائط الغطاء الأرضي من النماذج المفتوحة</b><small>نماذج رصد الأرض والنقاط المرجعية والمصفوفة</small></div></div><div class="item"><div><b>الجلسة 7 · الدقة لكل فئة والاستخدامات المسموح بها</b><small>دقة المستخدم ودقة المنتج والاستخدامات</small></div></div><div class="item"><div><b>الجلسة 8 · الحقيقة الميدانية وحملات القياس</b><small>المرجع وفترة الثقة وحملة بميزانية</small></div></div></div>
+  <aside class="notes"><p>ثماني جلسات قصيرة، في كل منها مفاهيم موجزة ثم مختبر من 20 أو 25 دقيقة على جدول بيانات. الاستراحات بزر B. لا مختبر يحتاج نموذجًا لغويًّا. اليوم ينتقل من المصادر، إلى مؤشر الغطاء النباتي، إلى التصريحات والتحقق الميداني، إلى دقة خريطة مفتوحة.</p></aside>
+</section>
+
+<section class="slide" id="suqya-case" data-lo="LO1" data-n="3">
+  <div class="kicker">دراسة الحالة</div>
+  <h2>هيئة السُّقيا للمياه والزراعة: هيئة افتراضية في إقليم توضيحي</h2>
+  <div class="cols cols-2">
+    <div class="stack dense">
+      <ul class="bullets">
+        <li><b>تصاريح المياه الزراعية</b> وتصريحات المزارعين السنوية بمحاصيلهم</li>
+        <li><b>مياه الشرب</b> لعشر مناطق إمداد، لكل منها عداد عند مدخلها</li>
+        <li><b>الإرشاد</b> في الري، وتنبيهات الطقس والغبار والحر</li>
+      </ul>
+      <div class="card c-teal"><h4>ما يأتي من بيانات عامة</h4><p class="small mb0">قياسات Sentinel-2 وESA WorldCover وERA5 والتنبؤات السابقة. أما المكان والقطع وأرقامها وتصريحاتها ونتائج زياراتها فتوضيحية: لا تصف حقلًا حقيقيًّا ولا صاحبه.</p></div>
+    </div>
+    <figure class="figure">
+      <img src="../assets/region_ndvi.png" width="330" alt="صورة من الأعلى لنافذة الإقليم: عشرات الدوائر الخضراء الداكنة لمحاور ري مزروعة، ودوائر باهتة لمحاور متروكة، على أرض صحراوية رملية اللون">
+      <figcaption>أعلى مؤشر للغطاء النباتي في الموسم، مقصوصة ومقلوبة. يحتوي على بيانات Copernicus Sentinel معدّلة (2023، 2024).</figcaption>
+    </figure>
+  </div>
+  <aside class="notes"><p>عرّف الأشخاص الذين سيتكرر ذكرهم: سهم العطوي وكيل الهيئة للزراعة وصاحب الخريطة الختامية، وندوى الشملان محللة الاستشعار عن بعد، وغالب الهتيلة مدير الشبكات والتسربات، وحوراء الشهيل مسؤولة حوكمة البيانات وحقوق المزارعين، وشجاع السرحاني مرشد الري، وحليس الرشدان مزارع صغير. الملف في <code>labs/files/authority_profile.txt</code>. أكّد أن القياسات من بيانات عامة، وأن المكان والقطع والتصريحات ونتائج الزيارات توضيحية: الصورة مقصوصة ومقلوبة، والمقرر لا يذكر موقع الإقليم، فلا يُنسب شيء منها إلى صاحب حقل حقيقي.</p></aside>
+</section>
+
+<section class="slide" id="ai-policy" data-lo="LO1 LO3" data-n="4">
+  <div class="kicker">قواعد الورشة</div>
+  <h2>ثلاث درجات لاستعمال المساعد الذكي، تُعلن قبل كل مختبر</h2>
+  <div class="cols cols-3">
+    <div class="card c-coral"><h4>دون ذكاء اصطناعي</h4><p class="small mb0">فحص المواقف في المناقشة الختامية، والمختبران 1.6 و1.7 لدقة الخريطة. جدول بيانات وآلة حاسبة فقط.</p></div>
+    <div class="card c-amber"><h4>مساعد معلّم</h4><p class="small mb0">مختبرات الصور والري والتسرب: يشرح صيغة أو مصطلحًا، ولا يحسب عنك ولا يملأ الجدول.</p></div>
+    <div class="card c-teal"><h4>مساعد كامل</h4><p class="small mb0">الخريطة الختامية، على أن تدافع عنها مباشرة وتعيد تقييم حالة يختارها الميسّر.</p></div>
+  </div>
+  <div class="callout warn mt"><b>لا يُرفع إلى أي مساعد</b> ملف من جهتك، ولا اسم مزارع، ولا رقم قطعة حقيقي.</div>
+  <aside class="notes"><p>هذا من سياسة المقرر نفسها. السبب في الدرجة الأولى: الفحص يقيس حكمك أنت، والمساعد يخفي ما لا تعرفه. اسأل: من أكمل العمل التحضيري؟ من لم يكمله يأخذ القرار الجاهز في <code>prework_fallback.txt</code>. يعود العمل التحضيري في المختبر 1.1 وفي الخريطة.</p></aside>
+</section>
+
+<section class="slide" id="setup-check" data-n="5">
+  <div class="kicker">قبل أن نبدأ</div>
+  <h2>جدول بيانات مفتوح، وملفات المختبرات على جهازك</h2>
+  <div class="cols cols-2">
+    <ol class="bullets">
+      <li>افتح صفحة المقرر، ثم صفحة المختبر 1.1</li>
+      <li>نزّل مجلد الملفات كله، أو افتح كل ملف من رابطه</li>
+      <li>افتح <code>imagery/plots_reflectance.csv</code> في جدول البيانات</li>
+      <li>تأكد أن الحروف العربية ظاهرة، لا رموزًا غريبة</li>
+    </ol>
+    <div class="card c-cyan"><h4>يكفي واحد من هذه</h4><p class="small mb0">LibreOffice Calc، أو Microsoft Excel، أو Google Sheets. أي جدول يقرأ ملف CSV بترميز UTF-8 ويرسم خطًّا بيانيًّا.</p></div>
+  </div>
+  <aside class="notes"><p>إن ظهرت العربية رموزًا في Excel: استيراد من نص، وترميز UTF-8. الملف الأكبر نحو 9,400 صف ويفتح في ثوانٍ. لا شيء يُنصّب، ولا حساب يُفتح، ولا مفتاح لأي خدمة. اعرض الأمر خطوة خطوة على شاشتك، وانتظر أن ترفع كل طاولة يدها.</p></aside>
+</section>
+
+<!-- الجلسة 1 -->
+
+<section class="slide section" id="s1" data-auto="section" data-session="1" data-n="6">
+  <div class="kicker">الجلسة 1</div>
+  <h1>ما يقيسه كل مصدر</h1>
+  <ul class="bullets outcomes"><li>تفرق بين ما تقيسه الصور البصرية والرادارية والحرارية</li><li>تختار للسؤال مصدره الأول وتذكر ما لا يستطيعه</li><li>تميز إعادة التحليل من التنبؤ ومن المجس الميداني</li></ul>
+  <div class="sess-no">01</div>
+</section>
+
+<section class="slide" id="three-ways-to-see" data-lo="LO1" data-n="7" data-session="1">
+  <div class="kicker">من الفضاء</div>
+  <h2>ثلاث طرق للرؤية من الأعلى، ولكل منها ما يعميها</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>بصرية متعددة الأطياف</h4><p class="small">ضوء الشمس المنعكس في نطاقات مرئية وتحت حمراء: الخضرة وحالة النبات.</p><p class="small mb0"><b>تعميها:</b> الغيوم والليل.</p></div>
+    <div class="card c-purple"><h4>رادارية</h4><p class="small">ترسل موجتها وتقيس ارتدادها: الخشونة والرطوبة والماء المكشوف، ليلًا ونهارًا وعبر الغيم.</p><p class="small mb0"><b>تعميها:</b> لون النبات، وقراءتها تحتاج خبرة.</p></div>
+    <div class="card c-coral"><h4>حرارية</h4><p class="small">حرارة سطح الأرض: علامات الإجهاد والتبخر.</p><p class="small mb0"><b>تعميها:</b> التفاصيل الصغيرة، فدقتها أخشن.</p></div>
+  </div>
+  <aside class="notes"><p>مثال Sentinel-2 للبصرية: 13 نطاقًا بدقة 10 و20 و60 مترًا، وقمران يعيدان الزيارة كل خمسة أيام عند خط الاستواء. ومثال Sentinel-1 للرادار: يعمل ليلًا ونهارًا وفي كل طقس. اسأل: أي الثلاثة كنت تحتاجه يوم السيل الأخير في منطقتك؟ المصادر: Copernicus SentiWiki، صفحتا مهمتي Sentinel-2 وSentinel-1.</p></aside>
+</section>
+
+<section class="slide" id="on-the-ground" data-lo="LO1" data-n="8" data-session="1">
+  <div class="kicker">على الأرض</div>
+  <h2>المجس والعداد يقيسان نقطة واحدة بدقة، والصورة تقيس المساحة بتقريب</h2>
+  <table class="t">
+    <tr><th>المصدر</th><th>يقيس</th><th>قوته</th><th>حدّه</th></tr>
+    <tr><td><b>مجس رطوبة التربة</b></td><td>الماء في عمق الجذور</td><td>مباشر ومتكرر</td><td>نقطة واحدة، وينحرف دون معايرة</td></tr>
+    <tr><td><b>محطة طقس صغيرة</b></td><td>الحرارة والريح والمطر في المزرعة</td><td>محلية</td><td>قليلة، وتحتاج صيانة</td></tr>
+    <tr><td><b>عداد التدفق</b></td><td>الماء المار في الأنبوب كل ساعة</td><td>دقيق ومستمر</td><td>لا يقول أين ذهب الماء بعده</td></tr>
+    <tr class="hl"><td><b>زيارة ميدانية</b></td><td>ما هو مزروع فعلًا</td><td>الحقيقة الميدانية</td><td>مكلفة وقليلة</td></tr>
+  </table>
+  <aside class="notes"><p>الصف الأخير هو ما سنقيس عليه كل شيء اليوم: الحقيقة الميدانية. لاحظ أن المجس نفسه يحتاج «حقيقة» يُعاير عليها، وسنرى مجسًّا منحرفًا في اليوم الثاني. اسأل: كم مجسًّا في جهتك، ومتى عويرت آخر مرة؟</p></aside>
+</section>
+
+<section class="slide" id="reanalysis-is-not-observation" data-lo="LO1" data-n="9" data-session="1">
+  <div class="kicker">من النماذج</div>
+  <h2>إعادة التحليل تعيد بناء الطقس الماضي، والتنبؤ يقدّر القادم</h2>
+  <div class="cols cols-2">
+    <div class="card c-cyan"><h4>إعادة التحليل (مثل ERA5)</h4><p class="small mb0">نموذج طقس يُلزَم بكل الأرصاد المتاحة، فيعطي سلسلة متسقة ساعة بساعة من عام 1940 إلى اليوم، بدقة نحو 31 كم. ممتازة لسؤال «هل كان هذا الشتاء أجف من المعتاد؟».</p></div>
+    <div class="card c-amber"><h4>التنبؤ</h4><p class="small mb0">يقدّر الأيام أو المواسم القادمة. لا يُقبل قبل أن تُقاس مهارته أمام المناخ المعتاد في إقليمك: الجلسة الأولى من اليوم الثاني.</p></div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> معاملة خلية من 31 كم كأنها مزرعة. إعادة التحليل تصف الإقليم، لا الحقل.</div>
+  <aside class="notes"><p>المصدر: توثيق ERA5 من المركز الأوروبي للتنبؤات الجوية متوسطة المدى (ECMWF): من يناير 1940 إلى اليوم، ساعيًّا، 31 كم. مثال للقاعة: مزرعة في منخفض ووادٍ بجوارها يقعان في خلية واحدة. اسأل: ما الذي تراه إعادة التحليل في يوم عاصفة رعدية محلية؟</p></aside>
+</section>
+
+<section class="slide" id="question-decides-source" data-lo="LO1" data-n="10" data-session="1">
+  <div class="kicker">كيف تختار</div>
+  <h2>كلمة واحدة في السؤال تحسم المصدر</h2>
+  <table class="t">
+    <tr><th>السؤال (من جهة بيئية ساحلية)</th><th>الكلمة الحاسمة</th><th>المصدر الأول</th></tr>
+    <tr><td>هل امتدت بقعة زيت قرب الشاطئ في ليلة غائمة؟</td><td>ليلة غائمة</td><td>رادارية</td></tr>
+    <tr><td>هل تراجعت غابة المانجروف خلال عشر سنوات؟</td><td>عشر سنوات</td><td>سلسلة بصرية طويلة</td></tr>
+    <tr><td>كم تملّح الماء في بئر الرصد الآن؟</td><td>في البئر، الآن</td><td>مجس ميداني</td></tr>
+    <tr><td>هل كان صيف هذا العام أحرّ من المعتاد؟</td><td>من المعتاد</td><td>إعادة التحليل</td></tr>
+  </table>
+  <aside class="notes"><p>الأسئلة من جهة بيئية ساحلية، لا من أسئلة المختبر. اقرأ كل سؤال وغطِّ العمودين الأخيرين، واطلب من القاعة الكلمة الحاسمة أولًا ثم المصدر. الطريقة نفسها في المختبر: اقرأ السؤال كله قبل أن تختار.</p></aside>
+</section>
+
+<section class="slide" id="two-sources" data-lo="LO1" data-n="11" data-session="1">
+  <div class="kicker">مصدر واحد نادرًا ما يكفي</div>
+  <h2>المصدر الأول يجيب، والثاني يتحقق</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>صورة بصرية</b>بقعة داكنة جديدة قرب مزرعة دواجن</div>
+    <div class="arrow">←</div>
+    <div class="step c-purple"><b>رادار في اليوم نفسه</b>السطح أملس: ماء مكشوف لا ظل</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>بلاغ أو زيارة</b>تسرب من حوض تبريد</div>
+  </div>
+  <div class="callout tip mt"><b>القاعدة.</b> اكتب مع كل مصدر حدّه، ثم اسأل: أي مصدر آخر يغطي هذا الحد؟</div>
+  <aside class="notes"><p>المثال مخترع ومن خارج الإقليم. الهدف عادة كتابة عمود «ما لا يخبرك به» بجانب كل اختيار: هو ما ستكتبه في المختبر لكل سؤال. اسأل: ما الحد الذي يغطيه البلاغ ولا يغطيه الرادار؟ الجواب: السبب.</p></aside>
+</section>
+
+<section class="slide" id="check-sources" data-lo="LO1" data-n="12" data-session="1">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>سد صغير بعد عاصفة</h2>
+  <div class="quiz" data-type="single" data-lo="LO1" data-id="check-sources-q1">
+    <p class="lead">جهة بيئية تريد أن تعرف صباح الغد هل فاض سد ترابي صغير بعد عاصفة بدأت الليلة وستبقى غيومها يومين. ما المصدر الأول؟</p>
+    <div class="opts">
+      <div class="opt" data-why="الغيوم تحجب الصور البصرية يومين كاملين، والسؤال عن صباح الغد" data-k="أ">صورة بصرية بدقة 10 أمتار، لأنها الأوضح في رؤية حدود الماء</div>
+      <div class="opt" data-ok data-k="ب">صورة رادارية للسد، لأنها ترى الماء المكشوف عبر الغيوم ليلًا</div>
+      <div class="opt" data-why="إعادة التحليل تصف المطر على خلية من 31 كم، ولا ترى الماء المكشوف عند السد" data-k="ج">بيانات إعادة التحليل للمطر الذي سقط على الإقليم في الليلة نفسها</div>
+      <div class="opt" data-why="الحرارة السطحية تتأثر بالماء لكن دقتها أخشن، والرادار يرى الماء مباشرة عبر الغيم" data-k="د">صورة حرارية، لأن سطح الماء أبرد من الأرض المحيطة به</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> السؤال عن ماء مكشوف تحت غيوم، والرادار وحده بين الثلاثة يرى عبر الغيم ليلًا ونهارًا.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ب. من اختار «أ» نسي الكلمة الحاسمة «غيومها». من اختار «ج» خلط بين سبب الفيضان ورؤيته. هذا النوع من الأسئلة هو ما سيقابلونه في فحص المواقف.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-1" data-auto="lab" data-lab="1.1" data-label="المختبر 1.1" data-n="13" data-session="1">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.1 · 20 دقيقة</div><h2>ثمانية أسئلة ومصادرها</h2><p class="lead small">تطابق ثمانية أسئلة رصد في هيئة السُّقيا مع مصدرها الأول، وتكتب لكل سؤال لماذا هذا المصدر وما الذي لا يخبرك به، ثم تضيف سؤال عملك من العمل التحضيري.</p><a class="nb" href="../labs/D1_1_monitoring_sources.html">D1_1_monitoring_sources.html</a></div><ul class="checklist"><li>اقرأ تعريف الهيئة وبطاقة المصادر <span class="min">4 د</span></li><li>طابق كل سؤال بمصدره الأول <span class="min">6 د</span></li><li>اكتب لكل سؤال ما لا يخبرك به المصدر <span class="min">5 د</span></li><li>أضف سؤالك من العمل التحضيري ومصدره <span class="min">3 د</span></li><li>قارن مع زميل الصفوف التي اختلفتما فيها <span class="min">2 د</span></li><li class="stretch">✱ إضافي: اختر سؤالين يحتاج كل منهما مصدرين معًا، واكتب ما يضيفه المصدر الثاني</li></ul></div>
+  <aside class="notes"><p>راقب عمود «ما لا يخبرك به»: الخطأ الأشيع تركه فارغًا. من ينهي مبكرًا يأخذ التمرين الإضافي. في الدقيقة 15 ذكّر بالصف التاسع من العمل التحضيري. المساعد بدور المعلّم فقط.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-1" data-lo="LO1" data-n="14" data-session="1">
+  <div class="kicker">بعد المختبر 1.1</div>
+  <h2>ثلاثة أسئلة يخطئ فيها أكثر الناس، وكلمة واحدة في كل منها</h2>
+  <table class="t">
+    <tr><th>السؤال</th><th>المصدر</th><th>الكلمة التي تُنسى</th></tr>
+    <tr><td>Q1 مياه السيل</td><td>رادارية</td><td>«غيومها أربعة أيام»</td></tr>
+    <tr><td>Q2 شتاء أقل مطرًا</td><td>إعادة التحليل</td><td>«متوسط ثلاثين سنة»</td></tr>
+    <tr><td>Q6 الماء في الجذور</td><td>مجس الرطوبة</td><td>«منطقة الجذور»</td></tr>
+  </table>
+  <div class="callout tip mt"><b>دليل الناتج الأول.</b> ست مطابقات صحيحة على الأقل من ثمانٍ. المفتاح كاملًا عند المدرّب.</div>
+  <aside class="notes"><p>المفتاح: Q1←2، Q2←6، Q3←1، Q4←5، Q5←8، Q6←4، Q7←3، Q8←7. اطلب من كل طاولة صفًّا اختلفت فيه وكلمته. ثم اسأل: من وجد مصدرًا لسؤال عمله لا يملكه اليوم؟ هذه بذرة لحالة استخدام في الخريطة.</p></aside>
+</section>
+
+<!-- الجلسة 2 -->
+
+<section class="slide section" id="s2" data-auto="section" data-session="2" data-n="15">
+  <div class="kicker">الجلسة 2</div>
+  <h1>الدقة المكانية والزيارة والغيوم</h1>
+  <ul class="bullets outcomes"><li>تحسب عدد البكسلات النقية في قطعة بحسب دقة المصدر</li><li>تعد الصور الصافية في الشهر من قائمة المشاهد</li><li>تقرر هل يكفي مصدر لسؤال بعينه من دقته وزيارته</li></ul>
+  <div class="sess-no">02</div>
+</section>
+
+<section class="slide" id="pixel-vs-plot" data-lo="LO1" data-n="16" data-session="2">
+  <div class="kicker">الدقة المكانية</div>
+  <h2>الهكتار مئة بكسل بدقة 10 أمتار، وأقل من بكسل واحد بدقة 250 مترًا</h2>
+  <div class="cols cols-3">
+    <div class="stat center"><div class="big">100</div><div class="lbl">بكسل في الهكتار بدقة 10 أمتار (مثل Sentinel-2)</div></div>
+    <div class="stat center"><div class="big">11</div><div class="lbl">بكسلًا تقريبًا بدقة 30 مترًا (مثل Landsat)</div></div>
+    <div class="stat center"><div class="big">0.16</div><div class="lbl">من البكسل بدقة 250 مترًا (مثل MODIS)</div></div>
+  </div>
+  <div class="callout note mt"><b>الحساب.</b> الهكتار 10,000 متر مربع؛ البكسل بدقة 10 أمتار 100 متر مربع، وبدقة 30 مترًا 900، وبدقة 250 مترًا 62,500.</div>
+  <aside class="notes"><p>اكتب الحساب على السبورة. اسأل: كم هكتارًا مساحة أصغر مزرعة في منطقتك؟ ثم: كم بكسلًا تكون بكل دقة؟ القسمة وحدها لا تكفي، والشريحة التالية تقول لماذا.</p></aside>
+</section>
+
+<section class="slide" id="mixed-pixels" data-lo="LO1" data-n="17" data-session="2">
+  <div class="kicker">البكسل المختلط</div>
+  <h2>البكسل على الحافة يرى الحقل وما حوله معًا</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>البكسل النقي يقع كله داخل الحقل</li>
+      <li>بكسل الحافة يخلط الحقل بالطريق أو الأرض الجرداء، فيبدو الحقل أقل خضرة مما هو</li>
+      <li>كلما صغر الحقل زادت نسبة الحافة فيه</li>
+      <li>تقريب عملي: استبعد صفًّا من البكسلات على كل حافة، وعدّ ما بقي</li>
+    </ul>
+    <div class="card c-coral"><h4>مثال</h4><p class="small mb0">حقل مربع ضلعه 100 متر بدقة 10 أمتار: 100 بكسل، منها 64 نقيًّا فقط. ونفسه بدقة 30 مترًا: ضلعه 3 بكسلات، والنقي منها واحد.</p></div>
+  </div>
+  <aside class="notes"><p>ارسم شبكة 10 في 10 على السبورة وحوّط الصف الخارجي: 36 بكسلًا على الحافة و64 نقيًّا. ثم شبكة 3 في 3: بكسل واحد في الوسط. هذا ما سيجعل الحيازات الصغيرة تبدو مختلفة في الجلسة 5.</p></aside>
+</section>
+
+<section class="slide" id="revisit-not-clear" data-lo="LO1" data-n="18" data-session="2">
+  <div class="kicker">الزيارة والغيوم</div>
+  <h2>القمر يمر كل خمسة أيام، لكن الصورة الصافية لا تصل كل خمسة أيام</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>الزيارة:</b> كم مرة يمر القمر فوق المكان</li>
+      <li><b>الصورة الصافية:</b> مرور بلا غيم ولا ظل فوق حقلك أنت</li>
+      <li>الشتاء موسم المطر والغيم، وهو موسم القمح</li>
+      <li>فجوة أسبوعين بلا صورة قد تخفي الزراعة أو الحصاد</li>
+    </ul>
+    <div class="card c-teal"><h4>اسأل قبل أن تبني على الصور</h4><p class="small mb0">كم صورة صافية فعلًا فوق منطقتي في الشهر الذي يهمني؟ لا: كم مرة يمر القمر.</p></div>
+  </div>
+  <aside class="notes"><p>الزيارة كل خمسة أيام بقمرين عند خط الاستواء (SentiWiki)، وتتداخل المدارات في عرضنا فتزيد المرات. اسأل: في أي شهر تتوقع أقل الصور الصافية في منطقتك؟ سيعدّونها بأنفسهم في المختبر.</p></aside>
+</section>
+
+<section class="slide" id="scene-cloud-misleads" data-lo="LO1" data-n="19" data-session="2">
+  <div class="kicker">رقم الغيم</div>
+  <h2>رقم الغيم في المشهد يصف 110 في 110 كم، لا حقلك</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>المشهد</b>غيم 10% في مربع كبير</div>
+    <div class="arrow">←</div>
+    <div class="step c-amber"><b>غيمة واحدة</b>قد تقع فوق منطقتك بالضبط</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>والعكس</b>مشهد غيمه 60% ومنطقتك صافية</div>
+  </div>
+  <div class="callout tip mt"><b>الحل.</b> طبقة تصنيف المشهد (SCL) ترافق كل صورة من المستوى 2A، وتقول لكل بكسل: نبات، أرض، ماء، غيم، ظل. احسب الصافي فوق منطقتك.</div>
+  <aside class="notes"><p>المستوى 2A في Sentinel-2 يحمل طبقة تصنيف المشهد بدقة 20 مترًا. اعرض إن أمكن صورة في متصفح Copernicus Browser لمشهد غائم جزئيًّا من أي منطقة. لا تذكر عدد المشاهد المضللة في ملف المختبر: يعدّونها بأنفسهم.</p></aside>
+</section>
+
+<section class="slide" id="choose-by-question" data-lo="LO1" data-n="20" data-session="2">
+  <div class="kicker">الدقة والزيارة معًا</div>
+  <h2>السؤال يحدد الدقة والزيارة اللتين يحتاجهما</h2>
+  <table class="t">
+    <tr><th>السؤال (أمثلة من خارج الإقليم)</th><th>الدقة</th><th>الزيارة</th></tr>
+    <tr><td>هل زُرعت غابة النخيل الجديدة في الواحة؟</td><td>10 أمتار أو أدق</td><td>شهرية تكفي</td></tr>
+    <tr><td>هل غطت عاصفة رملية طريقًا سريعًا اليوم؟</td><td>عشرات الأمتار تكفي</td><td>يومية</td></tr>
+    <tr><td>هل اتسعت الأراضي المزروعة في المنطقة خلال عقد؟</td><td>30 مترًا تكفي</td><td>سنوية لعشر سنوات</td></tr>
+  </table>
+  <div class="callout note mt"><b>قاعدة عمل.</b> نحو عشرة بكسلات نقية على الأقل قبل أن تثق بمتوسط حقل.</div>
+  <aside class="notes"><p>قاعدة العشرة بكسلات قاعدة عمل لهذه الورشة، لا معيار منشور: قلها كذلك. اسأل لكل صف: ماذا يحدث لو اخترت دقة أخشن؟ ولو اخترت زيارة أقل؟</p></aside>
+</section>
+
+<section class="slide" id="check-resolution" data-lo="LO1" data-n="21" data-session="2">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>بستان نخيل من نصف هكتار</h2>
+  <div class="quiz" data-type="single" data-lo="LO1" data-id="check-resolution-q1">
+    <p class="lead">مزارع يملك بستان نخيل مربعًا تقريبًا مساحته نصف هكتار. تريد الهيئة أن تتابع خضرته شهريًّا من الصور. أي دقة تعطي عشرة بكسلات نقية على الأقل؟</p>
+    <div class="opts">
+      <div class="opt" data-why="ضلع البستان نحو 70 مترًا، أي بكسلين بدقة 30 مترًا، ولا يبقى بعد استبعاد الحافة شيء" data-k="أ">30 مترًا، لأن سلسلتها أطول وتكفي لمتابعة شهرية</div>
+      <div class="opt" data-why="البكسل بدقة 250 مترًا أكبر من البستان كله بأكثر من عشر مرات" data-k="ب">250 مترًا، لأنها يومية والزيارة أهم من الدقة</div>
+      <div class="opt" data-ok data-k="ج">10 أمتار، فهي تبقي بعد الحافة بكسلات نقية كافية</div>
+      <div class="opt" data-why="الدقة 10 أمتار تعطي نحو 25 بكسلًا نقيًّا، فلا حاجة إلى صور تجارية لهذا السؤال" data-k="د">لا شيء من الصور العامة، فلا بد من صور تجارية أدق</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> ضلع البستان نحو 70 مترًا: 7 بكسلات بدقة 10 أمتار، و5 في 5 نقية بعد استبعاد الحافة، أي 25.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ج. احسبها على السبورة: الجذر التربيعي لخمسة آلاف متر مربع نحو 70 مترًا. من اختار «د» أصاب في الحذر وأخطأ في الحساب. الصيغة نفسها في الخطوة 4 من المختبر.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-2" data-auto="lab" data-lab="1.2" data-label="المختبر 1.2" data-n="22" data-session="2">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.2 · 20 دقيقة</div><h2>كم صورة صافية تصلنا؟</h2><p class="lead small">من قائمة حقيقية لمشاهد <span class="ltr" dir="ltr">Sentinel-2</span> فوق الإقليم لسنة كاملة، تعد الصور الصافية لكل شهر، وتجد المشاهد التي يضلل فيها رقم الغيم، وتحسب البكسلات النقية لأربعة أحجام من القطع.</p><a class="nb" href="../labs/D1_2_clear_scenes.html">D1_2_clear_scenes.html</a></div><ul class="checklist"><li>افتح قائمة المشاهد واقرأ أعمدتها <span class="min">2 د</span></li><li>عد المشاهد الصافية لكل شهر <span class="min">6 د</span></li><li>جد المشاهد التي يضلل فيها رقم الغيم للمشهد <span class="min">4 د</span></li><li>احسب البكسلات النقية لكل حجم قطعة ودقة <span class="min">5 د</span></li><li>اكتب أي مصدر يكفي لكل حجم <span class="min">3 د</span></li><li class="stretch">✱ إضافي: احسب أطول فجوة بين صورتين صافيتين في الشتاء، واكتب ما يعنيه ذلك لرصد الزراعة</li></ul></div>
+  <aside class="notes"><p>الفخ التقني الأول عمود التاريخ: بعض البرامج تقرؤه نصًّا وبعضها تاريخًا، و<code>TEXT</code> تعمل في الحالين. راقب من يعدّ المشاهد الصافية برقم غيم المشهد: ذكّره بالعمود <code>D</code>. القائمة حقيقية، والحساب من طبقة SCL أجراه مؤلف المقرر.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-2" data-lo="LO1" data-n="23" data-session="2">
+  <div class="kicker">بعد المختبر 1.2</div>
+  <h2>الشتاء، موسم القمح، أفقر شهور السنة بالصور الصافية</h2>
+  <div class="bars">
+    <div class="row"><span>نوفمبر وديسمبر ومارس</span><div class="bar c-coral" style="--w:46%"></div><span class="val">6 كل شهر</span></div>
+    <div class="row"><span>أكتوبر ويناير</span><div class="bar c-amber" style="--w:62%"></div><span class="val">8</span></div>
+    <div class="row"><span>مايو إلى أغسطس</span><div class="bar c-teal" style="--w:100%"></div><span class="val">12 إلى 13</span></div>
+  </div>
+  <div class="cols cols-2 mt">
+    <div class="card c-coral"><h4>رقم المشهد يضلل</h4><p class="small mb0">5 مشاهد غيمها الكلي أقل من 20% وليست صافية فوق النافذة؛ أسوؤها صافٍ بنسبة 44% فقط.</p></div>
+    <div class="card c-teal"><h4>الحيازة الصغيرة</h4><p class="small mb0">0.4 هكتار: 16 بكسلًا نقيًّا بدقة 10 أمتار، وصفر بدقة 30 مترًا.</p></div>
+  </div>
+  <div class="caption">يحتوي على بيانات Copernicus Sentinel معدّلة (2023، 2024). نسبة الصافي فوق الإقليم من حساب مؤلف المقرر.</div>
+  <aside class="notes"><p>من تشغيل المختبر: 144 مشهدًا، 112 منها صافية فوق النافذة. أطول فجوة بين صورتين صافيتين من نوفمبر إلى فبراير 12 يومًا. اسأل: لو زُرع القمح في منتصف تلك الفجوة، متى سنعرف؟ هذا ما يجعل التنبيه في الجلسة 4 سؤالًا لا حكمًا.</p></aside>
+</section>
+
+<!-- الجلسة 3 -->
+
+<section class="slide section" id="s3" data-auto="section" data-session="3" data-n="24">
+  <div class="kicker">الجلسة 3</div>
+  <h1>مؤشر الغطاء النباتي وسلسلته الزمنية</h1>
+  <ul class="bullets outcomes"><li>تحسب مؤشر الغطاء النباتي من نطاقين</li><li>تسقط القيم الغائمة قبل أي قراءة</li><li>تقرأ من السلسلة موعد الزراعة والذروة والحصاد</li></ul>
+  <div class="sess-no">03</div>
+</section>
+
+<section class="slide" id="leaf-reflectance" data-lo="LO2" data-n="25" data-session="3">
+  <div class="kicker">لماذا يعمل المؤشر</div>
+  <h2>الورقة الخضراء تمتص الأحمر وتعكس تحت الأحمر القريب بقوة</h2>
+  <div class="cols cols-2">
+    <div class="bars">
+      <div class="row"><span>نبات كثيف: أحمر</span><div class="bar c-coral" style="--w:8%"></div><span class="val">0.04</span></div>
+      <div class="row"><span>نبات كثيف: تحت الأحمر</span><div class="bar c-teal" style="--w:90%"></div><span class="val">0.45</span></div>
+      <div class="row"><span>أرض جرداء: أحمر</span><div class="bar c-coral" style="--w:60%"></div><span class="val">0.30</span></div>
+      <div class="row"><span>أرض جرداء: تحت الأحمر</span><div class="bar c-teal" style="--w:70%"></div><span class="val">0.35</span></div>
+    </div>
+    <div class="card c-teal"><h4>الفكرة</h4><p class="small mb0">في النبات فرق كبير بين النطاقين، وفي التربة الجرداء فرق صغير. المؤشر يقيس هذا الفرق.</p></div>
+  </div>
+  <aside class="notes"><p>القيم توضيحية تقريبية لانعكاس سطحي، لا من ملف المختبر. الكلوروفيل يمتص الأحمر للتمثيل الضوئي، وبنية الورقة الداخلية تشتت تحت الأحمر القريب. في Sentinel-2 النطاق الأحمر B04 وتحت الأحمر القريب B08، وكلاهما بدقة 10 أمتار.</p></aside>
+</section>
+
+<section class="slide" id="ndvi-formula" data-lo="LO2" data-n="26" data-session="3">
+  <div class="kicker">الحساب</div>
+  <h2>المؤشر فرق النطاقين على مجموعهما، بين ناقص واحد وواحد</h2>
+  <pre class="code" data-file="ndvi"><code>NDVI = (NIR - red) / (NIR + red)
+
+dense crop   (0.45 - 0.04) / (0.45 + 0.04) = 0.84
+bare soil    (0.35 - 0.30) / (0.35 + 0.30) = 0.08</code></pre>
+  <div class="callout note mt"><b>قيم مرجعية في هذا الإقليم.</b> الأرض الجرداء نحو 0.10 إلى 0.15، والمحصول الكثيف في ذروته فوق 0.70.</div>
+  <aside class="notes"><p>اطلب من القاعة أن تحسب الثاني ذهنيًّا. المؤشر الطبيعي لاختلاف الغطاء النباتي (NDVI) أشهر المؤشرات، وليس الوحيد. القيم المرجعية من تقويم المحاصيل في ملفات المختبر.</p></aside>
+</section>
+
+<section class="slide" id="clouds-fake-harvest" data-lo="LO2" data-n="27" data-session="3">
+  <div class="kicker">التنقية</div>
+  <h2>الغيمة الرقيقة تخفض المؤشر فيبدو الحقل كأنه حُصد</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>الغيم يعكس النطاقين بقدر متقارب، مثل التربة</li>
+      <li>الظل يخفض الاثنين، فيضطرب الفرق</li>
+      <li>النتيجة: هبوط مفاجئ في موعد واحد ثم عودة</li>
+      <li>القاعدة: لا تقرأ موعدًا يقل صفاؤه فوق الحقل عن 0.9</li>
+    </ul>
+    <div class="card c-coral"><h4>علامة الخدعة</h4><p class="small mb0">انخفاض حاد في موعد واحد، وارتفاع إلى المستوى نفسه في الموعد التالي. المحصول لا يُحصد ثم يعود في خمسة أيام.</p></div>
+  </div>
+  <aside class="notes"><p>البرسيم يُحشّ فينخفض ثم يعود، لكن في أسابيع لا في موعد واحد. اسأل: كيف تفرق بين حشّة وغيمة في السلسلة؟ الجواب: عمود الصفاء، وشكل العودة.</p></aside>
+</section>
+
+<section class="slide" id="series-tells-story" data-lo="LO2" data-read="scaled" data-n="28" data-session="3">
+  <div class="kicker">السلسلة الزمنية</div>
+  <h2>السلسلة تحكي الموسم: متى اخضرّ الحقل، ومتى بلغ ذروته، ومتى انتهى</h2>
+  <div class="figure">
+    <svg viewBox="0 0 900 330" role="img" aria-label="ثلاثة أنماط توضيحية لمؤشر الغطاء النباتي على اثني عشر شهرًا: محصول شتوي يرتفع من ديسمبر إلى ذروة في فبراير ومارس ثم يهبط في مايو، ومحصول معمّر يبقى عاليًا طوال السنة مع انخفاضات قصيرة، وأرض بور تبقى منخفضة">
+      <rect x="60" y="20" width="800" height="250" fill="none" stroke="#c9d3dc"/>
+      <line x1="60" y1="145" x2="860" y2="145" stroke="#e3e8ed" stroke-dasharray="4 4"/>
+      <polyline fill="none" stroke="#2a9d8f" stroke-width="5" points="60,245 133,240 206,200 279,90 352,45 425,45 498,80 571,230 644,245 717,248 790,248 860,248"/>
+      <polyline fill="none" stroke="#7b5ea7" stroke-width="5" points="60,70 133,55 160,120 206,60 279,65 330,125 352,60 425,55 498,50 540,115 571,55 644,60 717,58 790,62 860,60"/>
+      <polyline fill="none" stroke="#e76f51" stroke-width="5" points="60,250 206,248 352,244 425,236 498,240 644,250 860,252"/>
+      <text x="40" y="30" font-size="20" text-anchor="end">1</text>
+      <text x="40" y="270" font-size="20" text-anchor="end">0</text>
+      <text x="80" y="305" font-size="20">أكتوبر</text>
+      <text x="420" y="305" font-size="20">مارس</text>
+      <text x="780" y="305" font-size="20">سبتمبر</text>
+    </svg>
+    <div class="caption">أنماط توضيحية مرسومة باليد: شتوي (أخضر مزرق)، ومعمّر (بنفسجي)، وبور (برتقالي).</div>
+  </div>
+  <aside class="notes"><p>الأشكال مرسومة لا مقيسة: لا أرقام من ملف المختبر هنا. مرّ على الثلاثة واسأل عن كل منها: متى زُرع؟ متى ذروته؟ ماذا يعني الانخفاض المتكرر في المعمّر؟ الجواب: حشّ البرسيم.</p></aside>
+</section>
+
+<section class="slide" id="ndvi-limits" data-lo="LO2" data-n="29" data-session="3">
+  <div class="kicker">ما لا يقوله المؤشر</div>
+  <h2>المؤشر يقول متى كان الحقل أخضر، لا ماذا زُرع فيه</h2>
+  <div class="cols cols-3">
+    <div class="card c-amber"><h4>النوع</h4><p class="small mb0">قمح وشعير وعشب شتوي متشابهة في السلسلة.</p></div>
+    <div class="card c-amber"><h4>التشبع</h4><p class="small mb0">فوق قيمة عالية لا يميز الكثيف من الأكثف.</p></div>
+    <div class="card c-amber"><h4>الخلفية</h4><p class="small mb0">في البساتين المتباعدة تدخل التربة بين الأشجار في كل بكسل.</p></div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> كتابة «هذا قمح» بدل «يشبه نمط القمح». الفرق بين الجملتين هو الزيارة الميدانية.</div>
+  <aside class="notes"><p>هذه الحدود هي ما يجعل كل تنبيه في الجلسة القادمة سؤالًا. اطلب من القاعة أن تعيد صياغة جملة «القطعة مزروعة برسيمًا» بلغة الصورة.</p></aside>
+</section>
+
+<section class="slide" id="check-ndvi" data-lo="LO2" data-n="30" data-session="3">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>احسب المؤشر</h2>
+  <div class="quiz" data-type="numeric" data-answer="0.6" data-tolerance="0.02" data-lo="LO2" data-id="check-ndvi-q1">
+    <p class="lead">بستان في واحة: متوسط الانعكاس الأحمر 0.08، وتحت الأحمر القريب 0.32، في موعد صافٍ. كم مؤشر الغطاء النباتي؟ (رقمان بعد الفاصلة)</p>
+    <div class="callout tip why"><b>لماذا.</b> (0.32 ناقص 0.08) على (0.32 زائد 0.08) = 0.24 على 0.40 = 0.60: خضرة متوسطة، كما في بستان متباعد الأشجار.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: 0.60. خطأ شائع: قسمة الفرق على تحت الأحمر وحده (0.75). ثم اسأل: لو كان الموعد غير صافٍ، هل تكتب الرقم؟</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-3" data-auto="lab" data-lab="1.3" data-label="المختبر 1.3" data-n="31" data-session="3">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.3 · 25 دقيقة</div><h2>من الانعكاس إلى المؤشر</h2><p class="lead small">تحسب مؤشر الغطاء النباتي لست قطع من متوسط انعكاسها على كل موعد، وتسقط المواعيد الغائمة، وترسم السلسلة، وتطابق كل نمط بتقويم المحاصيل.</p><a class="nb" href="../labs/D1_3_ndvi_series.html">D1_3_ndvi_series.html</a></div><ul class="checklist"><li>صفّ ملف الانعكاس على القطع الست <span class="min">4 د</span></li><li>احسب المؤشر في عمود جديد <span class="min">5 د</span></li><li>أسقط المواعيد التي يقل صفاؤها عن 0.9 <span class="min">4 د</span></li><li>ارسم سلسلة كل قطعة <span class="min">6 د</span></li><li>طابق كل نمط بتقويم المحاصيل <span class="min">6 د</span></li><li class="stretch">✱ إضافي: ارسم قطعة واحدة دون إسقاط الغائم، واكتب أين كان سيخدعك</li></ul></div>
+  <aside class="notes"><p>الخطوة الأطول الرسم: من يتعثر في الرسم يملأ الجدول من الأرقام مباشرة. راقب من ينسى إسقاط غير الصافي. إن سأل أحد «أين هذا الحقل؟» فالجواب: المكان والقطع توضيحية، والمقرر لا يذكر موقعها ولا إحداثياتها، لأن التصريحات ونتائج الزيارات مخترعة ولا يصح أن يُنسب شيء منها إلى صاحب حقل حقيقي.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-3" data-lo="LO2" data-n="32" data-session="3">
+  <div class="kicker">بعد المختبر 1.3</div>
+  <h2>ثلاثة أنماط في ست قطع، وخدعة غيم في واحدة</h2>
+  <table class="t">
+    <tr><th>القطعة</th><th>ما تقوله السلسلة</th><th>يشبه</th></tr>
+    <tr><td>P21</td><td>جرداء حتى نوفمبر، ذروة 0.92 في فبراير، تنتهي في مايو</td><td>قمح</td></tr>
+    <tr><td>P47 وP24</td><td>تخضر في يناير، ذروة في مارس (0.88 و0.57)</td><td>قمح متأخر، والثاني خفيف</td></tr>
+    <tr><td>P09 وP11</td><td>عالية طوال السنة، مع انخفاضات قصيرة</td><td>برسيم</td></tr>
+    <tr><td>P19</td><td>لا تتجاوز 0.21</td><td>بور</td></tr>
+  </table>
+  <div class="callout warn mt"><b>خدعة الغيم.</b> في P09 ثلاثة مواعيد غير صافية تنزل إلى 0.17 وسط قيم فوق 0.8.</div>
+  <div class="caption">يحتوي على بيانات Copernicus Sentinel معدّلة (2023، 2024). القطع وأرقامها توضيحية.</div>
+  <aside class="notes"><p>من تشغيل المختبر. اسأل عن P24: محصول خفيف أم نصف المحور غير مزروع؟ الصورة لا تحسم، والزيارة تحسم. هذا ما يقودنا إلى قواعد الهيئة في الجلسة القادمة.</p></aside>
+</section>
+
+<!-- الجلسة 4 -->
+
+<section class="slide section" id="s4" data-auto="section" data-session="4" data-n="33">
+  <div class="kicker">الجلسة 4</div>
+  <h1>القطع التي يخالف نمطها التصريح</h1>
+  <ul class="bullets outcomes"><li>تلخص سلسلة كل قطعة في أربعة أرقام: قمة الشتاء ومتوسط الصيف وقمة الصيف وقمة الموسم</li><li>تطبق قاعدة الاتساق على التصريح</li><li>تكتب طلب تحقق ميداني لكل قطعة مختلفة</li></ul>
+  <div class="sess-no">04</div>
+</section>
+
+<section class="slide" id="patterns-per-crop" data-lo="LO2" data-n="34" data-session="4">
+  <div class="kicker">النمط المتوقع</div>
+  <h2>لكل محصول في الإقليم نمط متوقع، ولكل نمط ما يكذّبه</h2>
+  <table class="t">
+    <tr><th>المحصول</th><th>النمط المتوقع</th><th>ما يكذّبه</th></tr>
+    <tr><td>قمح أو شعير شتوي</td><td>قمة شتوية، صيف أجرد</td><td>خضرة صيفية عالية</td></tr>
+    <tr><td>برسيم</td><td>أخضر أغلب السنة</td><td>صيف أجرد</td></tr>
+    <tr><td>علف صيفي</td><td>قمة صيفية، شتاء أجرد</td><td>قمة شتوية</td></tr>
+    <tr><td>بور</td><td>منخفض طوال السنة</td><td>أي قمة خضراء</td></tr>
+  </table>
+  <aside class="notes"><p>الجدول من تقويم المحاصيل في ملفات المختبر. اسأل: أي اختلاف بين التصريح والنمط يعني ماءً أكثر مما صُرّح به؟ الجواب: برسيم أو علف صيفي مصرّح بأنه قمح أو بور، لأن الصيف هو موسم العطش.</p></aside>
+</section>
+
+<section class="slide" id="four-numbers" data-lo="LO2" data-n="35" data-session="4">
+  <div class="kicker">التلخيص</div>
+  <h2>أربعة أرقام تلخص سنة من السلسلة</h2>
+  <div class="cols cols-4">
+    <div class="card c-cyan"><h4>قمة الشتاء</h4><p class="small mb0">أعلى قيمة في ديسمبر إلى مارس</p></div>
+    <div class="card c-coral"><h4>متوسط الصيف</h4><p class="small mb0">متوسط يونيو إلى أغسطس</p></div>
+    <div class="card c-amber"><h4>قمة الصيف</h4><p class="small mb0">أعلى قيمة في يونيو إلى سبتمبر</p></div>
+    <div class="card c-purple"><h4>قمة الموسم</h4><p class="small mb0">أعلى قيمة في السنة كلها</p></div>
+  </div>
+  <div class="callout tip mt"><b>من القيم الصافية فقط.</b> رقم واحد من موعد غائم يغير القمة أو المتوسط.</div>
+  <aside class="notes"><p>لماذا المتوسط في الصيف والقمة في الشتاء؟ القمة تلتقط محصولًا قصيرًا في ذروته، والمتوسط يلتقط خضرة مستمرة. في جدول البيانات: MAXIFS وAVERAGEIFS بشرط القطعة والشهر.</p></aside>
+</section>
+
+<section class="slide" id="rule-not-verdict" data-lo="LO2" data-n="36" data-session="4">
+  <div class="kicker">القاعدة</div>
+  <h2>القاعدة تحدد من نسأل، لا من نعاقب</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>السلسلة</b>أربعة أرقام</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>القاعدة</b>هل يتسق النمط مع التصريح؟</div>
+    <div class="arrow">←</div>
+    <div class="step c-amber"><b>إن لم يتسق</b>طلب تحقق ميداني</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>الزيارة</b>وحدها تقرر</div>
+  </div>
+  <div class="callout warn mt"><b>قاعدة الهيئة.</b> لا جزاء ولا غرامة على مزارع بناء على صورة أو نموذج وحده.</div>
+  <aside class="notes"><p>هذه القاعدة من سياسة المقرر نفسها: التنبيه يقود إلى زيارة، لا إلى جزاء آلي. وهي من مبدأ الإنسانية ومبدأ المساءلة والمسؤولية في مبادئ أخلاقيات الذكاء الاصطناعي من سدايا. اسأل: لماذا لا تُرسل الغرامة ويُترك للمزارع أن يعترض؟</p></aside>
+</section>
+
+<section class="slide" id="thresholds-are-choices" data-lo="LO2" data-n="37" data-session="4">
+  <div class="kicker">الحدود</div>
+  <h2>كل حد في القاعدة اختيار، والحالات قرب الحد تحتاج عينًا</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>حد 0.50 لقمة الشتاء يجعل 0.49 «لا يتسق»</li>
+      <li>الزراعة المتأخرة تنقل القمة إلى أبريل</li>
+      <li>محصولان في سنة واحدة يكسران كل القواعد</li>
+      <li>حقل نصفه مزروع يعطي قمة منخفضة</li>
+    </ul>
+    <div class="card c-purple"><h4>مثال من واحة أخرى</h4><p class="small mb0">حقل صرّح صاحبه بشعير: قمة شتائه 0.48 ومتوسط صيفه 0.12. القاعدة تنبه، والنمط شعير خفيف في الغالب.</p></div>
+  </div>
+  <aside class="notes"><p>المثال مخترع ومن خارج الإقليم. اسأل: هل نغيّر الحد إلى 0.45؟ ماذا نكسب، وما الذي يفوتنا؟ لا جواب واحدًا: كل حد يقايض تنبيهات أكثر بحالات فائتة أقل.</p></aside>
+</section>
+
+<section class="slide" id="flag-to-request" data-lo="LO2" data-n="38" data-session="4">
+  <div class="kicker">من التنبيه إلى الطلب</div>
+  <h2>طلب التحقق يصف ما رأيناه، ولا يحكم</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>لا</h4><p class="small mb0">«القطعة مخالفة: زُرعت برسيمًا وصُرّح بقمح.»</p></div>
+    <div class="card c-teal"><h4>نعم</h4><p class="small mb0">«السلسلة خضراء طوال الصيف (متوسط 0.6)، والتصريح قمح. يُسأل على الأرض: ماذا زُرع، ومتى؟»</p></div>
+  </div>
+  <div class="callout tip mt"><b>ثلاثة أجزاء.</b> ما رأيناه في السلسلة، وما صُرّح به، وما يُسأل عنه على الأرض.</div>
+  <aside class="notes"><p>المثال مخترع. اطلب من القاعة أن تحوّل جملة «المزارع لم يزرع شيئًا» إلى لغة الطلب. الجواب: «السلسلة منخفضة طوال الموسم؛ يُسأل: هل زُرعت القطعة؟».</p></aside>
+</section>
+
+<section class="slide" id="check-flag" data-lo="LO2" data-n="39" data-session="4">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>حقل في واحة أخرى</h2>
+  <div class="quiz" data-type="single" data-lo="LO2" data-id="check-flag-q1">
+    <p class="lead">حقل صرّح صاحبه بعلف صيفي. أرقام سلسلته: قمة الشتاء 0.81، ومتوسط الصيف 0.15، وقمة الصيف 0.22. بقواعد الهيئة، ما الخطوة التالية؟</p>
+    <div class="opts">
+      <div class="opt" data-why="القاعدة تقرر من نسأل، لا من نعاقب: لا جزاء على صورة وحدها" data-k="أ">إنذار للمزارع بأن تصريحه غير صحيح</div>
+      <div class="opt" data-why="النمط يخالف قاعدة العلف الصيفي في رقمين واضحين، فتجاهله يعطل القاعدة كلها" data-k="ب">لا شيء، فالحقل مزروع والمزارع صرّح بزراعة</div>
+      <div class="opt" data-why="الشتاء الأخضر والصيف الأجرد يكذّبان العلف الصيفي، ولا حاجة إلى صور إضافية لطرح السؤال" data-k="ج">انتظار صور الموسم القادم قبل أي إجراء</div>
+      <div class="opt" data-ok data-k="د">طلب تحقق: النمط شتوي والتصريح صيفي</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> قمة شتاء عالية وصيف أجرد نمط شتوي، وقاعدة العلف الصيفي تطلب العكس. الخطوة طلب تحقق يصف ذلك.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: د. من اختار «أ» تجاوز قاعدة الهيئة. من اختار «ب» خلط بين «مزروع» و«كما صُرّح». الأرقام مخترعة ومن خارج ملف المختبر.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-4" data-auto="lab" data-lab="1.4" data-label="المختبر 1.4" data-n="40" data-session="4">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.4 · 25 دقيقة</div><h2>قطع لا يتسق نمطها مع التصريح</h2><p class="lead small">تلخص سلسلة المؤشر لكل قطعة من قطع الإقليم، وتطبق قواعد الهيئة على المحصول المصرّح به، وتخرج بقائمة القطع المختلفة وطلب تحقق ميداني لكل منها.</p><a class="nb" href="../labs/D1_4_plot_flags.html">D1_4_plot_flags.html</a></div><ul class="checklist"><li>اقرأ قواعد الاتساق وملف التصريحات <span class="min">3 د</span></li><li>احسب الأرقام الأربعة لكل قطعة <span class="min">9 د</span></li><li>طبّق القاعدة على المحصول المصرّح به <span class="min">6 د</span></li><li>اكتب طلب تحقق ميداني لكل قطعة في القائمة <span class="min">7 د</span></li><li class="stretch">✱ إضافي: اكتب لقطعة في القائمة ثلاثة أسباب بريئة قد تفسر النمط</li></ul></div>
+  <aside class="notes"><p>الفخ التقني: MAXIFS بشرط واحد للأشهر 12 إلى 3 لا يعمل عبر رأس السنة؛ الصيغة في الصفحة تأخذ أكبر اثنتين. من يتأخر في الأرقام الأربعة يأخذ <code>start/flags.csv</code> من المختبر التالي ليرى الشكل، لا ليغش. راقب لغة طلبات التحقق.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-4" data-lo="LO2" data-n="41" data-session="4">
+  <div class="kicker">بعد المختبر 1.4</div>
+  <h2>ست عشرة قطعة من خمس وستين لا يتسق نمطها مع تصريحها</h2>
+  <div class="cols cols-3">
+    <div class="stat center"><div class="big">16</div><div class="lbl">قطعة في قائمة التحقق</div></div>
+    <div class="stat center"><div class="big">8</div><div class="lbl">منها صُرّح بأنها قمح</div></div>
+    <div class="stat center"><div class="big">0.499</div><div class="lbl">قمة شتاء P04: أقل من الحد بجزء من ألف</div></div>
+  </div>
+  <div class="callout note mt"><b>السؤال للمختبر التالي.</b> كم من هذه الست عشرة سيتبين على الأرض أن تصريحها صحيح؟</div>
+  <div class="caption">السلاسل من بيانات Copernicus Sentinel معدّلة (2023، 2024)، والتصريحات اصطناعية.</div>
+  <aside class="notes"><p>من تشغيل المختبر: P03، P04، P05، P08، P10، P14، P25، P30، P41، P44، P45، P51، P56، P57، P59، P64. لا تقل نتائج الزيارات بعد: تُكشف بعد المختبر 1.5. اسأل القاعة أن تخمن النسبة، واكتب التخمين على السبورة.</p></aside>
+</section>
+
+<!-- الجلسة 5 -->
+
+<section class="slide section" id="s5" data-auto="section" data-session="5" data-n="42">
+  <div class="kicker">الجلسة 5</div>
+  <h1>الفحص الميداني قبل أي جزاء</h1>
+  <ul class="bullets outcomes"><li>تقارن نسبة التنبيه بين القطع الصغيرة والكبيرة</li><li>ترتب الزيارات بطاقة فريق التحقق</li><li>تكتب خطاب تحقق يطلب ولا يتهم</li></ul>
+  <div class="sess-no">05</div>
+</section>
+
+<section class="slide" id="false-flags-cost" data-lo="LO2" data-n="43" data-session="5">
+  <div class="kicker">من يدفع ثمن الخطأ</div>
+  <h2>التنبيه الكاذب يكلف المزارع الصادق، لا الهيئة وحدها</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>تنبيه كاذب</h4><p class="small mb0">مزارع صادق يتلقى خطابًا، ويترك حقله لاستقبال الزيارة، ويقلق على تصريحه. وفريق الهيئة يضيع زيارة.</p></div>
+    <div class="card c-amber"><h4>حالة فائتة</h4><p class="small mb0">ماء يُستهلك فوق المصرّح به موسمًا كاملًا. الهيئة تخسر ماءً، والمزارعون الملتزمون يخسرون عدلًا.</p></div>
+  </div>
+  <div class="callout tip mt"><b>السؤال.</b> على من يقع كل خطأ؟ وهل يقع على فئة أكثر من غيرها؟</div>
+  <aside class="notes"><p>اسأل: أي الخطأين تراه الهيئة في تقاريرها، وأيهما لا تراه؟ الحالة الفائتة لا تظهر في أي تقرير، والتنبيه الكاذب يظهر في شكوى. هذا يدفع الجهات إلى خفض التنبيهات أو رفعها لأسباب لا علاقة لها بالعدل.</p></aside>
+</section>
+
+<section class="slide" id="small-plots-mixed" data-lo="LO2" data-n="44" data-session="5">
+  <div class="kicker">الحيازات الصغيرة</div>
+  <h2>الحقل الصغير يرى جيرانه أكثر، فتبدو قمته أدنى</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>نسبة بكسلات الحافة أكبر في الحقل الصغير</li>
+      <li>الحافة تخلط المحصول بالأرض الجرداء أو بالطريق</li>
+      <li>القمة تنخفض فتقترب من حدود القاعدة</li>
+      <li>والمرجع الميداني للحيازات الصغيرة أقل في كل مكان</li>
+    </ul>
+    <div class="card c-purple"><h4>الحساب نفسه</h4><p class="small mb0">حقل من 3 هكتارات بدقة 10 أمتار: ضلعه نحو 17 بكسلًا، وحافته نحو ربع بكسلاته.</p></div>
+  </div>
+  <aside class="notes"><p>الحساب: الجذر التربيعي لثلاثين ألف متر مربع نحو 173 مترًا، أي 17 بكسلًا؛ الحافة 4 في 16 تقريبًا، أي 64 من 289، نحو الربع. اسأل: لو كان أصحاب الحيازات الصغيرة أقل قدرة على الرد على خطاب رسمي، ماذا يعني ذلك للعدل؟</p></aside>
+</section>
+
+<section class="slide" id="capacity-orders" data-lo="LO2" data-n="45" data-session="5">
+  <div class="kicker">طاقة الفريق</div>
+  <h2>الطاقة تفرض ترتيبًا، والترتيب قرار يُكتب سببه</h2>
+  <table class="t">
+    <tr><th>طريقة الترتيب</th><th>ما تكسبه</th><th>ما تخسره</th></tr>
+    <tr><td>الأكبر مساحة أولًا</td><td>أكبر فرق محتمل في الماء</td><td>لا تعرف أبدًا كيف تعمل الطريقة على الصغار</td></tr>
+    <tr><td>عشوائيًّا</td><td>تقدير غير منحاز لنسبة الخطأ</td><td>قد تؤجل أكبر الفروق</td></tr>
+    <tr class="hl"><td>الأكبر أولًا، مع حصة للصغار</td><td>الماء والتعلم معًا</td><td>زيارات أقل للكبار</td></tr>
+  </table>
+  <aside class="notes"><p>لا جواب واحدًا؛ المطلوب في المختبر أن يُكتب السبب. الصف المظلل هو ما يقترحه ملف الفريق في المختبر. اسأل: من في جهتك يقرر ترتيب الزيارات، وهل يكتب لماذا؟</p></aside>
+</section>
+
+<section class="slide" id="letter-that-asks" data-lo="LO2" data-n="46" data-session="5">
+  <div class="kicker">الخطاب</div>
+  <h2>خطاب يطلب ولا يتهم: خمسة أجزاء</h2>
+  <ol class="bullets">
+    <li><b>رقم القطعة</b> كما في السجل</li>
+    <li><b>ما رأيناه</b> بكلمات المزارع: «الخضرة هذا الشتاء أخف مما نراه عادة»</li>
+    <li><b>ما صرّحتم به</b> دون تعليق</li>
+    <li><b>ما نطلبه:</b> موعد زيارة، أو صورة من الحقل</li>
+    <li><b>حقكم في الرد،</b> وأن الزيارة ليست مخالفة</li>
+  </ol>
+  <div class="callout warn mt"><b>كلمات لا تُكتب.</b> مخالفة، غرامة، تلاعب، «وإلا».</div>
+  <aside class="notes"><p>اقرأ الجزء الثاني بصوتين: مرة «لاحظنا تلاعبًا في...» ومرة «كانت الخضرة أخف...». اسأل: أيهما يجعل المزارع يفتح بابه؟ المساعد مسموح في المختبر لمراجعة الخطاب، والكلمات الأخيرة للمشارك.</p></aside>
+</section>
+
+<section class="slide" id="ethics-principles" data-lo="LO2" data-n="47" data-session="5">
+  <div class="kicker">المرجعية الوطنية</div>
+  <h2>مبادئ أخلاقيات الذكاء الاصطناعي من سدايا تضع الإنسان في كل تنبيه</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>الإنصاف</h4><p class="small mb0">لا تقع الأخطاء على فئة أكثر من غيرها دون أن نعرف ونعالج.</p></div>
+    <div class="card c-cyan"><h4>الإنسانية</h4><p class="small mb0">قرار يمس إنسانًا لا يُترك لنظام وحده.</p></div>
+    <div class="card c-purple"><h4>المساءلة والمسؤولية</h4><p class="small mb0">صاحب مسمّى لكل قرار، وطريق للاعتراض.</p></div>
+  </div>
+  <aside class="notes"><p>المبادئ السبعة في الوثيقة: الإنصاف، والخصوصية والأمن، والإنسانية، والمنافع الاجتماعية والبيئية، والموثوقية والسلامة، والشفافية والقابلية للتفسير، والمساءلة والمسؤولية. اخترنا ثلاثة تمس التنبيه مباشرة، والكلام تحت كل منها تطبيقنا له لا نص الوثيقة. المصدر: سدايا، مبادئ أخلاقيات الذكاء الاصطناعي.</p></aside>
+</section>
+
+<section class="slide" id="check-letter" data-lo="LO2" data-n="48" data-session="5">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>جملة في خطاب</h2>
+  <div class="quiz" data-type="single" data-lo="LO2" data-id="check-letter-q1">
+    <p class="lead">أي جملة تصلح في خطاب تحقق إلى مزارع صغير نبّهت الصور إلى قطعته؟</p>
+    <div class="opts">
+      <div class="opt" data-ok data-k="أ">«نرجو تحديد موعد لزيارة الحقل، والزيارة للتحقق ولا تعني مخالفة.»</div>
+      <div class="opt" data-why="تفترض المخالفة قبل الزيارة وتهدد بالجزاء، فتقلب طلب التحقق إلى اتهام" data-k="ب">«تبيّن لنا أن قطعتكم مخالفة، ويُرجى تصحيح الوضع خلال أسبوع وإلا طُبّقت الغرامة.»</div>
+      <div class="opt" data-why="تقول للمزارع إن نظامًا قرر عنه، وتخفي أن الصورة تحتاج تحققًا من إنسان" data-k="ج">«أظهر نظام الذكاء الاصطناعي في الهيئة أن تصريحكم غير صحيح بدرجة عالية من الثقة.»</div>
+      <div class="opt" data-why="تطلب من المزارع إثبات براءته وحده، ولا تعرض زيارة ولا حقًّا في الرد" data-k="د">«عليكم إثبات صحة تصريحكم بالمستندات قبل نهاية الموسم.»</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> الجملة الأولى تطلب موعدًا وتقول صراحة إن الزيارة ليست مخالفة. البقية تحكم أو تهدد أو تنقل العبء.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: أ. اسأل من اختار «ج»: ما المشكلة في ذكر النظام؟ الجواب: لا مشكلة في الشفافية، المشكلة في «غير صحيح» قبل الزيارة.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-5" data-auto="lab" data-lab="1.5" data-label="المختبر 1.5" data-n="49" data-session="5">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.5 · 20 دقيقة</div><h2>خطة الزيارات وخطاب المزارع</h2><p class="lead small">من قائمة التنبيهات الجاهزة تقارن نسبة التنبيه في القطع الصغيرة بالكبيرة، وترتب زيارات أسبوعين بطاقة الفريق، وتكتب خطاب التحقق إلى صاحب قطعة صغيرة.</p><a class="nb" href="../labs/D1_5_field_checks.html">D1_5_field_checks.html</a></div><ul class="checklist"><li>احسب نسبة التنبيه لكل حجم من القطع <span class="min">4 د</span></li><li>اقرأ طاقة الفريق ورتّب زيارات أسبوعين <span class="min">6 د</span></li><li>اكتب خطاب التحقق للمزارع <span class="min">7 د</span></li><li>راجع الخطاب: هل فيه اتهام أو جزاء؟ <span class="min">3 د</span></li><li class="stretch">✱ إضافي: اقترح تعديلًا على القاعدة للقطع الصغيرة، واكتب ما يكلفه</li></ul></div>
+  <aside class="notes"><p>من لم يكمل المختبر 1.4 يبدأ من <code>start/flags.csv</code>. وزّع القاعة: نصفها يبدأ بالخطاب، ونصفها بالترتيب، ثم يتبادلون. اقرأ خطابين بصوت عالٍ في آخر خمس دقائق.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-5" data-lo="LO2" data-n="50" data-session="5">
+  <div class="kicker">بعد المختبر 1.5: ما وجدته الزيارات</div>
+  <h2>نسبة التنبيه واحدة، لكن تنبيهات القطع الصغيرة كلها كانت كاذبة</h2>
+  <table class="t">
+    <tr><th></th><th>في القائمة</th><th>تأكد على الأرض</th><th>التصريح صحيح</th></tr>
+    <tr><td>القطع الكبيرة (53)</td><td>13 (25%)</td><td>7</td><td>6</td></tr>
+    <tr class="hl"><td>القطع الصغيرة (12)</td><td>3 (25%)</td><td>0</td><td>3</td></tr>
+  </table>
+  <div class="callout warn mt"><b>ما يعنيه.</b> لو أُرسلت الغرامة مع التنبيه، لدفعها تسعة مزارعين صادقين من ستة عشر، بينهم أصحاب الحيازات الصغيرة الثلاث كلهم.</div>
+  <aside class="notes"><p>نتائج الزيارات اصطناعية، والسلاسل حقيقية. التي تأكدت: برسيم مصرّح بأنه قمح (P05، P30، P44)، وبور مصرّح بأنه قمح (P08، P10)، وعلف صيفي مصرّح بأنه قمح (P25)، وقمح مصرّح بأنه بور (P45). قارن بالتخمين على السبورة. حليس الرشدان صاحب P51: تصريحه صحيح، وحقله خفيف وصغير.</p></aside>
+</section>
+
+<!-- الجلسة 6 -->
+
+<section class="slide section" id="s6" data-auto="section" data-session="6" data-n="51">
+  <div class="kicker">الجلسة 6</div>
+  <h1>خرائط الغطاء الأرضي من النماذج المفتوحة</h1>
+  <ul class="bullets outcomes"><li>تشرح ما تعطيه نماذج الأساس لرصد الأرض وما لا تعطيه</li><li>تميز دقة الخريطة المعلنة عالميًّا من دقتها في إقليمك</li><li>تبني مصفوفة الالتباس من نقاط مرجعية</li></ul>
+  <div class="sess-no">06</div>
+</section>
+
+<section class="slide" id="eo-foundation-models" data-lo="LO3" data-n="52" data-session="6">
+  <div class="kicker">نماذج الأساس لرصد الأرض</div>
+  <h2>نموذج أساس يتعلم من ملايين الصور، ثم يُضبط على مهمة واحدة</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>Prithvi-EO-2.0 (IBM وNASA)</h4><p class="small mb0">دُرّب مسبقًا على 4.2 مليون عينة من منتج HLS بدقة 30 مترًا وست نطاقات. يُضبط بعد ذلك على مهام مثل تقسيم المحاصيل أو الفيضانات.</p></div>
+    <div class="card c-purple"><h4>TerraMind (IBM ووكالة الفضاء الأوروبية)</h4><p class="small mb0">متعدد المصادر: يقبل Sentinel-2 وSentinel-1 وغيرهما، ويتعامل مع مصدر ناقص.</p></div>
+  </div>
+  <div class="callout note mt"><b>ما يصلك منه.</b> في عمل الهيئة لن تدرّبه: يصلك مخرجه، خريطة بفئة لكل بكسل، من مورّد أو من فريق داخلي.</div>
+  <aside class="notes"><p>المصادر: بطاقتا النموذجين على Hugging Face. النموذج المفتوح لا يعني مخرجًا دقيقًا في إقليمك: الضبط والبيانات المحلية يقرران. في هذه الورشة لا نشغّل أيًّا منهما: الخانة في المقرر «مخرجات تُقدَّم»، ومخرجنا في المختبر منتج مفتوح آخر بنموذج تعلم آلي، ESA WorldCover.</p></aside>
+</section>
+
+<section class="slide" id="products-vs-models" data-lo="LO3" data-n="53" data-session="6">
+  <div class="kicker">المنتج والنموذج</div>
+  <h2>خريطة جاهزة من نموذج مفتوح: مجانية، ودقتها المعلنة عالمية</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>ESA WorldCover 2021:</b> خريطة غطاء أرضي للعالم بدقة 10 أمتار، من Sentinel-1 وSentinel-2</li>
+      <li>رخصة CC BY 4.0: مجانية، بلا قيد على الاستعمال، مع ذكر المصدر</li>
+      <li>دقتها الكلية المعلنة على مستوى العالم 76.7%</li>
+    </ul>
+    <div class="card c-amber"><h4>السؤال الذي يبقى</h4><p class="small mb0">76.7% على مستوى العالم. كم في إقليمنا؟ وكم لكل فئة؟</p></div>
+  </div>
+  <aside class="notes"><p>المصدر: صفحة الوصول إلى بيانات ESA WorldCover (الرخصة والدقة). لا تقل الدقة في الإقليم: يقيسونها بأنفسهم. اسأل: لو كانت دقة منتج 95% عالميًّا، ماذا تعرف عن فئة المحاصيل في الصحراء؟ الجواب: لا شيء بعد.</p></aside>
+</section>
+
+<section class="slide" id="reference-points" data-lo="LO3" data-n="54" data-session="6">
+  <div class="kicker">النقاط المرجعية</div>
+  <h2>الدقة تُقاس بنقاط نعرف فئتها من مصدر مستقل عن الخريطة</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>اسحب</b>نقاطًا عشوائية من كل فئة في الخريطة</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>سجّل</b>فئة كل نقطة من مصدر آخر: زيارة أو صور أدق</div>
+    <div class="arrow">←</div>
+    <div class="step c-amber"><b>قارن</b>فئة الخريطة بفئة المرجع</div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> نقاط من «حيث يسهل الوصول»، أو مرجع يراه المسجّل بعد أن يعرف ما تقوله الخريطة.</div>
+  <aside class="notes"><p>السحب من كل فئة بعدد ثابت يسمى عينة طبقية بحسب فئة الخريطة، ويضمن أن الفئات الصغيرة لها نقاط كافية. نعود إلى حدود المرجع في الجلسة 8. اسأل: أي مرجع في جهتك يُجمع بعد أن يُعرف الجواب؟</p></aside>
+</section>
+
+<section class="slide" id="read-a-matrix" data-lo="LO3" data-n="55" data-session="6">
+  <div class="kicker">مصفوفة الالتباس</div>
+  <h2>الصفوف ما تقوله الخريطة، والأعمدة ما على الأرض</h2>
+  <table class="t">
+    <tr><th>الخريطة \ المرجع</th><th class="num">ماء</th><th class="num">سبخة</th><th class="num">جرداء</th></tr>
+    <tr><td><b>ماء</b></td><td class="num">18</td><td class="num">2</td><td class="num">0</td></tr>
+    <tr class="hl"><td><b>سبخة</b></td><td class="num">6</td><td class="num">9</td><td class="num">15</td></tr>
+    <tr><td><b>جرداء</b></td><td class="num">0</td><td class="num">4</td><td class="num">26</td></tr>
+  </table>
+  <p class="small mt">مثال مخترع لساحل جهة بيئية: 80 نقطة. القطر حيث يتفقان: 53.</p>
+  <aside class="notes"><p>المثال مخترع ومن خارج الإقليم. اقرأ الصف المظلل بصوت عالٍ: من 30 نقطة تقول الخريطة إنها سبخة، 9 فقط سبخة، و15 أرض جرداء. اسأل: لو استُعملت هذه الخريطة لحماية السبخات، ماذا يحدث؟</p></aside>
+</section>
+
+<section class="slide" id="global-vs-local" data-lo="LO3" data-n="56" data-session="6">
+  <div class="kicker">العالمي والمحلي</div>
+  <h2>المحاور الدائرية والبساتين والقرى الصحراوية ليست «العالم المتوسط»</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>المحاصيل المروية</h4><p class="small mb0">خضراء طوال السنة في صحراء: قد تشبه المرعى أو البستان.</p></div>
+    <div class="card c-cyan"><h4>البساتين المتباعدة</h4><p class="small mb0">أشجار وتربة في البكسل نفسه.</p></div>
+    <div class="card c-coral"><h4>العمران المتناثر</h4><p class="small mb0">منشآت وطرق في أرض جرداء، بلون التربة نفسه.</p></div>
+  </div>
+  <aside class="notes"><p>هذه أسباب محتملة للخطأ لا نتائج. لا تقل أي فئة ستخطئ في المختبر. اسأل: أي من الثلاثة تتوقع أن يكون الأصعب في إقليمنا، ولماذا؟ اكتب التوقعات على السبورة وارجع إليها بعد المختبر.</p></aside>
+</section>
+
+<section class="slide" id="check-matrix" data-lo="LO3" data-n="57" data-session="6">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>اقرأ الصف</h2>
+  <div class="quiz" data-type="single" data-lo="LO3" data-id="check-matrix-q1">
+    <p class="lead">في مصفوفة الساحل على الشريحة السابقة، الخريطة تقول «سبخة» في 30 نقطة. ماذا تقول هذه الأرقام؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يقسم على مجموع العمود (15) بدل مجموع الصف (30): هذه نسبة ما رأته الخريطة من سبخات الأرض، لا نسبة الصحيح من سبخات الخريطة" data-k="أ">60% من سبخات الخريطة سبخة فعلًا، أي 9 من 15</div>
+      <div class="opt" data-ok data-k="ب">30% من سبخات الخريطة سبخة فعلًا، والباقي غيرها</div>
+      <div class="opt" data-why="الدقة الكلية تجمع القطر كله، والسؤال عن صف فئة واحدة" data-k="ج">دقة الخريطة 66% لأن القطر 53 من 80 نقطة</div>
+      <div class="opt" data-why="الخطأ الأكبر في الصف أرض جرداء (15) لا ماء (6)، فالقراءة معكوسة" data-k="د">أكثر ما تخلط به الخريطة السبخة هو الماء المكشوف</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> الصف ما تقوله الخريطة: 9 من 30 على القطر، أي 30%، والباقي جرداء في الغالب.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ب. هذه دقة المستخدم لفئة السبخة، وتأتي في الجلسة التالية. من اختار «أ» قلب الصفوف والأعمدة، وهو الخطأ الأشيع في المختبر.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-6" data-auto="lab" data-lab="1.6" data-label="المختبر 1.6" data-n="58" data-session="6">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.6 · 25 دقيقة</div><h2>مصفوفة الالتباس من 200 نقطة</h2><p class="lead small">دون مساعد ذكي: تعد 200 نقطة مرجعية في نافذة الإقليم بحسب فئة الخريطة المفتوحة وفئة المرجع، فتبني مصفوفة الالتباس وتقرأ أين تخطئ الخريطة.</p><a class="nb" href="../labs/D1_6_confusion_matrix.html">D1_6_confusion_matrix.html</a></div><ul class="checklist"><li>اقرأ دليل الفئات وكيف وُضع المرجع <span class="min">4 د</span></li><li>ابنِ المصفوفة بصيغة العد الشرطي <span class="min">10 د</span></li><li>تحقق أن مجموعها 200 <span class="min">3 د</span></li><li>اكتب أكثر خطأين تكرارًا <span class="min">8 د</span></li><li class="stretch">✱ إضافي: احسب نسبة النقاط المرجعية المزروعة التي رأتها الخريطة عشبية أو جرداء</li></ul></div>
+  <aside class="notes"><p>دون مساعد ذكي. ذكّر بالترتيب: الصفوف الخريطة، والأعمدة المرجع. الصيغة واحدة تُنسخ إلى خمس وعشرين خلية؛ من يكتبها خلية خلية سيتأخر. اطلب من كل طاولة أن تقول ماذا يعني أكبر رقم خارج القطر قبل أن تكتبه.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-6" data-lo="LO3" data-n="59" data-session="6">
+  <div class="kicker">بعد المختبر 1.6</div>
+  <h2>122 من 200 على القطر، وخطآن كبيران يحكيان الإقليم</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>27 نقطة: «عشبية» في الخريطة، مزروعة على الأرض</h4><p class="small mb0">محاور برسيم خضراء طوال السنة رأتها الخريطة مرعى.</p></div>
+    <div class="card c-amber"><h4>19 نقطة: «مبنية» في الخريطة، جرداء في المرجع</h4><p class="small mb0">طرق ومنشآت مزارع متفرقة خارج حدود القرى التي رسمها المؤلف: الخطأ هنا في المرجع بقدر ما هو في الخريطة.</p></div>
+  </div>
+  <div class="caption">© ESA WorldCover project 2021، برخصة CC BY 4.0؛ المرجع من بيانات Copernicus Sentinel معدّلة (2021).</div>
+  <div class="callout note mt"><b>والسؤال للجلسة التالية.</b> ماذا يعني هذا لمن يحسب مساحة الأرض المزروعة من الخريطة؟</div>
+  <aside class="notes"><p>من تشغيل المختبر. المرجع المزروع 70 نقطة، رأت الخريطة 27 منها عشبية. قارن بتوقعات القاعة على السبورة. الخطأ الثاني فرصة للصدق: المرجع من صور ومن حدود رسمها إنسان، وله أخطاؤه. نعود إليه في الجلسة 8.</p></aside>
+</section>
+
+<!-- الجلسة 7 -->
+
+<section class="slide section" id="s7" data-auto="section" data-session="7" data-n="60">
+  <div class="kicker">الجلسة 7</div>
+  <h1>الدقة لكل فئة والاستخدامات المسموح بها</h1>
+  <ul class="bullets outcomes"><li>تحسب الدقة الكلية ودقة المستخدم ودقة المنتج</li><li>تفسر الفرق بين دقة المستخدم ودقة المنتج في قرار</li><li>تقرر الاستخدامات المسموح بها من دقة كل فئة</li></ul>
+  <div class="sess-no">07</div>
+</section>
+
+<section class="slide" id="overall-hides" data-lo="LO3" data-n="61" data-session="7">
+  <div class="kicker">الدقة الكلية</div>
+  <h2>الرقم الكلي يخفي الفئة الضعيفة حين تكون الفئات غير متساوية</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">66%</div><div class="lbl">الدقة الكلية في مثال الساحل (53 من 80)</div></div>
+    <div class="stat center"><div class="big">30%</div><div class="lbl">دقة فئة السبخة وحدها في المثال نفسه</div></div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> «الخريطة دقيقة بنسبة 66%، فلنحمِ بها السبخات.» القرار يعتمد على فئة واحدة، فدقتها هي المهمة.</div>
+  <aside class="notes"><p>المثال نفسه من الجلسة السابقة، مخترع. اسأل: لو كانت الخريطة أرضًا جرداء في 90% من الإقليم، ما الدقة الكلية لخريطة تقول «جرداء» في كل مكان؟ الجواب: 90%، وهي بلا فائدة لأي قرار.</p></aside>
+</section>
+
+<section class="slide" id="users-vs-producers" data-lo="LO3" data-n="62" data-session="7">
+  <div class="kicker">دقتان لكل فئة</div>
+  <h2>دقة المستخدم لمن يقرأ الخريطة، ودقة المنتج لما تفوّته</h2>
+  <table class="t">
+    <tr><th></th><th>دقة المستخدم</th><th>دقة المنتج</th></tr>
+    <tr><td><b>السؤال</b></td><td>من النقاط التي تقول الخريطة إنها من الفئة، كم هي منها؟</td><td>من النقاط التي هي من الفئة، كم رأتها الخريطة؟</td></tr>
+    <tr><td><b>الحساب</b></td><td>القطر على مجموع الصف</td><td>القطر على مجموع العمود</td></tr>
+    <tr class="hl"><td><b>سبخة الساحل</b></td><td>9 من 30 = 30%</td><td>9 من 15 = 60%</td></tr>
+  </table>
+  <aside class="notes"><p>مجموع عمود السبخة في المثال: 2 زائد 9 زائد 4 = 15. اسأل: أي الرقمين يهم من يرسل فريقًا إلى كل سبخة في الخريطة؟ (المستخدم: كم زيارة تضيع.) وأيهما يهم من يريد حماية كل السبخات؟ (المنتج: كم سبخة لا تُحمى.)</p></aside>
+</section>
+
+<section class="slide" id="accuracy-for-decision" data-lo="LO3" data-n="63" data-session="7">
+  <div class="kicker">من الدقة إلى القرار</div>
+  <h2>كل استخدام يحتاج دقة بعينها، لا «دقة عالية»</h2>
+  <table class="t">
+    <tr><th>الاستخدام</th><th>الدقة التي تهم</th><th>لماذا</th></tr>
+    <tr><td>إحصاء مساحة فئة</td><td>المستخدم والمنتج معًا</td><td>الزائد والناقص يغيران المجموع</td></tr>
+    <tr><td>توجيه فريق إلى مواقع</td><td>المستخدم</td><td>كل خطأ زيارة ضائعة</td></tr>
+    <tr><td>خدمة تصل إلى كل من في الفئة</td><td>المنتج</td><td>كل فائت شخص لا تصله الخدمة</td></tr>
+  </table>
+  <aside class="notes"><p>الأمثلة عامة. في المختبر ستة استخدامات مقترحة، لكل منها الدقة التي يحتاجها مكتوبة. اسأل: تنبيه بالجفاف يُرسل إلى المزارع المزروعة في الخريطة: أي الدقتين أهم؟ (المنتج: من لا تراه الخريطة لا يصله التنبيه.)</p></aside>
+</section>
+
+<section class="slide" id="no-individual-decisions" data-lo="LO3" data-n="64" data-session="7">
+  <div class="kicker">الحد الذي لا يتغير</div>
+  <h2>لا قرار على مزارع واحد من خريطة وحدها، مهما بلغت دقتها</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>دقة 95% تعني خطأً في نقطة من كل عشرين</li>
+      <li>في إقليم فيه آلاف القطع، هذه مئات القرارات الخاطئة</li>
+      <li>والخطأ لا يتوزع بالتساوي: يزيد في الصغير والنادر</li>
+    </ul>
+    <div class="card c-teal"><h4>ما يجوز</h4><p class="small mb0">إحصاء، وتوجيه عمل ميداني، وخدمة لا تضر من تفوّته. وما يمس شخصًا واحدًا يمر بزيارة.</p></div>
+  </div>
+  <aside class="notes"><p>هذه قاعدة الهيئة في دراسة الحالة، ومنسجمة مع مبدأي الإنسانية والمساءلة في مبادئ سدايا. في المختبر استخدام مقترح من هذا النوع: يُرفض مهما كانت الأرقام. اسأل: هل رأيت قرارًا فرديًّا في جهتك بُني على خريطة؟</p></aside>
+</section>
+
+<section class="slide" id="check-accuracy" data-lo="LO3" data-n="65" data-session="7">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>احسب دقة المنتج</h2>
+  <div class="quiz" data-type="numeric" data-answer="0.63" data-tolerance="0.01" data-lo="LO3" data-id="check-accuracy-q1">
+    <p class="lead">في مصفوفة الساحل، عمود «جرداء» على الأرض فيه: 0 في صف الماء، و15 في صف السبخة، و26 في صف جرداء. كم دقة المنتج لفئة جرداء؟ (رقمان بعد الفاصلة)</p>
+    <div class="callout tip why"><b>لماذا.</b> القطر 26 على مجموع العمود 41 (0 زائد 15 زائد 26) = 0.63. دقة المستخدم هي التي تساوي 26 على 30 = 0.87.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: 0.63. من كتب 0.87 قسم على مجموع الصف، فحسب دقة المستخدم. اسأل: 15 نقطة جرداء على الأرض قالت عنها الخريطة سبخة؛ لمن يهم هذا الرقم؟</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-7" data-auto="lab" data-lab="1.7" data-label="المختبر 1.7" data-n="66" data-session="7">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.7 · 25 دقيقة</div><h2>جدول الدقة والاستخدامات المسموح بها</h2><p class="lead small">دون مساعد ذكي: من مصفوفة جاهزة تحسب الدقة الكلية ودقة المستخدم ودقة المنتج لكل فئة، ثم تقرر لكل استخدام مقترح للخريطة هل يُسمح به.</p><a class="nb" href="../labs/D1_7_accuracy_uses.html">D1_7_accuracy_uses.html</a></div><ul class="checklist"><li>احسب الدقة الكلية <span class="min">3 د</span></li><li>احسب دقة المستخدم لكل فئة <span class="min">6 د</span></li><li>احسب دقة المنتج لكل فئة <span class="min">6 د</span></li><li>قرر لكل استخدام مقترح: مسموح أم لا <span class="min">7 د</span></li><li>اكتب الاستخدامات المسموح بها في سطرين <span class="min">3 د</span></li><li class="stretch">✱ إضافي: اكتب لاستخدام غير مسموح ما الذي يجعله مسموحًا</li></ul></div>
+  <aside class="notes"><p>دون مساعد ذكي. من لم يكمل المختبر 1.6 يبدأ من <code>start/confusion_matrix.csv</code>. الفخ: قسمة القطر على العمود لدقة المستخدم. اسأل كل طاولة: من يقرأ الخريطة، ومن يملك الأرض؟ والفخ الثاني: صفر لدقة منتج فئة لا نقطة مرجعية فيها.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-7" data-lo="LO3" data-n="67" data-session="7">
+  <div class="kicker">بعد المختبر 1.7</div>
+  <h2>61% في الإقليم أمام 76.7% في العالم، واستخدام واحد من ستة مسموح</h2>
+  <table class="t small">
+    <tr><th>الفئة</th><th class="num">دقة المستخدم</th><th class="num">دقة المنتج</th></tr>
+    <tr><td>مزروعة</td><td class="num">0.717</td><td class="num">0.614</td></tr>
+    <tr><td>جرداء</td><td class="num">0.883</td><td class="num">0.576</td></tr>
+    <tr><td>مبنية</td><td class="num">0.367</td><td class="num">0.579</td></tr>
+    <tr><td>عشبية</td><td class="num">0</td><td class="num">لا نقاط مرجعية</td></tr>
+    <tr><td>شجرية</td><td class="num">0.75</td><td class="num">0.789</td></tr>
+  </table>
+  <div class="callout warn mt"><b>المسموح: توجيه حملة رصد ميداني للمزارع الجديدة (C).</b> تنبيهات الري (F) غير مسموحة: الخريطة تفوّت نحو 39% من المزروع.</div>
+  <div class="caption">© ESA WorldCover project 2021، برخصة CC BY 4.0؛ المرجع من بيانات Copernicus Sentinel معدّلة (2021).</div>
+  <aside class="notes"><p>من تشغيل المختبر. A غير مسموح (يحتاج 0.85 في الاثنتين)، B مرفوض مهما كانت الدقة (قرار فردي)، D غير مسموح، E قريب جدًّا (0.789 أمام 0.80). اسأل عن F: من هم المزارعون الذين لن تصلهم التنبيهات؟ أصحاب البرسيم الذي رأته الخريطة مرعى.</p></aside>
+</section>
+
+<!-- الجلسة 8 -->
+
+<section class="slide section" id="s8" data-auto="section" data-session="8" data-n="68">
+  <div class="kicker">الجلسة 8</div>
+  <h1>الحقيقة الميدانية وحملات القياس</h1>
+  <ul class="bullets outcomes"><li>تقيّم مرجعًا من حيث الاستقلال والتوقيت والتمثيل</li><li>تحسب نصف عرض فترة الثقة لدقة فئة</li><li>توزع ميزانية حملة ميدانية على الفئات</li></ul>
+  <div class="sess-no">08</div>
+</section>
+
+<section class="slide" id="reference-is-data" data-lo="LO3" data-n="69" data-session="8">
+  <div class="kicker">المرجع بيانات أيضًا</div>
+  <h2>المرجع الذي قسنا عليه له أخطاؤه، فاسأل عنه ما تسأله عن الخريطة</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>الاستقلال</h4><p class="small mb0">هل رأى المسجّل الخريطة قبل أن يسجل؟ هل بُني المرجع من الصور نفسها؟</p></div>
+    <div class="card c-cyan"><h4>التوقيت</h4><p class="small mb0">هل يصف المرجع السنة نفسها؟ محور يُزرع عامًا ويُترك عامًا.</p></div>
+    <div class="card c-amber"><h4>التمثيل</h4><p class="small mb0">هل النقاط عشوائية في كل فئة، أم حيث يسهل الوصول؟</p></div>
+  </div>
+  <aside class="notes"><p>اعترف بحدود مرجعنا: وضعه مؤلف المقرر من سلسلة صور Sentinel-2 لعام 2021، وحدود القرى رسمها بيده. مستقل عن الخريطة في الطريقة، لكنه ليس زيارة. ولهذا جاء الخطأ الثاني في المختبر 1.6 من المرجع جزئيًّا. اسأل: أي الثلاثة أضعف في مرجعنا؟</p></aside>
+</section>
+
+<section class="slide" id="interval" data-lo="LO3" data-n="70" data-session="8">
+  <div class="kicker">كم نثق بالرقم</div>
+  <h2>دقة من ثلاثين نقطة تتأرجح كثيرًا؛ فترة الثقة تقول بكم</h2>
+  <pre class="code" data-file="interval"><code>half width = 1.96 x sqrt( p x (1 - p) / n )
+
+p = 0.80, n = 30    half width = 0.14    0.66 to 0.94
+p = 0.80, n = 120   half width = 0.07    0.73 to 0.87</code></pre>
+  <div class="callout tip mt"><b>قاعدة عملية.</b> أربعة أضعاف النقاط تقسم نصف العرض على اثنين.</div>
+  <aside class="notes"><p>الصيغة تقريب طبيعي لفترة ثقة 95% لنسبة، وتنهار عند دقة صفر أو واحد. الأرقام مثال، لا من الإقليم. اسأل: دقة فئة 0.80 من 30 نقطة، هل تكفي لاستخدام يحتاج 0.75؟ الجواب: الفترة تبدأ من 0.66، فلا نعرف بعد.</p></aside>
+</section>
+
+<section class="slide" id="points-needed" data-lo="LO3" data-n="71" data-session="8">
+  <div class="kicker">كم نقطة نحتاج</div>
+  <h2>اعكس الصيغة لتعرف عدد النقاط لنصف عرض تختاره</h2>
+  <pre class="code" data-file="sample size"><code>n = 1.96^2 x p x (1 - p) / h^2
+
+p = 0.80, h = 0.10    n = 62
+p = 0.50, h = 0.10    n = 97     the worst case</code></pre>
+  <aside class="notes"><p>عند p = 0.5 يبلغ p(1 − p) أقصاه، فهو أسوأ حالة. اطلب من القاعة أن تحسب n لـ p = 0.9 و h = 0.10: الجواب 35. الأرقام مثال.</p></aside>
+</section>
+
+<section class="slide" id="budget-by-decision" data-lo="LO3" data-n="72" data-session="8">
+  <div class="kicker">الميزانية</div>
+  <h2>وزّع زيارات الحملة على الفئات التي تقوم عليها قرارات</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · القرارات</b>أي استخدام ينتظر أي فئة؟</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>2 · الفجوة</b>كم نقطة تنقص كل فئة؟</div>
+    <div class="arrow">←</div>
+    <div class="step c-amber"><b>3 · التكلفة</b>هل بعض النقاط أغلى؟</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>4 · الترتيب</b>الأقرب إلى قرار أولًا</div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> وضع الزيارات كلها في الفئة الأسوأ دقة. الأسوأ ليس دائمًا الأهم، والسؤال عن كل فئة: أي قرار ينتظر قياسها؟</div>
+  <aside class="notes"><p>اسأل: فئة في الخريطة لم تصب أي نقطة، وكل نقاطها من فئة أخرى: نقيسها أكثر أم ندمجها في تلك الفئة؟ لا تذكر أي فئة في إقليمنا: يقررون في المختبر.</p></aside>
+</section>
+
+<section class="slide" id="check-interval" data-lo="LO3" data-n="73" data-session="8">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>هل نعرف بعد؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO3" data-id="check-interval-q1">
+    <p class="lead">جهة بيئية قاست دقة المستخدم لفئة «مانجروف» في خريطة: 0.85 من 20 نقطة. الاستخدام المقترح يحتاج 0.80 على الأقل. ما الحكم؟</p>
+    <div class="opts">
+      <div class="opt" data-why="الرقم المقيس فوق الحد، لكن نصف عرض فترته نحو 0.16، فقد تكون الدقة الحقيقية أقل من الحد بكثير" data-k="أ">مسموح، لأن 0.85 أكبر من 0.80</div>
+      <div class="opt" data-why="الرقم لا يقول إن الدقة أقل من الحد، بل إن العينة لا تكفي للحكم في أي اتجاه" data-k="ب">غير مسموح، لأن الدقة الحقيقية أقل من 0.80</div>
+      <div class="opt" data-ok data-k="ج">لا نعرف بعد: نجمع نقاطًا أكثر</div>
+      <div class="opt" data-why="الدقة الكلية لا تغني عن دقة الفئة التي يقوم عليها القرار" data-k="د">نستعمل الدقة الكلية للخريطة بدلًا منها</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> 1.96 × الجذر التربيعي لـ (0.85 × 0.15 ÷ 20) ≈ 0.16، فالفترة من 0.69 إلى 1. الحد داخلها.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ج. احسبها على السبورة. من اختار «أ» قرأ الرقم دون فترته. هذا السؤال من نوع فحص المواقف.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-8" data-auto="lab" data-lab="1.8" data-label="المختبر 1.8" data-n="74" data-session="8">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.8 · 20 دقيقة</div><h2>خطة حملة ميدانية</h2><p class="lead small">من جدول الدقة الجاهز تحسب فترة الثقة لدقة المستخدم في كل فئة، والنقاط اللازمة لتضييقها، وتوزع ميزانية 120 زيارة على الفئات.</p><a class="nb" href="../labs/D1_8_field_campaign.html">D1_8_field_campaign.html</a></div><ul class="checklist"><li>احسب نصف عرض الفترة لكل فئة <span class="min">5 د</span></li><li>احسب النقاط اللازمة لنصف عرض 0.10 <span class="min">5 د</span></li><li>وزع 120 زيارة مع تكلفة الأرض الجرداء <span class="min">6 د</span></li><li>اكتب قواعد الحملة: التوقيت والاستقلال <span class="min">4 د</span></li><li class="stretch">✱ إضافي: اكتب كيف تضمن ألا يرى فريق الحملة ما تقوله الخريطة قبل التسجيل</li></ul></div>
+  <aside class="notes"><p>من لم يكمل المختبر 1.7 يبدأ من <code>start/accuracy_table.csv</code>. أكثر نقاش مفيد: ماذا نفعل بفئة دقتها صفر؟ اترك الطاولات تختلف، ثم اطلب سببًا من الاستخدامات لكل توزيع.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-8" data-lo="LO3" data-n="75" data-session="8">
+  <div class="kicker">بعد المختبر 1.8</div>
+  <h2>131 نقطة لازمة و120 في الميزانية: الترتيب قرار</h2>
+  <table class="t small">
+    <tr><th>الفئة</th><th class="num">نصف العرض اليوم</th><th class="num">نقاط إضافية لازمة</th><th>توزيع مرجعي</th></tr>
+    <tr><td>مزروعة</td><td class="num">0.114</td><td class="num">18</td><td>18</td></tr>
+    <tr><td>جرداء</td><td class="num">0.081</td><td class="num">0</td><td>0</td></tr>
+    <tr><td>مبنية</td><td class="num">0.172</td><td class="num">60</td><td>49</td></tr>
+    <tr><td>شجرية</td><td class="num">0.19</td><td class="num">53</td><td>53</td></tr>
+  </table>
+  <div class="callout note mt"><b>العشبية.</b> كل نقاطها مزروعة على الأرض: تُدمج في المزروعة لهذا الإقليم، ولا تُقاس.</div>
+  <aside class="notes"><p>من تشغيل المختبر. التوزيع المرجعي: المزروعة أولًا لأن الاستخدامين C وF عليها، ثم الشجرية لأن E على بعد جزء من مئة من الحد، والباقي للمبنية. أي توزيع آخر مقبول بسبب مكتوب. والقواعد: نفس الموسم، والمسجّل لا يرى الخريطة، والنقاط عشوائية.</p></aside>
+</section>
+
+<section class="slide" id="wrap-up" data-lo="LO1 LO2 LO3" data-n="76" data-session="8">
+  <div class="kicker">خلاصة اليوم</div>
+  <h2>ثلاثة أشياء تبقى</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>المصدر بحدّه</h4><p class="small mb0">لكل مصدر ما يعميه: الغيم، أو الحافة، أو الخلية الكبيرة. اكتبه بجانب كل اختيار.</p></div>
+    <div class="card c-coral"><h4>التنبيه سؤال</h4><p class="small mb0">نمط لا يتسق مع التصريح يقود إلى زيارة وخطاب يطلب. تسعة من ستة عشر كانوا صادقين.</p></div>
+    <div class="card c-purple"><h4>الدقة لكل فئة</h4><p class="small mb0">الرقم العالمي لا يصف إقليمك، والرقم الكلي يخفي الفئة الضعيفة.</p></div>
+  </div>
+  <aside class="notes"><p>اطلب من كل مشارك أن يكتب جملة واحدة: ما الذي سيسأله غدًا عن أول خريطة أو تنبيه يصله في عمله؟ اجمع ثلاث جمل وارجع إليها في الخريطة الختامية.</p></aside>
+</section>
+
+<section class="slide dark" id="next" data-n="77" data-session="8">
+  <div class="kicker">غدًا</div>
+  <h2>الماء: التنبؤ والري والتسرب، ثم الخريطة</h2>
+  <ul class="bullets">
+    <li>أحضر جدول البيانات نفسه، وملفات المختبرات</li>
+    <li>فكّر في قرار ري أو قرار شبكة مياه تعرفه: متى يُتخذ، وعلى أي رقم</li>
+    <li>راجع ورقة العمل التحضيري: ستصير صفًّا في الخريطة</li>
+  </ul>
+  <aside class="notes"><p>ذكّر بأن الفحص دون ذكاء اصطناعي في بداية المناقشة الختامية، بعد اليوم الثاني. وذكّر بالمتابعة المتعقبة بعد الورشة: تقييم حالتين من عملهم بالدليل نفسه.</p></aside>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:17:50Z","version":"2027.1.0","commit":"9c39248"},"course":{"id":"use-sec-211","code":"USE-SEC-211","title":"الذكاء الاصطناعي في الزراعة والمياه والبيئة","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-211/","repo":"SDAIAAcademy/use-sec-211","home":"../index.html"},"deck":{"id":"day1","kind":"day","day":1,"label":"اليوم 1","title":"من الصورة إلى الحقل","prev":null,"next":"day2.html","md":"day1.md","alt":{}},"sessions":[{"n":1,"label":"الجلسة 1","title":"ما يقيسه كل مصدر","slide":"s1","outcomes":["تفرق بين ما تقيسه الصور البصرية والرادارية والحرارية","تختار للسؤال مصدره الأول وتذكر ما لا يستطيعه","تميز إعادة التحليل من التنبؤ ومن المجس الميداني"],"minutes":37,"lab":{"id":"1.1","title":"ثمانية أسئلة ومصادرها","minutes":20,"href":"../labs/D1_1_monitoring_sources.html"}},{"n":2,"label":"الجلسة 2","title":"الدقة المكانية والزيارة والغيوم","slide":"s2","outcomes":["تحسب عدد البكسلات النقية في قطعة بحسب دقة المصدر","تعد الصور الصافية في الشهر من قائمة المشاهد","تقرر هل يكفي مصدر لسؤال بعينه من دقته وزيارته"],"minutes":38,"lab":{"id":"1.2","title":"كم صورة صافية تصلنا؟","minutes":20,"href":"../labs/D1_2_clear_scenes.html"}},{"n":3,"label":"الجلسة 3","title":"مؤشر الغطاء النباتي وسلسلته الزمنية","slide":"s3","outcomes":["تحسب مؤشر الغطاء النباتي من نطاقين","تسقط القيم الغائمة قبل أي قراءة","تقرأ من السلسلة موعد الزراعة والذروة والحصاد"],"minutes":45,"lab":{"id":"1.3","title":"من الانعكاس إلى المؤشر","minutes":25,"href":"../labs/D1_3_ndvi_series.html"}},{"n":4,"label":"الجلسة 4","title":"القطع التي يخالف نمطها التصريح","slide":"s4","outcomes":["تلخص سلسلة كل قطعة في أربعة أرقام: قمة الشتاء ومتوسط الصيف وقمة الصيف وقمة الموسم","تطبق قاعدة الاتساق على التصريح","تكتب طلب تحقق ميداني لكل قطعة مختلفة"],"minutes":45,"lab":{"id":"1.4","title":"قطع لا يتسق نمطها مع التصريح","minutes":25,"href":"../labs/D1_4_plot_flags.html"}},{"n":5,"label":"الجلسة 5","title":"الفحص الميداني قبل أي جزاء","slide":"s5","outcomes":["تقارن نسبة التنبيه بين القطع الصغيرة والكبيرة","ترتب الزيارات بطاقة فريق التحقق","تكتب خطاب تحقق يطلب ولا يتهم"],"minutes":37,"lab":{"id":"1.5","title":"خطة الزيارات وخطاب المزارع","minutes":20,"href":"../labs/D1_5_field_checks.html"}},{"n":6,"label":"الجلسة 6","title":"خرائط الغطاء الأرضي من النماذج المفتوحة","slide":"s6","outcomes":["تشرح ما تعطيه نماذج الأساس لرصد الأرض وما لا تعطيه","تميز دقة الخريطة المعلنة عالميًّا من دقتها في إقليمك","تبني مصفوفة الالتباس من نقاط مرجعية"],"minutes":45,"lab":{"id":"1.6","title":"مصفوفة الالتباس من 200 نقطة","minutes":25,"href":"../labs/D1_6_confusion_matrix.html"}},{"n":7,"label":"الجلسة 7","title":"الدقة لكل فئة والاستخدامات المسموح بها","slide":"s7","outcomes":["تحسب الدقة الكلية ودقة المستخدم ودقة المنتج","تفسر الفرق بين دقة المستخدم ودقة المنتج في قرار","تقرر الاستخدامات المسموح بها من دقة كل فئة"],"minutes":45,"lab":{"id":"1.7","title":"جدول الدقة والاستخدامات المسموح بها","minutes":25,"href":"../labs/D1_7_accuracy_uses.html"}},{"n":8,"label":"الجلسة 8","title":"الحقيقة الميدانية وحملات القياس","slide":"s8","outcomes":["تقيّم مرجعًا من حيث الاستقلال والتوقيت والتمثيل","تحسب نصف عرض فترة الثقة لدقة فئة","توزع ميزانية حملة ميدانية على الفئات"],"minutes":38,"lab":{"id":"1.8","title":"خطة حملة ميدانية","minutes":20,"href":"../labs/D1_8_field_campaign.html"}}],"slides":[{"id":"title","n":1,"title":"من الصورة إلى الحقل","kind":"title","session":0,"hash":"7cf7dcb7","md":"#### [day1#title] من الصورة إلى الحقل\n\n*أكاديمية سدايا · الذكاء الاصطناعي في الزراعة والمياه والبيئة*\n\nاليوم 1: ما تقيسه الأقمار والمجسات، ومؤشر الغطاء النباتي أمام التصريحات، ودقة خريطة مفتوحة لكل فئة\n\nمسار الطلاقة في البيانات والذكاء الاصطناعي · يومان تدريبيان + يوم للمشروع الختامي · 8 جلسات · 8 مختبرات · USE-SEC-211","notes":"رحّب، وعرّف بنفسك في جملتين. ثم اسأل القاعة: من في عمله يتخذ قرارًا عن مزرعة أو بئر أو شبكة مياه بناء على شيء لم يره بعينه؟ اطلب ثلاثة أمثلة واكتبها على السبورة. اليوم كله سؤال واحد: كم نثق بما تقوله الصورة أو الخريطة عن الحقل، وكيف نقيس ذلك قبل أن نبني عليه قرارًا؟","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"من الصورة إلى الحقل","kind":"content","session":0,"hash":"47624221","md":"#### [day1#agenda] من الصورة إلى الحقل\n\n*اليوم*\n\n- **الجلسة 1 · ما يقيسه كل مصدر**: الصور والمجسّات والنماذج: ما يقيسه كل منها\n- **الجلسة 2 · الدقة المكانية والزيارة والغيوم**: البكسل أمام القطعة، والصور الصافية فعلًا\n- **الجلسة 3 · مؤشر الغطاء النباتي وسلسلته الزمنية**: من الانعكاس إلى المؤشر وسلسلته الزمنية\n- **الجلسة 4 · القطع التي يخالف نمطها التصريح**: النمط المتوقع والقاعدة التي تقارنه بالتصريح\n- **الجلسة 5 · الفحص الميداني قبل أي جزاء**: التنبيه سؤال: الزيارات وخطاب المزارع\n- **الجلسة 6 · خرائط الغطاء الأرضي من النماذج المفتوحة**: نماذج رصد الأرض والنقاط المرجعية والمصفوفة\n- **الجلسة 7 · الدقة لكل فئة والاستخدامات المسموح بها**: دقة المستخدم ودقة المنتج والاستخدامات\n- **الجلسة 8 · الحقيقة الميدانية وحملات القياس**: المرجع وفترة الثقة وحملة بميزانية","notes":"ثماني جلسات قصيرة، في كل منها مفاهيم موجزة ثم مختبر من 20 أو 25 دقيقة على جدول بيانات. الاستراحات بزر B. لا مختبر يحتاج نموذجًا لغويًّا. اليوم ينتقل من المصادر، إلى مؤشر الغطاء النباتي، إلى التصريحات والتحقق الميداني، إلى دقة خريطة مفتوحة.","minutes":null,"lo":[]},{"id":"suqya-case","n":3,"title":"هيئة السُّقيا للمياه والزراعة: هيئة افتراضية في إقليم توضيحي","kind":"content","session":0,"hash":"d75edb16","md":"#### [day1#suqya-case] هيئة السُّقيا للمياه والزراعة: هيئة افتراضية في إقليم توضيحي\n\n*دراسة الحالة*\n\n- **تصاريح المياه الزراعية** وتصريحات المزارعين السنوية بمحاصيلهم\n- **مياه الشرب** لعشر مناطق إمداد، لكل منها عداد عند مدخلها\n- **الإرشاد** في الري، وتنبيهات الطقس والغبار والحر\n\n- **ما يأتي من بيانات عامة.** قياسات Sentinel-2 وESA WorldCover وERA5 والتنبؤات السابقة. أما المكان والقطع وأرقامها وتصريحاتها ونتائج زياراتها فتوضيحية: لا تصف حقلًا حقيقيًّا ولا صاحبه.\n\nشكل: أعلى مؤشر للغطاء النباتي في الموسم، مقصوصة ومقلوبة. يحتوي على بيانات Copernicus Sentinel معدّلة (2023، 2024).","notes":"عرّف الأشخاص الذين سيتكرر ذكرهم: سهم العطوي وكيل الهيئة للزراعة وصاحب الخريطة الختامية، وندوى الشملان محللة الاستشعار عن بعد، وغالب الهتيلة مدير الشبكات والتسربات، وحوراء الشهيل مسؤولة حوكمة البيانات وحقوق المزارعين، وشجاع السرحاني مرشد الري، وحليس الرشدان مزارع صغير. الملف في `labs/files/authority_profile.txt`. أكّد أن القياسات من بيانات عامة، وأن المكان والقطع والتصريحات ونتائج الزيارات توضيحية: الصورة مقصوصة ومقلوبة، والمقرر لا يذكر موقع الإقليم، فلا يُنسب شيء منها إلى صاحب حقل حقيقي.","minutes":null,"lo":["LO1"]},{"id":"ai-policy","n":4,"title":"ثلاث درجات لاستعمال المساعد الذكي، تُعلن قبل كل مختبر","kind":"content","session":0,"hash":"86ac6eca","md":"#### [day1#ai-policy] ثلاث درجات لاستعمال المساعد الذكي، تُعلن قبل كل مختبر\n\n*قواعد الورشة*\n\n- **دون ذكاء اصطناعي.** فحص المواقف في المناقشة الختامية، والمختبران 1.6 و1.7 لدقة الخريطة. جدول بيانات وآلة حاسبة فقط.\n- **مساعد معلّم.** مختبرات الصور والري والتسرب: يشرح صيغة أو مصطلحًا، ولا يحسب عنك ولا يملأ الجدول.\n- **مساعد كامل.** الخريطة الختامية، على أن تدافع عنها مباشرة وتعيد تقييم حالة يختارها الميسّر.\n\n> **لا يُرفع إلى أي مساعد** ملف من جهتك، ولا اسم مزارع، ولا رقم قطعة حقيقي.","notes":"هذا من سياسة المقرر نفسها. السبب في الدرجة الأولى: الفحص يقيس حكمك أنت، والمساعد يخفي ما لا تعرفه. اسأل: من أكمل العمل التحضيري؟ من لم يكمله يأخذ القرار الجاهز في `prework_fallback.txt`. يعود العمل التحضيري في المختبر 1.1 وفي الخريطة.","minutes":null,"lo":["LO1","LO3"]},{"id":"setup-check","n":5,"title":"جدول بيانات مفتوح، وملفات المختبرات على جهازك","kind":"content","session":0,"hash":"92ba92a0","md":"#### [day1#setup-check] جدول بيانات مفتوح، وملفات المختبرات على جهازك\n\n*قبل أن نبدأ*\n\n1. افتح صفحة المقرر، ثم صفحة المختبر 1.1\n2. نزّل مجلد الملفات كله، أو افتح كل ملف من رابطه\n3. افتح `imagery/plots_reflectance.csv` في جدول البيانات\n4. تأكد أن الحروف العربية ظاهرة، لا رموزًا غريبة\n\n- **يكفي واحد من هذه.** LibreOffice Calc، أو Microsoft Excel، أو Google Sheets. أي جدول يقرأ ملف CSV بترميز UTF-8 ويرسم خطًّا بيانيًّا.","notes":"إن ظهرت العربية رموزًا في Excel: استيراد من نص، وترميز UTF-8. الملف الأكبر نحو 9,400 صف ويفتح في ثوانٍ. لا شيء يُنصّب، ولا حساب يُفتح، ولا مفتاح لأي خدمة. اعرض الأمر خطوة خطوة على شاشتك، وانتظر أن ترفع كل طاولة يدها.","minutes":null,"lo":[]},{"id":"s1","n":6,"title":"ما يقيسه كل مصدر","kind":"section","session":1,"hash":"5d193513","md":"#### [day1#s1] ما يقيسه كل مصدر\n\n*الجلسة 1*\n\n- تفرق بين ما تقيسه الصور البصرية والرادارية والحرارية\n- تختار للسؤال مصدره الأول وتذكر ما لا يستطيعه\n- تميز إعادة التحليل من التنبؤ ومن المجس الميداني","notes":"","minutes":null,"lo":["LO1"]},{"id":"three-ways-to-see","n":7,"title":"ثلاث طرق للرؤية من الأعلى، ولكل منها ما يعميها","kind":"content","session":1,"hash":"f7c6cdfb","md":"#### [day1#three-ways-to-see] ثلاث طرق للرؤية من الأعلى، ولكل منها ما يعميها\n\n*من الفضاء*\n\n- **بصرية متعددة الأطياف.** ضوء الشمس المنعكس في نطاقات مرئية وتحت حمراء: الخضرة وحالة النبات. **تعميها:** الغيوم والليل.\n- **رادارية.** ترسل موجتها وتقيس ارتدادها: الخشونة والرطوبة والماء المكشوف، ليلًا ونهارًا وعبر الغيم. **تعميها:** لون النبات، وقراءتها تحتاج خبرة.\n- **حرارية.** حرارة سطح الأرض: علامات الإجهاد والتبخر. **تعميها:** التفاصيل الصغيرة، فدقتها أخشن.","notes":"مثال Sentinel-2 للبصرية: 13 نطاقًا بدقة 10 و20 و60 مترًا، وقمران يعيدان الزيارة كل خمسة أيام عند خط الاستواء. ومثال Sentinel-1 للرادار: يعمل ليلًا ونهارًا وفي كل طقس. اسأل: أي الثلاثة كنت تحتاجه يوم السيل الأخير في منطقتك؟ المصادر: Copernicus SentiWiki، صفحتا مهمتي Sentinel-2 وSentinel-1.","minutes":null,"lo":["LO1"]},{"id":"on-the-ground","n":8,"title":"المجس والعداد يقيسان نقطة واحدة بدقة، والصورة تقيس المساحة بتقريب","kind":"content","session":1,"hash":"94dddbd5","md":"#### [day1#on-the-ground] المجس والعداد يقيسان نقطة واحدة بدقة، والصورة تقيس المساحة بتقريب\n\n*على الأرض*\n\n| المصدر | يقيس | قوته | حدّه |\n| --- | --- | --- | --- |\n| **مجس رطوبة التربة** | الماء في عمق الجذور | مباشر ومتكرر | نقطة واحدة، وينحرف دون معايرة |\n| **محطة طقس صغيرة** | الحرارة والريح والمطر في المزرعة | محلية | قليلة، وتحتاج صيانة |\n| **عداد التدفق** | الماء المار في الأنبوب كل ساعة | دقيق ومستمر | لا يقول أين ذهب الماء بعده |\n| **زيارة ميدانية** | ما هو مزروع فعلًا | الحقيقة الميدانية | مكلفة وقليلة |","notes":"الصف الأخير هو ما سنقيس عليه كل شيء اليوم: الحقيقة الميدانية. لاحظ أن المجس نفسه يحتاج «حقيقة» يُعاير عليها، وسنرى مجسًّا منحرفًا في اليوم الثاني. اسأل: كم مجسًّا في جهتك، ومتى عويرت آخر مرة؟","minutes":null,"lo":["LO1"]},{"id":"reanalysis-is-not-observation","n":9,"title":"إعادة التحليل تعيد بناء الطقس الماضي، والتنبؤ يقدّر القادم","kind":"content","session":1,"hash":"ff3e197e","md":"#### [day1#reanalysis-is-not-observation] إعادة التحليل تعيد بناء الطقس الماضي، والتنبؤ يقدّر القادم\n\n*من النماذج*\n\n- **إعادة التحليل (مثل ERA5).** نموذج طقس يُلزَم بكل الأرصاد المتاحة، فيعطي سلسلة متسقة ساعة بساعة من عام 1940 إلى اليوم، بدقة نحو 31 كم. ممتازة لسؤال «هل كان هذا الشتاء أجف من المعتاد؟».\n- **التنبؤ.** يقدّر الأيام أو المواسم القادمة. لا يُقبل قبل أن تُقاس مهارته أمام المناخ المعتاد في إقليمك: الجلسة الأولى من اليوم الثاني.\n\n> **أين يقع الخطأ.** معاملة خلية من 31 كم كأنها مزرعة. إعادة التحليل تصف الإقليم، لا الحقل.","notes":"المصدر: توثيق ERA5 من المركز الأوروبي للتنبؤات الجوية متوسطة المدى (ECMWF): من يناير 1940 إلى اليوم، ساعيًّا، 31 كم. مثال للقاعة: مزرعة في منخفض ووادٍ بجوارها يقعان في خلية واحدة. اسأل: ما الذي تراه إعادة التحليل في يوم عاصفة رعدية محلية؟","minutes":null,"lo":["LO1"]},{"id":"question-decides-source","n":10,"title":"كلمة واحدة في السؤال تحسم المصدر","kind":"content","session":1,"hash":"b4095f4f","md":"#### [day1#question-decides-source] كلمة واحدة في السؤال تحسم المصدر\n\n*كيف تختار*\n\n| السؤال (من جهة بيئية ساحلية) | الكلمة الحاسمة | المصدر الأول |\n| --- | --- | --- |\n| هل امتدت بقعة زيت قرب الشاطئ في ليلة غائمة؟ | ليلة غائمة | رادارية |\n| هل تراجعت غابة المانجروف خلال عشر سنوات؟ | عشر سنوات | سلسلة بصرية طويلة |\n| كم تملّح الماء في بئر الرصد الآن؟ | في البئر، الآن | مجس ميداني |\n| هل كان صيف هذا العام أحرّ من المعتاد؟ | من المعتاد | إعادة التحليل |","notes":"الأسئلة من جهة بيئية ساحلية، لا من أسئلة المختبر. اقرأ كل سؤال وغطِّ العمودين الأخيرين، واطلب من القاعة الكلمة الحاسمة أولًا ثم المصدر. الطريقة نفسها في المختبر: اقرأ السؤال كله قبل أن تختار.","minutes":null,"lo":["LO1"]},{"id":"two-sources","n":11,"title":"المصدر الأول يجيب، والثاني يتحقق","kind":"content","session":1,"hash":"87f9bab8","md":"#### [day1#two-sources] المصدر الأول يجيب، والثاني يتحقق\n\n*مصدر واحد نادرًا ما يكفي*\n\n1. **صورة بصرية** بقعة داكنة جديدة قرب مزرعة دواجن\n2. **رادار في اليوم نفسه** السطح أملس: ماء مكشوف لا ظل\n3. **بلاغ أو زيارة** تسرب من حوض تبريد\n\n> **القاعدة.** اكتب مع كل مصدر حدّه، ثم اسأل: أي مصدر آخر يغطي هذا الحد؟","notes":"المثال مخترع ومن خارج الإقليم. الهدف عادة كتابة عمود «ما لا يخبرك به» بجانب كل اختيار: هو ما ستكتبه في المختبر لكل سؤال. اسأل: ما الحد الذي يغطيه البلاغ ولا يغطيه الرادار؟ الجواب: السبب.","minutes":null,"lo":["LO1"]},{"id":"check-sources","n":12,"title":"سد صغير بعد عاصفة","kind":"quiz","session":1,"hash":"732e5d96","md":"#### [day1#check-sources] سد صغير بعد عاصفة\n\n*نقطة تحقق*\n\n**سؤال:** جهة بيئية تريد أن تعرف صباح الغد هل فاض سد ترابي صغير بعد عاصفة بدأت الليلة وستبقى غيومها يومين. ما المصدر الأول؟\n\n- أ. صورة بصرية بدقة 10 أمتار، لأنها الأوضح في رؤية حدود الماء\n- ب. صورة رادارية للسد، لأنها ترى الماء المكشوف عبر الغيوم ليلًا\n- ج. بيانات إعادة التحليل للمطر الذي سقط على الإقليم في الليلة نفسها\n- د. صورة حرارية، لأن سطح الماء أبرد من الأرض المحيطة به","notes":"الإجابة: ب. من اختار «أ» نسي الكلمة الحاسمة «غيومها». من اختار «ج» خلط بين سبب الفيضان ورؤيته. هذا النوع من الأسئلة هو ما سيقابلونه في فحص المواقف.","minutes":null,"lo":["LO1"]},{"id":"lab-1-1","n":13,"title":"ثمانية أسئلة ومصادرها","kind":"lab","session":1,"hash":"6583a9c9","md":"#### [day1#lab-1-1] ثمانية أسئلة ومصادرها\n\nالمختبر 1.1 · 20 دقيقة\n\nتطابق ثمانية أسئلة رصد في هيئة السُّقيا مع مصدرها الأول، وتكتب لكل سؤال لماذا هذا المصدر وما الذي لا يخبرك به، ثم تضيف سؤال عملك من العمل التحضيري.\n\n[D1_1_monitoring_sources.html](https://sdaiaacademy.github.io/use-sec-211/labs/D1_1_monitoring_sources.html)\n\n- [ ] اقرأ تعريف الهيئة وبطاقة المصادر (4 د)\n- [ ] طابق كل سؤال بمصدره الأول (6 د)\n- [ ] اكتب لكل سؤال ما لا يخبرك به المصدر (5 د)\n- [ ] أضف سؤالك من العمل التحضيري ومصدره (3 د)\n- [ ] قارن مع زميل الصفوف التي اختلفتما فيها (2 د)\n- [ ] ✱ إضافي: اختر سؤالين يحتاج كل منهما مصدرين معًا، واكتب ما يضيفه المصدر الثاني","notes":"راقب عمود «ما لا يخبرك به»: الخطأ الأشيع تركه فارغًا. من ينهي مبكرًا يأخذ التمرين الإضافي. في الدقيقة 15 ذكّر بالصف التاسع من العمل التحضيري. المساعد بدور المعلّم فقط.","minutes":null,"lo":[]},{"id":"debrief-1-1","n":14,"title":"ثلاثة أسئلة يخطئ فيها أكثر الناس، وكلمة واحدة في كل منها","kind":"content","session":1,"hash":"b31d2928","md":"#### [day1#debrief-1-1] ثلاثة أسئلة يخطئ فيها أكثر الناس، وكلمة واحدة في كل منها\n\n*بعد المختبر 1.1*\n\n| السؤال | المصدر | الكلمة التي تُنسى |\n| --- | --- | --- |\n| Q1 مياه السيل | رادارية | «غيومها أربعة أيام» |\n| Q2 شتاء أقل مطرًا | إعادة التحليل | «متوسط ثلاثين سنة» |\n| Q6 الماء في الجذور | مجس الرطوبة | «منطقة الجذور» |\n\n> **دليل الناتج الأول.** ست مطابقات صحيحة على الأقل من ثمانٍ. المفتاح كاملًا عند المدرّب.","notes":"المفتاح: Q1←2، Q2←6، Q3←1، Q4←5، Q5←8، Q6←4، Q7←3، Q8←7. اطلب من كل طاولة صفًّا اختلفت فيه وكلمته. ثم اسأل: من وجد مصدرًا لسؤال عمله لا يملكه اليوم؟ هذه بذرة لحالة استخدام في الخريطة.","minutes":null,"lo":["LO1"]},{"id":"s2","n":15,"title":"الدقة المكانية والزيارة والغيوم","kind":"section","session":2,"hash":"aa86b7ba","md":"#### [day1#s2] الدقة المكانية والزيارة والغيوم\n\n*الجلسة 2*\n\n- تحسب عدد البكسلات النقية في قطعة بحسب دقة المصدر\n- تعد الصور الصافية في الشهر من قائمة المشاهد\n- تقرر هل يكفي مصدر لسؤال بعينه من دقته وزيارته","notes":"","minutes":null,"lo":["LO1"]},{"id":"pixel-vs-plot","n":16,"title":"الهكتار مئة بكسل بدقة 10 أمتار، وأقل من بكسل واحد بدقة 250 مترًا","kind":"content","session":2,"hash":"e44fa78c","md":"#### [day1#pixel-vs-plot] الهكتار مئة بكسل بدقة 10 أمتار، وأقل من بكسل واحد بدقة 250 مترًا\n\n*الدقة المكانية*\n\n- **100** بكسل في الهكتار بدقة 10 أمتار (مثل Sentinel-2)\n- **11** بكسلًا تقريبًا بدقة 30 مترًا (مثل Landsat)\n- **0.16** من البكسل بدقة 250 مترًا (مثل MODIS)\n\n> **الحساب.** الهكتار 10,000 متر مربع؛ البكسل بدقة 10 أمتار 100 متر مربع، وبدقة 30 مترًا 900، وبدقة 250 مترًا 62,500.","notes":"اكتب الحساب على السبورة. اسأل: كم هكتارًا مساحة أصغر مزرعة في منطقتك؟ ثم: كم بكسلًا تكون بكل دقة؟ القسمة وحدها لا تكفي، والشريحة التالية تقول لماذا.","minutes":null,"lo":["LO1"]},{"id":"mixed-pixels","n":17,"title":"البكسل على الحافة يرى الحقل وما حوله معًا","kind":"content","session":2,"hash":"90bbe711","md":"#### [day1#mixed-pixels] البكسل على الحافة يرى الحقل وما حوله معًا\n\n*البكسل المختلط*\n\n- البكسل النقي يقع كله داخل الحقل\n- بكسل الحافة يخلط الحقل بالطريق أو الأرض الجرداء، فيبدو الحقل أقل خضرة مما هو\n- كلما صغر الحقل زادت نسبة الحافة فيه\n- تقريب عملي: استبعد صفًّا من البكسلات على كل حافة، وعدّ ما بقي\n\n- **مثال.** حقل مربع ضلعه 100 متر بدقة 10 أمتار: 100 بكسل، منها 64 نقيًّا فقط. ونفسه بدقة 30 مترًا: ضلعه 3 بكسلات، والنقي منها واحد.","notes":"ارسم شبكة 10 في 10 على السبورة وحوّط الصف الخارجي: 36 بكسلًا على الحافة و64 نقيًّا. ثم شبكة 3 في 3: بكسل واحد في الوسط. هذا ما سيجعل الحيازات الصغيرة تبدو مختلفة في الجلسة 5.","minutes":null,"lo":["LO1"]},{"id":"revisit-not-clear","n":18,"title":"القمر يمر كل خمسة أيام، لكن الصورة الصافية لا تصل كل خمسة أيام","kind":"content","session":2,"hash":"9f6340c7","md":"#### [day1#revisit-not-clear] القمر يمر كل خمسة أيام، لكن الصورة الصافية لا تصل كل خمسة أيام\n\n*الزيارة والغيوم*\n\n- **الزيارة:** كم مرة يمر القمر فوق المكان\n- **الصورة الصافية:** مرور بلا غيم ولا ظل فوق حقلك أنت\n- الشتاء موسم المطر والغيم، وهو موسم القمح\n- فجوة أسبوعين بلا صورة قد تخفي الزراعة أو الحصاد\n\n- **اسأل قبل أن تبني على الصور.** كم صورة صافية فعلًا فوق منطقتي في الشهر الذي يهمني؟ لا: كم مرة يمر القمر.","notes":"الزيارة كل خمسة أيام بقمرين عند خط الاستواء (SentiWiki)، وتتداخل المدارات في عرضنا فتزيد المرات. اسأل: في أي شهر تتوقع أقل الصور الصافية في منطقتك؟ سيعدّونها بأنفسهم في المختبر.","minutes":null,"lo":["LO1"]},{"id":"scene-cloud-misleads","n":19,"title":"رقم الغيم في المشهد يصف 110 في 110 كم، لا حقلك","kind":"content","session":2,"hash":"386c7ff5","md":"#### [day1#scene-cloud-misleads] رقم الغيم في المشهد يصف 110 في 110 كم، لا حقلك\n\n*رقم الغيم*\n\n1. **المشهد** غيم 10% في مربع كبير\n2. **غيمة واحدة** قد تقع فوق منطقتك بالضبط\n3. **والعكس** مشهد غيمه 60% ومنطقتك صافية\n\n> **الحل.** طبقة تصنيف المشهد (SCL) ترافق كل صورة من المستوى 2A، وتقول لكل بكسل: نبات، أرض، ماء، غيم، ظل. احسب الصافي فوق منطقتك.","notes":"المستوى 2A في Sentinel-2 يحمل طبقة تصنيف المشهد بدقة 20 مترًا. اعرض إن أمكن صورة في متصفح Copernicus Browser لمشهد غائم جزئيًّا من أي منطقة. لا تذكر عدد المشاهد المضللة في ملف المختبر: يعدّونها بأنفسهم.","minutes":null,"lo":["LO1"]},{"id":"choose-by-question","n":20,"title":"السؤال يحدد الدقة والزيارة اللتين يحتاجهما","kind":"content","session":2,"hash":"af4e5d79","md":"#### [day1#choose-by-question] السؤال يحدد الدقة والزيارة اللتين يحتاجهما\n\n*الدقة والزيارة معًا*\n\n| السؤال (أمثلة من خارج الإقليم) | الدقة | الزيارة |\n| --- | --- | --- |\n| هل زُرعت غابة النخيل الجديدة في الواحة؟ | 10 أمتار أو أدق | شهرية تكفي |\n| هل غطت عاصفة رملية طريقًا سريعًا اليوم؟ | عشرات الأمتار تكفي | يومية |\n| هل اتسعت الأراضي المزروعة في المنطقة خلال عقد؟ | 30 مترًا تكفي | سنوية لعشر سنوات |\n\n> **قاعدة عمل.** نحو عشرة بكسلات نقية على الأقل قبل أن تثق بمتوسط حقل.","notes":"قاعدة العشرة بكسلات قاعدة عمل لهذه الورشة، لا معيار منشور: قلها كذلك. اسأل لكل صف: ماذا يحدث لو اخترت دقة أخشن؟ ولو اخترت زيارة أقل؟","minutes":null,"lo":["LO1"]},{"id":"check-resolution","n":21,"title":"بستان نخيل من نصف هكتار","kind":"quiz","session":2,"hash":"0eb58ed0","md":"#### [day1#check-resolution] بستان نخيل من نصف هكتار\n\n*نقطة تحقق*\n\n**سؤال:** مزارع يملك بستان نخيل مربعًا تقريبًا مساحته نصف هكتار. تريد الهيئة أن تتابع خضرته شهريًّا من الصور. أي دقة تعطي عشرة بكسلات نقية على الأقل؟\n\n- أ. 30 مترًا، لأن سلسلتها أطول وتكفي لمتابعة شهرية\n- ب. 250 مترًا، لأنها يومية والزيارة أهم من الدقة\n- ج. 10 أمتار، فهي تبقي بعد الحافة بكسلات نقية كافية\n- د. لا شيء من الصور العامة، فلا بد من صور تجارية أدق","notes":"الإجابة: ج. احسبها على السبورة: الجذر التربيعي لخمسة آلاف متر مربع نحو 70 مترًا. من اختار «د» أصاب في الحذر وأخطأ في الحساب. الصيغة نفسها في الخطوة 4 من المختبر.","minutes":null,"lo":["LO1"]},{"id":"lab-1-2","n":22,"title":"كم صورة صافية تصلنا؟","kind":"lab","session":2,"hash":"e6df0068","md":"#### [day1#lab-1-2] كم صورة صافية تصلنا؟\n\nالمختبر 1.2 · 20 دقيقة\n\nمن قائمة حقيقية لمشاهد Sentinel-2 فوق الإقليم لسنة كاملة، تعد الصور الصافية لكل شهر، وتجد المشاهد التي يضلل فيها رقم الغيم، وتحسب البكسلات النقية لأربعة أحجام من القطع.\n\n[D1_2_clear_scenes.html](https://sdaiaacademy.github.io/use-sec-211/labs/D1_2_clear_scenes.html)\n\n- [ ] افتح قائمة المشاهد واقرأ أعمدتها (2 د)\n- [ ] عد المشاهد الصافية لكل شهر (6 د)\n- [ ] جد المشاهد التي يضلل فيها رقم الغيم للمشهد (4 د)\n- [ ] احسب البكسلات النقية لكل حجم قطعة ودقة (5 د)\n- [ ] اكتب أي مصدر يكفي لكل حجم (3 د)\n- [ ] ✱ إضافي: احسب أطول فجوة بين صورتين صافيتين في الشتاء، واكتب ما يعنيه ذلك لرصد الزراعة","notes":"الفخ التقني الأول عمود التاريخ: بعض البرامج تقرؤه نصًّا وبعضها تاريخًا، و`TEXT` تعمل في الحالين. راقب من يعدّ المشاهد الصافية برقم غيم المشهد: ذكّره بالعمود `D`. القائمة حقيقية، والحساب من طبقة SCL أجراه مؤلف المقرر.","minutes":null,"lo":[]},{"id":"debrief-1-2","n":23,"title":"الشتاء، موسم القمح، أفقر شهور السنة بالصور الصافية","kind":"content","session":2,"hash":"288504ab","md":"#### [day1#debrief-1-2] الشتاء، موسم القمح، أفقر شهور السنة بالصور الصافية\n\n*بعد المختبر 1.2*\n\n| البند | القيمة |\n| --- | --- |\n| نوفمبر وديسمبر ومارس | 6 كل شهر |\n| أكتوبر ويناير | 8 |\n| مايو إلى أغسطس | 12 إلى 13 |\n\n- **رقم المشهد يضلل.** 5 مشاهد غيمها الكلي أقل من 20% وليست صافية فوق النافذة؛ أسوؤها صافٍ بنسبة 44% فقط.\n- **الحيازة الصغيرة.** 0.4 هكتار: 16 بكسلًا نقيًّا بدقة 10 أمتار، وصفر بدقة 30 مترًا.\n\nيحتوي على بيانات Copernicus Sentinel معدّلة (2023، 2024). نسبة الصافي فوق الإقليم من حساب مؤلف المقرر.","notes":"من تشغيل المختبر: 144 مشهدًا، 112 منها صافية فوق النافذة. أطول فجوة بين صورتين صافيتين من نوفمبر إلى فبراير 12 يومًا. اسأل: لو زُرع القمح في منتصف تلك الفجوة، متى سنعرف؟ هذا ما يجعل التنبيه في الجلسة 4 سؤالًا لا حكمًا.","minutes":null,"lo":["LO1"]},{"id":"s3","n":24,"title":"مؤشر الغطاء النباتي وسلسلته الزمنية","kind":"section","session":3,"hash":"572301e7","md":"#### [day1#s3] مؤشر الغطاء النباتي وسلسلته الزمنية\n\n*الجلسة 3*\n\n- تحسب مؤشر الغطاء النباتي من نطاقين\n- تسقط القيم الغائمة قبل أي قراءة\n- تقرأ من السلسلة موعد الزراعة والذروة والحصاد","notes":"","minutes":null,"lo":["LO2"]},{"id":"leaf-reflectance","n":25,"title":"الورقة الخضراء تمتص الأحمر وتعكس تحت الأحمر القريب بقوة","kind":"content","session":3,"hash":"cb35fe2e","md":"#### [day1#leaf-reflectance] الورقة الخضراء تمتص الأحمر وتعكس تحت الأحمر القريب بقوة\n\n*لماذا يعمل المؤشر*\n\n| البند | القيمة |\n| --- | --- |\n| نبات كثيف: أحمر | 0.04 |\n| نبات كثيف: تحت الأحمر | 0.45 |\n| أرض جرداء: أحمر | 0.30 |\n| أرض جرداء: تحت الأحمر | 0.35 |\n\n- **الفكرة.** في النبات فرق كبير بين النطاقين، وفي التربة الجرداء فرق صغير. المؤشر يقيس هذا الفرق.","notes":"القيم توضيحية تقريبية لانعكاس سطحي، لا من ملف المختبر. الكلوروفيل يمتص الأحمر للتمثيل الضوئي، وبنية الورقة الداخلية تشتت تحت الأحمر القريب. في Sentinel-2 النطاق الأحمر B04 وتحت الأحمر القريب B08، وكلاهما بدقة 10 أمتار.","minutes":null,"lo":["LO2"]},{"id":"ndvi-formula","n":26,"title":"المؤشر فرق النطاقين على مجموعهما، بين ناقص واحد وواحد","kind":"content","session":3,"hash":"8cd12e7e","md":"#### [day1#ndvi-formula] المؤشر فرق النطاقين على مجموعهما، بين ناقص واحد وواحد\n\n*الحساب*\n\n```\n# ملف: ndvi\nNDVI = (NIR - red) / (NIR + red)\n\ndense crop   (0.45 - 0.04) / (0.45 + 0.04) = 0.84\nbare soil    (0.35 - 0.30) / (0.35 + 0.30) = 0.08\n```\n\n> **قيم مرجعية في هذا الإقليم.** الأرض الجرداء نحو 0.10 إلى 0.15، والمحصول الكثيف في ذروته فوق 0.70.","notes":"اطلب من القاعة أن تحسب الثاني ذهنيًّا. المؤشر الطبيعي لاختلاف الغطاء النباتي (NDVI) أشهر المؤشرات، وليس الوحيد. القيم المرجعية من تقويم المحاصيل في ملفات المختبر.","minutes":null,"lo":["LO2"]},{"id":"clouds-fake-harvest","n":27,"title":"الغيمة الرقيقة تخفض المؤشر فيبدو الحقل كأنه حُصد","kind":"content","session":3,"hash":"4bb21fde","md":"#### [day1#clouds-fake-harvest] الغيمة الرقيقة تخفض المؤشر فيبدو الحقل كأنه حُصد\n\n*التنقية*\n\n- الغيم يعكس النطاقين بقدر متقارب، مثل التربة\n- الظل يخفض الاثنين، فيضطرب الفرق\n- النتيجة: هبوط مفاجئ في موعد واحد ثم عودة\n- القاعدة: لا تقرأ موعدًا يقل صفاؤه فوق الحقل عن 0.9\n\n- **علامة الخدعة.** انخفاض حاد في موعد واحد، وارتفاع إلى المستوى نفسه في الموعد التالي. المحصول لا يُحصد ثم يعود في خمسة أيام.","notes":"البرسيم يُحشّ فينخفض ثم يعود، لكن في أسابيع لا في موعد واحد. اسأل: كيف تفرق بين حشّة وغيمة في السلسلة؟ الجواب: عمود الصفاء، وشكل العودة.","minutes":null,"lo":["LO2"]},{"id":"series-tells-story","n":28,"title":"السلسلة تحكي الموسم: متى اخضرّ الحقل، ومتى بلغ ذروته، ومتى انتهى","kind":"content","session":3,"hash":"cc84fff9","md":"#### [day1#series-tells-story] السلسلة تحكي الموسم: متى اخضرّ الحقل، ومتى بلغ ذروته، ومتى انتهى\n\n*السلسلة الزمنية*\n\nشكل: أنماط توضيحية مرسومة باليد: شتوي (أخضر مزرق)، ومعمّر (بنفسجي)، وبور (برتقالي).","notes":"الأشكال مرسومة لا مقيسة: لا أرقام من ملف المختبر هنا. مرّ على الثلاثة واسأل عن كل منها: متى زُرع؟ متى ذروته؟ ماذا يعني الانخفاض المتكرر في المعمّر؟ الجواب: حشّ البرسيم.","minutes":null,"lo":["LO2"]},{"id":"ndvi-limits","n":29,"title":"المؤشر يقول متى كان الحقل أخضر، لا ماذا زُرع فيه","kind":"content","session":3,"hash":"5367ce15","md":"#### [day1#ndvi-limits] المؤشر يقول متى كان الحقل أخضر، لا ماذا زُرع فيه\n\n*ما لا يقوله المؤشر*\n\n- **النوع.** قمح وشعير وعشب شتوي متشابهة في السلسلة.\n- **التشبع.** فوق قيمة عالية لا يميز الكثيف من الأكثف.\n- **الخلفية.** في البساتين المتباعدة تدخل التربة بين الأشجار في كل بكسل.\n\n> **أين يقع الخطأ.** كتابة «هذا قمح» بدل «يشبه نمط القمح». الفرق بين الجملتين هو الزيارة الميدانية.","notes":"هذه الحدود هي ما يجعل كل تنبيه في الجلسة القادمة سؤالًا. اطلب من القاعة أن تعيد صياغة جملة «القطعة مزروعة برسيمًا» بلغة الصورة.","minutes":null,"lo":["LO2"]},{"id":"check-ndvi","n":30,"title":"احسب المؤشر","kind":"quiz","session":3,"hash":"b315ca70","md":"#### [day1#check-ndvi] احسب المؤشر\n\n*نقطة تحقق*\n\n**سؤال:** بستان في واحة: متوسط الانعكاس الأحمر 0.08، وتحت الأحمر القريب 0.32، في موعد صافٍ. كم مؤشر الغطاء النباتي؟ (رقمان بعد الفاصلة)\n\n*أجب برقم*","notes":"الإجابة: 0.60. خطأ شائع: قسمة الفرق على تحت الأحمر وحده (0.75). ثم اسأل: لو كان الموعد غير صافٍ، هل تكتب الرقم؟","minutes":null,"lo":["LO2"]},{"id":"lab-1-3","n":31,"title":"من الانعكاس إلى المؤشر","kind":"lab","session":3,"hash":"dcf70729","md":"#### [day1#lab-1-3] من الانعكاس إلى المؤشر\n\nالمختبر 1.3 · 25 دقيقة\n\nتحسب مؤشر الغطاء النباتي لست قطع من متوسط انعكاسها على كل موعد، وتسقط المواعيد الغائمة، وترسم السلسلة، وتطابق كل نمط بتقويم المحاصيل.\n\n[D1_3_ndvi_series.html](https://sdaiaacademy.github.io/use-sec-211/labs/D1_3_ndvi_series.html)\n\n- [ ] صفّ ملف الانعكاس على القطع الست (4 د)\n- [ ] احسب المؤشر في عمود جديد (5 د)\n- [ ] أسقط المواعيد التي يقل صفاؤها عن 0.9 (4 د)\n- [ ] ارسم سلسلة كل قطعة (6 د)\n- [ ] طابق كل نمط بتقويم المحاصيل (6 د)\n- [ ] ✱ إضافي: ارسم قطعة واحدة دون إسقاط الغائم، واكتب أين كان سيخدعك","notes":"الخطوة الأطول الرسم: من يتعثر في الرسم يملأ الجدول من الأرقام مباشرة. راقب من ينسى إسقاط غير الصافي. إن سأل أحد «أين هذا الحقل؟» فالجواب: المكان والقطع توضيحية، والمقرر لا يذكر موقعها ولا إحداثياتها، لأن التصريحات ونتائج الزيارات مخترعة ولا يصح أن يُنسب شيء منها إلى صاحب حقل حقيقي.","minutes":null,"lo":[]},{"id":"debrief-1-3","n":32,"title":"ثلاثة أنماط في ست قطع، وخدعة غيم في واحدة","kind":"content","session":3,"hash":"0ab975a5","md":"#### [day1#debrief-1-3] ثلاثة أنماط في ست قطع، وخدعة غيم في واحدة\n\n*بعد المختبر 1.3*\n\n| القطعة | ما تقوله السلسلة | يشبه |\n| --- | --- | --- |\n| P21 | جرداء حتى نوفمبر، ذروة 0.92 في فبراير، تنتهي في مايو | قمح |\n| P47 وP24 | تخضر في يناير، ذروة في مارس (0.88 و0.57) | قمح متأخر، والثاني خفيف |\n| P09 وP11 | عالية طوال السنة، مع انخفاضات قصيرة | برسيم |\n| P19 | لا تتجاوز 0.21 | بور |\n\n> **خدعة الغيم.** في P09 ثلاثة مواعيد غير صافية تنزل إلى 0.17 وسط قيم فوق 0.8.\n\nيحتوي على بيانات Copernicus Sentinel معدّلة (2023، 2024). القطع وأرقامها توضيحية.","notes":"من تشغيل المختبر. اسأل عن P24: محصول خفيف أم نصف المحور غير مزروع؟ الصورة لا تحسم، والزيارة تحسم. هذا ما يقودنا إلى قواعد الهيئة في الجلسة القادمة.","minutes":null,"lo":["LO2"]},{"id":"s4","n":33,"title":"القطع التي يخالف نمطها التصريح","kind":"section","session":4,"hash":"d0df1e7f","md":"#### [day1#s4] القطع التي يخالف نمطها التصريح\n\n*الجلسة 4*\n\n- تلخص سلسلة كل قطعة في أربعة أرقام: قمة الشتاء ومتوسط الصيف وقمة الصيف وقمة الموسم\n- تطبق قاعدة الاتساق على التصريح\n- تكتب طلب تحقق ميداني لكل قطعة مختلفة","notes":"","minutes":null,"lo":["LO2"]},{"id":"patterns-per-crop","n":34,"title":"لكل محصول في الإقليم نمط متوقع، ولكل نمط ما يكذّبه","kind":"content","session":4,"hash":"728765d2","md":"#### [day1#patterns-per-crop] لكل محصول في الإقليم نمط متوقع، ولكل نمط ما يكذّبه\n\n*النمط المتوقع*\n\n| المحصول | النمط المتوقع | ما يكذّبه |\n| --- | --- | --- |\n| قمح أو شعير شتوي | قمة شتوية، صيف أجرد | خضرة صيفية عالية |\n| برسيم | أخضر أغلب السنة | صيف أجرد |\n| علف صيفي | قمة صيفية، شتاء أجرد | قمة شتوية |\n| بور | منخفض طوال السنة | أي قمة خضراء |","notes":"الجدول من تقويم المحاصيل في ملفات المختبر. اسأل: أي اختلاف بين التصريح والنمط يعني ماءً أكثر مما صُرّح به؟ الجواب: برسيم أو علف صيفي مصرّح بأنه قمح أو بور، لأن الصيف هو موسم العطش.","minutes":null,"lo":["LO2"]},{"id":"four-numbers","n":35,"title":"أربعة أرقام تلخص سنة من السلسلة","kind":"content","session":4,"hash":"8b19905d","md":"#### [day1#four-numbers] أربعة أرقام تلخص سنة من السلسلة\n\n*التلخيص*\n\n- **قمة الشتاء.** أعلى قيمة في ديسمبر إلى مارس\n- **متوسط الصيف.** متوسط يونيو إلى أغسطس\n- **قمة الصيف.** أعلى قيمة في يونيو إلى سبتمبر\n- **قمة الموسم.** أعلى قيمة في السنة كلها\n\n> **من القيم الصافية فقط.** رقم واحد من موعد غائم يغير القمة أو المتوسط.","notes":"لماذا المتوسط في الصيف والقمة في الشتاء؟ القمة تلتقط محصولًا قصيرًا في ذروته، والمتوسط يلتقط خضرة مستمرة. في جدول البيانات: MAXIFS وAVERAGEIFS بشرط القطعة والشهر.","minutes":null,"lo":["LO2"]},{"id":"rule-not-verdict","n":36,"title":"القاعدة تحدد من نسأل، لا من نعاقب","kind":"content","session":4,"hash":"8c03ca01","md":"#### [day1#rule-not-verdict] القاعدة تحدد من نسأل، لا من نعاقب\n\n*القاعدة*\n\n1. **السلسلة** أربعة أرقام\n2. **القاعدة** هل يتسق النمط مع التصريح؟\n3. **إن لم يتسق** طلب تحقق ميداني\n4. **الزيارة** وحدها تقرر\n\n> **قاعدة الهيئة.** لا جزاء ولا غرامة على مزارع بناء على صورة أو نموذج وحده.","notes":"هذه القاعدة من سياسة المقرر نفسها: التنبيه يقود إلى زيارة، لا إلى جزاء آلي. وهي من مبدأ الإنسانية ومبدأ المساءلة والمسؤولية في مبادئ أخلاقيات الذكاء الاصطناعي من سدايا. اسأل: لماذا لا تُرسل الغرامة ويُترك للمزارع أن يعترض؟","minutes":null,"lo":["LO2"]},{"id":"thresholds-are-choices","n":37,"title":"كل حد في القاعدة اختيار، والحالات قرب الحد تحتاج عينًا","kind":"content","session":4,"hash":"3e76c7eb","md":"#### [day1#thresholds-are-choices] كل حد في القاعدة اختيار، والحالات قرب الحد تحتاج عينًا\n\n*الحدود*\n\n- حد 0.50 لقمة الشتاء يجعل 0.49 «لا يتسق»\n- الزراعة المتأخرة تنقل القمة إلى أبريل\n- محصولان في سنة واحدة يكسران كل القواعد\n- حقل نصفه مزروع يعطي قمة منخفضة\n\n- **مثال من واحة أخرى.** حقل صرّح صاحبه بشعير: قمة شتائه 0.48 ومتوسط صيفه 0.12. القاعدة تنبه، والنمط شعير خفيف في الغالب.","notes":"المثال مخترع ومن خارج الإقليم. اسأل: هل نغيّر الحد إلى 0.45؟ ماذا نكسب، وما الذي يفوتنا؟ لا جواب واحدًا: كل حد يقايض تنبيهات أكثر بحالات فائتة أقل.","minutes":null,"lo":["LO2"]},{"id":"flag-to-request","n":38,"title":"طلب التحقق يصف ما رأيناه، ولا يحكم","kind":"content","session":4,"hash":"365f22a8","md":"#### [day1#flag-to-request] طلب التحقق يصف ما رأيناه، ولا يحكم\n\n*من التنبيه إلى الطلب*\n\n- **لا.** «القطعة مخالفة: زُرعت برسيمًا وصُرّح بقمح.»\n- **نعم.** «السلسلة خضراء طوال الصيف (متوسط 0.6)، والتصريح قمح. يُسأل على الأرض: ماذا زُرع، ومتى؟»\n\n> **ثلاثة أجزاء.** ما رأيناه في السلسلة، وما صُرّح به، وما يُسأل عنه على الأرض.","notes":"المثال مخترع. اطلب من القاعة أن تحوّل جملة «المزارع لم يزرع شيئًا» إلى لغة الطلب. الجواب: «السلسلة منخفضة طوال الموسم؛ يُسأل: هل زُرعت القطعة؟».","minutes":null,"lo":["LO2"]},{"id":"check-flag","n":39,"title":"حقل في واحة أخرى","kind":"quiz","session":4,"hash":"b9bcd9d8","md":"#### [day1#check-flag] حقل في واحة أخرى\n\n*نقطة تحقق*\n\n**سؤال:** حقل صرّح صاحبه بعلف صيفي. أرقام سلسلته: قمة الشتاء 0.81، ومتوسط الصيف 0.15، وقمة الصيف 0.22. بقواعد الهيئة، ما الخطوة التالية؟\n\n- أ. إنذار للمزارع بأن تصريحه غير صحيح\n- ب. لا شيء، فالحقل مزروع والمزارع صرّح بزراعة\n- ج. انتظار صور الموسم القادم قبل أي إجراء\n- د. طلب تحقق: النمط شتوي والتصريح صيفي","notes":"الإجابة: د. من اختار «أ» تجاوز قاعدة الهيئة. من اختار «ب» خلط بين «مزروع» و«كما صُرّح». الأرقام مخترعة ومن خارج ملف المختبر.","minutes":null,"lo":["LO2"]},{"id":"lab-1-4","n":40,"title":"قطع لا يتسق نمطها مع التصريح","kind":"lab","session":4,"hash":"80c952ba","md":"#### [day1#lab-1-4] قطع لا يتسق نمطها مع التصريح\n\nالمختبر 1.4 · 25 دقيقة\n\nتلخص سلسلة المؤشر لكل قطعة من قطع الإقليم، وتطبق قواعد الهيئة على المحصول المصرّح به، وتخرج بقائمة القطع المختلفة وطلب تحقق ميداني لكل منها.\n\n[D1_4_plot_flags.html](https://sdaiaacademy.github.io/use-sec-211/labs/D1_4_plot_flags.html)\n\n- [ ] اقرأ قواعد الاتساق وملف التصريحات (3 د)\n- [ ] احسب الأرقام الأربعة لكل قطعة (9 د)\n- [ ] طبّق القاعدة على المحصول المصرّح به (6 د)\n- [ ] اكتب طلب تحقق ميداني لكل قطعة في القائمة (7 د)\n- [ ] ✱ إضافي: اكتب لقطعة في القائمة ثلاثة أسباب بريئة قد تفسر النمط","notes":"الفخ التقني: MAXIFS بشرط واحد للأشهر 12 إلى 3 لا يعمل عبر رأس السنة؛ الصيغة في الصفحة تأخذ أكبر اثنتين. من يتأخر في الأرقام الأربعة يأخذ `start/flags.csv` من المختبر التالي ليرى الشكل، لا ليغش. راقب لغة طلبات التحقق.","minutes":null,"lo":[]},{"id":"debrief-1-4","n":41,"title":"ست عشرة قطعة من خمس وستين لا يتسق نمطها مع تصريحها","kind":"content","session":4,"hash":"61bd66fa","md":"#### [day1#debrief-1-4] ست عشرة قطعة من خمس وستين لا يتسق نمطها مع تصريحها\n\n*بعد المختبر 1.4*\n\n- **16** قطعة في قائمة التحقق\n- **8** منها صُرّح بأنها قمح\n- **0.499** قمة شتاء P04: أقل من الحد بجزء من ألف\n\n> **السؤال للمختبر التالي.** كم من هذه الست عشرة سيتبين على الأرض أن تصريحها صحيح؟\n\nالسلاسل من بيانات Copernicus Sentinel معدّلة (2023، 2024)، والتصريحات اصطناعية.","notes":"من تشغيل المختبر: P03، P04، P05، P08، P10، P14، P25، P30، P41، P44، P45، P51، P56، P57، P59، P64. لا تقل نتائج الزيارات بعد: تُكشف بعد المختبر 1.5. اسأل القاعة أن تخمن النسبة، واكتب التخمين على السبورة.","minutes":null,"lo":["LO2"]},{"id":"s5","n":42,"title":"الفحص الميداني قبل أي جزاء","kind":"section","session":5,"hash":"ac1daa22","md":"#### [day1#s5] الفحص الميداني قبل أي جزاء\n\n*الجلسة 5*\n\n- تقارن نسبة التنبيه بين القطع الصغيرة والكبيرة\n- ترتب الزيارات بطاقة فريق التحقق\n- تكتب خطاب تحقق يطلب ولا يتهم","notes":"","minutes":null,"lo":["LO2"]},{"id":"false-flags-cost","n":43,"title":"التنبيه الكاذب يكلف المزارع الصادق، لا الهيئة وحدها","kind":"content","session":5,"hash":"d13c600b","md":"#### [day1#false-flags-cost] التنبيه الكاذب يكلف المزارع الصادق، لا الهيئة وحدها\n\n*من يدفع ثمن الخطأ*\n\n- **تنبيه كاذب.** مزارع صادق يتلقى خطابًا، ويترك حقله لاستقبال الزيارة، ويقلق على تصريحه. وفريق الهيئة يضيع زيارة.\n- **حالة فائتة.** ماء يُستهلك فوق المصرّح به موسمًا كاملًا. الهيئة تخسر ماءً، والمزارعون الملتزمون يخسرون عدلًا.\n\n> **السؤال.** على من يقع كل خطأ؟ وهل يقع على فئة أكثر من غيرها؟","notes":"اسأل: أي الخطأين تراه الهيئة في تقاريرها، وأيهما لا تراه؟ الحالة الفائتة لا تظهر في أي تقرير، والتنبيه الكاذب يظهر في شكوى. هذا يدفع الجهات إلى خفض التنبيهات أو رفعها لأسباب لا علاقة لها بالعدل.","minutes":null,"lo":["LO2"]},{"id":"small-plots-mixed","n":44,"title":"الحقل الصغير يرى جيرانه أكثر، فتبدو قمته أدنى","kind":"content","session":5,"hash":"55d15503","md":"#### [day1#small-plots-mixed] الحقل الصغير يرى جيرانه أكثر، فتبدو قمته أدنى\n\n*الحيازات الصغيرة*\n\n- نسبة بكسلات الحافة أكبر في الحقل الصغير\n- الحافة تخلط المحصول بالأرض الجرداء أو بالطريق\n- القمة تنخفض فتقترب من حدود القاعدة\n- والمرجع الميداني للحيازات الصغيرة أقل في كل مكان\n\n- **الحساب نفسه.** حقل من 3 هكتارات بدقة 10 أمتار: ضلعه نحو 17 بكسلًا، وحافته نحو ربع بكسلاته.","notes":"الحساب: الجذر التربيعي لثلاثين ألف متر مربع نحو 173 مترًا، أي 17 بكسلًا؛ الحافة 4 في 16 تقريبًا، أي 64 من 289، نحو الربع. اسأل: لو كان أصحاب الحيازات الصغيرة أقل قدرة على الرد على خطاب رسمي، ماذا يعني ذلك للعدل؟","minutes":null,"lo":["LO2"]},{"id":"capacity-orders","n":45,"title":"الطاقة تفرض ترتيبًا، والترتيب قرار يُكتب سببه","kind":"content","session":5,"hash":"90f2e3a9","md":"#### [day1#capacity-orders] الطاقة تفرض ترتيبًا، والترتيب قرار يُكتب سببه\n\n*طاقة الفريق*\n\n| طريقة الترتيب | ما تكسبه | ما تخسره |\n| --- | --- | --- |\n| الأكبر مساحة أولًا | أكبر فرق محتمل في الماء | لا تعرف أبدًا كيف تعمل الطريقة على الصغار |\n| عشوائيًّا | تقدير غير منحاز لنسبة الخطأ | قد تؤجل أكبر الفروق |\n| الأكبر أولًا، مع حصة للصغار | الماء والتعلم معًا | زيارات أقل للكبار |","notes":"لا جواب واحدًا؛ المطلوب في المختبر أن يُكتب السبب. الصف المظلل هو ما يقترحه ملف الفريق في المختبر. اسأل: من في جهتك يقرر ترتيب الزيارات، وهل يكتب لماذا؟","minutes":null,"lo":["LO2"]},{"id":"letter-that-asks","n":46,"title":"خطاب يطلب ولا يتهم: خمسة أجزاء","kind":"content","session":5,"hash":"c5fa7096","md":"#### [day1#letter-that-asks] خطاب يطلب ولا يتهم: خمسة أجزاء\n\n*الخطاب*\n\n1. **رقم القطعة** كما في السجل\n2. **ما رأيناه** بكلمات المزارع: «الخضرة هذا الشتاء أخف مما نراه عادة»\n3. **ما صرّحتم به** دون تعليق\n4. **ما نطلبه:** موعد زيارة، أو صورة من الحقل\n5. **حقكم في الرد،** وأن الزيارة ليست مخالفة\n\n> **كلمات لا تُكتب.** مخالفة، غرامة، تلاعب، «وإلا».","notes":"اقرأ الجزء الثاني بصوتين: مرة «لاحظنا تلاعبًا في...» ومرة «كانت الخضرة أخف...». اسأل: أيهما يجعل المزارع يفتح بابه؟ المساعد مسموح في المختبر لمراجعة الخطاب، والكلمات الأخيرة للمشارك.","minutes":null,"lo":["LO2"]},{"id":"ethics-principles","n":47,"title":"مبادئ أخلاقيات الذكاء الاصطناعي من سدايا تضع الإنسان في كل تنبيه","kind":"content","session":5,"hash":"56a5e493","md":"#### [day1#ethics-principles] مبادئ أخلاقيات الذكاء الاصطناعي من سدايا تضع الإنسان في كل تنبيه\n\n*المرجعية الوطنية*\n\n- **الإنصاف.** لا تقع الأخطاء على فئة أكثر من غيرها دون أن نعرف ونعالج.\n- **الإنسانية.** قرار يمس إنسانًا لا يُترك لنظام وحده.\n- **المساءلة والمسؤولية.** صاحب مسمّى لكل قرار، وطريق للاعتراض.","notes":"المبادئ السبعة في الوثيقة: الإنصاف، والخصوصية والأمن، والإنسانية، والمنافع الاجتماعية والبيئية، والموثوقية والسلامة، والشفافية والقابلية للتفسير، والمساءلة والمسؤولية. اخترنا ثلاثة تمس التنبيه مباشرة، والكلام تحت كل منها تطبيقنا له لا نص الوثيقة. المصدر: سدايا، مبادئ أخلاقيات الذكاء الاصطناعي.","minutes":null,"lo":["LO2"]},{"id":"check-letter","n":48,"title":"جملة في خطاب","kind":"quiz","session":5,"hash":"b8fff8ff","md":"#### [day1#check-letter] جملة في خطاب\n\n*نقطة تحقق*\n\n**سؤال:** أي جملة تصلح في خطاب تحقق إلى مزارع صغير نبّهت الصور إلى قطعته؟\n\n- أ. «نرجو تحديد موعد لزيارة الحقل، والزيارة للتحقق ولا تعني مخالفة.»\n- ب. «تبيّن لنا أن قطعتكم مخالفة، ويُرجى تصحيح الوضع خلال أسبوع وإلا طُبّقت الغرامة.»\n- ج. «أظهر نظام الذكاء الاصطناعي في الهيئة أن تصريحكم غير صحيح بدرجة عالية من الثقة.»\n- د. «عليكم إثبات صحة تصريحكم بالمستندات قبل نهاية الموسم.»","notes":"الإجابة: أ. اسأل من اختار «ج»: ما المشكلة في ذكر النظام؟ الجواب: لا مشكلة في الشفافية، المشكلة في «غير صحيح» قبل الزيارة.","minutes":null,"lo":["LO2"]},{"id":"lab-1-5","n":49,"title":"خطة الزيارات وخطاب المزارع","kind":"lab","session":5,"hash":"45a4524e","md":"#### [day1#lab-1-5] خطة الزيارات وخطاب المزارع\n\nالمختبر 1.5 · 20 دقيقة\n\nمن قائمة التنبيهات الجاهزة تقارن نسبة التنبيه في القطع الصغيرة بالكبيرة، وترتب زيارات أسبوعين بطاقة الفريق، وتكتب خطاب التحقق إلى صاحب قطعة صغيرة.\n\n[D1_5_field_checks.html](https://sdaiaacademy.github.io/use-sec-211/labs/D1_5_field_checks.html)\n\n- [ ] احسب نسبة التنبيه لكل حجم من القطع (4 د)\n- [ ] اقرأ طاقة الفريق ورتّب زيارات أسبوعين (6 د)\n- [ ] اكتب خطاب التحقق للمزارع (7 د)\n- [ ] راجع الخطاب: هل فيه اتهام أو جزاء؟ (3 د)\n- [ ] ✱ إضافي: اقترح تعديلًا على القاعدة للقطع الصغيرة، واكتب ما يكلفه","notes":"من لم يكمل المختبر 1.4 يبدأ من `start/flags.csv`. وزّع القاعة: نصفها يبدأ بالخطاب، ونصفها بالترتيب، ثم يتبادلون. اقرأ خطابين بصوت عالٍ في آخر خمس دقائق.","minutes":null,"lo":[]},{"id":"debrief-1-5","n":50,"title":"نسبة التنبيه واحدة، لكن تنبيهات القطع الصغيرة كلها كانت كاذبة","kind":"content","session":5,"hash":"a00d5266","md":"#### [day1#debrief-1-5] نسبة التنبيه واحدة، لكن تنبيهات القطع الصغيرة كلها كانت كاذبة\n\n*بعد المختبر 1.5: ما وجدته الزيارات*\n\n|  | في القائمة | تأكد على الأرض | التصريح صحيح |\n| --- | --- | --- | --- |\n| القطع الكبيرة (53) | 13 (25%) | 7 | 6 |\n| القطع الصغيرة (12) | 3 (25%) | 0 | 3 |\n\n> **ما يعنيه.** لو أُرسلت الغرامة مع التنبيه، لدفعها تسعة مزارعين صادقين من ستة عشر، بينهم أصحاب الحيازات الصغيرة الثلاث كلهم.","notes":"نتائج الزيارات اصطناعية، والسلاسل حقيقية. التي تأكدت: برسيم مصرّح بأنه قمح (P05، P30، P44)، وبور مصرّح بأنه قمح (P08، P10)، وعلف صيفي مصرّح بأنه قمح (P25)، وقمح مصرّح بأنه بور (P45). قارن بالتخمين على السبورة. حليس الرشدان صاحب P51: تصريحه صحيح، وحقله خفيف وصغير.","minutes":null,"lo":["LO2"]},{"id":"s6","n":51,"title":"خرائط الغطاء الأرضي من النماذج المفتوحة","kind":"section","session":6,"hash":"9fc50f5e","md":"#### [day1#s6] خرائط الغطاء الأرضي من النماذج المفتوحة\n\n*الجلسة 6*\n\n- تشرح ما تعطيه نماذج الأساس لرصد الأرض وما لا تعطيه\n- تميز دقة الخريطة المعلنة عالميًّا من دقتها في إقليمك\n- تبني مصفوفة الالتباس من نقاط مرجعية","notes":"","minutes":null,"lo":["LO3"]},{"id":"eo-foundation-models","n":52,"title":"نموذج أساس يتعلم من ملايين الصور، ثم يُضبط على مهمة واحدة","kind":"content","session":6,"hash":"6fd4dabd","md":"#### [day1#eo-foundation-models] نموذج أساس يتعلم من ملايين الصور، ثم يُضبط على مهمة واحدة\n\n*نماذج الأساس لرصد الأرض*\n\n- **Prithvi-EO-2.0 (IBM وNASA).** دُرّب مسبقًا على 4.2 مليون عينة من منتج HLS بدقة 30 مترًا وست نطاقات. يُضبط بعد ذلك على مهام مثل تقسيم المحاصيل أو الفيضانات.\n- **TerraMind (IBM ووكالة الفضاء الأوروبية).** متعدد المصادر: يقبل Sentinel-2 وSentinel-1 وغيرهما، ويتعامل مع مصدر ناقص.\n\n> **ما يصلك منه.** في عمل الهيئة لن تدرّبه: يصلك مخرجه، خريطة بفئة لكل بكسل، من مورّد أو من فريق داخلي.","notes":"المصادر: بطاقتا النموذجين على Hugging Face. النموذج المفتوح لا يعني مخرجًا دقيقًا في إقليمك: الضبط والبيانات المحلية يقرران. في هذه الورشة لا نشغّل أيًّا منهما: الخانة في المقرر «مخرجات تُقدَّم»، ومخرجنا في المختبر منتج مفتوح آخر بنموذج تعلم آلي، ESA WorldCover.","minutes":null,"lo":["LO3"]},{"id":"products-vs-models","n":53,"title":"خريطة جاهزة من نموذج مفتوح: مجانية، ودقتها المعلنة عالمية","kind":"content","session":6,"hash":"a2447f1d","md":"#### [day1#products-vs-models] خريطة جاهزة من نموذج مفتوح: مجانية، ودقتها المعلنة عالمية\n\n*المنتج والنموذج*\n\n- **ESA WorldCover 2021:** خريطة غطاء أرضي للعالم بدقة 10 أمتار، من Sentinel-1 وSentinel-2\n- رخصة CC BY 4.0: مجانية، بلا قيد على الاستعمال، مع ذكر المصدر\n- دقتها الكلية المعلنة على مستوى العالم 76.7%\n\n- **السؤال الذي يبقى.** 76.7% على مستوى العالم. كم في إقليمنا؟ وكم لكل فئة؟","notes":"المصدر: صفحة الوصول إلى بيانات ESA WorldCover (الرخصة والدقة). لا تقل الدقة في الإقليم: يقيسونها بأنفسهم. اسأل: لو كانت دقة منتج 95% عالميًّا، ماذا تعرف عن فئة المحاصيل في الصحراء؟ الجواب: لا شيء بعد.","minutes":null,"lo":["LO3"]},{"id":"reference-points","n":54,"title":"الدقة تُقاس بنقاط نعرف فئتها من مصدر مستقل عن الخريطة","kind":"content","session":6,"hash":"10784139","md":"#### [day1#reference-points] الدقة تُقاس بنقاط نعرف فئتها من مصدر مستقل عن الخريطة\n\n*النقاط المرجعية*\n\n1. **اسحب** نقاطًا عشوائية من كل فئة في الخريطة\n2. **سجّل** فئة كل نقطة من مصدر آخر: زيارة أو صور أدق\n3. **قارن** فئة الخريطة بفئة المرجع\n\n> **أين يقع الخطأ.** نقاط من «حيث يسهل الوصول»، أو مرجع يراه المسجّل بعد أن يعرف ما تقوله الخريطة.","notes":"السحب من كل فئة بعدد ثابت يسمى عينة طبقية بحسب فئة الخريطة، ويضمن أن الفئات الصغيرة لها نقاط كافية. نعود إلى حدود المرجع في الجلسة 8. اسأل: أي مرجع في جهتك يُجمع بعد أن يُعرف الجواب؟","minutes":null,"lo":["LO3"]},{"id":"read-a-matrix","n":55,"title":"الصفوف ما تقوله الخريطة، والأعمدة ما على الأرض","kind":"content","session":6,"hash":"53141b07","md":"#### [day1#read-a-matrix] الصفوف ما تقوله الخريطة، والأعمدة ما على الأرض\n\n*مصفوفة الالتباس*\n\n| الخريطة \\ المرجع | ماء | سبخة | جرداء |\n| --- | --- | --- | --- |\n| **ماء** | 18 | 2 | 0 |\n| **سبخة** | 6 | 9 | 15 |\n| **جرداء** | 0 | 4 | 26 |\n\nمثال مخترع لساحل جهة بيئية: 80 نقطة. القطر حيث يتفقان: 53.","notes":"المثال مخترع ومن خارج الإقليم. اقرأ الصف المظلل بصوت عالٍ: من 30 نقطة تقول الخريطة إنها سبخة، 9 فقط سبخة، و15 أرض جرداء. اسأل: لو استُعملت هذه الخريطة لحماية السبخات، ماذا يحدث؟","minutes":null,"lo":["LO3"]},{"id":"global-vs-local","n":56,"title":"المحاور الدائرية والبساتين والقرى الصحراوية ليست «العالم المتوسط»","kind":"content","session":6,"hash":"57af5be2","md":"#### [day1#global-vs-local] المحاور الدائرية والبساتين والقرى الصحراوية ليست «العالم المتوسط»\n\n*العالمي والمحلي*\n\n- **المحاصيل المروية.** خضراء طوال السنة في صحراء: قد تشبه المرعى أو البستان.\n- **البساتين المتباعدة.** أشجار وتربة في البكسل نفسه.\n- **العمران المتناثر.** منشآت وطرق في أرض جرداء، بلون التربة نفسه.","notes":"هذه أسباب محتملة للخطأ لا نتائج. لا تقل أي فئة ستخطئ في المختبر. اسأل: أي من الثلاثة تتوقع أن يكون الأصعب في إقليمنا، ولماذا؟ اكتب التوقعات على السبورة وارجع إليها بعد المختبر.","minutes":null,"lo":["LO3"]},{"id":"check-matrix","n":57,"title":"اقرأ الصف","kind":"quiz","session":6,"hash":"4b030fc7","md":"#### [day1#check-matrix] اقرأ الصف\n\n*نقطة تحقق*\n\n**سؤال:** في مصفوفة الساحل على الشريحة السابقة، الخريطة تقول «سبخة» في 30 نقطة. ماذا تقول هذه الأرقام؟\n\n- أ. 60% من سبخات الخريطة سبخة فعلًا، أي 9 من 15\n- ب. 30% من سبخات الخريطة سبخة فعلًا، والباقي غيرها\n- ج. دقة الخريطة 66% لأن القطر 53 من 80 نقطة\n- د. أكثر ما تخلط به الخريطة السبخة هو الماء المكشوف","notes":"الإجابة: ب. هذه دقة المستخدم لفئة السبخة، وتأتي في الجلسة التالية. من اختار «أ» قلب الصفوف والأعمدة، وهو الخطأ الأشيع في المختبر.","minutes":null,"lo":["LO3"]},{"id":"lab-1-6","n":58,"title":"مصفوفة الالتباس من 200 نقطة","kind":"lab","session":6,"hash":"e768e20b","md":"#### [day1#lab-1-6] مصفوفة الالتباس من 200 نقطة\n\nالمختبر 1.6 · 25 دقيقة\n\nدون مساعد ذكي: تعد 200 نقطة مرجعية في نافذة الإقليم بحسب فئة الخريطة المفتوحة وفئة المرجع، فتبني مصفوفة الالتباس وتقرأ أين تخطئ الخريطة.\n\n[D1_6_confusion_matrix.html](https://sdaiaacademy.github.io/use-sec-211/labs/D1_6_confusion_matrix.html)\n\n- [ ] اقرأ دليل الفئات وكيف وُضع المرجع (4 د)\n- [ ] ابنِ المصفوفة بصيغة العد الشرطي (10 د)\n- [ ] تحقق أن مجموعها 200 (3 د)\n- [ ] اكتب أكثر خطأين تكرارًا (8 د)\n- [ ] ✱ إضافي: احسب نسبة النقاط المرجعية المزروعة التي رأتها الخريطة عشبية أو جرداء","notes":"دون مساعد ذكي. ذكّر بالترتيب: الصفوف الخريطة، والأعمدة المرجع. الصيغة واحدة تُنسخ إلى خمس وعشرين خلية؛ من يكتبها خلية خلية سيتأخر. اطلب من كل طاولة أن تقول ماذا يعني أكبر رقم خارج القطر قبل أن تكتبه.","minutes":null,"lo":[]},{"id":"debrief-1-6","n":59,"title":"122 من 200 على القطر، وخطآن كبيران يحكيان الإقليم","kind":"content","session":6,"hash":"6283002d","md":"#### [day1#debrief-1-6] 122 من 200 على القطر، وخطآن كبيران يحكيان الإقليم\n\n*بعد المختبر 1.6*\n\n- **27 نقطة: «عشبية» في الخريطة، مزروعة على الأرض.** محاور برسيم خضراء طوال السنة رأتها الخريطة مرعى.\n- **19 نقطة: «مبنية» في الخريطة، جرداء في المرجع.** طرق ومنشآت مزارع متفرقة خارج حدود القرى التي رسمها المؤلف: الخطأ هنا في المرجع بقدر ما هو في الخريطة.\n\n© ESA WorldCover project 2021، برخصة CC BY 4.0؛ المرجع من بيانات Copernicus Sentinel معدّلة (2021).\n\n> **والسؤال للجلسة التالية.** ماذا يعني هذا لمن يحسب مساحة الأرض المزروعة من الخريطة؟","notes":"من تشغيل المختبر. المرجع المزروع 70 نقطة، رأت الخريطة 27 منها عشبية. قارن بتوقعات القاعة على السبورة. الخطأ الثاني فرصة للصدق: المرجع من صور ومن حدود رسمها إنسان، وله أخطاؤه. نعود إليه في الجلسة 8.","minutes":null,"lo":["LO3"]},{"id":"s7","n":60,"title":"الدقة لكل فئة والاستخدامات المسموح بها","kind":"section","session":7,"hash":"59f0dc76","md":"#### [day1#s7] الدقة لكل فئة والاستخدامات المسموح بها\n\n*الجلسة 7*\n\n- تحسب الدقة الكلية ودقة المستخدم ودقة المنتج\n- تفسر الفرق بين دقة المستخدم ودقة المنتج في قرار\n- تقرر الاستخدامات المسموح بها من دقة كل فئة","notes":"","minutes":null,"lo":["LO3"]},{"id":"overall-hides","n":61,"title":"الرقم الكلي يخفي الفئة الضعيفة حين تكون الفئات غير متساوية","kind":"content","session":7,"hash":"231644f7","md":"#### [day1#overall-hides] الرقم الكلي يخفي الفئة الضعيفة حين تكون الفئات غير متساوية\n\n*الدقة الكلية*\n\n- **66%** الدقة الكلية في مثال الساحل (53 من 80)\n- **30%** دقة فئة السبخة وحدها في المثال نفسه\n\n> **أين يقع الخطأ.** «الخريطة دقيقة بنسبة 66%، فلنحمِ بها السبخات.» القرار يعتمد على فئة واحدة، فدقتها هي المهمة.","notes":"المثال نفسه من الجلسة السابقة، مخترع. اسأل: لو كانت الخريطة أرضًا جرداء في 90% من الإقليم، ما الدقة الكلية لخريطة تقول «جرداء» في كل مكان؟ الجواب: 90%، وهي بلا فائدة لأي قرار.","minutes":null,"lo":["LO3"]},{"id":"users-vs-producers","n":62,"title":"دقة المستخدم لمن يقرأ الخريطة، ودقة المنتج لما تفوّته","kind":"content","session":7,"hash":"627469ba","md":"#### [day1#users-vs-producers] دقة المستخدم لمن يقرأ الخريطة، ودقة المنتج لما تفوّته\n\n*دقتان لكل فئة*\n\n|  | دقة المستخدم | دقة المنتج |\n| --- | --- | --- |\n| **السؤال** | من النقاط التي تقول الخريطة إنها من الفئة، كم هي منها؟ | من النقاط التي هي من الفئة، كم رأتها الخريطة؟ |\n| **الحساب** | القطر على مجموع الصف | القطر على مجموع العمود |\n| **سبخة الساحل** | 9 من 30 = 30% | 9 من 15 = 60% |","notes":"مجموع عمود السبخة في المثال: 2 زائد 9 زائد 4 = 15. اسأل: أي الرقمين يهم من يرسل فريقًا إلى كل سبخة في الخريطة؟ (المستخدم: كم زيارة تضيع.) وأيهما يهم من يريد حماية كل السبخات؟ (المنتج: كم سبخة لا تُحمى.)","minutes":null,"lo":["LO3"]},{"id":"accuracy-for-decision","n":63,"title":"كل استخدام يحتاج دقة بعينها، لا «دقة عالية»","kind":"content","session":7,"hash":"745f940b","md":"#### [day1#accuracy-for-decision] كل استخدام يحتاج دقة بعينها، لا «دقة عالية»\n\n*من الدقة إلى القرار*\n\n| الاستخدام | الدقة التي تهم | لماذا |\n| --- | --- | --- |\n| إحصاء مساحة فئة | المستخدم والمنتج معًا | الزائد والناقص يغيران المجموع |\n| توجيه فريق إلى مواقع | المستخدم | كل خطأ زيارة ضائعة |\n| خدمة تصل إلى كل من في الفئة | المنتج | كل فائت شخص لا تصله الخدمة |","notes":"الأمثلة عامة. في المختبر ستة استخدامات مقترحة، لكل منها الدقة التي يحتاجها مكتوبة. اسأل: تنبيه بالجفاف يُرسل إلى المزارع المزروعة في الخريطة: أي الدقتين أهم؟ (المنتج: من لا تراه الخريطة لا يصله التنبيه.)","minutes":null,"lo":["LO3"]},{"id":"no-individual-decisions","n":64,"title":"لا قرار على مزارع واحد من خريطة وحدها، مهما بلغت دقتها","kind":"content","session":7,"hash":"4db42a7a","md":"#### [day1#no-individual-decisions] لا قرار على مزارع واحد من خريطة وحدها، مهما بلغت دقتها\n\n*الحد الذي لا يتغير*\n\n- دقة 95% تعني خطأً في نقطة من كل عشرين\n- في إقليم فيه آلاف القطع، هذه مئات القرارات الخاطئة\n- والخطأ لا يتوزع بالتساوي: يزيد في الصغير والنادر\n\n- **ما يجوز.** إحصاء، وتوجيه عمل ميداني، وخدمة لا تضر من تفوّته. وما يمس شخصًا واحدًا يمر بزيارة.","notes":"هذه قاعدة الهيئة في دراسة الحالة، ومنسجمة مع مبدأي الإنسانية والمساءلة في مبادئ سدايا. في المختبر استخدام مقترح من هذا النوع: يُرفض مهما كانت الأرقام. اسأل: هل رأيت قرارًا فرديًّا في جهتك بُني على خريطة؟","minutes":null,"lo":["LO3"]},{"id":"check-accuracy","n":65,"title":"احسب دقة المنتج","kind":"quiz","session":7,"hash":"3d7832c0","md":"#### [day1#check-accuracy] احسب دقة المنتج\n\n*نقطة تحقق*\n\n**سؤال:** في مصفوفة الساحل، عمود «جرداء» على الأرض فيه: 0 في صف الماء، و15 في صف السبخة، و26 في صف جرداء. كم دقة المنتج لفئة جرداء؟ (رقمان بعد الفاصلة)\n\n*أجب برقم*","notes":"الإجابة: 0.63. من كتب 0.87 قسم على مجموع الصف، فحسب دقة المستخدم. اسأل: 15 نقطة جرداء على الأرض قالت عنها الخريطة سبخة؛ لمن يهم هذا الرقم؟","minutes":null,"lo":["LO3"]},{"id":"lab-1-7","n":66,"title":"جدول الدقة والاستخدامات المسموح بها","kind":"lab","session":7,"hash":"5159f59c","md":"#### [day1#lab-1-7] جدول الدقة والاستخدامات المسموح بها\n\nالمختبر 1.7 · 25 دقيقة\n\nدون مساعد ذكي: من مصفوفة جاهزة تحسب الدقة الكلية ودقة المستخدم ودقة المنتج لكل فئة، ثم تقرر لكل استخدام مقترح للخريطة هل يُسمح به.\n\n[D1_7_accuracy_uses.html](https://sdaiaacademy.github.io/use-sec-211/labs/D1_7_accuracy_uses.html)\n\n- [ ] احسب الدقة الكلية (3 د)\n- [ ] احسب دقة المستخدم لكل فئة (6 د)\n- [ ] احسب دقة المنتج لكل فئة (6 د)\n- [ ] قرر لكل استخدام مقترح: مسموح أم لا (7 د)\n- [ ] اكتب الاستخدامات المسموح بها في سطرين (3 د)\n- [ ] ✱ إضافي: اكتب لاستخدام غير مسموح ما الذي يجعله مسموحًا","notes":"دون مساعد ذكي. من لم يكمل المختبر 1.6 يبدأ من `start/confusion_matrix.csv`. الفخ: قسمة القطر على العمود لدقة المستخدم. اسأل كل طاولة: من يقرأ الخريطة، ومن يملك الأرض؟ والفخ الثاني: صفر لدقة منتج فئة لا نقطة مرجعية فيها.","minutes":null,"lo":[]},{"id":"debrief-1-7","n":67,"title":"61% في الإقليم أمام 76.7% في العالم، واستخدام واحد من ستة مسموح","kind":"content","session":7,"hash":"6d7c9242","md":"#### [day1#debrief-1-7] 61% في الإقليم أمام 76.7% في العالم، واستخدام واحد من ستة مسموح\n\n*بعد المختبر 1.7*\n\n| الفئة | دقة المستخدم | دقة المنتج |\n| --- | --- | --- |\n| مزروعة | 0.717 | 0.614 |\n| جرداء | 0.883 | 0.576 |\n| مبنية | 0.367 | 0.579 |\n| عشبية | 0 | لا نقاط مرجعية |\n| شجرية | 0.75 | 0.789 |\n\n> **المسموح: توجيه حملة رصد ميداني للمزارع الجديدة (C).** تنبيهات الري (F) غير مسموحة: الخريطة تفوّت نحو 39% من المزروع.\n\n© ESA WorldCover project 2021، برخصة CC BY 4.0؛ المرجع من بيانات Copernicus Sentinel معدّلة (2021).","notes":"من تشغيل المختبر. A غير مسموح (يحتاج 0.85 في الاثنتين)، B مرفوض مهما كانت الدقة (قرار فردي)، D غير مسموح، E قريب جدًّا (0.789 أمام 0.80). اسأل عن F: من هم المزارعون الذين لن تصلهم التنبيهات؟ أصحاب البرسيم الذي رأته الخريطة مرعى.","minutes":null,"lo":["LO3"]},{"id":"s8","n":68,"title":"الحقيقة الميدانية وحملات القياس","kind":"section","session":8,"hash":"3861dfc2","md":"#### [day1#s8] الحقيقة الميدانية وحملات القياس\n\n*الجلسة 8*\n\n- تقيّم مرجعًا من حيث الاستقلال والتوقيت والتمثيل\n- تحسب نصف عرض فترة الثقة لدقة فئة\n- توزع ميزانية حملة ميدانية على الفئات","notes":"","minutes":null,"lo":["LO3"]},{"id":"reference-is-data","n":69,"title":"المرجع الذي قسنا عليه له أخطاؤه، فاسأل عنه ما تسأله عن الخريطة","kind":"content","session":8,"hash":"51a623da","md":"#### [day1#reference-is-data] المرجع الذي قسنا عليه له أخطاؤه، فاسأل عنه ما تسأله عن الخريطة\n\n*المرجع بيانات أيضًا*\n\n- **الاستقلال.** هل رأى المسجّل الخريطة قبل أن يسجل؟ هل بُني المرجع من الصور نفسها؟\n- **التوقيت.** هل يصف المرجع السنة نفسها؟ محور يُزرع عامًا ويُترك عامًا.\n- **التمثيل.** هل النقاط عشوائية في كل فئة، أم حيث يسهل الوصول؟","notes":"اعترف بحدود مرجعنا: وضعه مؤلف المقرر من سلسلة صور Sentinel-2 لعام 2021، وحدود القرى رسمها بيده. مستقل عن الخريطة في الطريقة، لكنه ليس زيارة. ولهذا جاء الخطأ الثاني في المختبر 1.6 من المرجع جزئيًّا. اسأل: أي الثلاثة أضعف في مرجعنا؟","minutes":null,"lo":["LO3"]},{"id":"interval","n":70,"title":"دقة من ثلاثين نقطة تتأرجح كثيرًا؛ فترة الثقة تقول بكم","kind":"content","session":8,"hash":"edc7015c","md":"#### [day1#interval] دقة من ثلاثين نقطة تتأرجح كثيرًا؛ فترة الثقة تقول بكم\n\n*كم نثق بالرقم*\n\n```\n# ملف: interval\nhalf width = 1.96 x sqrt( p x (1 - p) / n )\n\np = 0.80, n = 30    half width = 0.14    0.66 to 0.94\np = 0.80, n = 120   half width = 0.07    0.73 to 0.87\n```\n\n> **قاعدة عملية.** أربعة أضعاف النقاط تقسم نصف العرض على اثنين.","notes":"الصيغة تقريب طبيعي لفترة ثقة 95% لنسبة، وتنهار عند دقة صفر أو واحد. الأرقام مثال، لا من الإقليم. اسأل: دقة فئة 0.80 من 30 نقطة، هل تكفي لاستخدام يحتاج 0.75؟ الجواب: الفترة تبدأ من 0.66، فلا نعرف بعد.","minutes":null,"lo":["LO3"]},{"id":"points-needed","n":71,"title":"اعكس الصيغة لتعرف عدد النقاط لنصف عرض تختاره","kind":"content","session":8,"hash":"554331cc","md":"#### [day1#points-needed] اعكس الصيغة لتعرف عدد النقاط لنصف عرض تختاره\n\n*كم نقطة نحتاج*\n\n```\n# ملف: sample size\nn = 1.96^2 x p x (1 - p) / h^2\n\np = 0.80, h = 0.10    n = 62\np = 0.50, h = 0.10    n = 97     the worst case\n```","notes":"عند p = 0.5 يبلغ p(1 − p) أقصاه، فهو أسوأ حالة. اطلب من القاعة أن تحسب n لـ p = 0.9 و h = 0.10: الجواب 35. الأرقام مثال.","minutes":null,"lo":["LO3"]},{"id":"budget-by-decision","n":72,"title":"وزّع زيارات الحملة على الفئات التي تقوم عليها قرارات","kind":"content","session":8,"hash":"09d30d25","md":"#### [day1#budget-by-decision] وزّع زيارات الحملة على الفئات التي تقوم عليها قرارات\n\n*الميزانية*\n\n1. **1 · القرارات** أي استخدام ينتظر أي فئة؟\n2. **2 · الفجوة** كم نقطة تنقص كل فئة؟\n3. **3 · التكلفة** هل بعض النقاط أغلى؟\n4. **4 · الترتيب** الأقرب إلى قرار أولًا\n\n> **أين يقع الخطأ.** وضع الزيارات كلها في الفئة الأسوأ دقة. الأسوأ ليس دائمًا الأهم، والسؤال عن كل فئة: أي قرار ينتظر قياسها؟","notes":"اسأل: فئة في الخريطة لم تصب أي نقطة، وكل نقاطها من فئة أخرى: نقيسها أكثر أم ندمجها في تلك الفئة؟ لا تذكر أي فئة في إقليمنا: يقررون في المختبر.","minutes":null,"lo":["LO3"]},{"id":"check-interval","n":73,"title":"هل نعرف بعد؟","kind":"quiz","session":8,"hash":"3aa31d93","md":"#### [day1#check-interval] هل نعرف بعد؟\n\n*نقطة تحقق*\n\n**سؤال:** جهة بيئية قاست دقة المستخدم لفئة «مانجروف» في خريطة: 0.85 من 20 نقطة. الاستخدام المقترح يحتاج 0.80 على الأقل. ما الحكم؟\n\n- أ. مسموح، لأن 0.85 أكبر من 0.80\n- ب. غير مسموح، لأن الدقة الحقيقية أقل من 0.80\n- ج. لا نعرف بعد: نجمع نقاطًا أكثر\n- د. نستعمل الدقة الكلية للخريطة بدلًا منها","notes":"الإجابة: ج. احسبها على السبورة. من اختار «أ» قرأ الرقم دون فترته. هذا السؤال من نوع فحص المواقف.","minutes":null,"lo":["LO3"]},{"id":"lab-1-8","n":74,"title":"خطة حملة ميدانية","kind":"lab","session":8,"hash":"ca4f7c6e","md":"#### [day1#lab-1-8] خطة حملة ميدانية\n\nالمختبر 1.8 · 20 دقيقة\n\nمن جدول الدقة الجاهز تحسب فترة الثقة لدقة المستخدم في كل فئة، والنقاط اللازمة لتضييقها، وتوزع ميزانية 120 زيارة على الفئات.\n\n[D1_8_field_campaign.html](https://sdaiaacademy.github.io/use-sec-211/labs/D1_8_field_campaign.html)\n\n- [ ] احسب نصف عرض الفترة لكل فئة (5 د)\n- [ ] احسب النقاط اللازمة لنصف عرض 0.10 (5 د)\n- [ ] وزع 120 زيارة مع تكلفة الأرض الجرداء (6 د)\n- [ ] اكتب قواعد الحملة: التوقيت والاستقلال (4 د)\n- [ ] ✱ إضافي: اكتب كيف تضمن ألا يرى فريق الحملة ما تقوله الخريطة قبل التسجيل","notes":"من لم يكمل المختبر 1.7 يبدأ من `start/accuracy_table.csv`. أكثر نقاش مفيد: ماذا نفعل بفئة دقتها صفر؟ اترك الطاولات تختلف، ثم اطلب سببًا من الاستخدامات لكل توزيع.","minutes":null,"lo":[]},{"id":"debrief-1-8","n":75,"title":"131 نقطة لازمة و120 في الميزانية: الترتيب قرار","kind":"content","session":8,"hash":"a21a7418","md":"#### [day1#debrief-1-8] 131 نقطة لازمة و120 في الميزانية: الترتيب قرار\n\n*بعد المختبر 1.8*\n\n| الفئة | نصف العرض اليوم | نقاط إضافية لازمة | توزيع مرجعي |\n| --- | --- | --- | --- |\n| مزروعة | 0.114 | 18 | 18 |\n| جرداء | 0.081 | 0 | 0 |\n| مبنية | 0.172 | 60 | 49 |\n| شجرية | 0.19 | 53 | 53 |\n\n> **العشبية.** كل نقاطها مزروعة على الأرض: تُدمج في المزروعة لهذا الإقليم، ولا تُقاس.","notes":"من تشغيل المختبر. التوزيع المرجعي: المزروعة أولًا لأن الاستخدامين C وF عليها، ثم الشجرية لأن E على بعد جزء من مئة من الحد، والباقي للمبنية. أي توزيع آخر مقبول بسبب مكتوب. والقواعد: نفس الموسم، والمسجّل لا يرى الخريطة، والنقاط عشوائية.","minutes":null,"lo":["LO3"]},{"id":"wrap-up","n":76,"title":"ثلاثة أشياء تبقى","kind":"content","session":8,"hash":"2e34ff9d","md":"#### [day1#wrap-up] ثلاثة أشياء تبقى\n\n*خلاصة اليوم*\n\n- **المصدر بحدّه.** لكل مصدر ما يعميه: الغيم، أو الحافة، أو الخلية الكبيرة. اكتبه بجانب كل اختيار.\n- **التنبيه سؤال.** نمط لا يتسق مع التصريح يقود إلى زيارة وخطاب يطلب. تسعة من ستة عشر كانوا صادقين.\n- **الدقة لكل فئة.** الرقم العالمي لا يصف إقليمك، والرقم الكلي يخفي الفئة الضعيفة.","notes":"اطلب من كل مشارك أن يكتب جملة واحدة: ما الذي سيسأله غدًا عن أول خريطة أو تنبيه يصله في عمله؟ اجمع ثلاث جمل وارجع إليها في الخريطة الختامية.","minutes":null,"lo":["LO1","LO2","LO3"]},{"id":"next","n":77,"title":"الماء: التنبؤ والري والتسرب، ثم الخريطة","kind":"content","session":8,"hash":"c19a3c35","md":"#### [day1#next] الماء: التنبؤ والري والتسرب، ثم الخريطة\n\n*غدًا*\n\n- أحضر جدول البيانات نفسه، وملفات المختبرات\n- فكّر في قرار ري أو قرار شبكة مياه تعرفه: متى يُتخذ، وعلى أي رقم\n- راجع ورقة العمل التحضيري: ستصير صفًّا في الخريطة","notes":"ذكّر بأن الفحص دون ذكاء اصطناعي في بداية المناقشة الختامية، بعد اليوم الثاني. وذكّر بالمتابعة المتعقبة بعد الورشة: تقييم حالتين من عملهم بالدليل نفسه.","minutes":null,"lo":[]}],"activities":[{"id":"check-sources-q1","slide":"check-sources","type":"single","prompt":"جهة بيئية تريد أن تعرف صباح الغد هل فاض سد ترابي صغير بعد عاصفة بدأت الليلة وستبقى غيومها يومين. ما المصدر الأول؟","options":[{"key":"أ","text":"صورة بصرية بدقة 10 أمتار، لأنها الأوضح في رؤية حدود الماء"},{"key":"ب","text":"صورة رادارية للسد، لأنها ترى الماء المكشوف عبر الغيوم ليلًا"},{"key":"ج","text":"بيانات إعادة التحليل للمطر الذي سقط على الإقليم في الليلة نفسها"},{"key":"د","text":"صورة حرارية، لأن سطح الماء أبرد من الأرض المحيطة به"}],"correct":[1],"explanation":"السؤال عن ماء مكشوف تحت غيوم، والرادار وحده بين الثلاثة يرى عبر الغيم ليلًا ونهارًا.","misconceptions":["الغيوم تحجب الصور البصرية يومين كاملين، والسؤال عن صباح الغد","","إعادة التحليل تصف المطر على خلية من 31 كم، ولا ترى الماء المكشوف عند السد","الحرارة السطحية تتأثر بالماء لكن دقتها أخشن، والرادار يرى الماء مباشرة عبر الغيم"],"lo":["LO1"]},{"id":"check-resolution-q1","slide":"check-resolution","type":"single","prompt":"مزارع يملك بستان نخيل مربعًا تقريبًا مساحته نصف هكتار. تريد الهيئة أن تتابع خضرته شهريًّا من الصور. أي دقة تعطي عشرة بكسلات نقية على الأقل؟","options":[{"key":"أ","text":"30 مترًا، لأن سلسلتها أطول وتكفي لمتابعة شهرية"},{"key":"ب","text":"250 مترًا، لأنها يومية والزيارة أهم من الدقة"},{"key":"ج","text":"10 أمتار، فهي تبقي بعد الحافة بكسلات نقية كافية"},{"key":"د","text":"لا شيء من الصور العامة، فلا بد من صور تجارية أدق"}],"correct":[2],"explanation":"ضلع البستان نحو 70 مترًا: 7 بكسلات بدقة 10 أمتار، و5 في 5 نقية بعد استبعاد الحافة، أي 25.","misconceptions":["ضلع البستان نحو 70 مترًا، أي بكسلين بدقة 30 مترًا، ولا يبقى بعد استبعاد الحافة شيء","البكسل بدقة 250 مترًا أكبر من البستان كله بأكثر من عشر مرات","","الدقة 10 أمتار تعطي نحو 25 بكسلًا نقيًّا، فلا حاجة إلى صور تجارية لهذا السؤال"],"lo":["LO1"]},{"id":"check-ndvi-q1","slide":"check-ndvi","type":"numeric","prompt":"بستان في واحة: متوسط الانعكاس الأحمر 0.08، وتحت الأحمر القريب 0.32، في موعد صافٍ. كم مؤشر الغطاء النباتي؟ (رقمان بعد الفاصلة)","options":[],"correct":[],"explanation":"(0.32 ناقص 0.08) على (0.32 زائد 0.08) = 0.24 على 0.40 = 0.60: خضرة متوسطة، كما في بستان متباعد الأشجار.","misconceptions":[],"lo":["LO2"],"answer":0.6,"tolerance":0.02,"unit":""},{"id":"check-flag-q1","slide":"check-flag","type":"single","prompt":"حقل صرّح صاحبه بعلف صيفي. أرقام سلسلته: قمة الشتاء 0.81، ومتوسط الصيف 0.15، وقمة الصيف 0.22. بقواعد الهيئة، ما الخطوة التالية؟","options":[{"key":"أ","text":"إنذار للمزارع بأن تصريحه غير صحيح"},{"key":"ب","text":"لا شيء، فالحقل مزروع والمزارع صرّح بزراعة"},{"key":"ج","text":"انتظار صور الموسم القادم قبل أي إجراء"},{"key":"د","text":"طلب تحقق: النمط شتوي والتصريح صيفي"}],"correct":[3],"explanation":"قمة شتاء عالية وصيف أجرد نمط شتوي، وقاعدة العلف الصيفي تطلب العكس. الخطوة طلب تحقق يصف ذلك.","misconceptions":["القاعدة تقرر من نسأل، لا من نعاقب: لا جزاء على صورة وحدها","النمط يخالف قاعدة العلف الصيفي في رقمين واضحين، فتجاهله يعطل القاعدة كلها","الشتاء الأخضر والصيف الأجرد يكذّبان العلف الصيفي، ولا حاجة إلى صور إضافية لطرح السؤال",""],"lo":["LO2"]},{"id":"check-letter-q1","slide":"check-letter","type":"single","prompt":"أي جملة تصلح في خطاب تحقق إلى مزارع صغير نبّهت الصور إلى قطعته؟","options":[{"key":"أ","text":"«نرجو تحديد موعد لزيارة الحقل، والزيارة للتحقق ولا تعني مخالفة.»"},{"key":"ب","text":"«تبيّن لنا أن قطعتكم مخالفة، ويُرجى تصحيح الوضع خلال أسبوع وإلا طُبّقت الغرامة.»"},{"key":"ج","text":"«أظهر نظام الذكاء الاصطناعي في الهيئة أن تصريحكم غير صحيح بدرجة عالية من الثقة.»"},{"key":"د","text":"«عليكم إثبات صحة تصريحكم بالمستندات قبل نهاية الموسم.»"}],"correct":[0],"explanation":"الجملة الأولى تطلب موعدًا وتقول صراحة إن الزيارة ليست مخالفة. البقية تحكم أو تهدد أو تنقل العبء.","misconceptions":["","تفترض المخالفة قبل الزيارة وتهدد بالجزاء، فتقلب طلب التحقق إلى اتهام","تقول للمزارع إن نظامًا قرر عنه، وتخفي أن الصورة تحتاج تحققًا من إنسان","تطلب من المزارع إثبات براءته وحده، ولا تعرض زيارة ولا حقًّا في الرد"],"lo":["LO2"]},{"id":"check-matrix-q1","slide":"check-matrix","type":"single","prompt":"في مصفوفة الساحل على الشريحة السابقة، الخريطة تقول «سبخة» في 30 نقطة. ماذا تقول هذه الأرقام؟","options":[{"key":"أ","text":"60% من سبخات الخريطة سبخة فعلًا، أي 9 من 15"},{"key":"ب","text":"30% من سبخات الخريطة سبخة فعلًا، والباقي غيرها"},{"key":"ج","text":"دقة الخريطة 66% لأن القطر 53 من 80 نقطة"},{"key":"د","text":"أكثر ما تخلط به الخريطة السبخة هو الماء المكشوف"}],"correct":[1],"explanation":"الصف ما تقوله الخريطة: 9 من 30 على القطر، أي 30%، والباقي جرداء في الغالب.","misconceptions":["يقسم على مجموع العمود (15) بدل مجموع الصف (30): هذه نسبة ما رأته الخريطة من سبخات الأرض، لا نسبة الصحيح من سبخات الخريطة","","الدقة الكلية تجمع القطر كله، والسؤال عن صف فئة واحدة","الخطأ الأكبر في الصف أرض جرداء (15) لا ماء (6)، فالقراءة معكوسة"],"lo":["LO3"]},{"id":"check-accuracy-q1","slide":"check-accuracy","type":"numeric","prompt":"في مصفوفة الساحل، عمود «جرداء» على الأرض فيه: 0 في صف الماء، و15 في صف السبخة، و26 في صف جرداء. كم دقة المنتج لفئة جرداء؟ (رقمان بعد الفاصلة)","options":[],"correct":[],"explanation":"القطر 26 على مجموع العمود 41 (0 زائد 15 زائد 26) = 0.63. دقة المستخدم هي التي تساوي 26 على 30 = 0.87.","misconceptions":[],"lo":["LO3"],"answer":0.63,"tolerance":0.01,"unit":""},{"id":"check-interval-q1","slide":"check-interval","type":"single","prompt":"جهة بيئية قاست دقة المستخدم لفئة «مانجروف» في خريطة: 0.85 من 20 نقطة. الاستخدام المقترح يحتاج 0.80 على الأقل. ما الحكم؟","options":[{"key":"أ","text":"مسموح، لأن 0.85 أكبر من 0.80"},{"key":"ب","text":"غير مسموح، لأن الدقة الحقيقية أقل من 0.80"},{"key":"ج","text":"لا نعرف بعد: نجمع نقاطًا أكثر"},{"key":"د","text":"نستعمل الدقة الكلية للخريطة بدلًا منها"}],"correct":[2],"explanation":"1.96 × الجذر التربيعي لـ (0.85 × 0.15 ÷ 20) ≈ 0.16، فالفترة من 0.69 إلى 1. الحد داخلها.","misconceptions":["الرقم المقيس فوق الحد، لكن نصف عرض فترته نحو 0.16، فقد تكون الدقة الحقيقية أقل من الحد بكثير","الرقم لا يقول إن الدقة أقل من الحد، بل إن العينة لا تكفي للحكم في أي اتجاه","","الدقة الكلية لا تغني عن دقة الفئة التي يقوم عليها القرار"],"lo":["LO3"]}],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"day1.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

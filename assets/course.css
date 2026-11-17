@@ -1,0 +1,8 @@
+/* USE-SEC-211: each teaching day has eight sessions, so the projected agenda runs in two columns,
+   sessions 1 to 4 on the first and 5 to 8 on the second. The reading view on a phone keeps the
+   engine's single column. */
+html:not(.ax-view-read) .deck > .slide .agenda:has(> .item:nth-child(6)) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: column;
+  grid-template-rows: repeat(4, auto);
+}

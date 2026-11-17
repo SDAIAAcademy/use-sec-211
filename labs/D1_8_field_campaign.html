@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 1.8 · خطة حملة ميدانية · الذكاء الاصطناعي في الزراعة والمياه والبيئة</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D1_8_field_campaign.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day1.html#lab-1-8">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 1.8</span>
+<h1>خطة حملة ميدانية</h1>
+<p>من جدول الدقة الجاهز تحسب فترة الثقة لدقة المستخدم في كل فئة، والنقاط اللازمة لتضييقها، وتوزع ميزانية 120 زيارة على الفئات.</p>
+<div class="meta"><span>20 دقيقة</span><span>اليوم 1</span><span>الجلسة 8: الحقيقة الميدانية وحملات القياس</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="1.8">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>نصف عرض فترة الثقة 95% لدقة المستخدم في كل فئة.</li>
+    <li>عدد النقاط اللازم لكل فئة حتى لا يزيد نصف العرض عن 0.10.</li>
+    <li>خطة حملة ميدانية من 120 زيارة، موزعة على الفئات بسبب مكتوب، وقواعد التوقيت والاستقلال.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/start/accuracy_table.csv" target="_blank"><b>start/accuracy_table.csv</b><span>عدد النقاط ودقة المستخدم ودقة المنتج لكل فئة (نقطة البداية، لا تحتاج المختبر 1.7)</span></a>
+  <a href="files/landcover/campaign_costs.txt" target="_blank"><b>landcover/campaign_costs.txt</b><span>الميزانية والتكلفة والهدف والصيغة</span></a>
+  <a href="files/landcover/proposed_uses.csv" target="_blank"><b>landcover/proposed_uses.csv</b><span>الاستخدامات المقترحة، لتعرف أي الفئات أهم</span></a>
+</div>
+<p class="small">الأرقام من الخريطة المفتوحة ESA WorldCover 2021 (© ESA WorldCover project 2021، برخصة CC BY 4.0) ومرجع من صور Sentinel-2 (يحتوي على بيانات Copernicus Sentinel معدّلة، 2021)، كما في المختبرين 1.6 و1.7. الميزانية والتكلفة اصطناعيتان. المساعد الذكي مسموح بدور المعلّم.</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · احسب نصف عرض الفترة لكل فئة <span class="min">5 دقائق</span></h3>
+  <pre class="code" data-file="accuracy_table.csv"><code>E2  =1.96*SQRT(C2*(1-C2)/B2)      half width of the 95% interval</code></pre>
+  <p>فئة دقتها صفر أو واحد تعطي صفرًا هنا، وهذا لا يعني يقينًا: الصيغة التقريبية تنهار عند الطرفين. ماذا تفعل بفئة كل نقاطها خطأ؟</p>
+</div>
+
+<div class="step">
+  <h3>2 · احسب النقاط اللازمة لنصف عرض 0.10 <span class="min">5 دقائق</span></h3>
+  <pre class="code" data-file="accuracy_table.csv"><code>F2  =ROUNDUP(1.96^2*C2*(1-C2)/0.10^2,0)   points needed
+G2  =MAX(0,F2-B2)                          extra points</code></pre>
+</div>
+
+<div class="step">
+  <h3>3 · وزّع 120 زيارة <span class="min">6 دقائق</span></h3>
+  <p>مجموع النقاط الإضافية قد يزيد عن الميزانية. رتّب الفئات بحسب الاستخدامات التي تعتمد عليها وقربها من أن تصبح مسموحة، وتذكر أن النقطة في الأرض الجرداء البعيدة تحسب زيارتين.</p>
+  <table>
+    <tr><th>الفئة</th><th>نقاط إضافية لازمة</th><th>زيارات في خطتك</th><th>السبب</th></tr>
+    <tr><td>مزروعة</td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>جرداء</td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>مبنية</td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>شجرية</td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+  </table>
+</div>
+
+<div class="step">
+  <h3>4 · اكتب قواعد الحملة <span class="min">4 دقائق</span></h3>
+  <p>ثلاث قواعد على الأقل: متى تُجمع النقاط بالنسبة إلى سنة الخريطة، ومن يسجّل الفئة وماذا يرى قبل التسجيل، وكيف تُختار النقاط داخل كل فئة.</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>اكتب كيف تضمن عمليًّا ألا يرى فريق الحملة ما تقوله الخريطة قبل أن يسجل ما يراه على الأرض.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>ما نصف عرض الفترة لدقة المستخدم في الفئة المبنية؟ وماذا يعني ذلك لرقم 0.367؟</li>
+  <li>كم نقطة إضافية تحتاج الفئة المزروعة؟ والجرداء؟</li>
+  <li>لماذا لا تُجمع النقاط المرجعية من المكتب بالنظر إلى الخريطة نفسها؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب: المفتاح والفخاخ</summary>
+  <ul>
+    <li><b>نصف العرض:</b> مزروعة 0.114، جرداء 0.081، مبنية 0.172، شجرية 0.19. العشبية صفر بالصيغة، لكن دقتها صفر لأن نقاطها كلها مزروعة في المرجع: القرار المعقول دمجها في المزروعة لهذا الإقليم، لا قياسها.</li>
+    <li><b>النقاط اللازمة لنصف عرض 0.10:</b> مزروعة 78 (إضافية 18)، جرداء 40 (لا إضافة)، مبنية 90 (إضافية 60)، شجرية 73 (إضافية 53). المجموع 131، أكثر من الميزانية.</li>
+    <li><b>توزيع مرجعي:</b> 18 للمزروعة (تعتمد عليها الاستخدامات C وF)، و53 للشجرية (الاستخدام E على بعد 0.011 من الحد)، و49 للمبنية. لا شيء للجرداء. أي توزيع آخر مقبول إذا كتب سببه من الاستخدامات.</li>
+    <li><b>قواعد الحملة:</b> النقاط في موسم سنة الخريطة أو أقرب ما يمكن، والمسجّل لا يرى فئة الخريطة، والنقاط عشوائية داخل كل فئة لا «حيث يسهل الوصول».</li>
+    <li><b>الفخ:</b> وضع الزيارات كلها في الفئة الأسوأ دقة. الأسوأ ليس دائمًا الأهم.</li>
+    <li>التحقق: <code>uv run labs/solutions/check.py 1.8</code>.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D1_7_accuracy_uses.html" rel="prev">→ المختبر السابق</a><a href="D2_1_forecast_skill.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في الزراعة والمياه والبيئة<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 9c39248</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:17:50Z","version":"2027.1.0","commit":"9c39248"},"course":{"id":"use-sec-211","code":"USE-SEC-211","title":"الذكاء الاصطناعي في الزراعة والمياه والبيئة","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-211/","repo":"SDAIAAcademy/use-sec-211","home":"../index.html"},"lab":{"id":"1.8","title":"خطة حملة ميدانية","summary":"من جدول الدقة الجاهز تحسب فترة الثقة لدقة المستخدم في كل فئة، والنقاط اللازمة لتضييقها، وتوزع ميزانية 120 زيارة على الفئات.","minutes":20,"day":1,"unit":"اليوم 1","session":8,"deck":"../slides/day1.html#lab-1-8","prev":"D1_7_accuracy_uses.html","next":"D2_1_forecast_skill.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

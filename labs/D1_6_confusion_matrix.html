@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 1.6 · مصفوفة الالتباس من 200 نقطة · الذكاء الاصطناعي في الزراعة والمياه والبيئة</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D1_6_confusion_matrix.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day1.html#lab-1-6">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 1.6</span>
+<h1>مصفوفة الالتباس من 200 نقطة</h1>
+<p>دون مساعد ذكي: تعد 200 نقطة مرجعية في نافذة الإقليم بحسب فئة الخريطة المفتوحة وفئة المرجع، فتبني مصفوفة الالتباس وتقرأ أين تخطئ الخريطة.</p>
+<div class="meta"><span>25 دقيقة</span><span>اليوم 1</span><span>الجلسة 6: خرائط الغطاء الأرضي من النماذج المفتوحة</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="1.6">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>مصفوفة الالتباس للخريطة المفتوحة على 200 نقطة مرجعية في نافذة الإقليم: خمس فئات في الصفوف (الخريطة) وخمس في الأعمدة (المرجع).</li>
+    <li>أكثر خطأين تكرارًا، مكتوبين بكلمات: «الخريطة تقول كذا، والأرض كذا».</li>
+  </ul>
+</div>
+
+<div class="callout warn"><b>دون مساعد ذكي.</b> هذا المختبر والمختبر 1.7 جزء من فحص الدقة الذي تشترط سياسة المقرر أن يتم دون ذكاء اصطناعي. جدول البيانات والآلة الحاسبة مسموحان.</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/landcover/points.csv" target="_blank"><b>landcover/points.csv</b><span>200 نقطة: فئة الخريطة وفئة المرجع لكل منها</span></a>
+  <a href="files/landcover/class_legend.txt" target="_blank"><b>landcover/class_legend.txt</b><span>الفئات الخمس، وكيف وُضعت فئة المرجع</span></a>
+</div>
+<p class="small">الخريطة حقيقية: ESA WorldCover 10 m 2021 v200، منتج مفتوح برخصة CC BY 4.0، أنتجه نموذج تعلم آلي من صور Sentinel-1 وSentinel-2 (© ESA WorldCover project 2021، ويحتوي على بيانات Copernicus Sentinel معدّلة لعام 2021 عالجها اتحاد ESA WorldCover). سُحبت النقاط عشوائيًّا من كل فئة في الخريطة (60 مزروعة، 60 جرداء، 30 مبنية، 30 عشبية، 20 شجرية). فئة المرجع وضعها مؤلف المقرر من سلسلة سنة كاملة من صور Sentinel-2 لعام 2021 عند كل نقطة، وحدود يدوية للتجمعات السكنية: مرجع من الصور لا من زيارة ميدانية، وحدوده موضوع الجلسة 1.8. والمرجع يحتوي على بيانات Copernicus Sentinel معدّلة (2021).</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · اقرأ دليل الفئات وكيف وُضع المرجع <span class="min">4 دقائق</span></h3>
+  <p>الصفوف ما تقوله الخريطة، والأعمدة ما يقوله المرجع. القطر حيث يتفقان.</p>
+</div>
+
+<div class="step">
+  <h3>2 · ابنِ المصفوفة بالعد الشرطي <span class="min">10 دقائق</span></h3>
+  <p>في ورقة جديدة: أسماء الفئات الخمس في <code>A2:A6</code> (الخريطة) وفي <code>B1:F1</code> (المرجع)، بالترتيب نفسه: مزروعة، جرداء، مبنية، عشبية، شجرية. ثم صيغة واحدة تُنسخ إلى الخلايا الخمس والعشرين:</p>
+  <pre class="code" data-file="matrix"><code>B2  =COUNTIFS(points!$B:$B,$A2,points!$C:$C,B$1)</code></pre>
+</div>
+
+<div class="step">
+  <h3>3 · تحقق أن مجموعها 200 <span class="min">3 دقائق</span></h3>
+  <p>مجموع الصفوف وحدها، ومجموع الأعمدة وحدها، والمجموع الكلي. مجموع كل صف يجب أن يساوي عدد النقاط المسحوبة من تلك الفئة.</p>
+</div>
+
+<div class="step">
+  <h3>4 · اكتب أكثر خطأين تكرارًا <span class="min">8 دقائق</span></h3>
+  <p>أكبر خليتين خارج القطر. لكل منهما جملة: «في N نقطة تقول الخريطة <span class="ph">كذا</span> والمرجع <span class="ph">كذا</span>»، ثم تفسير محتمل بما تعرفه عن الإقليم: محاور دائرية، وبساتين، وطرق، وقرى.</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>من النقاط التي يقول المرجع إنها مزروعة، كم نسبة ما رأته الخريطة عشبية أو جرداء؟ وماذا يعني ذلك لمن يحسب مساحة الأراضي المزروعة من الخريطة؟</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>كم نقطة على القطر؟</li>
+  <li>ما فئة الخريطة التي لم تصب أي نقطة فيها؟</li>
+  <li>أي خطأ أكثر تكلفة لهيئة تصدر تصاريح المياه الزراعية، ولماذا؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب: المفتاح والفخاخ</summary>
+  <ul>
+    <li><b>المصفوفة</b> (الصف: الخريطة، الأعمدة بالترتيب مزروعة، جرداء، مبنية، عشبية، شجرية): مزروعة 43، 12، 1، 0، 4. جرداء 0، 53، 7، 0، 0. مبنية 0، 19، 11، 0، 0. عشبية 27، 3، 0، 0، 0. شجرية 0، 5، 0، 0، 15. على القطر 122 من 200.</li>
+    <li><b>أكبر خطأين:</b> 27 نقطة عشبية في الخريطة ومزروعة في المرجع: محاور برسيم خضراء طوال السنة رأتها الخريطة مرعى. و19 نقطة مبنية في الخريطة وجرداء في المرجع: طرق ومنشآت مزارع متفرقة خارج حدود القرى التي رسمها المؤلف، وهذا خطأ في المرجع بقدر ما هو في الخريطة.</li>
+    <li><b>الإضافي:</b> المرجع المزروع 70 نقطة، رأت الخريطة منها 27 عشبية و0 جرداء: نحو 39% غابت عن فئة المزروعة.</li>
+    <li><b>الفخ:</b> قلب الصفوف والأعمدة. اطلب أن يقولوا بصوت عالٍ ماذا يعني الرقم 27 قبل أن يكملوا.</li>
+    <li>التحقق: <code>uv run labs/solutions/check.py 1.6</code>.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D1_5_field_checks.html" rel="prev">→ المختبر السابق</a><a href="D1_7_accuracy_uses.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في الزراعة والمياه والبيئة<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 9c39248</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:17:50Z","version":"2027.1.0","commit":"9c39248"},"course":{"id":"use-sec-211","code":"USE-SEC-211","title":"الذكاء الاصطناعي في الزراعة والمياه والبيئة","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-211/","repo":"SDAIAAcademy/use-sec-211","home":"../index.html"},"lab":{"id":"1.6","title":"مصفوفة الالتباس من 200 نقطة","summary":"دون مساعد ذكي: تعد 200 نقطة مرجعية في نافذة الإقليم بحسب فئة الخريطة المفتوحة وفئة المرجع، فتبني مصفوفة الالتباس وتقرأ أين تخطئ الخريطة.","minutes":25,"day":1,"unit":"اليوم 1","session":6,"deck":"../slides/day1.html#lab-1-6","prev":"D1_5_field_checks.html","next":"D1_7_accuracy_uses.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

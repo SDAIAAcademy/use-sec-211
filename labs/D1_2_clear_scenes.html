@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 1.2 · كم صورة صافية تصلنا؟ · الذكاء الاصطناعي في الزراعة والمياه والبيئة</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D1_2_clear_scenes.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day1.html#lab-1-2">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 1.2</span>
+<h1>كم صورة صافية تصلنا؟</h1>
+<p>من قائمة حقيقية لمشاهد Sentinel-2 فوق الإقليم لسنة كاملة، تعد الصور الصافية لكل شهر، وتجد المشاهد التي يضلل فيها رقم الغيم، وتحسب البكسلات النقية لأربعة أحجام من القطع.</p>
+<div class="meta"><span>20 دقيقة</span><span>اليوم 1</span><span>الجلسة 2: الدقة المكانية والزيارة والغيوم</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="1.2">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>عدد المشاهد الصافية فوق نافذة الإقليم لكل شهر من أكتوبر 2023 إلى سبتمبر 2024.</li>
+    <li>المشاهد التي يقول رقم غيمها إنها صافية وهي ليست كذلك فوق الإقليم.</li>
+    <li>جدول البكسلات النقية لأربعة أحجام من القطع بثلاث دقات مكانية، وحكم: أي مصدر يكفي لأي حجم.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/imagery/scenes.csv" target="_blank"><b>imagery/scenes.csv</b><span>144 مشهدًا حقيقيًّا من Sentinel-2 فوق نافذة الإقليم التوضيحي: التاريخ، والقمر، ونسبة الغيم في المشهد كله، ونسبة الصافي فوق النافذة</span></a>
+  <a href="files/imagery/plot_sizes.csv" target="_blank"><b>imagery/plot_sizes.csv</b><span>أربعة أحجام نموذجية من القطع في الإقليم</span></a>
+</div>
+<p class="small">قائمة المشاهد حقيقية: مشاهد Sentinel-2 من المستوى 2A لمربع واحد من شبكة القمر فوق نافذة من مزارع المحاور الدائرية، من فهرس Earth Search العام. لا يذكر المقرر موقع النافذة: المكان والقطع في المختبرات التالية توضيحية. «نسبة الصافي فوق النافذة» حسبها مؤلف المقرر من طبقة تصنيف المشهد (SCL) المرافقة لكل صورة. يحتوي الملف على بيانات Copernicus Sentinel معدّلة (2023 و2024).</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · افتح قائمة المشاهد واقرأ أعمدتها <span class="min">دقيقتان</span></h3>
+  <p><code>C</code> نسبة الغيم في المشهد كله (نحو 110 في 110 كم)، و<code>D</code> نسبة البكسلات الصافية فوق نافذتنا الصغيرة. سنعد المشهد صافيًا إذا كانت <code>D</code> تسعين أو أكثر.</p>
+</div>
+
+<div class="step">
+  <h3>2 · عد المشاهد الصافية لكل شهر <span class="min">6 دقائق</span></h3>
+  <pre class="code" data-file="scenes.csv"><code>E2  =IF(D2&gt;=90,1,0)          clear over the window
+F2  =LEFT(TEXT(A2,"yyyy-mm-dd"),7)   the month
+per month: =SUMIFS(E:E,F:F,"2024-01")  and =COUNTIFS(F:F,"2024-01")</code></pre>
+  <table>
+    <tr><th>الشهر</th><th>المشاهد</th><th>الصافية</th></tr>
+    <tr><td>2023-11</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>2024-01</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>2024-07</td><td class="fill"></td><td class="fill"></td></tr>
+  </table>
+  <p>أكمل الجدول للأشهر الاثني عشر في ورقتك.</p>
+</div>
+
+<div class="step">
+  <h3>3 · جد المشاهد التي يضلل فيها رقم الغيم <span class="min">4 دقائق</span></h3>
+  <p>المشهد الذي يقل غيمه الكلي عن 20 ولا يبلغ صافي نافذتنا 90: من يختار الصور برقم المشهد وحده سيقبلها.</p>
+  <pre class="code" data-file="scenes.csv"><code>=COUNTIFS(C:C,"&lt;20",D:D,"&lt;90")</code></pre>
+</div>
+
+<div class="step">
+  <h3>4 · احسب البكسلات النقية لكل حجم ودقة <span class="min">5 دقائق</span></h3>
+  <p>البكسل النقي يقع كله داخل القطعة. تقريب كافٍ: قطعة مربعة بالمساحة نفسها، ونستبعد صفًّا من البكسلات على كل حافة. الدقات: 10 أمتار (Sentinel-2)، و30 مترًا (Landsat)، و250 مترًا (MODIS).</p>
+  <pre class="code" data-file="plot_sizes.csv"><code>C2  =MAX(0,FLOOR(SQRT(B2*10000)/10,1)-2)^2     10 m
+D2  =MAX(0,FLOOR(SQRT(B2*10000)/30,1)-2)^2     30 m
+E2  =MAX(0,FLOOR(SQRT(B2*10000)/250,1)-2)^2    250 m</code></pre>
+</div>
+
+<div class="step">
+  <h3>5 · اكتب أي مصدر يكفي لكل حجم <span class="min">3 دقائق</span></h3>
+  <p>قاعدة عمل: تحتاج نحو عشرة بكسلات نقية على الأقل لتثق بمتوسط القطعة. لكل حجم: أي الدقات الثلاث تكفي؟ ثم سطر لندوى الشملان: هل تكفي الصور الصافية في الشتاء لرصد محصول شتوي؟</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>احسب أطول فجوة بالأيام بين مشهدين صافيين من نوفمبر إلى فبراير، واكتب ما يعنيه ذلك لمن يريد رؤية موعد الزراعة.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>كم مشهدًا صافيًا في يناير 2024؟ وفي يوليو؟</li>
+  <li>كم مشهدًا يضلل فيه رقم الغيم الكلي؟</li>
+  <li>كم بكسلًا نقيًّا في حيازة من 0.4 هكتار بدقة 10 أمتار؟ وبدقة 30 مترًا؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب: المفتاح والفخاخ</summary>
+  <ul>
+    <li><b>المشاهد:</b> 144، منها 112 صافية فوق النافذة. الصافية لكل شهر من أكتوبر 2023 إلى سبتمبر 2024: 8، 6، 6، 8، 7، 6، 11، 12، 12، 12، 13، 11. الشتاء أفقر شهور السنة، وهو موسم القمح.</li>
+    <li><b>رقم الغيم المضلل:</b> 5 مشاهد غيمها الكلي أقل من 20 وصافي النافذة أقل من 90 (أسوأها 2023-11-20: غيم 14.1 وصافٍ 43.6). والعكس يحدث أيضًا: مشاهد غيمها الكلي عالٍ ونافذتنا صافية، فيرفضها من يقرأ رقم المشهد وحده.</li>
+    <li><b>البكسلات النقية</b> (10، 30، 250 مترًا): محور كبير 50 هكتارًا 4,624 و441 و0؛ محور صغير 12 هكتارًا 1,024 و81 و0؛ مزرعة عائلية 2 هكتار 144 و4 و0؛ حيازة 0.4 هكتار 16 و0 و0. الحيازة الصغيرة لا تُرى إلا بدقة 10 أمتار، وبالكاد.</li>
+    <li><b>الإضافي:</b> أطول فجوة بين مشهدين صافيين من نوفمبر إلى فبراير 12 يومًا.</li>
+    <li><b>الفخ:</b> عمود التاريخ يُقرأ نصًّا في بعض البرامج وتاريخًا في غيرها؛ <code>TEXT</code> تعمل في الحالين، و<code>LEFT(A2,7)</code> وحدها تعمل إن قُرئ نصًّا.</li>
+    <li>التحقق: <code>uv run labs/solutions/check.py 1.2</code>.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D1_1_monitoring_sources.html" rel="prev">→ المختبر السابق</a><a href="D1_3_ndvi_series.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في الزراعة والمياه والبيئة<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 9c39248</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:17:50Z","version":"2027.1.0","commit":"9c39248"},"course":{"id":"use-sec-211","code":"USE-SEC-211","title":"الذكاء الاصطناعي في الزراعة والمياه والبيئة","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-211/","repo":"SDAIAAcademy/use-sec-211","home":"../index.html"},"lab":{"id":"1.2","title":"كم صورة صافية تصلنا؟","summary":"من قائمة حقيقية لمشاهد Sentinel-2 فوق الإقليم لسنة كاملة، تعد الصور الصافية لكل شهر، وتجد المشاهد التي يضلل فيها رقم الغيم، وتحسب البكسلات النقية لأربعة أحجام من القطع.","minutes":20,"day":1,"unit":"اليوم 1","session":2,"deck":"../slides/day1.html#lab-1-2","prev":"D1_1_monitoring_sources.html","next":"D1_3_ndvi_series.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

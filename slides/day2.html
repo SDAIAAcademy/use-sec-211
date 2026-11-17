@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="deck" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>اليوم 2 · الماء: التنبؤ والري والتسرب، ثم الخريطة · الذكاء الاصطناعي في الزراعة والمياه والبيئة</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="day2.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<div class="deck" data-course="الذكاء الاصطناعي في الزراعة والمياه والبيئة" data-track="fluency" data-day="اليوم 2">
+<section class="slide title" id="title" data-auto="title" data-label="الترحيب" data-n="1">
+  <div class="kicker">أكاديمية سدايا · الذكاء الاصطناعي في الزراعة والمياه والبيئة</div>
+  <h1>الماء: التنبؤ والري والتسرب، ثم الخريطة</h1>
+  <p class="lead mt">اليوم 2: مهارة التنبؤ أمام المناخ المعتاد، وجدولا الري، والتدفق الليلي، ثم خريطة الفرص والمخاطر</p>
+  <div class="meta"><span class="track">مسار الطلاقة في البيانات والذكاء الاصطناعي</span><span>يومان تدريبيان + يوم للمشروع الختامي</span><span>8 جلسات · 8 مختبرات</span><span>USE-SEC-211</span></div>
+  <aside class="notes"><p>رحّب، واسأل: من يتذكر رقمًا واحدًا من الأمس؟ اطلب ثلاثة أرقام، واسأل عن كل منها: على كم نقطة أو قطعة قام؟ اليوم ننتقل من الصورة إلى الماء: كم نروي، وأين يتسرب، ثم نجمع كل ذلك في خريطة فرص ومخاطر لوكيل الهيئة.</p></aside>
+</section>
+
+<section class="slide" id="agenda" data-auto="agenda" data-label="جدول اليوم" data-n="2">
+  <div class="kicker">اليوم</div>
+  <h2>الماء: التنبؤ والري والتسرب، ثم الخريطة</h2>
+  <div class="agenda"><div class="item"><div><b>الجلسة 1 · إعادة التحليل والتنبؤ ونماذج الطقس</b><small>إعادة التحليل والتنبؤ، والمهارة أمام المناخ</small></div></div><div class="item"><div><b>الجلسة 2 · ميزان ماء التربة والجدول الثابت</b><small>ميزان الماء في التربة ويوم الإجهاد</small></div></div><div class="item"><div><b>الجلسة 3 · جدول ري يقوده التنبؤ</b><small>جدول يرى ثلاثة أيام أمام جدول ثابت</small></div></div><div class="item"><div><b>الجلسة 4 · قول عدم اليقين للمزارع</b><small>مدى بدل رقم واحد، وكلمات لمزارع</small></div></div><div class="item"><div><b>الجلسة 5 · محاسبة المياه والتدفق الليلي</b><small>ميزان المياه والتدفق الليلي الأدنى</small></div></div><div class="item"><div><b>الجلسة 6 · إنذارات تسرب يحتملها الفريق</b><small>العتبة بين الإنذار والإصلاح وطاقة الفريق</small></div></div><div class="item"><div><b>الجلسة 7 · الجفاف والغبار والحر، وحقوق البيانات</b><small>تنبيهات الطقس، ومن يملك بيانات المزرعة</small></div></div><div class="item"><div><b>الجلسة 8 · خريطة الفرص والمخاطر</b><small>أربعة معايير وصفحة تدافع عنها</small></div></div></div>
+  <aside class="notes"><p>ثماني جلسات مثل الأمس. الجلسات الأربع الأولى عن الري في مزرعة واحدة، والجلستان التاليتان عن شبكة مياه الشرب، والأخيرتان عن الحقوق والخريطة. المختبر الأخير هو مسودة الخريطة التي يعرضونها في المناقشة الختامية.</p></aside>
+</section>
+
+<section class="slide" id="review-day1" data-lo="LO3" data-n="3">
+  <div class="kicker">مراجعة الأمس</div>
+  <h2>خريطة جديدة على مكتبك</h2>
+  <div class="quiz" data-type="single" data-lo="LO3" data-id="review-day1-q1">
+    <p class="lead">مورد يعرض خريطة نخيل لواحة، ويقول إن دقتها الكلية 92%. تريد الهيئة أن ترسل بها تنبيه سوسة النخيل إلى كل صاحب نخيل. ما أول ما تطلبه؟</p>
+    <div class="opts">
+      <div class="opt" data-why="الدقة الكلية قد تكون عالية وفئة النخيل نفسها ضعيفة، فالرقم الثاني لا يغير السؤال" data-k="أ">دقة كلية من سنة أحدث، لأن الواحات تتغير كل سنة</div>
+      <div class="opt" data-why="الخريطة ستوجه تنبيهًا لا جزاءً، فالقرار الفردي ليس سبب الرفض هنا" data-k="ب">لا شيء، فإرسال أي تنبيه من خريطة قرار فردي مرفوض</div>
+      <div class="opt" data-why="دقة المستخدم تقول كم تنبيهًا يذهب إلى غير أصحاب النخيل، والسؤال عمن لا يصله التنبيه" data-k="ج">دقة المستخدم لفئة النخيل، لأنها تخص من يقرأ الخريطة</div>
+      <div class="opt" data-ok data-k="د">دقة المنتج للنخيل في الواحة، لأنها تقول من تفوّته</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> تنبيه يصل إلى كل صاحب نخيل يتعثر بما تفوّته الخريطة، وهذا دقة المنتج، مقيسة في الواحة نفسها.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: د. يربط بين جلستي 1.7 و1.8. من اختار «ج» حفظ الأسماء وعكس المعنى: اسأله «من يتضرر إن فاتته الخريطة؟». ثم انتقل: اليوم الأرقام ليست دقة خريطة، بل ملم ماء ومتر مكعب.</p></aside>
+</section>
+
+<!-- الجلسة 1 -->
+
+<section class="slide section" id="s1" data-auto="section" data-session="1" data-n="4">
+  <div class="kicker">الجلسة 1</div>
+  <h1>إعادة التحليل والتنبؤ ونماذج الطقس</h1>
+  <ul class="bullets outcomes"><li>تميز إعادة التحليل من التنبؤ اليومي والموسمي</li><li>تحسب مهارة تنبؤ أمام المناخ المعتاد</li><li>تقرأ ادعاء تنبؤ وتسأل عن مهارته</li></ul>
+  <div class="sess-no">01</div>
+</section>
+
+<section class="slide" id="three-kinds-of-weather-data" data-lo="LO1 LO4" data-n="5" data-session="1">
+  <div class="kicker">ثلاثة أنواع</div>
+  <h2>ما حدث، وما سيحدث غدًا، وما سيكون عليه الموسم</h2>
+  <table class="t">
+    <tr><th></th><th>إعادة التحليل</th><th>التنبؤ اليومي</th><th>التنبؤ الموسمي</th></tr>
+    <tr><td><b>يجيب عن</b></td><td>ماذا حدث؟</td><td>ماذا في الأيام القادمة؟</td><td>هل سيكون الموسم أجف أو أحر من المعتاد؟</td></tr>
+    <tr><td><b>المدى</b></td><td>من 1940 إلى أيام مضت</td><td>حتى نحو 10 أيام</td><td>أشهر</td></tr>
+    <tr><td><b>يصلح لـ</b></td><td>الميزان والمقارنة بالمعتاد</td><td>قرار ري هذا الأسبوع</td><td>تخطيط، باحتمالات لا بأرقام</td></tr>
+  </table>
+  <aside class="notes"><p>التنبؤ الموسمي يقول «احتمال أن يكون الموسم أجف من المعتاد 60%»، لا «سينزل 40 ملم». اسأل: أي الثلاثة تستعمل جهتك اليوم، وفي أي قرار؟ ستلقى التنبؤ الموسمي مرة أخرى في حالة استخدام في الخريطة.</p></aside>
+</section>
+
+<section class="slide" id="ai-weather-models" data-lo="LO1" data-n="6" data-session="1">
+  <div class="kicker">نماذج الطقس بالتعلم الآلي</div>
+  <h2>نماذج تتعلم الطقس من عقود إعادة التحليل، وتتنبأ في دقائق</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>تتعلم من عقود من بيانات ERA5 كيف يتغير الطقس من ست ساعات إلى التي تليها</li>
+      <li>أمثلة: GraphCast من Google DeepMind، وAIFS من المركز الأوروبي للتنبؤات الجوية متوسطة المدى</li>
+      <li>أسرع بكثير من النماذج الفيزيائية، ومنافسة لها في كثير من المقاييس</li>
+    </ul>
+    <div class="card c-amber"><h4>السؤال نفسه لكل نموذج</h4><p class="small mb0">ما مهارته في إقليمي، للمتغير الذي يهمني، وبالمهلة التي أحتاجها؟ لا: هل هو بالذكاء الاصطناعي.</p></div>
+  </div>
+  <aside class="notes"><p>AIFS أصبح تشغيليًّا في المركز الأوروبي في 2025، وGraphCast نُشر في مجلة Science في 2023. لا نشغّل أيًّا منهما في الورشة. التنبؤات في المختبر من خدمة Open-Meteo التي تجمع نماذج تشغيلية. اسأل: هل يغير مصدر التنبؤ ما نقيسه به؟ الجواب: لا.</p></aside>
+</section>
+
+<section class="slide" id="skill-vs-climatology" data-lo="LO4" data-n="7" data-session="1">
+  <div class="kicker">المهارة</div>
+  <h2>التنبؤ يُقاس أمام ما تعرفه بلا تنبؤ: المناخ المعتاد</h2>
+  <div class="flow">
+    <div class="step c-cyan"><b>المناخ المعتاد</b>متوسط اليوم نفسه في سنوات سابقة كثيرة</div>
+    <div class="arrow">←</div>
+    <div class="step c-teal"><b>الخطأ</b>متوسط الفرق المطلق عما حدث، لكل منهما</div>
+    <div class="arrow">←</div>
+    <div class="step c-amber"><b>المهارة</b>1 ناقص خطأ التنبؤ على خطأ المناخ</div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> «التنبؤ دقيق: خطؤه نصف ملم فقط.» نصف ملم قد يكون أسوأ من المناخ المعتاد في صيف مستقر.</div>
+  <aside class="notes"><p>صفر يعني أن التنبؤ لا يضيف شيئًا إلى ما نعرفه سلفًا، وسالب يعني أنه أسوأ. لا تذكر أرقام الإقليم: يحسبونها. اسأل: لماذا لا نقيس أمام الصفر؟ لأن أي أحد يستطيع أن يقول «غدًا مثل المعتاد».</p></aside>
+</section>
+
+<section class="slide" id="skill-example" data-lo="LO4" data-n="8" data-session="1">
+  <div class="kicker">مثال</div>
+  <h2>حرارة الظهيرة في مدينة ساحلية: تنبؤ يغلب المعتاد بالثلث</h2>
+  <pre class="code" data-file="example"><code>MAE forecast      1.2 C
+MAE climatology   1.8 C
+skill = 1 - 1.2 / 1.8 = 0.33</code></pre>
+  <div class="callout note mt"><b>وماذا عن الانحياز؟</b> متوسط (التنبؤ ناقص الواقع). إن كان سالبًا فالتنبؤ يقدّر أقل من الواقع في المتوسط، وكل قرار يبنى عليه يحتاج هامشًا.</div>
+  <aside class="notes"><p>الأرقام مخترعة ولمتغير غير متغير المختبر. اكتب الحساب على السبورة. اسأل: لو كان الانحياز ناقص درجة، ماذا يحدث لتنبيه الحر المبني على هذا التنبؤ؟ الجواب: يتأخر أو لا يصدر.</p></aside>
+</section>
+
+<section class="slide" id="check-skill" data-lo="LO4" data-n="9" data-session="1">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>احسب المهارة</h2>
+  <div class="quiz" data-type="numeric" data-answer="0.2" data-tolerance="0.01" data-lo="LO4" data-id="check-skill-q1">
+    <p class="lead">تنبؤ سرعة الريح لمطار: متوسط خطئه المطلق 2.4 كم/ساعة، ومتوسط خطأ المناخ المعتاد 3.0 كم/ساعة. كم المهارة؟ (رقمان بعد الفاصلة)</p>
+    <div class="callout tip why"><b>لماذا.</b> 1 ناقص 2.4 على 3.0 = 1 ناقص 0.8 = 0.20: التنبؤ يقلل خطأ المناخ المعتاد بالخُمس.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: 0.20. خطأ شائع: كتابة 0.8 (النسبة نفسها لا المهارة). الطريقة نفسها في الخطوة 3 من المختبر.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-1" data-auto="lab" data-lab="2.1" data-label="المختبر 2.1" data-n="10" data-session="1">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 2.1 · 20 دقيقة</div><h2>مهارة التنبؤ أمام المناخ المعتاد</h2><p class="lead small">تقارن تنبؤات حقيقية سابقة للتبخر نتح المرجعي بمهلة يوم ويومين وثلاثة بقيم <span class="ltr" dir="ltr">ERA5</span> للأيام نفسها، وتحسب مهارة كل مهلة أمام المناخ المعتاد، وانحياز التنبؤ.</p><a class="nb" href="../labs/D2_1_forecast_skill.html">D2_1_forecast_skill.html</a></div><ul class="checklist"><li>افتح الملف واقرأ الأعمدة <span class="min">2 د</span></li><li>احسب الخطأ المطلق لكل مهلة وللمناخ المعتاد <span class="min">6 د</span></li><li>احسب المهارة لكل مهلة <span class="min">4 د</span></li><li>احسب الانحياز وقارن الربيع بالصيف <span class="min">5 د</span></li><li>اكتب سطرًا: هل يستحق التنبؤ أن يُستعمل؟ <span class="min">3 د</span></li><li class="stretch">✱ إضافي: احسب المهارة لو كان التنبؤ هو قيمة الأمس، وقارنها</li></ul></div>
+  <aside class="notes"><p>راقب من يحسب المهارة من متوسط القيم لا من متوسط الأخطاء. من ينهي مبكرًا يأخذ قاعدة «غدًا مثل اليوم». ذكّر بأن التنبؤات حقيقية كما صدرت، لا تنبؤات أعيد حسابها.</p></aside>
+</section>
+
+<section class="slide" id="debrief-2-1" data-lo="LO4" data-n="11" data-session="1">
+  <div class="kicker">بعد المختبر 2.1</div>
+  <h2>التنبؤ يغلب المعتاد بالربع ليوم واحد، وبالخُمس لثلاثة أيام</h2>
+  <div class="bars">
+    <div class="row"><span>مهلة يوم</span><div class="bar c-teal" style="--w:80%"></div><span class="val">0.268</span></div>
+    <div class="row"><span>مهلة يومين</span><div class="bar c-cyan" style="--w:67%"></div><span class="val">0.223</span></div>
+    <div class="row"><span>مهلة ثلاثة أيام</span><div class="bar c-amber" style="--w:59%"></div><span class="val">0.196</span></div>
+  </div>
+  <div class="cols cols-2 mt">
+    <div class="card c-coral"><h4>انحياز</h4><p class="small mb0">نحو نصف ملم في اليوم أقل من ERA5.</p></div>
+    <div class="card c-purple"><h4>الصيف</h4><p class="small mb0">المهارة 0.18 في الصيف، و0.32 في الربيع.</p></div>
+  </div>
+  <div class="caption">بيانات الطقس من Open-Meteo.com برخصة CC BY 4.0. أُعدّت باستعمال معلومات خدمة كوبرنيكوس لتغير المناخ (ERA5، 2024).</div>
+  <aside class="notes"><p>من تشغيل المختبر. متوسط الخطأ المطلق 0.568 و0.603 و0.624 ملم، والمناخ المعتاد 0.776. جزء من الانحياز فرق في طريقة الحساب بين المصدرين. اسأل: في الصيف المستقر، ماذا يضيف التنبؤ؟ وأين يضيف أكثر؟ هذا يعود في المختبر 2.4.</p></aside>
+</section>
+
+<!-- الجلسة 2 -->
+
+<section class="slide section" id="s2" data-auto="section" data-session="2" data-n="12">
+  <div class="kicker">الجلسة 2</div>
+  <h1>ميزان ماء التربة والجدول الثابت</h1>
+  <ul class="bullets outcomes"><li>تحسب استهلاك المحصول من التبخر نتح ومعامل المحصول</li><li>تتبع استنزاف منطقة الجذور يومًا بيوم</li><li>تقارن قراءة المجس بالميزان وتكتشف الانحراف</li></ul>
+  <div class="sess-no">02</div>
+</section>
+
+<section class="slide" id="et0-kc" data-lo="LO4" data-n="13" data-session="2">
+  <div class="kicker">كم يشرب المحصول</div>
+  <h2>استهلاك المحصول = التبخر نتح المرجعي × معامل المحصول</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>التبخر نتح المرجعي (ET0):</b> ما يفقده عشب قصير مروي جيدًا في يوم، من الحرارة والإشعاع والريح والرطوبة</li>
+      <li><b>معامل المحصول (Kc):</b> كم يشرب محصولك مقارنة بذلك العشب</li>
+      <li>المرجع: دليل الفاو رقم 56 للري، معيار عالمي منذ 1998</li>
+    </ul>
+    <div class="card c-teal"><h4>مثال: نخيل في واحة</h4><p class="small mb0">ET0 في يوم صيفي 9 ملم، وKc للنخيل نحو 0.95: الاستهلاك 8.6 ملم في اليوم.</p></div>
+  </div>
+  <aside class="notes"><p>Kc للنخيل من جداول دليل الفاو 56 تقريبي، والمثال للتوضيح. المزرعة في المختبر زيتون بمعامل آخر. اسأل: لماذا يشرب الزيتون أقل من العشب؟ أوراق أقل وتظلل أقل للأرض، ومسام تغلق في الحر.</p></aside>
+</section>
+
+<section class="slide" id="root-zone-bucket" data-lo="LO4" data-n="14" data-session="2">
+  <div class="kicker">منطقة الجذور</div>
+  <h2>التربة دلو: تملؤه بالري والمطر، ويفرغه المحصول</h2>
+  <div class="cols cols-3">
+    <div class="card c-cyan"><h4>الماء المتاح الكلي (TAW)</h4><p class="small mb0">حجم الدلو بالملم: يزيد في التربة الثقيلة ويقل في الرملية.</p></div>
+    <div class="card c-teal"><h4>الماء الميسّر (RAW)</h4><p class="small mb0">الجزء الذي يشربه المحصول دون جهد. بعده يبدأ الإجهاد.</p></div>
+    <div class="card c-coral"><h4>التسرب العميق</h4><p class="small mb0">ما يزيد على امتلاء الدلو ينزل تحت الجذور: ماء ضائع.</p></div>
+  </div>
+  <div class="callout note mt"><b>الاستنزاف.</b> كم نقص الدلو عن الامتلاء. يزيد كل يوم بالاستهلاك، وينقص بالري والمطر.</div>
+  <aside class="notes"><p>ارسم الدلو على السبورة بخط أفقي عند RAW. اسأل: ما الفرق بين دلو صغير ودلو كبير لمزارع يروي كل ثلاثة أيام؟ الصغير يفيض أسرع ويفرغ أسرع.</p></aside>
+</section>
+
+<section class="slide" id="stress-day" data-lo="LO4" data-n="15" data-session="2">
+  <div class="kicker">يوم الإجهاد</div>
+  <h2>يوم الإجهاد يبدأ والاستنزاف فوق الماء الميسّر</h2>
+  <pre class="code" data-file="example"><code>Ks = 1                              depletion &lt;= RAW
+Ks = (TAW - depletion) / (TAW - RAW)  depletion &gt;  RAW
+
+depletion today = yesterday - rain - irrigation + Ks x Kc x ET0</code></pre>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> بدء كل يوم من الصفر. الدلو يحمل ما بقي من الأمس، وهذا كل الفكرة.</div>
+  <aside class="notes"><p>Ks أقل من 1 يعني أن النبات يغلق مسامه فيستهلك أقل، وينمو أقل. الصيغة من دليل الفاو 56 مبسطة. اسأل: لماذا يقل الاستهلاك حين يعطش النبات؟ هذا ما يجعل الإجهاد يبدو «توفيرًا» في الأرقام، وهو ليس كذلك.</p></aside>
+</section>
+
+<section class="slide" id="probe-needs-calibration" data-lo="LO4" data-n="16" data-session="2">
+  <div class="kicker">المجس</div>
+  <h2>المجس حقيقة ميدانية، بشرط أن يُعاير</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>يقيس الرطوبة في نقطة من منطقة الجذور مباشرة</li>
+      <li>ينحرف مع الوقت والملوحة والحرارة</li>
+      <li>الانحراف بطيء، فلا يظهر في قراءة واحدة</li>
+      <li>العلاج: قارنه بالميزان، أو بعينة تربة، كل مدة</li>
+    </ul>
+    <div class="card c-purple"><h4>مثال: عداد ماء في مبنى</h4><p class="small mb0">عداد يقرأ أقل بـ 1% كل شهر: بعد سنة يخفي ثُمن الاستهلاك، ولا أحد يلاحظ شهرًا بشهر.</p></div>
+  </div>
+  <aside class="notes"><p>المثال مخترع. اسأل: متى عويرت أجهزة القياس في جهتك آخر مرة، ومن يملك سجل المعايرة؟ في المختبر ستبحثون عن يوم بدء الانحراف.</p></aside>
+</section>
+
+<section class="slide" id="check-depletion" data-lo="LO4" data-n="17" data-session="2">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>احسب استنزاف الغد</h2>
+  <div class="quiz" data-type="numeric" data-answer="29" data-tolerance="0.2" data-lo="LO4" data-id="check-depletion-q1">
+    <p class="lead">حقل نخيل: الاستنزاف الليلة 20 ملم، وTAW 100 ملم، وRAW 50 ملم. غدًا: ET0 = 10 ملم، وKc = 0.9، ولا مطر ولا ري. كم الاستنزاف مساء الغد بالملم؟</p>
+    <div class="callout tip why"><b>لماذا.</b> 20 أقل من RAW فـ Ks = 1. الاستهلاك 1 × 0.9 × 10 = 9 ملم، فالاستنزاف 20 زائد 9 = 29 ملم.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: 29. خطأ شائع: طرح الاستهلاك بدل جمعه (11)؛ الاستنزاف ما نقص من الدلو، فيزيد بالاستهلاك. ثم اسأل: لو كان الاستنزاف الليلة 60، كم Ks؟ (100 ناقص 60) على 50 = 0.8.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-2" data-auto="lab" data-lab="2.2" data-label="المختبر 2.2" data-n="18" data-session="2">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 2.2 · 25 دقيقة</div><h2>موسم الجدول الثابت</h2><p class="lead small">تشغّل ميزان ماء التربة لمزرعة الزيتون الإرشادية على موسم 2024 بجدولها الثابت، فتعد الماء المستعمل وأيام الإجهاد، وتقارن قراءات مجس الرطوبة بالميزان.</p><a class="nb" href="../labs/D2_2_fixed_schedule.html">D2_2_fixed_schedule.html</a></div><ul class="checklist"><li>اقرأ ملف المزرعة وأعمدة الموسم <span class="min">3 د</span></li><li>احسب الاستنزاف اليومي بالجدول الثابت <span class="min">9 د</span></li><li>احسب الماء المستعمل وأيام الإجهاد <span class="min">5 د</span></li><li>قارن المجس بالميزان وجد بداية الانحراف <span class="min">8 د</span></li><li class="stretch">✱ إضافي: احسب كم كان سيُروى لو صدّق الفريق المجس المنحرف</li></ul></div>
+  <aside class="notes"><p>الفخ الأول: <code>G3</code> يجب أن يساوي <code>I2</code>. الفخ الثاني: Ks من استنزاف بداية اليوم. من يتأخر في الخطوة 2 ينسخ العمود <code>fixed_depletion_mm</code> من <code>start/season_fixed.csv</code> (التواريخ نفسها) إلى جانب ملفه، ويستعمله مكان <code>I</code> في خطوة المجس. الرسم في الخطوة 4 أهم من الصيغة.</p></aside>
+</section>
+
+<section class="slide" id="debrief-2-2" data-lo="LO4" data-n="19" data-session="2">
+  <div class="kicker">بعد المختبر 2.2</div>
+  <h2>الجدول الثابت يفيض في الربيع ويعطش في أغسطس، في الموسم نفسه</h2>
+  <div class="cols cols-3">
+    <div class="stat center"><div class="big">624,200</div><div class="lbl">م³ في الموسم (1,560.5 ملم)</div></div>
+    <div class="stat center"><div class="big">9</div><div class="lbl">أيام إجهاد، كلها في أغسطس</div></div>
+    <div class="stat center"><div class="big">167.6</div><div class="lbl">ملم تسرب عميق، أغلبه من مارس إلى مايو</div></div>
+  </div>
+  <div class="callout warn mt"><b>المجس.</b> ينحرف عن الميزان بوضوح من 11 أغسطس، والانحراف بدأ قبل ذلك بشهر. آخر معايرة في فبراير.</div>
+  <div class="caption">الطقس من ERA5 عبر Open-Meteo.com (CC BY 4.0)، أُعدّ باستعمال معلومات خدمة كوبرنيكوس لتغير المناخ (2024). المزرعة ومجسها اصطناعيان.</div>
+  <aside class="notes"><p>من تشغيل المختبر: 82 مرة ري. التسرب 142.6 ملم من مارس إلى مايو و25 في أكتوبر. انحراف المجس مزروع من 10 يوليو في البيانات الاصطناعية. اسأل: لو كان الفريق يروي على المجس في أغسطس، ماذا كان سيحدث؟</p></aside>
+</section>
+
+<!-- الجلسة 3 -->
+
+<section class="slide section" id="s3" data-auto="section" data-session="3" data-n="20">
+  <div class="kicker">الجلسة 3</div>
+  <h1>جدول ري يقوده التنبؤ</h1>
+  <ul class="bullets outcomes"><li>تكتب قاعدة ري تعتمد على تنبؤ ثلاثة أيام</li><li>تقارن جدولين على الماء وأيام الإجهاد والتسرب العميق</li><li>تفصل أثر القاعدة عن أثر جودة التنبؤ</li></ul>
+  <div class="sess-no">03</div>
+</section>
+
+<section class="slide" id="look-ahead-rule" data-lo="LO4" data-n="21" data-session="3">
+  <div class="kicker">القاعدة</div>
+  <h2>قاعدة الري تسأل كل صباح: هل سنتجاوز الماء الميسّر قبل الري التالي؟</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>اليوم</b>الاستنزاف الآن</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>الأيام القادمة</b>Kc × تنبؤ ET0 لها</div>
+    <div class="arrow">←</div>
+    <div class="step c-amber"><b>المجموع</b>يبلغ RAW أو يزيد؟</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>القرار</b>اروِ عمقًا ثابتًا، أو انتظر</div>
+  </div>
+  <aside class="notes"><p>القاعدة لا تحتاج نموذجًا معقدًا: سطر في جدول بيانات. الذكاء في أنها تنظر إلى الأمام وتروي حين يحتاج المحصول، لا حين يقول التقويم. اسأل: ما الذي يحدد كم يومًا ننظر إلى الأمام؟ الجواب: كم يتأخر الري من القرار إلى الحقل.</p></aside>
+</section>
+
+<section class="slide" id="rule-example" data-lo="LO4" data-n="22" data-session="3">
+  <div class="kicker">مثال</div>
+  <h2>صباح يوم في مزرعة نخيل: تنتظر أم تروي؟</h2>
+  <table class="t">
+    <tr><th></th><th class="num">ملم</th></tr>
+    <tr><td>الاستنزاف هذا الصباح</td><td class="num">32</td></tr>
+    <tr><td>تنبؤ ET0 للأيام الثلاثة القادمة</td><td class="num">27</td></tr>
+    <tr><td>Kc × التنبؤ = 0.9 × 27</td><td class="num">24.3</td></tr>
+    <tr class="hl"><td>المجموع، أمام RAW = 50</td><td class="num">56.3 ← اروِ اليوم</td></tr>
+  </table>
+  <aside class="notes"><p>الأرقام مخترعة لمزرعة نخيل، لا من مزرعة الزيتون. غيّر الاستنزاف إلى 20 واسأل القاعة: 20 زائد 24.3 = 44.3، أقل من 50: لا ري اليوم.</p></aside>
+</section>
+
+<section class="slide" id="fair-comparison" data-lo="LO4" data-n="23" data-session="3">
+  <div class="kicker">المقارنة العادلة</div>
+  <h2>قارن الجدولين على الطقس الذي حدث فعلًا</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>التنبؤ يدخل في <b>القرار</b> فقط</li>
+      <li>الميزان يتحرك بما <b>حدث</b>: ET0 والمطر الفعليان</li>
+      <li>وهكذا يُقاس الجدولان على الموسم نفسه</li>
+      <li>وأربعة أرقام لكل منهما: الماء، ومرات الري، وأيام الإجهاد، والتسرب العميق</li>
+    </ul>
+    <div class="card c-coral"><h4>المقارنة الخاطئة</h4><p class="small mb0">تشغيل الميزان على التنبؤ نفسه. النتيجة موسم لم يحدث، يبدو فيه التنبؤ كاملًا.</p></div>
+  </div>
+  <aside class="notes"><p>هذا أكثر ما يخفيه عرض مورد: «في المحاكاة وفّرنا 30%»، على أي طقس؟ اسأل: ما السؤال الذي تطرحه على مورد يعرض توفيرًا محاكى؟</p></aside>
+</section>
+
+<section class="slide" id="rule-or-forecast" data-lo="LO4" data-n="24" data-session="3">
+  <div class="kicker">من أين يأتي التوفير</div>
+  <h2>من أين يأتي التوفير، القاعدة أم التنبؤ؟ اختبر كلًّا منهما وحده</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>القاعدة مع التنبؤ الفعلي</h4><p class="small mb0">ما سيحدث في الواقع.</p></div>
+    <div class="card c-cyan"><h4>القاعدة مع «تنبؤ كامل»</h4><p class="small mb0">أفضل ما يمكن لو كان التنبؤ بلا خطأ.</p></div>
+    <div class="card c-amber"><h4>القاعدة مع المناخ المعتاد</h4><p class="small mb0">القاعدة نفسها بلا أي تنبؤ.</p></div>
+  </div>
+  <div class="callout tip mt"><b>إن تساوى الأول والثالث</b> فالتوفير من أن القاعدة تروي بحسب الحاجة، لا من مهارة التنبؤ.</div>
+  <aside class="notes"><p>هذا التمهيد للمختبر 2.4، لا نتيجته. اسأل: لماذا يهم هذا الفرق قبل شراء خدمة تنبؤ؟ لأنك قد تدفع ثمن تنبؤ لا يضيف إلى القاعدة شيئًا، أو تستغني عن تنبؤ يضيف كثيرًا.</p></aside>
+</section>
+
+<section class="slide" id="check-rule" data-lo="LO4" data-n="25" data-session="3">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>قرار الصباح</h2>
+  <div class="quiz" data-type="single" data-lo="LO4" data-id="check-rule-q1">
+    <p class="lead">مزرعة نخيل: RAW = 50 ملم، وKc = 0.9. هذا الصباح الاستنزاف 25 ملم، وتنبؤ ET0 للأيام الثلاثة القادمة 30 ملم. ماذا تقول القاعدة؟</p>
+    <div class="opts">
+      <div class="opt" data-ok data-k="أ">اروِ اليوم، لأن المجموع مع الاستهلاك القادم يبلغ RAW</div>
+      <div class="opt" data-why="القاعدة تجمع الاستنزاف الحالي مع ما سيُستهلك، و25 وحدها لا تكفي للحكم" data-k="ب">لا تروِ، لأن الاستنزاف الآن نصف الماء الميسّر فقط</div>
+      <div class="opt" data-why="Kc يُضرب في تنبؤ الأيام القادمة وحده، لا في الاستنزاف الحالي: 25 زائد 0.9 × 30 = 52" data-k="ج">لا تروِ، لأن 0.9 × (25 زائد 30) = 49.5، وهو أقل من 50</div>
+      <div class="opt" data-why="القاعدة تنظر إلى الأمام كي لا تنتظر الإجهاد، والانتظار يجعل الري متأخرًا" data-k="د">انتظر حتى يبلغ الاستنزاف 50 ملم ثم اروِ في اليوم نفسه</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> 25 زائد 0.9 × 30 = 25 زائد 27 = 52، وهو أكبر من 50: اروِ اليوم.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: أ. اطلب من القاعة الحساب قبل كشف الإجابة. الصيغة نفسها في العمود <code>J</code> في المختبر.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-3" data-auto="lab" data-lab="2.3" data-label="المختبر 2.3" data-n="26" data-session="3">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 2.3 · 25 دقيقة</div><h2>مقارنة جدولي الري</h2><p class="lead small">من ملف الموسم الجاهز تطبق قاعدة الري بالتنبؤ يومًا بيوم، وتقارنها بالجدول الثابت على الماء المستعمل وأيام الإجهاد والتسرب العميق، وتحسب التوفير.</p><a class="nb" href="../labs/D2_3_schedule_comparison.html">D2_3_schedule_comparison.html</a></div><ul class="checklist"><li>اقرأ القاعدة وأعمدة الملف الجاهز <span class="min">3 د</span></li><li>احسب قرار الري اليومي والاستنزاف <span class="min">10 د</span></li><li>املأ جدول المقارنة للجدولين <span class="min">6 د</span></li><li>احسب التوفير بالمتر المكعب وبالنسبة <span class="min">3 د</span></li><li>اكتب سطر النتيجة لمرشد الري <span class="min">3 د</span></li><li class="stretch">✱ إضافي: غيّر عمق الري من 30 إلى 20 ملم، واكتب ما يتغير</li></ul></div>
+  <aside class="notes"><p>الملف جاهز، فلا أحد يحتاج المختبر 2.2. راقب من يحرك الميزان بعمود التنبؤ <code>H</code> بدل <code>B</code>. السؤال الثالث في أسئلة التحقق لا جواب له بعد: اتركه مفتوحًا.</p></aside>
+</section>
+
+<section class="slide" id="debrief-2-3" data-lo="LO4" data-n="27" data-session="3">
+  <div class="kicker">بعد المختبر 2.3</div>
+  <h2>القاعدة وفّرت 13.5% دون يوم إجهاد واحد</h2>
+  <table class="t">
+    <tr><th></th><th class="num">الماء (ملم)</th><th class="num">مرات الري</th><th class="num">أيام الإجهاد</th><th class="num">التسرب (ملم)</th></tr>
+    <tr><td>الجدول الثابت</td><td class="num">1,560.5</td><td class="num">82</td><td class="num">9</td><td class="num">167.6</td></tr>
+    <tr class="hl"><td>القاعدة بالتنبؤ</td><td class="num">1,350</td><td class="num">45</td><td class="num">0</td><td class="num">0</td></tr>
+  </table>
+  <div class="callout note mt"><b>84,200 م³</b> في موسم واحد على 40 هكتارًا. والسؤال الباقي: من القاعدة أم من التنبؤ؟</div>
+  <div class="caption">الطقس من ERA5، والتنبؤات كما صدرت، عبر Open-Meteo.com (CC BY 4.0)؛ أُعدّ باستعمال معلومات خدمة كوبرنيكوس لتغير المناخ (2024). المزرعة اصطناعية.</div>
+  <aside class="notes"><p>من تشغيل المختبر. نصف مرات الري تقريبًا، أي عمل أقل للعمال أيضًا. لا تجب عن السؤال الباقي: المختبر التالي يجيب. اسأل: هل تكتب «13.5%» في رسالة للمزارعين؟</p></aside>
+</section>
+
+<!-- الجلسة 4 -->
+
+<section class="slide section" id="s4" data-auto="section" data-session="4" data-n="28">
+  <div class="kicker">الجلسة 4</div>
+  <h1>قول عدم اليقين للمزارع</h1>
+  <ul class="bullets outcomes"><li>تبني من السيناريوهات مدى للتوفير وأيام الإجهاد</li><li>تميز مصدر عدم اليقين الأكبر</li><li>تكتب رسالة للمزارع تذكر المدى بلغة واضحة</li></ul>
+  <div class="sess-no">04</div>
+</section>
+
+<section class="slide" id="range-not-point" data-lo="LO4" data-n="29" data-session="4">
+  <div class="kicker">رقم أم مدى</div>
+  <h2>الرقم الواحد وعد لا تملكه؛ المدى يقول ما تعرفه</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>لا</h4><p class="small mb0">«ستوفر 20% من مائك.»</p></div>
+    <div class="card c-teal"><h4>نعم</h4><p class="small mb0">«نتوقع أن توفر بين 10 و20 من كل 100 متر مكعب، بحسب تربتك.»</p></div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> المزارع يتذكر الرقم الواحد، ويحاسبك عليه في نهاية الموسم.</div>
+  <aside class="notes"><p>الأرقام مخترعة، لا من الإقليم. اسأل: متى سمعت وعدًا برقم واحد من مورد أو من جهتك؟ وماذا حدث في نهاية السنة؟</p></aside>
+</section>
+
+<section class="slide" id="sources-of-uncertainty" data-lo="LO4" data-n="30" data-session="4">
+  <div class="kicker">مصادر عدم اليقين</div>
+  <h2>غيّر شيئًا واحدًا في كل مرة، وانظر كم يتحرك الرقم</h2>
+  <table class="t">
+    <tr><th>المصدر</th><th>مثال في مزرعة نخيل</th><th>كيف تختبره</th></tr>
+    <tr><td><b>التربة</b></td><td>رملية أم طميية؟ حجم الدلو</td><td>شغّل الموسم بثلاثة أحجام</td></tr>
+    <tr><td><b>التنبؤ</b></td><td>فعلي، أم كامل، أم المعتاد</td><td>شغّل القاعدة بالثلاثة</td></tr>
+    <tr><td><b>المحصول</b></td><td>Kc لأشجار صغيرة أم كبيرة</td><td>شغّل بقيمتين</td></tr>
+    <tr><td><b>الموسم</b></td><td>صيف عادي أم أحر</td><td>شغّل على سنوات أخرى</td></tr>
+  </table>
+  <aside class="notes"><p>في المختبر اختبرنا التربة والتنبؤ: تسعة سيناريوهات. المحصول والموسم لم يُختبرا، وهما مما «لا نعرفه» في الرسالة. اسأل: أي هذه تتوقع أن يحرك الرقم أكثر؟ اكتب التوقعات على السبورة.</p></aside>
+</section>
+
+<section class="slide" id="plain-words" data-lo="LO4" data-n="31" data-session="4">
+  <div class="kicker">بلغة المزارع</div>
+  <h2>أربعة أسطر: ما نتوقعه، وما يغيّره، وما لا نعرفه، وما نطلبه</h2>
+  <ol class="bullets">
+    <li><b>ما نتوقعه</b> بمدى: «بين كذا وكذا من كل 100»</li>
+    <li><b>ما يجعله أكبر أو أصغر</b> في مزرعته: التربة، عمر الأشجار</li>
+    <li><b>ما لا نعرفه بعد:</b> موسم واحد، مزرعة واحدة</li>
+    <li><b>ما نطلبه</b>، وأن القرار يبقى له</li>
+  </ol>
+  <div class="callout warn mt"><b>كلمات لا تُكتب للمزارع.</b> سيناريو، مهارة، TAW، نموذج، نسبة مئوية بكسور.</div>
+  <aside class="notes"><p>«من كل 100 متر مكعب» أوضح من «13.5%» لأكثر الناس. اقرأ مثالًا سيئًا: «تشير المحاكاة إلى توفير متوقع قدره 13.5% بمهارة تنبؤ 0.27». اسأل: ماذا فهم المزارع؟</p></aside>
+</section>
+
+<section class="slide" id="check-message" data-lo="LO4" data-n="32" data-session="4">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>أي جملة للمزارع؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO4" data-id="check-message-q1">
+    <p class="lead">جربت هيئة قاعدة ري جديدة على مزرعة نخيل واحدة موسمًا واحدًا، ووجدت توفيرًا بين 6 و12 من كل 100 م³ بحسب التربة. أي جملة تصلح لرسالة إلى مزارعي الواحة؟</p>
+    <div class="opts">
+      <div class="opt" data-why="رقم واحد يعد بما لا تملكه الهيئة، ويُحاسب عليه في نهاية الموسم" data-k="أ">«ستوفر القاعدة الجديدة 9% من ماء مزرعتك هذا الموسم.»</div>
+      <div class="opt" data-why="مصطلحات لا يعرفها المزارع (محاكاة، TAW، مهارة)، والجذع يقول إن الفرق بحسب التربة لا بحسب التنبؤ" data-k="ب">«تشير محاكاة ميزان الماء إلى توفير 6% إلى 12% بحسب TAW ومهارة التنبؤ.»</div>
+      <div class="opt" data-ok data-k="ج">«قد توفر بين 6 و12 من كل 100 م³ بحسب تربتك، بعد تجربة موسم واحد.»</div>
+      <div class="opt" data-why="يخفي ما لا نعرفه، ويقدّم تجربة على مزرعة واحدة كأنها مضمونة لكل الواحة" data-k="د">«ثبت أن القاعدة توفر الماء في الواحة دون أي ضرر على النخيل.»</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> مدى، بكلمات المزارع، مع ما يحرك الرقم في مزرعته هو. الباقي يعد أو يخفي أو يغلق الفهم.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ج. اسأل من اختار «ب»: ماذا يفهم المزارع من TAW والمهارة؟ والجملة الصحيحة ما زالت تحتاج سطر «ما نطلبه».</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-4" data-auto="lab" data-lab="2.4" data-label="المختبر 2.4" data-n="33" data-session="4">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 2.4 · 20 دقيقة</div><h2>جدول السيناريوهات ورسالة المزارع</h2><p class="lead small">من تسعة سيناريوهات جاهزة (ثلاث ترب وثلاثة تنبؤات) تحسب التوفير وفرق أيام الإجهاد، وتكتب جدول المقارنة بمداه، ثم رسالة قصيرة لمزارع تذكر ما نعرفه وما لا نعرفه.</p><a class="nb" href="../labs/D2_4_uncertainty.html">D2_4_uncertainty.html</a></div><ul class="checklist"><li>اقرأ السيناريوهات التسعة <span class="min">2 د</span></li><li>احسب التوفير وفرق الإجهاد لكل سيناريو <span class="min">5 د</span></li><li>اكتب المدى، وأي العاملين يحركه أكثر <span class="min">4 د</span></li><li>اكتب رسالة المزارع في أربعة أسطر <span class="min">6 د</span></li><li>تبادل الرسالة مع زميل واقرأ رسالته <span class="min">3 د</span></li><li class="stretch">✱ إضافي: اكتب ما الذي يجب قياسه في المزرعة نفسها ليضيق المدى</li></ul></div>
+  <aside class="notes"><p>الحساب قصير؛ الوقت للرسالة. المساعد مسموح لمراجعة اللغة فقط. اختر رسالتين في آخر خمس دقائق واقرأهما بصوت عالٍ، واسأل القاعة كأنها المزارع: ماذا تفعل غدًا؟</p></aside>
+</section>
+
+<section class="slide" id="debrief-2-4" data-lo="LO4" data-n="34" data-session="4">
+  <div class="kicker">بعد المختبر 2.4</div>
+  <h2>التربة تحرك التوفير، ونوع التنبؤ لا يكاد يحركه</h2>
+  <table class="t">
+    <tr><th>التربة</th><th class="num">التنبؤ الفعلي</th><th class="num">تنبؤ كامل</th><th class="num">المناخ المعتاد</th></tr>
+    <tr><td>رملية (60)</td><td class="num">9.6%</td><td class="num">7.7%</td><td class="num">9.6%</td></tr>
+    <tr><td>رملية طميية (90)</td><td class="num">13.5%</td><td class="num">13.5%</td><td class="num">13.5%</td></tr>
+    <tr><td>طميية (120)</td><td class="num">13.5%</td><td class="num">13.5%</td><td class="num">13.5%</td></tr>
+  </table>
+  <div class="callout tip mt"><b>الجواب الصادق.</b> التوفير من أن القاعدة تروي بحسب الحاجة. وصفر أيام إجهاد في السيناريوهات التسعة.</div>
+  <div class="caption">كل سيناريو على طقس ERA5 عبر Open-Meteo.com (CC BY 4.0)، أُعدّ باستعمال معلومات خدمة كوبرنيكوس لتغير المناخ (2024). المزرعة والترب اصطناعية.</div>
+  <aside class="notes"><p>من تشغيل المختبر. في الرملية الفرق بين الأعمدة رية واحدة من 30 ملم (1,440 أمام 1,410 ملم)، فلا يُبنى عليه شيء، وحد المدى الأدنى 7.7% يقوم على تلك الرية وحدها. في موسم فيه مطر قد يختلف الأمر: قل ذلك. اسأل: ماذا تقيس في المزرعة ليضيق المدى؟ التربة.</p></aside>
+</section>
+
+<!-- الجلسة 5 -->
+
+<section class="slide section" id="s5" data-auto="section" data-session="5" data-n="35">
+  <div class="kicker">الجلسة 5</div>
+  <h1>محاسبة المياه والتدفق الليلي</h1>
+  <ul class="bullets outcomes"><li>تشرح ميزان المياه في منطقة إمداد</li><li>تحسب التدفق الليلي الأدنى وخط أساسه</li><li>تميز التسرب من الاستهلاك الجديد ومن عطل العداد</li></ul>
+  <div class="sess-no">05</div>
+</section>
+
+<section class="slide" id="zone-water-balance" data-lo="LO1 LO5" data-n="36" data-session="5">
+  <div class="kicker">ميزان المياه في الشبكة</div>
+  <h2>ما دخل المنطقة = ما استُهلك بإذن + ما فُقد</h2>
+  <div class="flow">
+    <div class="step c-cyan"><b>الداخل</b>عداد مدخل المنطقة</div>
+    <div class="arrow">←</div>
+    <div class="step c-teal"><b>استهلاك بإذن</b>بيوت ومزارع ومساجد</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>فاقد حقيقي</b>تسربات وانفجارات</div>
+    <div class="arrow">←</div>
+    <div class="step c-amber"><b>فاقد ظاهري</b>عدادات تقرأ أقل، وتوصيلات غير نظامية</div>
+  </div>
+  <aside class="notes"><p>هذا تقسيم ميزان المياه المعتاد في إدارة الشبكات، كما في منهجية الرابطة الدولية للمياه (IWA). اسأل: أيها يُرى في الفاتورة وأيها لا يُرى؟ الفاقد الحقيقي لا يظهر إلا بالعداد عند المدخل.</p></aside>
+</section>
+
+<section class="slide" id="district-meters" data-lo="LO1" data-n="37" data-session="5">
+  <div class="kicker">مناطق العدادات</div>
+  <h2>عداد واحد عند مدخل كل منطقة يقسم الشبكة إلى أجزاء تُفهم</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>تُقسم الشبكة إلى مناطق مغلقة، لكل منها مدخل أو اثنان</li>
+      <li>عداد عند كل مدخل يقرأ كل ساعة</li>
+      <li>من القراءات وحدها تعرف <b>أي منطقة</b> تفقد، لا أين داخلها</li>
+      <li>داخل المنطقة يعمل الفريق: سماع بالجهاز الصوتي، ثم حفر</li>
+    </ul>
+    <div class="card c-teal"><h4>العداد مصدر بيانات</h4><p class="small mb0">مثل الصورة بالأمس: يقيس شيئًا بدقة، ولا يقول أين ذهب الماء بعده.</p></div>
+  </div>
+  <aside class="notes"><p>تذكير بالمختبر 1.1: عداد المنطقة كان مصدرًا للسؤال Q4. اسأل: ما الذي يجعل منطقة «مغلقة»؟ صمامات مغلقة على حدودها، وهذا عمل هندسي يسبق أي تحليل.</p></aside>
+</section>
+
+<section class="slide" id="minimum-night-flow" data-lo="LO5" data-n="38" data-session="5">
+  <div class="kicker">التدفق الليلي الأدنى</div>
+  <h2>بين الواحدة والرابعة فجرًا ينام الناس، والتسرب لا ينام</h2>
+  <div class="figure">
+    <svg viewBox="0 0 900 300" role="img" aria-label="منحنى توضيحي لتدفق منطقة على مدى يوم: منخفض في ساعات الفجر، يرتفع إلى ذروة صباحية وذروة مسائية، وخط متقطع يبين المنحنى نفسه بعد تسرب يرفع القاع الليلي">
+      <rect x="60" y="20" width="800" height="230" fill="none" stroke="#c9d3dc"/>
+      <rect x="93" y="20" width="133" height="230" fill="#e9f2f1"/>
+      <polyline fill="none" stroke="#2a9d8f" stroke-width="5" points="60,200 93,220 160,228 226,222 290,150 360,70 430,110 500,140 570,130 640,100 710,60 780,120 860,190"/>
+      <polyline fill="none" stroke="#e76f51" stroke-width="4" stroke-dasharray="10 7" points="60,170 93,190 160,198 226,192 290,120 360,40 430,80 500,110 570,100 640,70 710,30 780,90 860,160"/>
+      <text x="160" y="45" font-size="20" text-anchor="middle">1 إلى 4 فجرًا</text>
+      <text x="70" y="285" font-size="20">0</text>
+      <text x="450" y="285" font-size="20">12</text>
+      <text x="840" y="285" font-size="20">24</text>
+    </svg>
+    <div class="caption">منحنى توضيحي مرسوم باليد: يوم عادي (أخضر مزرق)، والمنطقة نفسها بعد تسرب (برتقالي متقطع).</div>
+  </div>
+  <aside class="notes"><p>المنحنى مرسوم لا مقيس. في النهار يغطي الاستهلاك أي تسرب، وفي الفجر يبقى التسرب وحده تقريبًا مع استهلاك ليلي قليل. خط الأساس: وسيط أول أسبوعين. والحد: خط الأساس زائد هامش. اسأل: ما الاستهلاك الليلي المشروع في منطقة زراعية؟ ري ليلي.</p></aside>
+</section>
+
+<section class="slide" id="not-every-rise" data-lo="LO5" data-n="39" data-session="5">
+  <div class="kicker">ليس كل ارتفاع تسربًا</div>
+  <h2>قبل أن ترسل الفريق، اقرأ سجل الأحداث وشكل الارتفاع</h2>
+  <table class="t">
+    <tr><th>ما تراه</th><th>قد يكون</th><th>اسأل</th></tr>
+    <tr><td>قفزة ثابتة لا تعود</td><td>تسرب، أو مشترك جديد</td><td>هل رُبط أحد بتصريح؟</td></tr>
+    <tr><td>ارتفاع يزيد يومًا بعد يوم</td><td>تسرب يكبر</td><td>متى بدأ فعلًا؟</td></tr>
+    <tr><td>ليلة واحدة عالية</td><td>حدث عابر</td><td>مناسبة، أو غسيل خزانات</td></tr>
+    <tr><td>أصفار</td><td>عداد معطل، لا منطقة بلا فاقد</td><td>من يصلح العداد؟</td></tr>
+  </table>
+  <aside class="notes"><p>الأمثلة عامة. لا تقل أي منطقة في الملف تحمل أي شكل. اسأل: لماذا نشترط ثلاث ليالٍ متتالية؟ الجواب في الصف الثالث.</p></aside>
+</section>
+
+<section class="slide" id="check-night-flow" data-lo="LO5" data-n="40" data-session="5">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>حد التنبيه</h2>
+  <div class="quiz" data-type="numeric" data-answer="13" data-tolerance="0.05" data-lo="LO5" data-id="check-night-flow-q1">
+    <p class="lead">حي في مدينة: وسيط التدفق الليلي الأدنى في أول أسبوعين 10 م³/ساعة. الحد = خط الأساس زائد الأكبر من 2 و0.3 × خط الأساس. كم الحد بالمتر المكعب في الساعة؟</p>
+    <div class="callout tip why"><b>لماذا.</b> 0.3 × 10 = 3، وهو أكبر من 2، فالحد 10 زائد 3 = 13.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: 13. ثم اسأل: لو كان الوسيط 5؟ 0.3 × 5 = 1.5 أقل من 2، فالحد 7. الهامش الثابت يحمي المناطق الصغيرة من إنذارات بسبب تقلب طبيعي صغير.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-5" data-auto="lab" data-lab="2.5" data-label="المختبر 2.5" data-n="41" data-session="5">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 2.5 · 20 دقيقة</div><h2>التدفق الليلي الأدنى لعشر مناطق</h2><p class="lead small">من قراءات ساعية لعشر مناطق إمداد على ثمانية أسابيع تحسب التدفق الليلي الأدنى لكل ليلة، وخط أساس كل منطقة، وتجد المناطق التي ارتفع فيها، ثم تفسر كل ارتفاع بسجل الأحداث.</p><a class="nb" href="../labs/D2_5_night_flow.html">D2_5_night_flow.html</a></div><ul class="checklist"><li>اقرأ الملف وسجل الأحداث <span class="min">2 د</span></li><li>احسب أدنى تدفق ليلي لكل منطقة وليلة <span class="min">7 د</span></li><li>احسب خط الأساس وحد التنبيه <span class="min">4 د</span></li><li>جد المناطق والليالي فوق الحد <span class="min">4 د</span></li><li>فسّر كل ارتفاع: تسرب أم غيره <span class="min">3 د</span></li><li class="stretch">✱ إضافي: قدّر الماء المفقود في منطقة تسرب واحدة منذ بدايته</li></ul></div>
+  <aside class="notes"><p>الفخ التقني: MINIFS على ساعات الليل فقط. من يتعثر في الصيغة يبني جدولًا محوريًّا بالحد الأدنى بعد تصفية الساعات 1 إلى 4. الرسم الخطي للمناطق العشر يكشف أكثر من الجدول. ذكّر بالبحث عما يهبط أيضًا.</p></aside>
+</section>
+
+<section class="slide" id="debrief-2-5" data-lo="LO5" data-n="42" data-session="5">
+  <div class="kicker">بعد المختبر 2.5</div>
+  <h2>أربع مناطق تجاوزت الحد، وواحدة منها فقط ليست تسربًا</h2>
+  <table class="t small">
+    <tr><th>المنطقة</th><th>أول تنبيه</th><th>الشكل</th><th>التفسير</th></tr>
+    <tr><td>Z03</td><td>22 أغسطس</td><td>قفزة ثابتة</td><td>تسرب</td></tr>
+    <tr class="hl"><td>Z05</td><td>29 أغسطس</td><td>قفزة ثابتة</td><td>مزرعة جديدة بتصريح</td></tr>
+    <tr><td>Z07</td><td>9 سبتمبر</td><td>يكبر يومًا بعد يوم</td><td>تسرب بدأ قبل ستة أيام</td></tr>
+    <tr><td>Z10</td><td>15 سبتمبر</td><td>قفزة كبيرة ثلاث ليالٍ</td><td>انفجار أُصلح</td></tr>
+  </table>
+  <div class="callout warn mt"><b>Z09 لم تطلق تنبيهًا:</b> أصفار من 8 إلى 11 سبتمبر، عداد معطل. القاعدة لا ترى الصمت.</div>
+  <aside class="notes"><p>من تشغيل المختبر. Z02 ليلة احتفال واحدة فوق الحد، ولا تنبيه. اسأل: كم ماءً فُقد في Z07 قبل التنبيه؟ ومن يتابع العدادات الصامتة؟ هذا يقودنا إلى العتبة وطاقة الفريق.</p></aside>
+</section>
+
+<!-- الجلسة 6 -->
+
+<section class="slide section" id="s6" data-auto="section" data-session="6" data-n="43">
+  <div class="kicker">الجلسة 6</div>
+  <h1>إنذارات تسرب يحتملها الفريق</h1>
+  <ul class="bullets outcomes"><li>تحسب الدقة والاستدعاء لكل عتبة</li><li>تختار عتبة بطاقة فريق التسربات</li><li>تقدّر الماء الموفّر من العتبة المختارة</li></ul>
+  <div class="sess-no">06</div>
+</section>
+
+<section class="slide" id="alert-vs-repair" data-lo="LO5" data-n="44" data-session="6">
+  <div class="kicker">الإنذار والإصلاح</div>
+  <h2>الإنذار ليس تسربًا؛ التسرب ما وجده الفريق وأصلحه</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>الدقة</h4><p class="small mb0">من الإنذارات، كم كان تسربًا؟ تخص وقت الفريق.</p></div>
+    <div class="card c-cyan"><h4>الاستدعاء</h4><p class="small mb0">من التسربات المؤكدة، كم أنذرنا به؟ تخص الماء.</p></div>
+    <div class="card c-amber"><h4>الطاقة</h4><p class="small mb0">كم إنذارًا يستطيع الفريق أن يزور في الأسبوع؟</p></div>
+  </div>
+  <aside class="notes"><p>الدقة والاستدعاء هنا هما دقة المستخدم ودقة المنتج بالأمس بأسماء أخرى. اسأل القاعة أن تطابق: الدقة تقابل دقة المستخدم، والاستدعاء يقابل دقة المنتج.</p></aside>
+</section>
+
+<section class="slide" id="threshold-trade" data-lo="LO5" data-n="45" data-session="6">
+  <div class="kicker">العتبة</div>
+  <h2>كل عتبة تقايض إنذارات كاذبة بتسربات فائتة</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>عتبة منخفضة</h4><p class="small mb0">ترى كل شيء تقريبًا، وتغرق الفريق بإنذارات لا يزور أغلبها. الإنذار الذي لا يُزار لا يوفر ماءً.</p></div>
+    <div class="card c-purple"><h4>عتبة عالية</h4><p class="small mb0">كل إنذار تقريبًا صادق، لكنها لا ترى إلا الكبير، وتتأخر.</p></div>
+  </div>
+  <div class="callout tip mt"><b>قاعدة عمل.</b> أدنى عتبة لا تتجاوز طاقة الفريق.</div>
+  <aside class="notes"><p>المثال لكشف الأعطال في مضخات: كلما خفضت العتبة زادت الإنذارات. لا تذكر أي عتبة من الملف. اسأل: لو زادت طاقة الفريق، ماذا يحدث للعتبة المختارة؟ تنخفض.</p></aside>
+</section>
+
+<section class="slide" id="meter-faults" data-lo="LO5" data-n="46" data-session="6">
+  <div class="kicker">أعطال العدادات</div>
+  <h2>العداد المعطل يطلق إنذارًا يشبه التسرب، أو يصمت</h2>
+  <ul class="bullets">
+    <li>قراءة قافزة من عداد يتلف تشبه انفجارًا</li>
+    <li>عداد يتوقف يعمي المنطقة كلها</li>
+    <li>هذه إنذارات «صادقة» بمعنى آخر: شيء معطل، لكنه ليس للفريق نفسه</li>
+    <li>الحل: مسار ثانٍ إلى فريق العدادات، لا الإهمال</li>
+  </ul>
+  <aside class="notes"><p>اسأل: من في جهتك يملك صحة البيانات قبل أن يملك أحد القرار؟ هذا سؤال حوكمة بيانات، يعود في الجلسة التالية.</p></aside>
+</section>
+
+<section class="slide" id="value-estimate" data-lo="LO5" data-n="47" data-session="6">
+  <div class="kicker">قيمة الإنذار</div>
+  <h2>الماء الموفّر: كم تسربًا وجدنا، وكم يومًا اختصرنا من عمره</h2>
+  <pre class="code" data-file="example"><code>saved = leaks found x average flow x 24 h x (days a leak lasts unseen - days to alert)
+
+example: 20 x 2 m3/h x 24 x (30 - 8) = 21,120 m3 a year</code></pre>
+  <div class="callout warn mt"><b>تقدير لا قياس.</b> متوسط الحجم لا حجم كل تسرب، ومتوسط المدة، وبعض التسربات يبلّغ عنها الناس قبل ذلك.</div>
+  <aside class="notes"><p>المثال مخترع. هذا الرقم يدخل الخريطة معيار الماء في المختبر 2.8، فاكتب معه ما بُني عليه. اسأل: ما الذي يجعل هذا التقدير أكبر من الحقيقة؟</p></aside>
+</section>
+
+<section class="slide" id="check-precision" data-lo="LO5" data-n="48" data-session="6">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>احسب الدقة</h2>
+  <div class="quiz" data-type="numeric" data-answer="0.25" data-tolerance="0.01" data-lo="LO5" data-id="check-precision-q1">
+    <p class="lead">نظام إنذار لأعطال مضخات الآبار أصدر 120 إنذارًا في سنة. وجد الفريق عطلًا حقيقيًّا عند 30 منها، وكان في السنة 40 عطلًا. كم الدقة؟ (رقمان بعد الفاصلة)</p>
+    <div class="callout tip why"><b>لماذا.</b> الدقة 30 من 120 = 0.25. والاستدعاء 30 من 40 = 0.75، وهو رقم آخر.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: 0.25. من كتب 0.75 حسب الاستدعاء. اسأل: لو كان الفريق يستطيع 2 في الأسبوع، هل يطيق 120 في السنة؟ 120 على 52 = 2.3: لا.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-6" data-auto="lab" data-lab="2.6" data-label="المختبر 2.6" data-n="49" data-session="6">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 2.6 · 25 دقيقة</div><h2>كشف التسرب من بيانات العدادات</h2><p class="lead small">من جدول إنذارات سنة كاملة عند ثماني عتبات وسجل 48 تسربًا مؤكدًا تحسب الدقة والاستدعاء والإنذارات في الأسبوع، وتختار العتبة التي تطيقها طاقة الفريق، وتقدّر الماء الموفّر.</p><a class="nb" href="../labs/D2_6_leak_alerts.html">D2_6_leak_alerts.html</a></div><ul class="checklist"><li>اقرأ الجدول وطاقة الفريق <span class="min">3 د</span></li><li>احسب الدقة والاستدعاء لكل عتبة <span class="min">7 د</span></li><li>احسب الإنذارات في الأسبوع <span class="min">3 د</span></li><li>اختر العتبة واكتب سببها <span class="min">5 د</span></li><li>قدّر الماء الموفّر بالعتبة المختارة <span class="min">7 د</span></li><li class="stretch">✱ إضافي: اكتب ماذا تفعل بإنذارات أعطال العدادات: تُهمل أم تُرسل إلى فريق آخر؟</li></ul></div>
+  <aside class="notes"><p>الحساب سريع؛ النقاش في الخطوة 4. اطلب من كل طاولة أن تقول لماذا ليست العتبة التي قبل اختيارها. راقب من يختار بأعلى دقة.</p></aside>
+</section>
+
+<section class="slide" id="debrief-2-6" data-lo="LO5" data-n="50" data-session="6">
+  <div class="kicker">بعد المختبر 2.6</div>
+  <h2>العتبة 4: ثلاثة أرباع التسربات بأقل من ثلاثة إنذارات في الأسبوع</h2>
+  <table class="t small">
+    <tr><th>العتبة</th><th class="num">الدقة</th><th class="num">الاستدعاء</th><th class="num">في الأسبوع</th></tr>
+    <tr><td>3</td><td class="num">0.14</td><td class="num">0.92</td><td class="num">6.1</td></tr>
+    <tr class="hl"><td>4</td><td class="num">0.25</td><td class="num">0.75</td><td class="num">2.8</td></tr>
+    <tr><td>5</td><td class="num">0.32</td><td class="num">0.48</td><td class="num">1.4</td></tr>
+  </table>
+  <div class="callout note mt"><b>نحو 77,760 م³ في السنة:</b> 36 تسربًا × 3 م³/ساعة × 24 × (40 ناقص 10 أيام). تقدير، وصغير أمام ماء الري.</div>
+  <aside class="notes"><p>من تشغيل المختبر. العتبة 3 تتجاوز طاقة الفريق (5 في الأسبوع). أعطال العدادات عند العتبة 4: 8 في السنة، تذهب إلى فريق العدادات. لاحظ الحجم: هذه الحالة U04 في الخريطة، وصدق رقمها لا يجعله كبيرًا.</p></aside>
+</section>
+
+<!-- الجلسة 7 -->
+
+<section class="slide section" id="s7" data-auto="section" data-session="7" data-n="51">
+  <div class="kicker">الجلسة 7</div>
+  <h1>الجفاف والغبار والحر، وحقوق البيانات</h1>
+  <ul class="bullets outcomes"><li>تقرأ رخصة مجموعة بيانات وتحكم هل تسمح بالاستعمال المقصود</li><li>تميز البيانات الشخصية في حالة استخدام والمرجعية التي تنطبق</li><li>تقدّر جاهزية البيانات لكل حالة</li></ul>
+  <div class="sess-no">07</div>
+</section>
+
+<section class="slide" id="weather-warnings" data-lo="LO5" data-n="52" data-session="7">
+  <div class="kicker">التنبيهات</div>
+  <h2>تنبيهات الجفاف والغبار والحر: قيمتها في الصحة والسلامة قبل الماء</h2>
+  <div class="cols cols-3">
+    <div class="card c-amber"><h4>الجفاف</h4><p class="small mb0">مؤشر شهري للمراعي من الصور وإعادة التحليل، لتوجيه دعم الأعلاف.</p></div>
+    <div class="card c-coral"><h4>الغبار</h4><p class="small mb0">تنبؤات مفتوحة للعواصف الغبارية، تنبيه للمزارع والطرق.</p></div>
+    <div class="card c-purple"><h4>الحر</h4><p class="small mb0">تنبيه للعمال في الحقول حين يتجاوز مؤشر الحر حدًّا.</p></div>
+  </div>
+  <div class="callout note mt"><b>في الخريطة.</b> حالة بلا ماء موفّر قد تستحق مكانًا، بسبب يُكتب.</div>
+  <aside class="notes"><p>في المملكة يصدر المركز الوطني للأرصاد التنبيهات الرسمية للطقس؛ تنبيه الهيئة للمزارعين يكمله ولا يحل محله. اسأل: من يملك أرقام جوالات عمال المزارع، وبأي حق تُستعمل؟ هذا سؤال الشريحة التالية.</p></aside>
+</section>
+
+<section class="slide" id="who-owns-farm-data" data-lo="LO5" data-n="53" data-session="7">
+  <div class="kicker">من يملك البيانات</div>
+  <h2>بيانات المزرعة عن مزارع: استهلاكه وحقله ومحصوله</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>قراءة عداد مزرعة مع اسم مالكها بيانات شخصية</li>
+      <li>رمز المزارع في سجل الهيئة يعرّفه، وإن لم يكن اسمًا</li>
+      <li>صورة القمر الاصطناعي للحقل عامة، وربطها بالمالك ليس عامًّا</li>
+    </ul>
+    <div class="card c-teal"><h4>نظام حماية البيانات الشخصية، المادة 5</h4><p class="small mb0">لا تُعالج البيانات الشخصية ولا يُغيّر غرض معالجتها دون موافقة صاحبها، إلا في الحالات التي يذكرها النظام.</p></div>
+  </div>
+  <aside class="notes"><p>المادة 5 من النظام بتصرف في الصياغة. الحالات المستثناة كثيرة ولها شروط، وتحددها اللائحة: لا تحكم في القاعة على حالة بعينها، بل اسأل «ما الأساس النظامي؟». الجهة المختصة بالنظام سدايا.</p></aside>
+</section>
+
+<section class="slide" id="open-licences" data-lo="LO5" data-n="54" data-session="7">
+  <div class="kicker">الرخص المفتوحة</div>
+  <h2>البيانات المفتوحة مفتوحة برخصة، والرخصة تقول ما يجوز</h2>
+  <table class="t">
+    <tr><th>البيانات</th><th>الرخصة</th><th>ما تطلبه</th></tr>
+    <tr><td>صور Sentinel من كوبرنيكوس</td><td>مجانية ومفتوحة</td><td>ذكر المصدر</td></tr>
+    <tr><td>ESA WorldCover، وOpen-Meteo</td><td>CC BY 4.0</td><td>ذكر المصدر، وأي استعمال</td></tr>
+    <tr><td>صور تجارية من مورد</td><td>رخصة المورد</td><td>قد تمنع النشر أو المشاركة</td></tr>
+  </table>
+  <div class="callout note mt"><b>سياسة البيانات المفتوحة، المبدأ 7.</b> البيانات المفتوحة تخضع لرخصة تحدد شروط استعمالها والتزاماته وقيوده.</div>
+  <aside class="notes"><p>المصدر: سياسة البيانات المفتوحة من مكتب إدارة البيانات الوطنية، المبدأ السابع عن ترخيص البيانات المفتوحة. اسأل: إنفاذ يقوم على صور لا يستطيع المزارع رؤيتها ولا نشرها، ماذا يعني لحقه في الرد؟</p></aside>
+</section>
+
+<section class="slide" id="data-sharing-policy" data-lo="LO5" data-n="55" data-session="7">
+  <div class="kicker">مشاركة البيانات</div>
+  <h2>قبل أن تخرج البيانات إلى جهة أخرى: غرض، ووصول، واتفاقية</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>الغرض المشروع</h4><p class="small mb0">لماذا تُشارك، ولأي استعمال فقط.</p></div>
+    <div class="card c-cyan"><h4>الوصول المصرّح به</h4><p class="small mb0">من يصل، بقدر الحاجة إلى المعرفة وأقل صلاحية.</p></div>
+    <div class="card c-purple"><h4>الشفافية</h4><p class="small mb0">أن تعرف أطراف المشاركة وصف البيانات وتصنيفها وغرضها وحمايتها وإتلافها.</p></div>
+  </div>
+  <aside class="notes"><p>من مبادئ سياسة مشاركة البيانات لمكتب إدارة البيانات الوطنية: ثقافة المشاركة، والمصدر الموحد للحقيقة، والغرض المشروع، والوصول المصرّح به، والشفافية، والمسؤولية المشتركة، وأمن البيانات، والاستخدام الأخلاقي. اخترنا ثلاثة. اسأل: شركة تعرض تطبيق إرشاد مجانيًّا مقابل قراءات العدادات: أي مبدأ تسأل عنه أولًا؟</p></aside>
+</section>
+
+<section class="slide" id="sparse-ground-truth" data-lo="LO5" data-n="56" data-session="7">
+  <div class="kicker">الجاهزية</div>
+  <h2>البيانات «جاهزة» حين تكون موجودة، ومسموحة لنا، ومقيسة هنا</h2>
+  <div class="flow">
+    <div class="step c-cyan"><b>موجودة؟</b>عندنا، لا عند المورد</div>
+    <div class="arrow">←</div>
+    <div class="step c-teal"><b>مسموحة؟</b>لهذا الاستعمال بعينه</div>
+    <div class="arrow">←</div>
+    <div class="step c-amber"><b>مقيسة هنا؟</b>بحقيقة ميدانية في الإقليم</div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> «المورد يقول دقتها 95%.» على أي فئة، وفي أي مكان، وأمام أي مرجع؟</div>
+  <aside class="notes"><p>الحقيقة الميدانية قليلة دائمًا في الزراعة والمياه: زيارات ومجسات وسجل إصلاحات. اسأل: من مختبرات اليومين، أي البيانات قسناها فعلًا في الإقليم؟ لا تجب: يجيبون في السجل.</p></aside>
+</section>
+
+<section class="slide" id="check-rights" data-lo="LO5" data-n="57" data-session="7">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>طلب من شركة</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="check-rights-q1">
+    <p class="lead">شركة ناشئة تطلب من جهة مياه في مدينة قراءات عدادات البيوت ساعة بساعة مع العناوين، لتبني تطبيقًا لترشيد الاستهلاك. ما أول ما يلزم قبل المشاركة؟</p>
+    <div class="opts">
+      <div class="opt" data-why="الرخصة تخص البيانات المنشورة للعموم، وقراءات البيوت مع العناوين ليست بيانات مفتوحة" data-k="أ">نشر القراءات برخصة CC BY 4.0 حتى تستعملها الشركة وغيرها بالشروط نفسها</div>
+      <div class="opt" data-ok data-k="ب">غرض مكتوب وأساس نظامي، واتفاقية مشاركة تحدد من يصل إلى القراءات</div>
+      <div class="opt" data-why="حذف الأسماء لا يكفي: العنوان مع الاستهلاك يعرّف البيت وأهله" data-k="ج">حذف أسماء المشتركين من الملف، فتصبح القراءات بيانات غير شخصية</div>
+      <div class="opt" data-why="فائدة الترشيد لا تغني عن الأساس النظامي ولا عن حق أصحاب البيانات في العلم" data-k="د">لا شيء، لأن الغرض ترشيد المياه وهو في مصلحة المشتركين أنفسهم</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> القراءات مع العناوين بيانات شخصية، ومشاركتها مع جهة خارجية تحتاج غرضًا مشروعًا وأساسًا نظاميًّا واتفاقية تحدد الوصول.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ب. من اختار «ج» يحتاج سؤالًا: هل يصعب أن تعرف البيت من عنوانه؟</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-7" data-auto="lab" data-lab="2.7" data-label="المختبر 2.7" data-n="58" data-session="7">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 2.7 · 20 دقيقة</div><h2>سجل البيانات والحقوق</h2><p class="lead small">تملأ لكل حالة من اثنتي عشرة حالة استخدام سجل البيانات: هل هي موجودة، وهل تسمح رخصتها، وهل دقتها مقيسة هنا، وهل فيها بيانات شخصية، والمرجعية الوطنية التي تنطبق، ودرجة الجاهزية.</p><a class="nb" href="../labs/D2_7_data_rights.html">D2_7_data_rights.html</a></div><ul class="checklist"><li>اقرأ حالات الاستخدام ودليل التقييم <span class="min">3 د</span></li><li>املأ أعمدة الوجود والرخصة والدقة <span class="min">6 د</span></li><li>حدد البيانات الشخصية والمرجعية <span class="min">5 د</span></li><li>أعط كل حالة درجة الجاهزية <span class="min">4 د</span></li><li>قارن مع زميل حالتين <span class="min">2 د</span></li><li class="stretch">✱ إضافي: اكتب لحالة <span class="ltr" dir="ltr">U10</span> ما يلزم قبل مشاركة البيانات مع الشركة</li></ul></div>
+  <aside class="notes"><p>اطلب واقعة لكل درجة جاهزية، لا انطباعًا. الخطأ الأشيع: «موجودة عند المورد» تُحسب جاهزة. المساعد يشرح بندًا في نظام، ولا يملأ السجل. من يتأخر يكتفي بالأعمدة الثلاثة الأولى والدرجة.</p></aside>
+</section>
+
+<section class="slide" id="debrief-2-7" data-lo="LO5" data-n="59" data-session="7">
+  <div class="kicker">بعد المختبر 2.7</div>
+  <h2>ست حالات فيها بيانات شخصية، واثنتان فقط بياناتهما مقيسة في الإقليم</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>جاهزية 3</h4><p class="small mb0">U04 (سجل الإصلاحات، 2.6)، وU05 (دقة الخريطة، 1.7).</p></div>
+    <div class="card c-amber"><h4>جاهزية 1</h4><p class="small mb0">U08 (أرقام العمال)، وU10 (اتفاقية لم توقع)، وU12 (دقة المورد بلا فئات).</p></div>
+    <div class="card c-coral"><h4>جاهزية 0</h4><p class="small mb0">U06: رخصة تجارية تمنع النشر، ولم تُختبر في الإقليم.</p></div>
+  </div>
+  <aside class="notes"><p>من مفتاح المختبر. البيانات الشخصية: U01، U02، U03، U06، U08، U10. U01 قيست جزئيًّا في المختبر 1.5 فبقيت 2. قارن اختلافات الطاولات: أكثر الخلاف في U01 وU09. اقبل الدرجة المختلفة إذا جاءت بواقعة.</p></aside>
+</section>
+
+<!-- الجلسة 8 -->
+
+<section class="slide section" id="s8" data-auto="section" data-session="8" data-n="60">
+  <div class="kicker">الجلسة 8</div>
+  <h1>خريطة الفرص والمخاطر</h1>
+  <ul class="bullets outcomes"><li>تقيّم الحالات على المعايير الأربعة بواقعة لكل درجة</li><li>ترتب الحالات وتطبق قاعدة التعليق</li><li>تجهز دفاعًا من خمس دقائق عن صفحة واحدة</li></ul>
+  <div class="sess-no">08</div>
+</section>
+
+<section class="slide" id="four-criteria" data-lo="LO5" data-n="61" data-session="8">
+  <div class="kicker">الخريطة</div>
+  <h2>أربعة معايير، لكل منها من 0 إلى 3، وواقعة لكل درجة</h2>
+  <div class="cols cols-4">
+    <div class="card c-cyan"><h4>الماء</h4><p class="small mb0">موفّر ومقيس على بيانات الإقليم، بمداه.</p></div>
+    <div class="card c-teal"><h4>الجاهزية</h4><p class="small mb0">موجودة، ومسموحة، ومقيسة هنا.</p></div>
+    <div class="card c-amber"><h4>الإنصاف</h4><p class="small mb0">تصل إلى الصغار بالجودة نفسها، بلا عبء جديد.</p></div>
+    <div class="card c-purple"><h4>المساءلة</h4><p class="small mb0">صاحب مسمّى، وخطوة بشرية، وحق رد.</p></div>
+  </div>
+  <aside class="notes"><p>الدليل كاملًا في <code>map/scoring_guide.txt</code>. الإنصاف والمساءلة من مبادئ سدايا لأخلاقيات الذكاء الاصطناعي، والجاهزية من الجلسة السابقة، والماء من جلسات اليوم. اسأل: لماذا لا يكون الماء وحده هو المعيار في هيئة مياه؟</p></aside>
+</section>
+
+<section class="slide" id="hold-rule" data-lo="LO5" data-n="62" data-session="8">
+  <div class="kicker">قاعدة التعليق</div>
+  <h2>صفر في المساءلة يعلّق الحالة، مهما كان مجموعها</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>المجموع يخلط ما لا يُخلط: ماء كثير لا يعوّض جزاءً آليًّا</li>
+      <li>التعليق ليس رفضًا: الحالة تعود حين يُعاد تصميمها</li>
+      <li>إعادة التصميم واقعة واحدة أحيانًا: صاحب مسمّى، أو زيارة قبل الجزاء</li>
+    </ul>
+    <div class="card c-coral"><h4>مثال من جهة بيئية</h4><p class="small mb0">مخالفات صيد آلية من كاميرات على الشاطئ، بلا مراجعة بشرية: تُعلّق، ولو كانت تحمي المخزون السمكي.</p></div>
+  </div>
+  <aside class="notes"><p>المثال مخترع ومن خارج الحالة. اسأل: ما الواقعة الواحدة التي تعيد هذه الحالة إلى الترتيب؟ الجواب: مراجعة بشرية قبل المخالفة، وحق الاعتراض.</p></aside>
+</section>
+
+<section class="slide" id="claims-are-not-water" data-lo="LO5" data-n="63" data-session="8">
+  <div class="kicker">الادعاء والماء</div>
+  <h2>الادعاء الكبير غير المختبر يأخذ درجة صغيرة في الماء</h2>
+  <table class="t">
+    <tr><th>الادعاء مبني على</th><th>درجة الماء</th></tr>
+    <tr><td>محاكاة على بيانات الإقليم، بمدى، فوق 500,000 م³</td><td>3</td></tr>
+    <tr><td>تقدير من بيانات الإقليم، أو مقيس بين 100,000 و500,000</td><td>2</td></tr>
+    <tr><td>عرض مورد لم يُختبر، أو توفير صغير</td><td>1</td></tr>
+    <tr><td>لا توفير ماء</td><td>0</td></tr>
+  </table>
+  <aside class="notes"><p>من دليل التقييم. لاحظ أن الرقم الصادق الصغير يأخذ 1 مثل الرقم الكبير غير المختبر: الدرجة لا تعاقب الصدق، والمعايير الأخرى تفرق بينهما. اسأل: أين تضع ادعاءً بعشرة ملايين متر مكعب من عرض مورد؟</p></aside>
+</section>
+
+<section class="slide" id="one-page-defence" data-lo="LO5" data-n="64" data-session="8">
+  <div class="kicker">الصفحة الواحدة</div>
+  <h2>صفحة واحدة تدافع عنها في خمس دقائق، ثم ثلاث دقائق أسئلة</h2>
+  <ol class="bullets">
+    <li><b>نبدأ بثلاث:</b> لماذا الآن، ومن صاحب كل منها</li>
+    <li><b>معلّقة:</b> وما الذي يعيد كل منها</li>
+    <li><b>رقم واحد للماء</b> بمداه، وعلى ماذا بُني</li>
+    <li><b>صف من جهتك،</b> إن أكملت العمل التحضيري</li>
+  </ol>
+  <div class="callout tip mt"><b>في المناقشة الختامية</b> يختار الميسّر حالة، وتعيد تقييمها أمامه دون مساعد.</div>
+  <aside class="notes"><p>هذا شكل العرض في المناقشة الختامية. المساعد مسموح كاملًا في المختبر، لكن الدفاع لكم. اسأل: ما الحالة التي تخشى أن يختارها الميسّر؟ ابدأ بها.</p></aside>
+</section>
+
+<section class="slide" id="check-hold" data-lo="LO5" data-n="65" data-session="8">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>أين تضعها؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="check-hold-q1">
+    <p class="lead">حالة في جهة بلدية: كاميرات ذكية تصدر مخالفات آلية لمن يسقي حديقته في ساعات الذروة. الماء 3، والجاهزية 3، والإنصاف 1، والمساءلة 0. أين تضعها في الخريطة؟</p>
+    <div class="opts">
+      <div class="opt" data-why="المجموع 7 لا يهم: صفر المساءلة يعلّق الحالة قبل أي ترتيب" data-k="أ">في المرتبة التي يعطيها مجموعها 7 من 12 بين الحالات</div>
+      <div class="opt" data-why="الماء الكبير لا يعوض الجزاء الآلي، والقاعدة تضع المساءلة فوق المجموع" data-k="ب">في أعلى الترتيب، لأن درجتي الماء والجاهزية كاملتان</div>
+      <div class="opt" data-why="التعليق ليس رفضًا نهائيًّا: الحالة تعود إذا أعيد تصميمها بمراجعة بشرية" data-k="ج">ترفض نهائيًّا، ولا تعود إلى الخريطة أبدًا</div>
+      <div class="opt" data-ok data-k="د">تُعلَّق حتى يُعاد تصميمها بخطوة بشرية وحق اعتراض</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> صفر في المساءلة (جزاء آلي بلا مراجعة) يعلّق الحالة مهما كان مجموعها، حتى تُضاف خطوة بشرية وحق اعتراض.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: د. من اختار «ج» خلط التعليق بالرفض. اسأل: ما الواقعة التي تعيدها؟ مراجعة بشرية قبل المخالفة، وحق اعتراض.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-8" data-auto="lab" data-lab="2.8" data-label="المختبر 2.8" data-n="66" data-session="8">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 2.8 · 25 دقيقة</div><h2>تقييم الحالات الاثنتي عشرة وترتيبها</h2><p class="lead small">من سجل الجاهزية الجاهز تقيّم الحالات الاثنتي عشرة على الماء والإنصاف والمساءلة، وترتبها، وتعلّق ما يجب تعليقه، وتكتب مسودة الخريطة في صفحة واحدة.</p><a class="nb" href="../labs/D2_8_opportunity_map.html">D2_8_opportunity_map.html</a></div><ul class="checklist"><li>اقرأ دليل التقييم وقاعدة التعليق <span class="min">3 د</span></li><li>قيّم الحالات على المعايير الثلاثة الباقية <span class="min">10 د</span></li><li>اجمع ورتّب وطبّق قاعدة التعليق <span class="min">5 د</span></li><li>اكتب مسودة الصفحة الواحدة <span class="min">7 د</span></li><li class="stretch">✱ إضافي: غيّر واقعة واحدة في حالة معلقة واكتب كيف تتغير درجاتها</li></ul></div>
+  <aside class="notes"><p>المساعد مسموح كاملًا هنا. من لم يكمل المختبر 2.7 يبدأ من <code>start/register.csv</code>. خصص الدقائق السبع الأخيرة للصفحة الواحدة فعلًا. اطلب من كل طاولة الحالة الأولى وواقعة درجة الماء فيها.</p></aside>
+</section>
+
+<section class="slide" id="debrief-2-8" data-lo="LO5" data-n="67" data-session="8">
+  <div class="kicker">بعد المختبر 2.8</div>
+  <h2>إنذارات التسرب أولًا، مع أن أكبر الادعاءات في مكان آخر</h2>
+  <table class="t small">
+    <tr><th>الترتيب</th><th>الحالة</th><th class="num">المجموع</th></tr>
+    <tr><td>1</td><td>U04 إنذارات التسرب</td><td class="num">10</td></tr>
+    <tr><td>2</td><td>U03 رسائل الري بالتنبؤ</td><td class="num">10</td></tr>
+    <tr><td>3</td><td>U01 تحقق التصريحات</td><td class="num">9</td></tr>
+  </table>
+  <div class="callout warn mt"><b>معلّقة:</b> U02 (غرامات آلية)، وU06 (إنفاذ من نموذج حراري تجاري)، وU10 (مشاركة العدادات مع شركة).</div>
+  <div class="caption">ترتيب مرجعي وضعه المقرر بدليل التقييم، لا الترتيب الوحيد الصحيح: أي ترتيب آخر مقبول بوقائع.</div>
+  <aside class="notes"><p>ترتيب المدرّب المرجعي، لا الترتيب الوحيد الصحيح. التالي: U09 وU11 (8، متساويتان حتى في الجاهزية، فترتيبهما للمشارك بسبب)، ثم U07 (7)، ثم U05 وU08 (6)، ثم U12 (5). U04 تتقدم على U03 بالجاهزية عند التساوي. أي ترتيب آخر مقبول بوقائع. أكبر الادعاءات (U06، U12، U02) عروض موردين لم تُختبر.</p></aside>
+</section>
+
+<section class="slide" id="wrap-up" data-lo="LO4 LO5" data-n="68" data-session="8">
+  <div class="kicker">خلاصة اليوم</div>
+  <h2>ثلاثة أشياء تبقى</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>اسأل من أين جاء التوفير</h4><p class="small mb0">القاعدة أم التنبؤ؟ على الطقس الفعلي، وبمدى لا برقم.</p></div>
+    <div class="card c-cyan"><h4>العتبة بطاقة الفريق</h4><p class="small mb0">الإنذار الذي لا يُزار لا يوفر ماءً.</p></div>
+    <div class="card c-purple"><h4>الحقوق قبل التشغيل</h4><p class="small mb0">غرض وأساس ورخصة وصاحب مسمّى، قبل أي أثر على مزارع.</p></div>
+  </div>
+  <aside class="notes"><p>ارجع إلى الجمل التي كتبوها في آخر اليوم الأول. اسأل: أي جملة تغيرت بعد اليوم؟</p></aside>
+</section>
+
+<section class="slide dark" id="next" data-n="69" data-session="8">
+  <div class="kicker">التالي</div>
+  <h2>المناقشة الختامية: الخريطة أمام الميسّر</h2>
+  <ul class="bullets">
+    <li>فحص المواقف أولًا، دون ذكاء اصطناعي</li>
+    <li>ثم خمس دقائق عرض لكل مشارك، وثلاث دقائق أسئلة</li>
+    <li>وتعيد تقييم حالة يختارها الميسّر، دون مساعد</li>
+  </ul>
+  <aside class="notes"><p>ذكّر بمكان التسليم وموعده من صفحة المقرر. الخريطة صفحة واحدة مع الجدول؛ لا شرائح مطلوبة.</p></aside>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:17:50Z","version":"2027.1.0","commit":"9c39248"},"course":{"id":"use-sec-211","code":"USE-SEC-211","title":"الذكاء الاصطناعي في الزراعة والمياه والبيئة","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-211/","repo":"SDAIAAcademy/use-sec-211","home":"../index.html"},"deck":{"id":"day2","kind":"day","day":2,"label":"اليوم 2","title":"الماء: التنبؤ والري والتسرب، ثم الخريطة","prev":"day1.html","next":"capstone.html","md":"day2.md","alt":{}},"sessions":[{"n":1,"label":"الجلسة 1","title":"إعادة التحليل والتنبؤ ونماذج الطقس","slide":"s1","outcomes":["تميز إعادة التحليل من التنبؤ اليومي والموسمي","تحسب مهارة تنبؤ أمام المناخ المعتاد","تقرأ ادعاء تنبؤ وتسأل عن مهارته"],"minutes":37,"lab":{"id":"2.1","title":"مهارة التنبؤ أمام المناخ المعتاد","minutes":20,"href":"../labs/D2_1_forecast_skill.html"}},{"n":2,"label":"الجلسة 2","title":"ميزان ماء التربة والجدول الثابت","slide":"s2","outcomes":["تحسب استهلاك المحصول من التبخر نتح ومعامل المحصول","تتبع استنزاف منطقة الجذور يومًا بيوم","تقارن قراءة المجس بالميزان وتكتشف الانحراف"],"minutes":45,"lab":{"id":"2.2","title":"موسم الجدول الثابت","minutes":25,"href":"../labs/D2_2_fixed_schedule.html"}},{"n":3,"label":"الجلسة 3","title":"جدول ري يقوده التنبؤ","slide":"s3","outcomes":["تكتب قاعدة ري تعتمد على تنبؤ ثلاثة أيام","تقارن جدولين على الماء وأيام الإجهاد والتسرب العميق","تفصل أثر القاعدة عن أثر جودة التنبؤ"],"minutes":45,"lab":{"id":"2.3","title":"مقارنة جدولي الري","minutes":25,"href":"../labs/D2_3_schedule_comparison.html"}},{"n":4,"label":"الجلسة 4","title":"قول عدم اليقين للمزارع","slide":"s4","outcomes":["تبني من السيناريوهات مدى للتوفير وأيام الإجهاد","تميز مصدر عدم اليقين الأكبر","تكتب رسالة للمزارع تذكر المدى بلغة واضحة"],"minutes":38,"lab":{"id":"2.4","title":"جدول السيناريوهات ورسالة المزارع","minutes":20,"href":"../labs/D2_4_uncertainty.html"}},{"n":5,"label":"الجلسة 5","title":"محاسبة المياه والتدفق الليلي","slide":"s5","outcomes":["تشرح ميزان المياه في منطقة إمداد","تحسب التدفق الليلي الأدنى وخط أساسه","تميز التسرب من الاستهلاك الجديد ومن عطل العداد"],"minutes":37,"lab":{"id":"2.5","title":"التدفق الليلي الأدنى لعشر مناطق","minutes":20,"href":"../labs/D2_5_night_flow.html"}},{"n":6,"label":"الجلسة 6","title":"إنذارات تسرب يحتملها الفريق","slide":"s6","outcomes":["تحسب الدقة والاستدعاء لكل عتبة","تختار عتبة بطاقة فريق التسربات","تقدّر الماء الموفّر من العتبة المختارة"],"minutes":45,"lab":{"id":"2.6","title":"كشف التسرب من بيانات العدادات","minutes":25,"href":"../labs/D2_6_leak_alerts.html"}},{"n":7,"label":"الجلسة 7","title":"الجفاف والغبار والحر، وحقوق البيانات","slide":"s7","outcomes":["تقرأ رخصة مجموعة بيانات وتحكم هل تسمح بالاستعمال المقصود","تميز البيانات الشخصية في حالة استخدام والمرجعية التي تنطبق","تقدّر جاهزية البيانات لكل حالة"],"minutes":38,"lab":{"id":"2.7","title":"سجل البيانات والحقوق","minutes":20,"href":"../labs/D2_7_data_rights.html"}},{"n":8,"label":"الجلسة 8","title":"خريطة الفرص والمخاطر","slide":"s8","outcomes":["تقيّم الحالات على المعايير الأربعة بواقعة لكل درجة","ترتب الحالات وتطبق قاعدة التعليق","تجهز دفاعًا من خمس دقائق عن صفحة واحدة"],"minutes":45,"lab":{"id":"2.8","title":"تقييم الحالات الاثنتي عشرة وترتيبها","minutes":25,"href":"../labs/D2_8_opportunity_map.html"}}],"slides":[{"id":"title","n":1,"title":"الماء: التنبؤ والري والتسرب، ثم الخريطة","kind":"title","session":0,"hash":"71f3026d","md":"#### [day2#title] الماء: التنبؤ والري والتسرب، ثم الخريطة\n\n*أكاديمية سدايا · الذكاء الاصطناعي في الزراعة والمياه والبيئة*\n\nاليوم 2: مهارة التنبؤ أمام المناخ المعتاد، وجدولا الري، والتدفق الليلي، ثم خريطة الفرص والمخاطر\n\nمسار الطلاقة في البيانات والذكاء الاصطناعي · يومان تدريبيان + يوم للمشروع الختامي · 8 جلسات · 8 مختبرات · USE-SEC-211","notes":"رحّب، واسأل: من يتذكر رقمًا واحدًا من الأمس؟ اطلب ثلاثة أرقام، واسأل عن كل منها: على كم نقطة أو قطعة قام؟ اليوم ننتقل من الصورة إلى الماء: كم نروي، وأين يتسرب، ثم نجمع كل ذلك في خريطة فرص ومخاطر لوكيل الهيئة.","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"الماء: التنبؤ والري والتسرب، ثم الخريطة","kind":"content","session":0,"hash":"4125c8d4","md":"#### [day2#agenda] الماء: التنبؤ والري والتسرب، ثم الخريطة\n\n*اليوم*\n\n- **الجلسة 1 · إعادة التحليل والتنبؤ ونماذج الطقس**: إعادة التحليل والتنبؤ، والمهارة أمام المناخ\n- **الجلسة 2 · ميزان ماء التربة والجدول الثابت**: ميزان الماء في التربة ويوم الإجهاد\n- **الجلسة 3 · جدول ري يقوده التنبؤ**: جدول يرى ثلاثة أيام أمام جدول ثابت\n- **الجلسة 4 · قول عدم اليقين للمزارع**: مدى بدل رقم واحد، وكلمات لمزارع\n- **الجلسة 5 · محاسبة المياه والتدفق الليلي**: ميزان المياه والتدفق الليلي الأدنى\n- **الجلسة 6 · إنذارات تسرب يحتملها الفريق**: العتبة بين الإنذار والإصلاح وطاقة الفريق\n- **الجلسة 7 · الجفاف والغبار والحر، وحقوق البيانات**: تنبيهات الطقس، ومن يملك بيانات المزرعة\n- **الجلسة 8 · خريطة الفرص والمخاطر**: أربعة معايير وصفحة تدافع عنها","notes":"ثماني جلسات مثل الأمس. الجلسات الأربع الأولى عن الري في مزرعة واحدة، والجلستان التاليتان عن شبكة مياه الشرب، والأخيرتان عن الحقوق والخريطة. المختبر الأخير هو مسودة الخريطة التي يعرضونها في المناقشة الختامية.","minutes":null,"lo":[]},{"id":"review-day1","n":3,"title":"خريطة جديدة على مكتبك","kind":"quiz","session":0,"hash":"2234ed78","md":"#### [day2#review-day1] خريطة جديدة على مكتبك\n\n*مراجعة الأمس*\n\n**سؤال:** مورد يعرض خريطة نخيل لواحة، ويقول إن دقتها الكلية 92%. تريد الهيئة أن ترسل بها تنبيه سوسة النخيل إلى كل صاحب نخيل. ما أول ما تطلبه؟\n\n- أ. دقة كلية من سنة أحدث، لأن الواحات تتغير كل سنة\n- ب. لا شيء، فإرسال أي تنبيه من خريطة قرار فردي مرفوض\n- ج. دقة المستخدم لفئة النخيل، لأنها تخص من يقرأ الخريطة\n- د. دقة المنتج للنخيل في الواحة، لأنها تقول من تفوّته","notes":"الإجابة: د. يربط بين جلستي 1.7 و1.8. من اختار «ج» حفظ الأسماء وعكس المعنى: اسأله «من يتضرر إن فاتته الخريطة؟». ثم انتقل: اليوم الأرقام ليست دقة خريطة، بل ملم ماء ومتر مكعب.","minutes":null,"lo":["LO3"]},{"id":"s1","n":4,"title":"إعادة التحليل والتنبؤ ونماذج الطقس","kind":"section","session":1,"hash":"9c48d497","md":"#### [day2#s1] إعادة التحليل والتنبؤ ونماذج الطقس\n\n*الجلسة 1*\n\n- تميز إعادة التحليل من التنبؤ اليومي والموسمي\n- تحسب مهارة تنبؤ أمام المناخ المعتاد\n- تقرأ ادعاء تنبؤ وتسأل عن مهارته","notes":"","minutes":null,"lo":["LO1","LO4"]},{"id":"three-kinds-of-weather-data","n":5,"title":"ما حدث، وما سيحدث غدًا، وما سيكون عليه الموسم","kind":"content","session":1,"hash":"7814d515","md":"#### [day2#three-kinds-of-weather-data] ما حدث، وما سيحدث غدًا، وما سيكون عليه الموسم\n\n*ثلاثة أنواع*\n\n|  | إعادة التحليل | التنبؤ اليومي | التنبؤ الموسمي |\n| --- | --- | --- | --- |\n| **يجيب عن** | ماذا حدث؟ | ماذا في الأيام القادمة؟ | هل سيكون الموسم أجف أو أحر من المعتاد؟ |\n| **المدى** | من 1940 إلى أيام مضت | حتى نحو 10 أيام | أشهر |\n| **يصلح لـ** | الميزان والمقارنة بالمعتاد | قرار ري هذا الأسبوع | تخطيط، باحتمالات لا بأرقام |","notes":"التنبؤ الموسمي يقول «احتمال أن يكون الموسم أجف من المعتاد 60%»، لا «سينزل 40 ملم». اسأل: أي الثلاثة تستعمل جهتك اليوم، وفي أي قرار؟ ستلقى التنبؤ الموسمي مرة أخرى في حالة استخدام في الخريطة.","minutes":null,"lo":["LO1","LO4"]},{"id":"ai-weather-models","n":6,"title":"نماذج تتعلم الطقس من عقود إعادة التحليل، وتتنبأ في دقائق","kind":"content","session":1,"hash":"76bbff68","md":"#### [day2#ai-weather-models] نماذج تتعلم الطقس من عقود إعادة التحليل، وتتنبأ في دقائق\n\n*نماذج الطقس بالتعلم الآلي*\n\n- تتعلم من عقود من بيانات ERA5 كيف يتغير الطقس من ست ساعات إلى التي تليها\n- أمثلة: GraphCast من Google DeepMind، وAIFS من المركز الأوروبي للتنبؤات الجوية متوسطة المدى\n- أسرع بكثير من النماذج الفيزيائية، ومنافسة لها في كثير من المقاييس\n\n- **السؤال نفسه لكل نموذج.** ما مهارته في إقليمي، للمتغير الذي يهمني، وبالمهلة التي أحتاجها؟ لا: هل هو بالذكاء الاصطناعي.","notes":"AIFS أصبح تشغيليًّا في المركز الأوروبي في 2025، وGraphCast نُشر في مجلة Science في 2023. لا نشغّل أيًّا منهما في الورشة. التنبؤات في المختبر من خدمة Open-Meteo التي تجمع نماذج تشغيلية. اسأل: هل يغير مصدر التنبؤ ما نقيسه به؟ الجواب: لا.","minutes":null,"lo":["LO1"]},{"id":"skill-vs-climatology","n":7,"title":"التنبؤ يُقاس أمام ما تعرفه بلا تنبؤ: المناخ المعتاد","kind":"content","session":1,"hash":"830c5459","md":"#### [day2#skill-vs-climatology] التنبؤ يُقاس أمام ما تعرفه بلا تنبؤ: المناخ المعتاد\n\n*المهارة*\n\n1. **المناخ المعتاد** متوسط اليوم نفسه في سنوات سابقة كثيرة\n2. **الخطأ** متوسط الفرق المطلق عما حدث، لكل منهما\n3. **المهارة** 1 ناقص خطأ التنبؤ على خطأ المناخ\n\n> **أين يقع الخطأ.** «التنبؤ دقيق: خطؤه نصف ملم فقط.» نصف ملم قد يكون أسوأ من المناخ المعتاد في صيف مستقر.","notes":"صفر يعني أن التنبؤ لا يضيف شيئًا إلى ما نعرفه سلفًا، وسالب يعني أنه أسوأ. لا تذكر أرقام الإقليم: يحسبونها. اسأل: لماذا لا نقيس أمام الصفر؟ لأن أي أحد يستطيع أن يقول «غدًا مثل المعتاد».","minutes":null,"lo":["LO4"]},{"id":"skill-example","n":8,"title":"حرارة الظهيرة في مدينة ساحلية: تنبؤ يغلب المعتاد بالثلث","kind":"content","session":1,"hash":"60ab17bd","md":"#### [day2#skill-example] حرارة الظهيرة في مدينة ساحلية: تنبؤ يغلب المعتاد بالثلث\n\n*مثال*\n\n```\n# ملف: example\nMAE forecast      1.2 C\nMAE climatology   1.8 C\nskill = 1 - 1.2 / 1.8 = 0.33\n```\n\n> **وماذا عن الانحياز؟** متوسط (التنبؤ ناقص الواقع). إن كان سالبًا فالتنبؤ يقدّر أقل من الواقع في المتوسط، وكل قرار يبنى عليه يحتاج هامشًا.","notes":"الأرقام مخترعة ولمتغير غير متغير المختبر. اكتب الحساب على السبورة. اسأل: لو كان الانحياز ناقص درجة، ماذا يحدث لتنبيه الحر المبني على هذا التنبؤ؟ الجواب: يتأخر أو لا يصدر.","minutes":null,"lo":["LO4"]},{"id":"check-skill","n":9,"title":"احسب المهارة","kind":"quiz","session":1,"hash":"c6dc8e45","md":"#### [day2#check-skill] احسب المهارة\n\n*نقطة تحقق*\n\n**سؤال:** تنبؤ سرعة الريح لمطار: متوسط خطئه المطلق 2.4 كم/ساعة، ومتوسط خطأ المناخ المعتاد 3.0 كم/ساعة. كم المهارة؟ (رقمان بعد الفاصلة)\n\n*أجب برقم*","notes":"الإجابة: 0.20. خطأ شائع: كتابة 0.8 (النسبة نفسها لا المهارة). الطريقة نفسها في الخطوة 3 من المختبر.","minutes":null,"lo":["LO4"]},{"id":"lab-2-1","n":10,"title":"مهارة التنبؤ أمام المناخ المعتاد","kind":"lab","session":1,"hash":"d78b4cdc","md":"#### [day2#lab-2-1] مهارة التنبؤ أمام المناخ المعتاد\n\nالمختبر 2.1 · 20 دقيقة\n\nتقارن تنبؤات حقيقية سابقة للتبخر نتح المرجعي بمهلة يوم ويومين وثلاثة بقيم ERA5 للأيام نفسها، وتحسب مهارة كل مهلة أمام المناخ المعتاد، وانحياز التنبؤ.\n\n[D2_1_forecast_skill.html](https://sdaiaacademy.github.io/use-sec-211/labs/D2_1_forecast_skill.html)\n\n- [ ] افتح الملف واقرأ الأعمدة (2 د)\n- [ ] احسب الخطأ المطلق لكل مهلة وللمناخ المعتاد (6 د)\n- [ ] احسب المهارة لكل مهلة (4 د)\n- [ ] احسب الانحياز وقارن الربيع بالصيف (5 د)\n- [ ] اكتب سطرًا: هل يستحق التنبؤ أن يُستعمل؟ (3 د)\n- [ ] ✱ إضافي: احسب المهارة لو كان التنبؤ هو قيمة الأمس، وقارنها","notes":"راقب من يحسب المهارة من متوسط القيم لا من متوسط الأخطاء. من ينهي مبكرًا يأخذ قاعدة «غدًا مثل اليوم». ذكّر بأن التنبؤات حقيقية كما صدرت، لا تنبؤات أعيد حسابها.","minutes":null,"lo":[]},{"id":"debrief-2-1","n":11,"title":"التنبؤ يغلب المعتاد بالربع ليوم واحد، وبالخُمس لثلاثة أيام","kind":"content","session":1,"hash":"17df99a4","md":"#### [day2#debrief-2-1] التنبؤ يغلب المعتاد بالربع ليوم واحد، وبالخُمس لثلاثة أيام\n\n*بعد المختبر 2.1*\n\n| البند | القيمة |\n| --- | --- |\n| مهلة يوم | 0.268 |\n| مهلة يومين | 0.223 |\n| مهلة ثلاثة أيام | 0.196 |\n\n- **انحياز.** نحو نصف ملم في اليوم أقل من ERA5.\n- **الصيف.** المهارة 0.18 في الصيف، و0.32 في الربيع.\n\nبيانات الطقس من Open-Meteo.com برخصة CC BY 4.0. أُعدّت باستعمال معلومات خدمة كوبرنيكوس لتغير المناخ (ERA5، 2024).","notes":"من تشغيل المختبر. متوسط الخطأ المطلق 0.568 و0.603 و0.624 ملم، والمناخ المعتاد 0.776. جزء من الانحياز فرق في طريقة الحساب بين المصدرين. اسأل: في الصيف المستقر، ماذا يضيف التنبؤ؟ وأين يضيف أكثر؟ هذا يعود في المختبر 2.4.","minutes":null,"lo":["LO4"]},{"id":"s2","n":12,"title":"ميزان ماء التربة والجدول الثابت","kind":"section","session":2,"hash":"f8cf1d76","md":"#### [day2#s2] ميزان ماء التربة والجدول الثابت\n\n*الجلسة 2*\n\n- تحسب استهلاك المحصول من التبخر نتح ومعامل المحصول\n- تتبع استنزاف منطقة الجذور يومًا بيوم\n- تقارن قراءة المجس بالميزان وتكتشف الانحراف","notes":"","minutes":null,"lo":["LO4"]},{"id":"et0-kc","n":13,"title":"استهلاك المحصول = التبخر نتح المرجعي × معامل المحصول","kind":"content","session":2,"hash":"2bd934a2","md":"#### [day2#et0-kc] استهلاك المحصول = التبخر نتح المرجعي × معامل المحصول\n\n*كم يشرب المحصول*\n\n- **التبخر نتح المرجعي (ET0):** ما يفقده عشب قصير مروي جيدًا في يوم، من الحرارة والإشعاع والريح والرطوبة\n- **معامل المحصول (Kc):** كم يشرب محصولك مقارنة بذلك العشب\n- المرجع: دليل الفاو رقم 56 للري، معيار عالمي منذ 1998\n\n- **مثال: نخيل في واحة.** ET0 في يوم صيفي 9 ملم، وKc للنخيل نحو 0.95: الاستهلاك 8.6 ملم في اليوم.","notes":"Kc للنخيل من جداول دليل الفاو 56 تقريبي، والمثال للتوضيح. المزرعة في المختبر زيتون بمعامل آخر. اسأل: لماذا يشرب الزيتون أقل من العشب؟ أوراق أقل وتظلل أقل للأرض، ومسام تغلق في الحر.","minutes":null,"lo":["LO4"]},{"id":"root-zone-bucket","n":14,"title":"التربة دلو: تملؤه بالري والمطر، ويفرغه المحصول","kind":"content","session":2,"hash":"30d91ea7","md":"#### [day2#root-zone-bucket] التربة دلو: تملؤه بالري والمطر، ويفرغه المحصول\n\n*منطقة الجذور*\n\n- **الماء المتاح الكلي (TAW).** حجم الدلو بالملم: يزيد في التربة الثقيلة ويقل في الرملية.\n- **الماء الميسّر (RAW).** الجزء الذي يشربه المحصول دون جهد. بعده يبدأ الإجهاد.\n- **التسرب العميق.** ما يزيد على امتلاء الدلو ينزل تحت الجذور: ماء ضائع.\n\n> **الاستنزاف.** كم نقص الدلو عن الامتلاء. يزيد كل يوم بالاستهلاك، وينقص بالري والمطر.","notes":"ارسم الدلو على السبورة بخط أفقي عند RAW. اسأل: ما الفرق بين دلو صغير ودلو كبير لمزارع يروي كل ثلاثة أيام؟ الصغير يفيض أسرع ويفرغ أسرع.","minutes":null,"lo":["LO4"]},{"id":"stress-day","n":15,"title":"يوم الإجهاد يبدأ والاستنزاف فوق الماء الميسّر","kind":"content","session":2,"hash":"111b9ef2","md":"#### [day2#stress-day] يوم الإجهاد يبدأ والاستنزاف فوق الماء الميسّر\n\n*يوم الإجهاد*\n\n```\n# ملف: example\nKs = 1                              depletion \u003c= RAW\nKs = (TAW - depletion) / (TAW - RAW)  depletion >  RAW\n\ndepletion today = yesterday - rain - irrigation + Ks x Kc x ET0\n```\n\n> **أين يقع الخطأ.** بدء كل يوم من الصفر. الدلو يحمل ما بقي من الأمس، وهذا كل الفكرة.","notes":"Ks أقل من 1 يعني أن النبات يغلق مسامه فيستهلك أقل، وينمو أقل. الصيغة من دليل الفاو 56 مبسطة. اسأل: لماذا يقل الاستهلاك حين يعطش النبات؟ هذا ما يجعل الإجهاد يبدو «توفيرًا» في الأرقام، وهو ليس كذلك.","minutes":null,"lo":["LO4"]},{"id":"probe-needs-calibration","n":16,"title":"المجس حقيقة ميدانية، بشرط أن يُعاير","kind":"content","session":2,"hash":"fb5dd42c","md":"#### [day2#probe-needs-calibration] المجس حقيقة ميدانية، بشرط أن يُعاير\n\n*المجس*\n\n- يقيس الرطوبة في نقطة من منطقة الجذور مباشرة\n- ينحرف مع الوقت والملوحة والحرارة\n- الانحراف بطيء، فلا يظهر في قراءة واحدة\n- العلاج: قارنه بالميزان، أو بعينة تربة، كل مدة\n\n- **مثال: عداد ماء في مبنى.** عداد يقرأ أقل بـ 1% كل شهر: بعد سنة يخفي ثُمن الاستهلاك، ولا أحد يلاحظ شهرًا بشهر.","notes":"المثال مخترع. اسأل: متى عويرت أجهزة القياس في جهتك آخر مرة، ومن يملك سجل المعايرة؟ في المختبر ستبحثون عن يوم بدء الانحراف.","minutes":null,"lo":["LO4"]},{"id":"check-depletion","n":17,"title":"احسب استنزاف الغد","kind":"quiz","session":2,"hash":"56b555c2","md":"#### [day2#check-depletion] احسب استنزاف الغد\n\n*نقطة تحقق*\n\n**سؤال:** حقل نخيل: الاستنزاف الليلة 20 ملم، وTAW 100 ملم، وRAW 50 ملم. غدًا: ET0 = 10 ملم، وKc = 0.9، ولا مطر ولا ري. كم الاستنزاف مساء الغد بالملم؟\n\n*أجب برقم*","notes":"الإجابة: 29. خطأ شائع: طرح الاستهلاك بدل جمعه (11)؛ الاستنزاف ما نقص من الدلو، فيزيد بالاستهلاك. ثم اسأل: لو كان الاستنزاف الليلة 60، كم Ks؟ (100 ناقص 60) على 50 = 0.8.","minutes":null,"lo":["LO4"]},{"id":"lab-2-2","n":18,"title":"موسم الجدول الثابت","kind":"lab","session":2,"hash":"678cfd07","md":"#### [day2#lab-2-2] موسم الجدول الثابت\n\nالمختبر 2.2 · 25 دقيقة\n\nتشغّل ميزان ماء التربة لمزرعة الزيتون الإرشادية على موسم 2024 بجدولها الثابت، فتعد الماء المستعمل وأيام الإجهاد، وتقارن قراءات مجس الرطوبة بالميزان.\n\n[D2_2_fixed_schedule.html](https://sdaiaacademy.github.io/use-sec-211/labs/D2_2_fixed_schedule.html)\n\n- [ ] اقرأ ملف المزرعة وأعمدة الموسم (3 د)\n- [ ] احسب الاستنزاف اليومي بالجدول الثابت (9 د)\n- [ ] احسب الماء المستعمل وأيام الإجهاد (5 د)\n- [ ] قارن المجس بالميزان وجد بداية الانحراف (8 د)\n- [ ] ✱ إضافي: احسب كم كان سيُروى لو صدّق الفريق المجس المنحرف","notes":"الفخ الأول: `G3` يجب أن يساوي `I2`. الفخ الثاني: Ks من استنزاف بداية اليوم. من يتأخر في الخطوة 2 ينسخ العمود `fixed_depletion_mm` من `start/season_fixed.csv` (التواريخ نفسها) إلى جانب ملفه، ويستعمله مكان `I` في خطوة المجس. الرسم في الخطوة 4 أهم من الصيغة.","minutes":null,"lo":[]},{"id":"debrief-2-2","n":19,"title":"الجدول الثابت يفيض في الربيع ويعطش في أغسطس، في الموسم نفسه","kind":"content","session":2,"hash":"2ae412a9","md":"#### [day2#debrief-2-2] الجدول الثابت يفيض في الربيع ويعطش في أغسطس، في الموسم نفسه\n\n*بعد المختبر 2.2*\n\n- **624,200** م³ في الموسم (1,560.5 ملم)\n- **9** أيام إجهاد، كلها في أغسطس\n- **167.6** ملم تسرب عميق، أغلبه من مارس إلى مايو\n\n> **المجس.** ينحرف عن الميزان بوضوح من 11 أغسطس، والانحراف بدأ قبل ذلك بشهر. آخر معايرة في فبراير.\n\nالطقس من ERA5 عبر Open-Meteo.com (CC BY 4.0)، أُعدّ باستعمال معلومات خدمة كوبرنيكوس لتغير المناخ (2024). المزرعة ومجسها اصطناعيان.","notes":"من تشغيل المختبر: 82 مرة ري. التسرب 142.6 ملم من مارس إلى مايو و25 في أكتوبر. انحراف المجس مزروع من 10 يوليو في البيانات الاصطناعية. اسأل: لو كان الفريق يروي على المجس في أغسطس، ماذا كان سيحدث؟","minutes":null,"lo":["LO4"]},{"id":"s3","n":20,"title":"جدول ري يقوده التنبؤ","kind":"section","session":3,"hash":"0f4a22a9","md":"#### [day2#s3] جدول ري يقوده التنبؤ\n\n*الجلسة 3*\n\n- تكتب قاعدة ري تعتمد على تنبؤ ثلاثة أيام\n- تقارن جدولين على الماء وأيام الإجهاد والتسرب العميق\n- تفصل أثر القاعدة عن أثر جودة التنبؤ","notes":"","minutes":null,"lo":["LO4"]},{"id":"look-ahead-rule","n":21,"title":"قاعدة الري تسأل كل صباح: هل سنتجاوز الماء الميسّر قبل الري التالي؟","kind":"content","session":3,"hash":"ae318a36","md":"#### [day2#look-ahead-rule] قاعدة الري تسأل كل صباح: هل سنتجاوز الماء الميسّر قبل الري التالي؟\n\n*القاعدة*\n\n1. **اليوم** الاستنزاف الآن\n2. **الأيام القادمة** Kc × تنبؤ ET0 لها\n3. **المجموع** يبلغ RAW أو يزيد؟\n4. **القرار** اروِ عمقًا ثابتًا، أو انتظر","notes":"القاعدة لا تحتاج نموذجًا معقدًا: سطر في جدول بيانات. الذكاء في أنها تنظر إلى الأمام وتروي حين يحتاج المحصول، لا حين يقول التقويم. اسأل: ما الذي يحدد كم يومًا ننظر إلى الأمام؟ الجواب: كم يتأخر الري من القرار إلى الحقل.","minutes":null,"lo":["LO4"]},{"id":"rule-example","n":22,"title":"صباح يوم في مزرعة نخيل: تنتظر أم تروي؟","kind":"content","session":3,"hash":"7b4becd2","md":"#### [day2#rule-example] صباح يوم في مزرعة نخيل: تنتظر أم تروي؟\n\n*مثال*\n\n|  | ملم |\n| --- | --- |\n| الاستنزاف هذا الصباح | 32 |\n| تنبؤ ET0 للأيام الثلاثة القادمة | 27 |\n| Kc × التنبؤ = 0.9 × 27 | 24.3 |\n| المجموع، أمام RAW = 50 | 56.3 ← اروِ اليوم |","notes":"الأرقام مخترعة لمزرعة نخيل، لا من مزرعة الزيتون. غيّر الاستنزاف إلى 20 واسأل القاعة: 20 زائد 24.3 = 44.3، أقل من 50: لا ري اليوم.","minutes":null,"lo":["LO4"]},{"id":"fair-comparison","n":23,"title":"قارن الجدولين على الطقس الذي حدث فعلًا","kind":"content","session":3,"hash":"fe1117ef","md":"#### [day2#fair-comparison] قارن الجدولين على الطقس الذي حدث فعلًا\n\n*المقارنة العادلة*\n\n- التنبؤ يدخل في **القرار** فقط\n- الميزان يتحرك بما **حدث**: ET0 والمطر الفعليان\n- وهكذا يُقاس الجدولان على الموسم نفسه\n- وأربعة أرقام لكل منهما: الماء، ومرات الري، وأيام الإجهاد، والتسرب العميق\n\n- **المقارنة الخاطئة.** تشغيل الميزان على التنبؤ نفسه. النتيجة موسم لم يحدث، يبدو فيه التنبؤ كاملًا.","notes":"هذا أكثر ما يخفيه عرض مورد: «في المحاكاة وفّرنا 30%»، على أي طقس؟ اسأل: ما السؤال الذي تطرحه على مورد يعرض توفيرًا محاكى؟","minutes":null,"lo":["LO4"]},{"id":"rule-or-forecast","n":24,"title":"من أين يأتي التوفير، القاعدة أم التنبؤ؟ اختبر كلًّا منهما وحده","kind":"content","session":3,"hash":"fefad03e","md":"#### [day2#rule-or-forecast] من أين يأتي التوفير، القاعدة أم التنبؤ؟ اختبر كلًّا منهما وحده\n\n*من أين يأتي التوفير*\n\n- **القاعدة مع التنبؤ الفعلي.** ما سيحدث في الواقع.\n- **القاعدة مع «تنبؤ كامل».** أفضل ما يمكن لو كان التنبؤ بلا خطأ.\n- **القاعدة مع المناخ المعتاد.** القاعدة نفسها بلا أي تنبؤ.\n\n> **إن تساوى الأول والثالث** فالتوفير من أن القاعدة تروي بحسب الحاجة، لا من مهارة التنبؤ.","notes":"هذا التمهيد للمختبر 2.4، لا نتيجته. اسأل: لماذا يهم هذا الفرق قبل شراء خدمة تنبؤ؟ لأنك قد تدفع ثمن تنبؤ لا يضيف إلى القاعدة شيئًا، أو تستغني عن تنبؤ يضيف كثيرًا.","minutes":null,"lo":["LO4"]},{"id":"check-rule","n":25,"title":"قرار الصباح","kind":"quiz","session":3,"hash":"fb79f34b","md":"#### [day2#check-rule] قرار الصباح\n\n*نقطة تحقق*\n\n**سؤال:** مزرعة نخيل: RAW = 50 ملم، وKc = 0.9. هذا الصباح الاستنزاف 25 ملم، وتنبؤ ET0 للأيام الثلاثة القادمة 30 ملم. ماذا تقول القاعدة؟\n\n- أ. اروِ اليوم، لأن المجموع مع الاستهلاك القادم يبلغ RAW\n- ب. لا تروِ، لأن الاستنزاف الآن نصف الماء الميسّر فقط\n- ج. لا تروِ، لأن 0.9 × (25 زائد 30) = 49.5، وهو أقل من 50\n- د. انتظر حتى يبلغ الاستنزاف 50 ملم ثم اروِ في اليوم نفسه","notes":"الإجابة: أ. اطلب من القاعة الحساب قبل كشف الإجابة. الصيغة نفسها في العمود `J` في المختبر.","minutes":null,"lo":["LO4"]},{"id":"lab-2-3","n":26,"title":"مقارنة جدولي الري","kind":"lab","session":3,"hash":"a011ba46","md":"#### [day2#lab-2-3] مقارنة جدولي الري\n\nالمختبر 2.3 · 25 دقيقة\n\nمن ملف الموسم الجاهز تطبق قاعدة الري بالتنبؤ يومًا بيوم، وتقارنها بالجدول الثابت على الماء المستعمل وأيام الإجهاد والتسرب العميق، وتحسب التوفير.\n\n[D2_3_schedule_comparison.html](https://sdaiaacademy.github.io/use-sec-211/labs/D2_3_schedule_comparison.html)\n\n- [ ] اقرأ القاعدة وأعمدة الملف الجاهز (3 د)\n- [ ] احسب قرار الري اليومي والاستنزاف (10 د)\n- [ ] املأ جدول المقارنة للجدولين (6 د)\n- [ ] احسب التوفير بالمتر المكعب وبالنسبة (3 د)\n- [ ] اكتب سطر النتيجة لمرشد الري (3 د)\n- [ ] ✱ إضافي: غيّر عمق الري من 30 إلى 20 ملم، واكتب ما يتغير","notes":"الملف جاهز، فلا أحد يحتاج المختبر 2.2. راقب من يحرك الميزان بعمود التنبؤ `H` بدل `B`. السؤال الثالث في أسئلة التحقق لا جواب له بعد: اتركه مفتوحًا.","minutes":null,"lo":[]},{"id":"debrief-2-3","n":27,"title":"القاعدة وفّرت 13.5% دون يوم إجهاد واحد","kind":"content","session":3,"hash":"7f98626b","md":"#### [day2#debrief-2-3] القاعدة وفّرت 13.5% دون يوم إجهاد واحد\n\n*بعد المختبر 2.3*\n\n|  | الماء (ملم) | مرات الري | أيام الإجهاد | التسرب (ملم) |\n| --- | --- | --- | --- | --- |\n| الجدول الثابت | 1,560.5 | 82 | 9 | 167.6 |\n| القاعدة بالتنبؤ | 1,350 | 45 | 0 | 0 |\n\n> **84,200 م³** في موسم واحد على 40 هكتارًا. والسؤال الباقي: من القاعدة أم من التنبؤ؟\n\nالطقس من ERA5، والتنبؤات كما صدرت، عبر Open-Meteo.com (CC BY 4.0)؛ أُعدّ باستعمال معلومات خدمة كوبرنيكوس لتغير المناخ (2024). المزرعة اصطناعية.","notes":"من تشغيل المختبر. نصف مرات الري تقريبًا، أي عمل أقل للعمال أيضًا. لا تجب عن السؤال الباقي: المختبر التالي يجيب. اسأل: هل تكتب «13.5%» في رسالة للمزارعين؟","minutes":null,"lo":["LO4"]},{"id":"s4","n":28,"title":"قول عدم اليقين للمزارع","kind":"section","session":4,"hash":"605ca8de","md":"#### [day2#s4] قول عدم اليقين للمزارع\n\n*الجلسة 4*\n\n- تبني من السيناريوهات مدى للتوفير وأيام الإجهاد\n- تميز مصدر عدم اليقين الأكبر\n- تكتب رسالة للمزارع تذكر المدى بلغة واضحة","notes":"","minutes":null,"lo":["LO4"]},{"id":"range-not-point","n":29,"title":"الرقم الواحد وعد لا تملكه؛ المدى يقول ما تعرفه","kind":"content","session":4,"hash":"ba906d8f","md":"#### [day2#range-not-point] الرقم الواحد وعد لا تملكه؛ المدى يقول ما تعرفه\n\n*رقم أم مدى*\n\n- **لا.** «ستوفر 20% من مائك.»\n- **نعم.** «نتوقع أن توفر بين 10 و20 من كل 100 متر مكعب، بحسب تربتك.»\n\n> **أين يقع الخطأ.** المزارع يتذكر الرقم الواحد، ويحاسبك عليه في نهاية الموسم.","notes":"الأرقام مخترعة، لا من الإقليم. اسأل: متى سمعت وعدًا برقم واحد من مورد أو من جهتك؟ وماذا حدث في نهاية السنة؟","minutes":null,"lo":["LO4"]},{"id":"sources-of-uncertainty","n":30,"title":"غيّر شيئًا واحدًا في كل مرة، وانظر كم يتحرك الرقم","kind":"content","session":4,"hash":"cf2df8fd","md":"#### [day2#sources-of-uncertainty] غيّر شيئًا واحدًا في كل مرة، وانظر كم يتحرك الرقم\n\n*مصادر عدم اليقين*\n\n| المصدر | مثال في مزرعة نخيل | كيف تختبره |\n| --- | --- | --- |\n| **التربة** | رملية أم طميية؟ حجم الدلو | شغّل الموسم بثلاثة أحجام |\n| **التنبؤ** | فعلي، أم كامل، أم المعتاد | شغّل القاعدة بالثلاثة |\n| **المحصول** | Kc لأشجار صغيرة أم كبيرة | شغّل بقيمتين |\n| **الموسم** | صيف عادي أم أحر | شغّل على سنوات أخرى |","notes":"في المختبر اختبرنا التربة والتنبؤ: تسعة سيناريوهات. المحصول والموسم لم يُختبرا، وهما مما «لا نعرفه» في الرسالة. اسأل: أي هذه تتوقع أن يحرك الرقم أكثر؟ اكتب التوقعات على السبورة.","minutes":null,"lo":["LO4"]},{"id":"plain-words","n":31,"title":"أربعة أسطر: ما نتوقعه، وما يغيّره، وما لا نعرفه، وما نطلبه","kind":"content","session":4,"hash":"759682c5","md":"#### [day2#plain-words] أربعة أسطر: ما نتوقعه، وما يغيّره، وما لا نعرفه، وما نطلبه\n\n*بلغة المزارع*\n\n1. **ما نتوقعه** بمدى: «بين كذا وكذا من كل 100»\n2. **ما يجعله أكبر أو أصغر** في مزرعته: التربة، عمر الأشجار\n3. **ما لا نعرفه بعد:** موسم واحد، مزرعة واحدة\n4. **ما نطلبه**، وأن القرار يبقى له\n\n> **كلمات لا تُكتب للمزارع.** سيناريو، مهارة، TAW، نموذج، نسبة مئوية بكسور.","notes":"«من كل 100 متر مكعب» أوضح من «13.5%» لأكثر الناس. اقرأ مثالًا سيئًا: «تشير المحاكاة إلى توفير متوقع قدره 13.5% بمهارة تنبؤ 0.27». اسأل: ماذا فهم المزارع؟","minutes":null,"lo":["LO4"]},{"id":"check-message","n":32,"title":"أي جملة للمزارع؟","kind":"quiz","session":4,"hash":"80d93c92","md":"#### [day2#check-message] أي جملة للمزارع؟\n\n*نقطة تحقق*\n\n**سؤال:** جربت هيئة قاعدة ري جديدة على مزرعة نخيل واحدة موسمًا واحدًا، ووجدت توفيرًا بين 6 و12 من كل 100 م³ بحسب التربة. أي جملة تصلح لرسالة إلى مزارعي الواحة؟\n\n- أ. «ستوفر القاعدة الجديدة 9% من ماء مزرعتك هذا الموسم.»\n- ب. «تشير محاكاة ميزان الماء إلى توفير 6% إلى 12% بحسب TAW ومهارة التنبؤ.»\n- ج. «قد توفر بين 6 و12 من كل 100 م³ بحسب تربتك، بعد تجربة موسم واحد.»\n- د. «ثبت أن القاعدة توفر الماء في الواحة دون أي ضرر على النخيل.»","notes":"الإجابة: ج. اسأل من اختار «ب»: ماذا يفهم المزارع من TAW والمهارة؟ والجملة الصحيحة ما زالت تحتاج سطر «ما نطلبه».","minutes":null,"lo":["LO4"]},{"id":"lab-2-4","n":33,"title":"جدول السيناريوهات ورسالة المزارع","kind":"lab","session":4,"hash":"7b75caa1","md":"#### [day2#lab-2-4] جدول السيناريوهات ورسالة المزارع\n\nالمختبر 2.4 · 20 دقيقة\n\nمن تسعة سيناريوهات جاهزة (ثلاث ترب وثلاثة تنبؤات) تحسب التوفير وفرق أيام الإجهاد، وتكتب جدول المقارنة بمداه، ثم رسالة قصيرة لمزارع تذكر ما نعرفه وما لا نعرفه.\n\n[D2_4_uncertainty.html](https://sdaiaacademy.github.io/use-sec-211/labs/D2_4_uncertainty.html)\n\n- [ ] اقرأ السيناريوهات التسعة (2 د)\n- [ ] احسب التوفير وفرق الإجهاد لكل سيناريو (5 د)\n- [ ] اكتب المدى، وأي العاملين يحركه أكثر (4 د)\n- [ ] اكتب رسالة المزارع في أربعة أسطر (6 د)\n- [ ] تبادل الرسالة مع زميل واقرأ رسالته (3 د)\n- [ ] ✱ إضافي: اكتب ما الذي يجب قياسه في المزرعة نفسها ليضيق المدى","notes":"الحساب قصير؛ الوقت للرسالة. المساعد مسموح لمراجعة اللغة فقط. اختر رسالتين في آخر خمس دقائق واقرأهما بصوت عالٍ، واسأل القاعة كأنها المزارع: ماذا تفعل غدًا؟","minutes":null,"lo":[]},{"id":"debrief-2-4","n":34,"title":"التربة تحرك التوفير، ونوع التنبؤ لا يكاد يحركه","kind":"content","session":4,"hash":"72ba51f7","md":"#### [day2#debrief-2-4] التربة تحرك التوفير، ونوع التنبؤ لا يكاد يحركه\n\n*بعد المختبر 2.4*\n\n| التربة | التنبؤ الفعلي | تنبؤ كامل | المناخ المعتاد |\n| --- | --- | --- | --- |\n| رملية (60) | 9.6% | 7.7% | 9.6% |\n| رملية طميية (90) | 13.5% | 13.5% | 13.5% |\n| طميية (120) | 13.5% | 13.5% | 13.5% |\n\n> **الجواب الصادق.** التوفير من أن القاعدة تروي بحسب الحاجة. وصفر أيام إجهاد في السيناريوهات التسعة.\n\nكل سيناريو على طقس ERA5 عبر Open-Meteo.com (CC BY 4.0)، أُعدّ باستعمال معلومات خدمة كوبرنيكوس لتغير المناخ (2024). المزرعة والترب اصطناعية.","notes":"من تشغيل المختبر. في الرملية الفرق بين الأعمدة رية واحدة من 30 ملم (1,440 أمام 1,410 ملم)، فلا يُبنى عليه شيء، وحد المدى الأدنى 7.7% يقوم على تلك الرية وحدها. في موسم فيه مطر قد يختلف الأمر: قل ذلك. اسأل: ماذا تقيس في المزرعة ليضيق المدى؟ التربة.","minutes":null,"lo":["LO4"]},{"id":"s5","n":35,"title":"محاسبة المياه والتدفق الليلي","kind":"section","session":5,"hash":"c7fdacc4","md":"#### [day2#s5] محاسبة المياه والتدفق الليلي\n\n*الجلسة 5*\n\n- تشرح ميزان المياه في منطقة إمداد\n- تحسب التدفق الليلي الأدنى وخط أساسه\n- تميز التسرب من الاستهلاك الجديد ومن عطل العداد","notes":"","minutes":null,"lo":["LO1","LO5"]},{"id":"zone-water-balance","n":36,"title":"ما دخل المنطقة = ما استُهلك بإذن + ما فُقد","kind":"content","session":5,"hash":"7c820b5c","md":"#### [day2#zone-water-balance] ما دخل المنطقة = ما استُهلك بإذن + ما فُقد\n\n*ميزان المياه في الشبكة*\n\n1. **الداخل** عداد مدخل المنطقة\n2. **استهلاك بإذن** بيوت ومزارع ومساجد\n3. **فاقد حقيقي** تسربات وانفجارات\n4. **فاقد ظاهري** عدادات تقرأ أقل، وتوصيلات غير نظامية","notes":"هذا تقسيم ميزان المياه المعتاد في إدارة الشبكات، كما في منهجية الرابطة الدولية للمياه (IWA). اسأل: أيها يُرى في الفاتورة وأيها لا يُرى؟ الفاقد الحقيقي لا يظهر إلا بالعداد عند المدخل.","minutes":null,"lo":["LO1","LO5"]},{"id":"district-meters","n":37,"title":"عداد واحد عند مدخل كل منطقة يقسم الشبكة إلى أجزاء تُفهم","kind":"content","session":5,"hash":"199ed542","md":"#### [day2#district-meters] عداد واحد عند مدخل كل منطقة يقسم الشبكة إلى أجزاء تُفهم\n\n*مناطق العدادات*\n\n- تُقسم الشبكة إلى مناطق مغلقة، لكل منها مدخل أو اثنان\n- عداد عند كل مدخل يقرأ كل ساعة\n- من القراءات وحدها تعرف **أي منطقة** تفقد، لا أين داخلها\n- داخل المنطقة يعمل الفريق: سماع بالجهاز الصوتي، ثم حفر\n\n- **العداد مصدر بيانات.** مثل الصورة بالأمس: يقيس شيئًا بدقة، ولا يقول أين ذهب الماء بعده.","notes":"تذكير بالمختبر 1.1: عداد المنطقة كان مصدرًا للسؤال Q4. اسأل: ما الذي يجعل منطقة «مغلقة»؟ صمامات مغلقة على حدودها، وهذا عمل هندسي يسبق أي تحليل.","minutes":null,"lo":["LO1"]},{"id":"minimum-night-flow","n":38,"title":"بين الواحدة والرابعة فجرًا ينام الناس، والتسرب لا ينام","kind":"content","session":5,"hash":"878b1f9f","md":"#### [day2#minimum-night-flow] بين الواحدة والرابعة فجرًا ينام الناس، والتسرب لا ينام\n\n*التدفق الليلي الأدنى*\n\nشكل: منحنى توضيحي مرسوم باليد: يوم عادي (أخضر مزرق)، والمنطقة نفسها بعد تسرب (برتقالي متقطع).","notes":"المنحنى مرسوم لا مقيس. في النهار يغطي الاستهلاك أي تسرب، وفي الفجر يبقى التسرب وحده تقريبًا مع استهلاك ليلي قليل. خط الأساس: وسيط أول أسبوعين. والحد: خط الأساس زائد هامش. اسأل: ما الاستهلاك الليلي المشروع في منطقة زراعية؟ ري ليلي.","minutes":null,"lo":["LO5"]},{"id":"not-every-rise","n":39,"title":"قبل أن ترسل الفريق، اقرأ سجل الأحداث وشكل الارتفاع","kind":"content","session":5,"hash":"50efed12","md":"#### [day2#not-every-rise] قبل أن ترسل الفريق، اقرأ سجل الأحداث وشكل الارتفاع\n\n*ليس كل ارتفاع تسربًا*\n\n| ما تراه | قد يكون | اسأل |\n| --- | --- | --- |\n| قفزة ثابتة لا تعود | تسرب، أو مشترك جديد | هل رُبط أحد بتصريح؟ |\n| ارتفاع يزيد يومًا بعد يوم | تسرب يكبر | متى بدأ فعلًا؟ |\n| ليلة واحدة عالية | حدث عابر | مناسبة، أو غسيل خزانات |\n| أصفار | عداد معطل، لا منطقة بلا فاقد | من يصلح العداد؟ |","notes":"الأمثلة عامة. لا تقل أي منطقة في الملف تحمل أي شكل. اسأل: لماذا نشترط ثلاث ليالٍ متتالية؟ الجواب في الصف الثالث.","minutes":null,"lo":["LO5"]},{"id":"check-night-flow","n":40,"title":"حد التنبيه","kind":"quiz","session":5,"hash":"d9fc89ae","md":"#### [day2#check-night-flow] حد التنبيه\n\n*نقطة تحقق*\n\n**سؤال:** حي في مدينة: وسيط التدفق الليلي الأدنى في أول أسبوعين 10 م³/ساعة. الحد = خط الأساس زائد الأكبر من 2 و0.3 × خط الأساس. كم الحد بالمتر المكعب في الساعة؟\n\n*أجب برقم*","notes":"الإجابة: 13. ثم اسأل: لو كان الوسيط 5؟ 0.3 × 5 = 1.5 أقل من 2، فالحد 7. الهامش الثابت يحمي المناطق الصغيرة من إنذارات بسبب تقلب طبيعي صغير.","minutes":null,"lo":["LO5"]},{"id":"lab-2-5","n":41,"title":"التدفق الليلي الأدنى لعشر مناطق","kind":"lab","session":5,"hash":"b638b079","md":"#### [day2#lab-2-5] التدفق الليلي الأدنى لعشر مناطق\n\nالمختبر 2.5 · 20 دقيقة\n\nمن قراءات ساعية لعشر مناطق إمداد على ثمانية أسابيع تحسب التدفق الليلي الأدنى لكل ليلة، وخط أساس كل منطقة، وتجد المناطق التي ارتفع فيها، ثم تفسر كل ارتفاع بسجل الأحداث.\n\n[D2_5_night_flow.html](https://sdaiaacademy.github.io/use-sec-211/labs/D2_5_night_flow.html)\n\n- [ ] اقرأ الملف وسجل الأحداث (2 د)\n- [ ] احسب أدنى تدفق ليلي لكل منطقة وليلة (7 د)\n- [ ] احسب خط الأساس وحد التنبيه (4 د)\n- [ ] جد المناطق والليالي فوق الحد (4 د)\n- [ ] فسّر كل ارتفاع: تسرب أم غيره (3 د)\n- [ ] ✱ إضافي: قدّر الماء المفقود في منطقة تسرب واحدة منذ بدايته","notes":"الفخ التقني: MINIFS على ساعات الليل فقط. من يتعثر في الصيغة يبني جدولًا محوريًّا بالحد الأدنى بعد تصفية الساعات 1 إلى 4. الرسم الخطي للمناطق العشر يكشف أكثر من الجدول. ذكّر بالبحث عما يهبط أيضًا.","minutes":null,"lo":[]},{"id":"debrief-2-5","n":42,"title":"أربع مناطق تجاوزت الحد، وواحدة منها فقط ليست تسربًا","kind":"content","session":5,"hash":"5d892891","md":"#### [day2#debrief-2-5] أربع مناطق تجاوزت الحد، وواحدة منها فقط ليست تسربًا\n\n*بعد المختبر 2.5*\n\n| المنطقة | أول تنبيه | الشكل | التفسير |\n| --- | --- | --- | --- |\n| Z03 | 22 أغسطس | قفزة ثابتة | تسرب |\n| Z05 | 29 أغسطس | قفزة ثابتة | مزرعة جديدة بتصريح |\n| Z07 | 9 سبتمبر | يكبر يومًا بعد يوم | تسرب بدأ قبل ستة أيام |\n| Z10 | 15 سبتمبر | قفزة كبيرة ثلاث ليالٍ | انفجار أُصلح |\n\n> **Z09 لم تطلق تنبيهًا:** أصفار من 8 إلى 11 سبتمبر، عداد معطل. القاعدة لا ترى الصمت.","notes":"من تشغيل المختبر. Z02 ليلة احتفال واحدة فوق الحد، ولا تنبيه. اسأل: كم ماءً فُقد في Z07 قبل التنبيه؟ ومن يتابع العدادات الصامتة؟ هذا يقودنا إلى العتبة وطاقة الفريق.","minutes":null,"lo":["LO5"]},{"id":"s6","n":43,"title":"إنذارات تسرب يحتملها الفريق","kind":"section","session":6,"hash":"c483fb5c","md":"#### [day2#s6] إنذارات تسرب يحتملها الفريق\n\n*الجلسة 6*\n\n- تحسب الدقة والاستدعاء لكل عتبة\n- تختار عتبة بطاقة فريق التسربات\n- تقدّر الماء الموفّر من العتبة المختارة","notes":"","minutes":null,"lo":["LO5"]},{"id":"alert-vs-repair","n":44,"title":"الإنذار ليس تسربًا؛ التسرب ما وجده الفريق وأصلحه","kind":"content","session":6,"hash":"4cf11b50","md":"#### [day2#alert-vs-repair] الإنذار ليس تسربًا؛ التسرب ما وجده الفريق وأصلحه\n\n*الإنذار والإصلاح*\n\n- **الدقة.** من الإنذارات، كم كان تسربًا؟ تخص وقت الفريق.\n- **الاستدعاء.** من التسربات المؤكدة، كم أنذرنا به؟ تخص الماء.\n- **الطاقة.** كم إنذارًا يستطيع الفريق أن يزور في الأسبوع؟","notes":"الدقة والاستدعاء هنا هما دقة المستخدم ودقة المنتج بالأمس بأسماء أخرى. اسأل القاعة أن تطابق: الدقة تقابل دقة المستخدم، والاستدعاء يقابل دقة المنتج.","minutes":null,"lo":["LO5"]},{"id":"threshold-trade","n":45,"title":"كل عتبة تقايض إنذارات كاذبة بتسربات فائتة","kind":"content","session":6,"hash":"180d907f","md":"#### [day2#threshold-trade] كل عتبة تقايض إنذارات كاذبة بتسربات فائتة\n\n*العتبة*\n\n- **عتبة منخفضة.** ترى كل شيء تقريبًا، وتغرق الفريق بإنذارات لا يزور أغلبها. الإنذار الذي لا يُزار لا يوفر ماءً.\n- **عتبة عالية.** كل إنذار تقريبًا صادق، لكنها لا ترى إلا الكبير، وتتأخر.\n\n> **قاعدة عمل.** أدنى عتبة لا تتجاوز طاقة الفريق.","notes":"المثال لكشف الأعطال في مضخات: كلما خفضت العتبة زادت الإنذارات. لا تذكر أي عتبة من الملف. اسأل: لو زادت طاقة الفريق، ماذا يحدث للعتبة المختارة؟ تنخفض.","minutes":null,"lo":["LO5"]},{"id":"meter-faults","n":46,"title":"العداد المعطل يطلق إنذارًا يشبه التسرب، أو يصمت","kind":"content","session":6,"hash":"cb542fd6","md":"#### [day2#meter-faults] العداد المعطل يطلق إنذارًا يشبه التسرب، أو يصمت\n\n*أعطال العدادات*\n\n- قراءة قافزة من عداد يتلف تشبه انفجارًا\n- عداد يتوقف يعمي المنطقة كلها\n- هذه إنذارات «صادقة» بمعنى آخر: شيء معطل، لكنه ليس للفريق نفسه\n- الحل: مسار ثانٍ إلى فريق العدادات، لا الإهمال","notes":"اسأل: من في جهتك يملك صحة البيانات قبل أن يملك أحد القرار؟ هذا سؤال حوكمة بيانات، يعود في الجلسة التالية.","minutes":null,"lo":["LO5"]},{"id":"value-estimate","n":47,"title":"الماء الموفّر: كم تسربًا وجدنا، وكم يومًا اختصرنا من عمره","kind":"content","session":6,"hash":"3891aa41","md":"#### [day2#value-estimate] الماء الموفّر: كم تسربًا وجدنا، وكم يومًا اختصرنا من عمره\n\n*قيمة الإنذار*\n\n```\n# ملف: example\nsaved = leaks found x average flow x 24 h x (days a leak lasts unseen - days to alert)\n\nexample: 20 x 2 m3/h x 24 x (30 - 8) = 21,120 m3 a year\n```\n\n> **تقدير لا قياس.** متوسط الحجم لا حجم كل تسرب، ومتوسط المدة، وبعض التسربات يبلّغ عنها الناس قبل ذلك.","notes":"المثال مخترع. هذا الرقم يدخل الخريطة معيار الماء في المختبر 2.8، فاكتب معه ما بُني عليه. اسأل: ما الذي يجعل هذا التقدير أكبر من الحقيقة؟","minutes":null,"lo":["LO5"]},{"id":"check-precision","n":48,"title":"احسب الدقة","kind":"quiz","session":6,"hash":"352956b1","md":"#### [day2#check-precision] احسب الدقة\n\n*نقطة تحقق*\n\n**سؤال:** نظام إنذار لأعطال مضخات الآبار أصدر 120 إنذارًا في سنة. وجد الفريق عطلًا حقيقيًّا عند 30 منها، وكان في السنة 40 عطلًا. كم الدقة؟ (رقمان بعد الفاصلة)\n\n*أجب برقم*","notes":"الإجابة: 0.25. من كتب 0.75 حسب الاستدعاء. اسأل: لو كان الفريق يستطيع 2 في الأسبوع، هل يطيق 120 في السنة؟ 120 على 52 = 2.3: لا.","minutes":null,"lo":["LO5"]},{"id":"lab-2-6","n":49,"title":"كشف التسرب من بيانات العدادات","kind":"lab","session":6,"hash":"a56e0c25","md":"#### [day2#lab-2-6] كشف التسرب من بيانات العدادات\n\nالمختبر 2.6 · 25 دقيقة\n\nمن جدول إنذارات سنة كاملة عند ثماني عتبات وسجل 48 تسربًا مؤكدًا تحسب الدقة والاستدعاء والإنذارات في الأسبوع، وتختار العتبة التي تطيقها طاقة الفريق، وتقدّر الماء الموفّر.\n\n[D2_6_leak_alerts.html](https://sdaiaacademy.github.io/use-sec-211/labs/D2_6_leak_alerts.html)\n\n- [ ] اقرأ الجدول وطاقة الفريق (3 د)\n- [ ] احسب الدقة والاستدعاء لكل عتبة (7 د)\n- [ ] احسب الإنذارات في الأسبوع (3 د)\n- [ ] اختر العتبة واكتب سببها (5 د)\n- [ ] قدّر الماء الموفّر بالعتبة المختارة (7 د)\n- [ ] ✱ إضافي: اكتب ماذا تفعل بإنذارات أعطال العدادات: تُهمل أم تُرسل إلى فريق آخر؟","notes":"الحساب سريع؛ النقاش في الخطوة 4. اطلب من كل طاولة أن تقول لماذا ليست العتبة التي قبل اختيارها. راقب من يختار بأعلى دقة.","minutes":null,"lo":[]},{"id":"debrief-2-6","n":50,"title":"العتبة 4: ثلاثة أرباع التسربات بأقل من ثلاثة إنذارات في الأسبوع","kind":"content","session":6,"hash":"49f4de5e","md":"#### [day2#debrief-2-6] العتبة 4: ثلاثة أرباع التسربات بأقل من ثلاثة إنذارات في الأسبوع\n\n*بعد المختبر 2.6*\n\n| العتبة | الدقة | الاستدعاء | في الأسبوع |\n| --- | --- | --- | --- |\n| 3 | 0.14 | 0.92 | 6.1 |\n| 4 | 0.25 | 0.75 | 2.8 |\n| 5 | 0.32 | 0.48 | 1.4 |\n\n> **نحو 77,760 م³ في السنة:** 36 تسربًا × 3 م³/ساعة × 24 × (40 ناقص 10 أيام). تقدير، وصغير أمام ماء الري.","notes":"من تشغيل المختبر. العتبة 3 تتجاوز طاقة الفريق (5 في الأسبوع). أعطال العدادات عند العتبة 4: 8 في السنة، تذهب إلى فريق العدادات. لاحظ الحجم: هذه الحالة U04 في الخريطة، وصدق رقمها لا يجعله كبيرًا.","minutes":null,"lo":["LO5"]},{"id":"s7","n":51,"title":"الجفاف والغبار والحر، وحقوق البيانات","kind":"section","session":7,"hash":"7295c8f8","md":"#### [day2#s7] الجفاف والغبار والحر، وحقوق البيانات\n\n*الجلسة 7*\n\n- تقرأ رخصة مجموعة بيانات وتحكم هل تسمح بالاستعمال المقصود\n- تميز البيانات الشخصية في حالة استخدام والمرجعية التي تنطبق\n- تقدّر جاهزية البيانات لكل حالة","notes":"","minutes":null,"lo":["LO5"]},{"id":"weather-warnings","n":52,"title":"تنبيهات الجفاف والغبار والحر: قيمتها في الصحة والسلامة قبل الماء","kind":"content","session":7,"hash":"afca8240","md":"#### [day2#weather-warnings] تنبيهات الجفاف والغبار والحر: قيمتها في الصحة والسلامة قبل الماء\n\n*التنبيهات*\n\n- **الجفاف.** مؤشر شهري للمراعي من الصور وإعادة التحليل، لتوجيه دعم الأعلاف.\n- **الغبار.** تنبؤات مفتوحة للعواصف الغبارية، تنبيه للمزارع والطرق.\n- **الحر.** تنبيه للعمال في الحقول حين يتجاوز مؤشر الحر حدًّا.\n\n> **في الخريطة.** حالة بلا ماء موفّر قد تستحق مكانًا، بسبب يُكتب.","notes":"في المملكة يصدر المركز الوطني للأرصاد التنبيهات الرسمية للطقس؛ تنبيه الهيئة للمزارعين يكمله ولا يحل محله. اسأل: من يملك أرقام جوالات عمال المزارع، وبأي حق تُستعمل؟ هذا سؤال الشريحة التالية.","minutes":null,"lo":["LO5"]},{"id":"who-owns-farm-data","n":53,"title":"بيانات المزرعة عن مزارع: استهلاكه وحقله ومحصوله","kind":"content","session":7,"hash":"5a4e9ef7","md":"#### [day2#who-owns-farm-data] بيانات المزرعة عن مزارع: استهلاكه وحقله ومحصوله\n\n*من يملك البيانات*\n\n- قراءة عداد مزرعة مع اسم مالكها بيانات شخصية\n- رمز المزارع في سجل الهيئة يعرّفه، وإن لم يكن اسمًا\n- صورة القمر الاصطناعي للحقل عامة، وربطها بالمالك ليس عامًّا\n\n- **نظام حماية البيانات الشخصية، المادة 5.** لا تُعالج البيانات الشخصية ولا يُغيّر غرض معالجتها دون موافقة صاحبها، إلا في الحالات التي يذكرها النظام.","notes":"المادة 5 من النظام بتصرف في الصياغة. الحالات المستثناة كثيرة ولها شروط، وتحددها اللائحة: لا تحكم في القاعة على حالة بعينها، بل اسأل «ما الأساس النظامي؟». الجهة المختصة بالنظام سدايا.","minutes":null,"lo":["LO5"]},{"id":"open-licences","n":54,"title":"البيانات المفتوحة مفتوحة برخصة، والرخصة تقول ما يجوز","kind":"content","session":7,"hash":"6361d9c7","md":"#### [day2#open-licences] البيانات المفتوحة مفتوحة برخصة، والرخصة تقول ما يجوز\n\n*الرخص المفتوحة*\n\n| البيانات | الرخصة | ما تطلبه |\n| --- | --- | --- |\n| صور Sentinel من كوبرنيكوس | مجانية ومفتوحة | ذكر المصدر |\n| ESA WorldCover، وOpen-Meteo | CC BY 4.0 | ذكر المصدر، وأي استعمال |\n| صور تجارية من مورد | رخصة المورد | قد تمنع النشر أو المشاركة |\n\n> **سياسة البيانات المفتوحة، المبدأ 7.** البيانات المفتوحة تخضع لرخصة تحدد شروط استعمالها والتزاماته وقيوده.","notes":"المصدر: سياسة البيانات المفتوحة من مكتب إدارة البيانات الوطنية، المبدأ السابع عن ترخيص البيانات المفتوحة. اسأل: إنفاذ يقوم على صور لا يستطيع المزارع رؤيتها ولا نشرها، ماذا يعني لحقه في الرد؟","minutes":null,"lo":["LO5"]},{"id":"data-sharing-policy","n":55,"title":"قبل أن تخرج البيانات إلى جهة أخرى: غرض، ووصول، واتفاقية","kind":"content","session":7,"hash":"db525d6e","md":"#### [day2#data-sharing-policy] قبل أن تخرج البيانات إلى جهة أخرى: غرض، ووصول، واتفاقية\n\n*مشاركة البيانات*\n\n- **الغرض المشروع.** لماذا تُشارك، ولأي استعمال فقط.\n- **الوصول المصرّح به.** من يصل، بقدر الحاجة إلى المعرفة وأقل صلاحية.\n- **الشفافية.** أن تعرف أطراف المشاركة وصف البيانات وتصنيفها وغرضها وحمايتها وإتلافها.","notes":"من مبادئ سياسة مشاركة البيانات لمكتب إدارة البيانات الوطنية: ثقافة المشاركة، والمصدر الموحد للحقيقة، والغرض المشروع، والوصول المصرّح به، والشفافية، والمسؤولية المشتركة، وأمن البيانات، والاستخدام الأخلاقي. اخترنا ثلاثة. اسأل: شركة تعرض تطبيق إرشاد مجانيًّا مقابل قراءات العدادات: أي مبدأ تسأل عنه أولًا؟","minutes":null,"lo":["LO5"]},{"id":"sparse-ground-truth","n":56,"title":"البيانات «جاهزة» حين تكون موجودة، ومسموحة لنا، ومقيسة هنا","kind":"content","session":7,"hash":"3672b281","md":"#### [day2#sparse-ground-truth] البيانات «جاهزة» حين تكون موجودة، ومسموحة لنا، ومقيسة هنا\n\n*الجاهزية*\n\n**موجودة؟** عندنا، لا عند المورد ← **مسموحة؟** لهذا الاستعمال بعينه ← **مقيسة هنا؟** بحقيقة ميدانية في الإقليم\n\n> **أين يقع الخطأ.** «المورد يقول دقتها 95%.» على أي فئة، وفي أي مكان، وأمام أي مرجع؟","notes":"الحقيقة الميدانية قليلة دائمًا في الزراعة والمياه: زيارات ومجسات وسجل إصلاحات. اسأل: من مختبرات اليومين، أي البيانات قسناها فعلًا في الإقليم؟ لا تجب: يجيبون في السجل.","minutes":null,"lo":["LO5"]},{"id":"check-rights","n":57,"title":"طلب من شركة","kind":"quiz","session":7,"hash":"76b0dee1","md":"#### [day2#check-rights] طلب من شركة\n\n*نقطة تحقق*\n\n**سؤال:** شركة ناشئة تطلب من جهة مياه في مدينة قراءات عدادات البيوت ساعة بساعة مع العناوين، لتبني تطبيقًا لترشيد الاستهلاك. ما أول ما يلزم قبل المشاركة؟\n\n- أ. نشر القراءات برخصة CC BY 4.0 حتى تستعملها الشركة وغيرها بالشروط نفسها\n- ب. غرض مكتوب وأساس نظامي، واتفاقية مشاركة تحدد من يصل إلى القراءات\n- ج. حذف أسماء المشتركين من الملف، فتصبح القراءات بيانات غير شخصية\n- د. لا شيء، لأن الغرض ترشيد المياه وهو في مصلحة المشتركين أنفسهم","notes":"الإجابة: ب. من اختار «ج» يحتاج سؤالًا: هل يصعب أن تعرف البيت من عنوانه؟","minutes":null,"lo":["LO5"]},{"id":"lab-2-7","n":58,"title":"سجل البيانات والحقوق","kind":"lab","session":7,"hash":"71b359fd","md":"#### [day2#lab-2-7] سجل البيانات والحقوق\n\nالمختبر 2.7 · 20 دقيقة\n\nتملأ لكل حالة من اثنتي عشرة حالة استخدام سجل البيانات: هل هي موجودة، وهل تسمح رخصتها، وهل دقتها مقيسة هنا، وهل فيها بيانات شخصية، والمرجعية الوطنية التي تنطبق، ودرجة الجاهزية.\n\n[D2_7_data_rights.html](https://sdaiaacademy.github.io/use-sec-211/labs/D2_7_data_rights.html)\n\n- [ ] اقرأ حالات الاستخدام ودليل التقييم (3 د)\n- [ ] املأ أعمدة الوجود والرخصة والدقة (6 د)\n- [ ] حدد البيانات الشخصية والمرجعية (5 د)\n- [ ] أعط كل حالة درجة الجاهزية (4 د)\n- [ ] قارن مع زميل حالتين (2 د)\n- [ ] ✱ إضافي: اكتب لحالة U10 ما يلزم قبل مشاركة البيانات مع الشركة","notes":"اطلب واقعة لكل درجة جاهزية، لا انطباعًا. الخطأ الأشيع: «موجودة عند المورد» تُحسب جاهزة. المساعد يشرح بندًا في نظام، ولا يملأ السجل. من يتأخر يكتفي بالأعمدة الثلاثة الأولى والدرجة.","minutes":null,"lo":[]},{"id":"debrief-2-7","n":59,"title":"ست حالات فيها بيانات شخصية، واثنتان فقط بياناتهما مقيسة في الإقليم","kind":"content","session":7,"hash":"02850467","md":"#### [day2#debrief-2-7] ست حالات فيها بيانات شخصية، واثنتان فقط بياناتهما مقيسة في الإقليم\n\n*بعد المختبر 2.7*\n\n- **جاهزية 3.** U04 (سجل الإصلاحات، 2.6)، وU05 (دقة الخريطة، 1.7).\n- **جاهزية 1.** U08 (أرقام العمال)، وU10 (اتفاقية لم توقع)، وU12 (دقة المورد بلا فئات).\n- **جاهزية 0.** U06: رخصة تجارية تمنع النشر، ولم تُختبر في الإقليم.","notes":"من مفتاح المختبر. البيانات الشخصية: U01، U02، U03، U06، U08، U10. U01 قيست جزئيًّا في المختبر 1.5 فبقيت 2. قارن اختلافات الطاولات: أكثر الخلاف في U01 وU09. اقبل الدرجة المختلفة إذا جاءت بواقعة.","minutes":null,"lo":["LO5"]},{"id":"s8","n":60,"title":"خريطة الفرص والمخاطر","kind":"section","session":8,"hash":"46915e54","md":"#### [day2#s8] خريطة الفرص والمخاطر\n\n*الجلسة 8*\n\n- تقيّم الحالات على المعايير الأربعة بواقعة لكل درجة\n- ترتب الحالات وتطبق قاعدة التعليق\n- تجهز دفاعًا من خمس دقائق عن صفحة واحدة","notes":"","minutes":null,"lo":["LO5"]},{"id":"four-criteria","n":61,"title":"أربعة معايير، لكل منها من 0 إلى 3، وواقعة لكل درجة","kind":"content","session":8,"hash":"53e7f033","md":"#### [day2#four-criteria] أربعة معايير، لكل منها من 0 إلى 3، وواقعة لكل درجة\n\n*الخريطة*\n\n- **الماء.** موفّر ومقيس على بيانات الإقليم، بمداه.\n- **الجاهزية.** موجودة، ومسموحة، ومقيسة هنا.\n- **الإنصاف.** تصل إلى الصغار بالجودة نفسها، بلا عبء جديد.\n- **المساءلة.** صاحب مسمّى، وخطوة بشرية، وحق رد.","notes":"الدليل كاملًا في `map/scoring_guide.txt`. الإنصاف والمساءلة من مبادئ سدايا لأخلاقيات الذكاء الاصطناعي، والجاهزية من الجلسة السابقة، والماء من جلسات اليوم. اسأل: لماذا لا يكون الماء وحده هو المعيار في هيئة مياه؟","minutes":null,"lo":["LO5"]},{"id":"hold-rule","n":62,"title":"صفر في المساءلة يعلّق الحالة، مهما كان مجموعها","kind":"content","session":8,"hash":"519b706c","md":"#### [day2#hold-rule] صفر في المساءلة يعلّق الحالة، مهما كان مجموعها\n\n*قاعدة التعليق*\n\n- المجموع يخلط ما لا يُخلط: ماء كثير لا يعوّض جزاءً آليًّا\n- التعليق ليس رفضًا: الحالة تعود حين يُعاد تصميمها\n- إعادة التصميم واقعة واحدة أحيانًا: صاحب مسمّى، أو زيارة قبل الجزاء\n\n- **مثال من جهة بيئية.** مخالفات صيد آلية من كاميرات على الشاطئ، بلا مراجعة بشرية: تُعلّق، ولو كانت تحمي المخزون السمكي.","notes":"المثال مخترع ومن خارج الحالة. اسأل: ما الواقعة الواحدة التي تعيد هذه الحالة إلى الترتيب؟ الجواب: مراجعة بشرية قبل المخالفة، وحق الاعتراض.","minutes":null,"lo":["LO5"]},{"id":"claims-are-not-water","n":63,"title":"الادعاء الكبير غير المختبر يأخذ درجة صغيرة في الماء","kind":"content","session":8,"hash":"b007d3c2","md":"#### [day2#claims-are-not-water] الادعاء الكبير غير المختبر يأخذ درجة صغيرة في الماء\n\n*الادعاء والماء*\n\n| الادعاء مبني على | درجة الماء |\n| --- | --- |\n| محاكاة على بيانات الإقليم، بمدى، فوق 500,000 م³ | 3 |\n| تقدير من بيانات الإقليم، أو مقيس بين 100,000 و500,000 | 2 |\n| عرض مورد لم يُختبر، أو توفير صغير | 1 |\n| لا توفير ماء | 0 |","notes":"من دليل التقييم. لاحظ أن الرقم الصادق الصغير يأخذ 1 مثل الرقم الكبير غير المختبر: الدرجة لا تعاقب الصدق، والمعايير الأخرى تفرق بينهما. اسأل: أين تضع ادعاءً بعشرة ملايين متر مكعب من عرض مورد؟","minutes":null,"lo":["LO5"]},{"id":"one-page-defence","n":64,"title":"صفحة واحدة تدافع عنها في خمس دقائق، ثم ثلاث دقائق أسئلة","kind":"content","session":8,"hash":"82f76ec5","md":"#### [day2#one-page-defence] صفحة واحدة تدافع عنها في خمس دقائق، ثم ثلاث دقائق أسئلة\n\n*الصفحة الواحدة*\n\n1. **نبدأ بثلاث:** لماذا الآن، ومن صاحب كل منها\n2. **معلّقة:** وما الذي يعيد كل منها\n3. **رقم واحد للماء** بمداه، وعلى ماذا بُني\n4. **صف من جهتك،** إن أكملت العمل التحضيري\n\n> **في المناقشة الختامية** يختار الميسّر حالة، وتعيد تقييمها أمامه دون مساعد.","notes":"هذا شكل العرض في المناقشة الختامية. المساعد مسموح كاملًا في المختبر، لكن الدفاع لكم. اسأل: ما الحالة التي تخشى أن يختارها الميسّر؟ ابدأ بها.","minutes":null,"lo":["LO5"]},{"id":"check-hold","n":65,"title":"أين تضعها؟","kind":"quiz","session":8,"hash":"6a046eec","md":"#### [day2#check-hold] أين تضعها؟\n\n*نقطة تحقق*\n\n**سؤال:** حالة في جهة بلدية: كاميرات ذكية تصدر مخالفات آلية لمن يسقي حديقته في ساعات الذروة. الماء 3، والجاهزية 3، والإنصاف 1، والمساءلة 0. أين تضعها في الخريطة؟\n\n- أ. في المرتبة التي يعطيها مجموعها 7 من 12 بين الحالات\n- ب. في أعلى الترتيب، لأن درجتي الماء والجاهزية كاملتان\n- ج. ترفض نهائيًّا، ولا تعود إلى الخريطة أبدًا\n- د. تُعلَّق حتى يُعاد تصميمها بخطوة بشرية وحق اعتراض","notes":"الإجابة: د. من اختار «ج» خلط التعليق بالرفض. اسأل: ما الواقعة التي تعيدها؟ مراجعة بشرية قبل المخالفة، وحق اعتراض.","minutes":null,"lo":["LO5"]},{"id":"lab-2-8","n":66,"title":"تقييم الحالات الاثنتي عشرة وترتيبها","kind":"lab","session":8,"hash":"fe13f426","md":"#### [day2#lab-2-8] تقييم الحالات الاثنتي عشرة وترتيبها\n\nالمختبر 2.8 · 25 دقيقة\n\nمن سجل الجاهزية الجاهز تقيّم الحالات الاثنتي عشرة على الماء والإنصاف والمساءلة، وترتبها، وتعلّق ما يجب تعليقه، وتكتب مسودة الخريطة في صفحة واحدة.\n\n[D2_8_opportunity_map.html](https://sdaiaacademy.github.io/use-sec-211/labs/D2_8_opportunity_map.html)\n\n- [ ] اقرأ دليل التقييم وقاعدة التعليق (3 د)\n- [ ] قيّم الحالات على المعايير الثلاثة الباقية (10 د)\n- [ ] اجمع ورتّب وطبّق قاعدة التعليق (5 د)\n- [ ] اكتب مسودة الصفحة الواحدة (7 د)\n- [ ] ✱ إضافي: غيّر واقعة واحدة في حالة معلقة واكتب كيف تتغير درجاتها","notes":"المساعد مسموح كاملًا هنا. من لم يكمل المختبر 2.7 يبدأ من `start/register.csv`. خصص الدقائق السبع الأخيرة للصفحة الواحدة فعلًا. اطلب من كل طاولة الحالة الأولى وواقعة درجة الماء فيها.","minutes":null,"lo":[]},{"id":"debrief-2-8","n":67,"title":"إنذارات التسرب أولًا، مع أن أكبر الادعاءات في مكان آخر","kind":"content","session":8,"hash":"da9d3c9d","md":"#### [day2#debrief-2-8] إنذارات التسرب أولًا، مع أن أكبر الادعاءات في مكان آخر\n\n*بعد المختبر 2.8*\n\n| الترتيب | الحالة | المجموع |\n| --- | --- | --- |\n| 1 | U04 إنذارات التسرب | 10 |\n| 2 | U03 رسائل الري بالتنبؤ | 10 |\n| 3 | U01 تحقق التصريحات | 9 |\n\n> **معلّقة:** U02 (غرامات آلية)، وU06 (إنفاذ من نموذج حراري تجاري)، وU10 (مشاركة العدادات مع شركة).\n\nترتيب مرجعي وضعه المقرر بدليل التقييم، لا الترتيب الوحيد الصحيح: أي ترتيب آخر مقبول بوقائع.","notes":"ترتيب المدرّب المرجعي، لا الترتيب الوحيد الصحيح. التالي: U09 وU11 (8، متساويتان حتى في الجاهزية، فترتيبهما للمشارك بسبب)، ثم U07 (7)، ثم U05 وU08 (6)، ثم U12 (5). U04 تتقدم على U03 بالجاهزية عند التساوي. أي ترتيب آخر مقبول بوقائع. أكبر الادعاءات (U06، U12، U02) عروض موردين لم تُختبر.","minutes":null,"lo":["LO5"]},{"id":"wrap-up","n":68,"title":"ثلاثة أشياء تبقى","kind":"content","session":8,"hash":"70193bc7","md":"#### [day2#wrap-up] ثلاثة أشياء تبقى\n\n*خلاصة اليوم*\n\n- **اسأل من أين جاء التوفير.** القاعدة أم التنبؤ؟ على الطقس الفعلي، وبمدى لا برقم.\n- **العتبة بطاقة الفريق.** الإنذار الذي لا يُزار لا يوفر ماءً.\n- **الحقوق قبل التشغيل.** غرض وأساس ورخصة وصاحب مسمّى، قبل أي أثر على مزارع.","notes":"ارجع إلى الجمل التي كتبوها في آخر اليوم الأول. اسأل: أي جملة تغيرت بعد اليوم؟","minutes":null,"lo":["LO4","LO5"]},{"id":"next","n":69,"title":"المناقشة الختامية: الخريطة أمام الميسّر","kind":"content","session":8,"hash":"60b2c76f","md":"#### [day2#next] المناقشة الختامية: الخريطة أمام الميسّر\n\n*التالي*\n\n- فحص المواقف أولًا، دون ذكاء اصطناعي\n- ثم خمس دقائق عرض لكل مشارك، وثلاث دقائق أسئلة\n- وتعيد تقييم حالة يختارها الميسّر، دون مساعد","notes":"ذكّر بمكان التسليم وموعده من صفحة المقرر. الخريطة صفحة واحدة مع الجدول؛ لا شرائح مطلوبة.","minutes":null,"lo":[]}],"activities":[{"id":"review-day1-q1","slide":"review-day1","type":"single","prompt":"مورد يعرض خريطة نخيل لواحة، ويقول إن دقتها الكلية 92%. تريد الهيئة أن ترسل بها تنبيه سوسة النخيل إلى كل صاحب نخيل. ما أول ما تطلبه؟","options":[{"key":"أ","text":"دقة كلية من سنة أحدث، لأن الواحات تتغير كل سنة"},{"key":"ب","text":"لا شيء، فإرسال أي تنبيه من خريطة قرار فردي مرفوض"},{"key":"ج","text":"دقة المستخدم لفئة النخيل، لأنها تخص من يقرأ الخريطة"},{"key":"د","text":"دقة المنتج للنخيل في الواحة، لأنها تقول من تفوّته"}],"correct":[3],"explanation":"تنبيه يصل إلى كل صاحب نخيل يتعثر بما تفوّته الخريطة، وهذا دقة المنتج، مقيسة في الواحة نفسها.","misconceptions":["الدقة الكلية قد تكون عالية وفئة النخيل نفسها ضعيفة، فالرقم الثاني لا يغير السؤال","الخريطة ستوجه تنبيهًا لا جزاءً، فالقرار الفردي ليس سبب الرفض هنا","دقة المستخدم تقول كم تنبيهًا يذهب إلى غير أصحاب النخيل، والسؤال عمن لا يصله التنبيه",""],"lo":["LO3"]},{"id":"check-skill-q1","slide":"check-skill","type":"numeric","prompt":"تنبؤ سرعة الريح لمطار: متوسط خطئه المطلق 2.4 كم/ساعة، ومتوسط خطأ المناخ المعتاد 3.0 كم/ساعة. كم المهارة؟ (رقمان بعد الفاصلة)","options":[],"correct":[],"explanation":"1 ناقص 2.4 على 3.0 = 1 ناقص 0.8 = 0.20: التنبؤ يقلل خطأ المناخ المعتاد بالخُمس.","misconceptions":[],"lo":["LO4"],"answer":0.2,"tolerance":0.01,"unit":""},{"id":"check-depletion-q1","slide":"check-depletion","type":"numeric","prompt":"حقل نخيل: الاستنزاف الليلة 20 ملم، وTAW 100 ملم، وRAW 50 ملم. غدًا: ET0 = 10 ملم، وKc = 0.9، ولا مطر ولا ري. كم الاستنزاف مساء الغد بالملم؟","options":[],"correct":[],"explanation":"20 أقل من RAW فـ Ks = 1. الاستهلاك 1 × 0.9 × 10 = 9 ملم، فالاستنزاف 20 زائد 9 = 29 ملم.","misconceptions":[],"lo":["LO4"],"answer":29,"tolerance":0.2,"unit":""},{"id":"check-rule-q1","slide":"check-rule","type":"single","prompt":"مزرعة نخيل: RAW = 50 ملم، وKc = 0.9. هذا الصباح الاستنزاف 25 ملم، وتنبؤ ET0 للأيام الثلاثة القادمة 30 ملم. ماذا تقول القاعدة؟","options":[{"key":"أ","text":"اروِ اليوم، لأن المجموع مع الاستهلاك القادم يبلغ RAW"},{"key":"ب","text":"لا تروِ، لأن الاستنزاف الآن نصف الماء الميسّر فقط"},{"key":"ج","text":"لا تروِ، لأن 0.9 × (25 زائد 30) = 49.5، وهو أقل من 50"},{"key":"د","text":"انتظر حتى يبلغ الاستنزاف 50 ملم ثم اروِ في اليوم نفسه"}],"correct":[0],"explanation":"25 زائد 0.9 × 30 = 25 زائد 27 = 52، وهو أكبر من 50: اروِ اليوم.","misconceptions":["","القاعدة تجمع الاستنزاف الحالي مع ما سيُستهلك، و25 وحدها لا تكفي للحكم","Kc يُضرب في تنبؤ الأيام القادمة وحده، لا في الاستنزاف الحالي: 25 زائد 0.9 × 30 = 52","القاعدة تنظر إلى الأمام كي لا تنتظر الإجهاد، والانتظار يجعل الري متأخرًا"],"lo":["LO4"]},{"id":"check-message-q1","slide":"check-message","type":"single","prompt":"جربت هيئة قاعدة ري جديدة على مزرعة نخيل واحدة موسمًا واحدًا، ووجدت توفيرًا بين 6 و12 من كل 100 م³ بحسب التربة. أي جملة تصلح لرسالة إلى مزارعي الواحة؟","options":[{"key":"أ","text":"«ستوفر القاعدة الجديدة 9% من ماء مزرعتك هذا الموسم.»"},{"key":"ب","text":"«تشير محاكاة ميزان الماء إلى توفير 6% إلى 12% بحسب TAW ومهارة التنبؤ.»"},{"key":"ج","text":"«قد توفر بين 6 و12 من كل 100 م³ بحسب تربتك، بعد تجربة موسم واحد.»"},{"key":"د","text":"«ثبت أن القاعدة توفر الماء في الواحة دون أي ضرر على النخيل.»"}],"correct":[2],"explanation":"مدى، بكلمات المزارع، مع ما يحرك الرقم في مزرعته هو. الباقي يعد أو يخفي أو يغلق الفهم.","misconceptions":["رقم واحد يعد بما لا تملكه الهيئة، ويُحاسب عليه في نهاية الموسم","مصطلحات لا يعرفها المزارع (محاكاة، TAW، مهارة)، والجذع يقول إن الفرق بحسب التربة لا بحسب التنبؤ","","يخفي ما لا نعرفه، ويقدّم تجربة على مزرعة واحدة كأنها مضمونة لكل الواحة"],"lo":["LO4"]},{"id":"check-night-flow-q1","slide":"check-night-flow","type":"numeric","prompt":"حي في مدينة: وسيط التدفق الليلي الأدنى في أول أسبوعين 10 م³/ساعة. الحد = خط الأساس زائد الأكبر من 2 و0.3 × خط الأساس. كم الحد بالمتر المكعب في الساعة؟","options":[],"correct":[],"explanation":"0.3 × 10 = 3، وهو أكبر من 2، فالحد 10 زائد 3 = 13.","misconceptions":[],"lo":["LO5"],"answer":13,"tolerance":0.05,"unit":""},{"id":"check-precision-q1","slide":"check-precision","type":"numeric","prompt":"نظام إنذار لأعطال مضخات الآبار أصدر 120 إنذارًا في سنة. وجد الفريق عطلًا حقيقيًّا عند 30 منها، وكان في السنة 40 عطلًا. كم الدقة؟ (رقمان بعد الفاصلة)","options":[],"correct":[],"explanation":"الدقة 30 من 120 = 0.25. والاستدعاء 30 من 40 = 0.75، وهو رقم آخر.","misconceptions":[],"lo":["LO5"],"answer":0.25,"tolerance":0.01,"unit":""},{"id":"check-rights-q1","slide":"check-rights","type":"single","prompt":"شركة ناشئة تطلب من جهة مياه في مدينة قراءات عدادات البيوت ساعة بساعة مع العناوين، لتبني تطبيقًا لترشيد الاستهلاك. ما أول ما يلزم قبل المشاركة؟","options":[{"key":"أ","text":"نشر القراءات برخصة CC BY 4.0 حتى تستعملها الشركة وغيرها بالشروط نفسها"},{"key":"ب","text":"غرض مكتوب وأساس نظامي، واتفاقية مشاركة تحدد من يصل إلى القراءات"},{"key":"ج","text":"حذف أسماء المشتركين من الملف، فتصبح القراءات بيانات غير شخصية"},{"key":"د","text":"لا شيء، لأن الغرض ترشيد المياه وهو في مصلحة المشتركين أنفسهم"}],"correct":[1],"explanation":"القراءات مع العناوين بيانات شخصية، ومشاركتها مع جهة خارجية تحتاج غرضًا مشروعًا وأساسًا نظاميًّا واتفاقية تحدد الوصول.","misconceptions":["الرخصة تخص البيانات المنشورة للعموم، وقراءات البيوت مع العناوين ليست بيانات مفتوحة","","حذف الأسماء لا يكفي: العنوان مع الاستهلاك يعرّف البيت وأهله","فائدة الترشيد لا تغني عن الأساس النظامي ولا عن حق أصحاب البيانات في العلم"],"lo":["LO5"]},{"id":"check-hold-q1","slide":"check-hold","type":"single","prompt":"حالة في جهة بلدية: كاميرات ذكية تصدر مخالفات آلية لمن يسقي حديقته في ساعات الذروة. الماء 3، والجاهزية 3، والإنصاف 1، والمساءلة 0. أين تضعها في الخريطة؟","options":[{"key":"أ","text":"في المرتبة التي يعطيها مجموعها 7 من 12 بين الحالات"},{"key":"ب","text":"في أعلى الترتيب، لأن درجتي الماء والجاهزية كاملتان"},{"key":"ج","text":"ترفض نهائيًّا، ولا تعود إلى الخريطة أبدًا"},{"key":"د","text":"تُعلَّق حتى يُعاد تصميمها بخطوة بشرية وحق اعتراض"}],"correct":[3],"explanation":"صفر في المساءلة (جزاء آلي بلا مراجعة) يعلّق الحالة مهما كان مجموعها، حتى تُضاف خطوة بشرية وحق اعتراض.","misconceptions":["المجموع 7 لا يهم: صفر المساءلة يعلّق الحالة قبل أي ترتيب","الماء الكبير لا يعوض الجزاء الآلي، والقاعدة تضع المساءلة فوق المجموع","التعليق ليس رفضًا نهائيًّا: الحالة تعود إذا أعيد تصميمها بمراجعة بشرية",""],"lo":["LO5"]}],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"day2.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

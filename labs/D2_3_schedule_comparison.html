@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 2.3 · مقارنة جدولي الري · الذكاء الاصطناعي في الزراعة والمياه والبيئة</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D2_3_schedule_comparison.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day2.html#lab-2-3">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 2.3</span>
+<h1>مقارنة جدولي الري</h1>
+<p>من ملف الموسم الجاهز تطبق قاعدة الري بالتنبؤ يومًا بيوم، وتقارنها بالجدول الثابت على الماء المستعمل وأيام الإجهاد والتسرب العميق، وتحسب التوفير.</p>
+<div class="meta"><span>25 دقيقة</span><span>اليوم 2</span><span>الجلسة 3: جدول ري يقوده التنبؤ</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="2.3">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>عمود قرار الري اليومي بقاعدة تنظر ثلاثة أيام إلى الأمام، وميزان الماء الذي ينتج عنه.</li>
+    <li>جدول مقارنة بين الجدولين: الماء، ومرات الري، وأيام الإجهاد، والتسرب العميق.</li>
+    <li>التوفير بالملم وبالمتر المكعب وبالنسبة، وسطر نتيجة لمرشد الري شجاع السرحاني.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/start/season_fixed.csv" target="_blank"><b>start/season_fixed.csv</b><span>الموسم بالجدول الثابت محسوبًا (نقطة البداية، لا تحتاج المختبر 2.2)، ومجموع تنبؤ التبخر نتح للأيام الثلاثة القادمة</span></a>
+  <a href="files/farm/farm_profile.txt" target="_blank"><b>farm/farm_profile.txt</b><span>Kc وTAW وRAW، والتحويل من الملم إلى المتر المكعب</span></a>
+</div>
+<p class="small">الطقس حقيقي من ERA5، والعمود <code>forecast_et0_next3</code> مجموع التنبؤات اليومية كما صدرت فعلًا صباح كل يوم للأيام الثلاثة القادمة (Open-Meteo.com، CC BY 4.0)؛ وأُعدّت قيم ERA5 باستعمال معلومات خدمة كوبرنيكوس لتغير المناخ (2024). المزرعة اصطناعية. المساعد الذكي مسموح بدور المعلّم.</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · اقرأ القاعدة وأعمدة الملف الجاهز <span class="min">3 دقائق</span></h3>
+  <p>الأعمدة: <code>A</code> التاريخ، <code>B</code> التبخر نتح المرجعي، <code>C</code> المطر، <code>D</code> ري الجدول الثابت، <code>E</code> استنزافه، <code>F</code> تسربه العميق، <code>G</code> 1 في يوم الإجهاد، <code>H</code> تنبؤ الأيام الثلاثة. القاعدة الجديدة:</p>
+  <div class="callout tip"><b>القاعدة.</b> كل صباح: إن كان استنزاف اليوم مضافًا إليه ما سيستهلكه المحصول في الأيام الثلاثة القادمة (0.70 × <code>H</code>) يبلغ RAW أو يزيد، فاروِ 30 ملم اليوم. وإلا فلا تروِ.</div>
+</div>
+
+<div class="step">
+  <h3>2 · احسب قرار الري اليومي والاستنزاف <span class="min">10 دقائق</span></h3>
+  <pre class="code" data-file="season_fixed.csv"><code>I2  0                                       depletion at the start of the day
+I3  =L2
+J2  =IF(I2+0.70*H2&gt;=58.5,30,0)             irrigation by the rule
+K2  =IF(I2&lt;=58.5,1,(90-I2)/(90-58.5))       Ks
+L2  =MIN(MAX(I2-C2-J2+K2*0.70*B2,0),90)     depletion at the end of the day
+M2  =MAX(0,-(I2-C2-J2+K2*0.70*B2))          deep drainage</code></pre>
+  <p>الطقس الذي يحرك الميزان هو الطقس الفعلي (<code>B</code> و<code>C</code>)، والتنبؤ يدخل في القرار فقط (<code>H</code>). هكذا تقارن الجدولين على الموسم نفسه.</p>
+</div>
+
+<div class="step">
+  <h3>3 · املأ جدول المقارنة للجدولين <span class="min">6 دقائق</span></h3>
+  <table>
+    <tr><th></th><th>الماء (ملم)</th><th>مرات الري</th><th>أيام الإجهاد</th><th>التسرب العميق (ملم)</th></tr>
+    <tr><td>الجدول الثابت (<code>D</code> و<code>G</code> و<code>F</code>)</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>القاعدة بالتنبؤ (<code>J</code> و<code>K</code> و<code>M</code>)</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+  </table>
+  <p>أيام الإجهاد للقاعدة: <code>=COUNTIF(K2:K246,"&lt;1")</code>.</p>
+</div>
+
+<div class="step">
+  <h3>4 · احسب التوفير بالمتر المكعب وبالنسبة <span class="min">3 دقائق</span></h3>
+  <pre class="code" data-file="season_fixed.csv"><code>saving mm   =SUM(D2:D246)-SUM(J2:J246)
+saving m3   =saving_mm*400
+saving %    =1-SUM(J2:J246)/SUM(D2:D246)</code></pre>
+</div>
+
+<div class="step">
+  <h3>5 · اكتب سطر النتيجة لمرشد الري <span class="min">3 دقائق</span></h3>
+  <p>سطر واحد: كم وفّرت القاعدة، وما الذي حدث لأيام الإجهاد، ولموسم واحد ومزرعة واحدة.</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>غيّر عمق الري في <code>J</code> من 30 إلى 20 ملم. ما الذي يتغير في الماء، ومرات الري، وأيام الإجهاد؟ وأي العمقين أيسر على عمال المزرعة؟</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>كم وفّرت القاعدة من الماء بالنسبة وبالمتر المكعب؟</li>
+  <li>لماذا اختفى التسرب العميق تقريبًا مع القاعدة؟</li>
+  <li>هل يأتي التوفير من مهارة التنبؤ أم من شيء آخر في القاعدة؟ كيف تعرف؟ (المختبر التالي يجيب)</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب: المفتاح والفخاخ</summary>
+  <ul>
+    <li><b>الجدول الثابت:</b> 1,560.5 ملم، 82 مرة، 9 أيام إجهاد، تسرب 167.6 ملم.</li>
+    <li><b>القاعدة بالتنبؤ:</b> 1,350 ملم، 45 مرة، 0 أيام إجهاد، 0 تسرب.</li>
+    <li><b>التوفير:</b> 210.5 ملم = 84,200 م³ = 13.5% لموسم واحد على 40 هكتارًا.</li>
+    <li><b>السطر النموذجي:</b> «في موسم 2024 على مزرعة الهدّار، كانت قاعدة الأيام الثلاثة ستستعمل ماءً أقل بنحو 13.5% (84 ألف م³) دون يوم إجهاد واحد، مقابل 9 أيام إجهاد في أغسطس بالجدول الثابت. موسم واحد ومزرعة واحدة ونوع تربة واحد.»</li>
+    <li><b>الجواب الصادق عن السؤال الثالث:</b> أغلب التوفير يأتي من أن القاعدة تروي حين تحتاج الأشجار، لا من مهارة التنبؤ. في المختبر 2.4 يتساوى التنبؤ الفعلي والمناخ المعتاد تقريبًا.</li>
+    <li><b>الفخ:</b> تحريك الميزان بالتنبؤ بدل الطقس الفعلي؛ يعطي موسمًا لم يحدث.</li>
+    <li>التحقق: <code>uv run labs/solutions/check.py 2.3</code>.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D2_2_fixed_schedule.html" rel="prev">→ المختبر السابق</a><a href="D2_4_uncertainty.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في الزراعة والمياه والبيئة<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 9c39248</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:17:50Z","version":"2027.1.0","commit":"9c39248"},"course":{"id":"use-sec-211","code":"USE-SEC-211","title":"الذكاء الاصطناعي في الزراعة والمياه والبيئة","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-211/","repo":"SDAIAAcademy/use-sec-211","home":"../index.html"},"lab":{"id":"2.3","title":"مقارنة جدولي الري","summary":"من ملف الموسم الجاهز تطبق قاعدة الري بالتنبؤ يومًا بيوم، وتقارنها بالجدول الثابت على الماء المستعمل وأيام الإجهاد والتسرب العميق، وتحسب التوفير.","minutes":25,"day":2,"unit":"اليوم 2","session":3,"deck":"../slides/day2.html#lab-2-3","prev":"D2_2_fixed_schedule.html","next":"D2_4_uncertainty.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

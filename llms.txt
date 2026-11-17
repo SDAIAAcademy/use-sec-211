@@ -1,0 +1,43 @@
+# الذكاء الاصطناعي في الزراعة والمياه والبيئة
+
+> تحكم على ما تقوله الصور والنماذج والعدادات عن المزارع والمياه قبل أن تبني عليه قرارًا: تقيسه على الحقيقة الميدانية، وتقارنه بقاعدة بسيطة، وترتب الاستخدامات في خريطة تدافع عنها. مقرر من أكاديمية سدايا، الرمز USE-SEC-211، الإصدار 2027.1.0، بالعربية.
+
+كل شريحة عنوان مثل "#### [day1#slide-id] العنوان": استشهد بالشرائح بهذا المعرّف، وكل استشهاد رابط (slides/day1.html#slide-id). هذه الملفات هي ما يراه المشارك: لا ملاحظات المدرّب فيها ولا مفاتيح الإجابة.
+
+## المقرر
+
+- [صفحة المقرر](https://sdaiaacademy.github.io/use-sec-211/index.md): نظرة عامة ونواتج التعلم والجدول والمختبرات؛ الصفحة نفسها https://sdaiaacademy.github.io/use-sec-211/index.html
+- [المقرر كاملًا](https://sdaiaacademy.github.io/use-sec-211/llms-full.txt): كل وحدة وجلسة وشريحة في ملف واحد، نحو 21,234 من الوحدات النصية
+- [أسئلة التدريب](https://sdaiaacademy.github.io/use-sec-211/practice.html): أسئلة تختبر بها نفسك، مع تعليل بعد كل إجابة
+
+## الشرائح
+
+- [اليوم 1: من الصورة إلى الحقل](https://sdaiaacademy.github.io/use-sec-211/slides/day1.md): ما تقيسه الأقمار والمجسات، ومؤشر الغطاء النباتي أمام التصريحات، ودقة خريطة مفتوحة لكل فئة؛ الجلسات: ما يقيسه كل مصدر، الدقة المكانية والزيارة والغيوم، مؤشر الغطاء النباتي وسلسلته الزمنية، القطع التي يخالف نمطها التصريح، الفحص الميداني قبل أي جزاء، خرائط الغطاء الأرضي من النماذج المفتوحة، الدقة لكل فئة والاستخدامات المسموح بها، الحقيقة الميدانية وحملات القياس؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/slides/day1.html؛ نحو 10,425 من الوحدات النصية
+- [اليوم 2: الماء: التنبؤ والري والتسرب، ثم الخريطة](https://sdaiaacademy.github.io/use-sec-211/slides/day2.md): مهارة التنبؤ أمام المناخ المعتاد، وجدولا الري، والتدفق الليلي، ثم خريطة الفرص والمخاطر؛ الجلسات: إعادة التحليل والتنبؤ ونماذج الطقس، ميزان ماء التربة والجدول الثابت، جدول ري يقوده التنبؤ، قول عدم اليقين للمزارع، محاسبة المياه والتدفق الليلي، إنذارات تسرب يحتملها الفريق، الجفاف والغبار والحر، وحقوق البيانات، خريطة الفرص والمخاطر؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/slides/day2.html؛ نحو 9,004 من الوحدات النصية
+- [المناقشة الختامية: الخريطة أمام الميسّر](https://sdaiaacademy.github.io/use-sec-211/slides/capstone.md): فحص دون ذكاء اصطناعي، ثم خريطة من صفحة واحدة تدافع عنها في خمس دقائق وتعيد تقييم حالة يختارها الميسّر؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/slides/capstone.html؛ نحو 1,111 من الوحدات النصية
+
+## المختبرات
+
+- [المختبر 1.1: ثمانية أسئلة ومصادرها](https://sdaiaacademy.github.io/use-sec-211/labs/D1_1_monitoring_sources.md): اليوم 1، الجلسة 1، 20 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D1_1_monitoring_sources.html
+- [المختبر 1.2: كم صورة صافية تصلنا؟](https://sdaiaacademy.github.io/use-sec-211/labs/D1_2_clear_scenes.md): اليوم 1، الجلسة 2، 20 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D1_2_clear_scenes.html
+- [المختبر 1.3: من الانعكاس إلى المؤشر](https://sdaiaacademy.github.io/use-sec-211/labs/D1_3_ndvi_series.md): اليوم 1، الجلسة 3، 25 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D1_3_ndvi_series.html
+- [المختبر 1.4: قطع لا يتسق نمطها مع التصريح](https://sdaiaacademy.github.io/use-sec-211/labs/D1_4_plot_flags.md): اليوم 1، الجلسة 4، 25 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D1_4_plot_flags.html
+- [المختبر 1.5: خطة الزيارات وخطاب المزارع](https://sdaiaacademy.github.io/use-sec-211/labs/D1_5_field_checks.md): اليوم 1، الجلسة 5، 20 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D1_5_field_checks.html
+- [المختبر 1.6: مصفوفة الالتباس من 200 نقطة](https://sdaiaacademy.github.io/use-sec-211/labs/D1_6_confusion_matrix.md): اليوم 1، الجلسة 6، 25 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D1_6_confusion_matrix.html
+- [المختبر 1.7: جدول الدقة والاستخدامات المسموح بها](https://sdaiaacademy.github.io/use-sec-211/labs/D1_7_accuracy_uses.md): اليوم 1، الجلسة 7، 25 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D1_7_accuracy_uses.html
+- [المختبر 1.8: خطة حملة ميدانية](https://sdaiaacademy.github.io/use-sec-211/labs/D1_8_field_campaign.md): اليوم 1، الجلسة 8، 20 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D1_8_field_campaign.html
+- [المختبر 2.1: مهارة التنبؤ أمام المناخ المعتاد](https://sdaiaacademy.github.io/use-sec-211/labs/D2_1_forecast_skill.md): اليوم 2، الجلسة 1، 20 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D2_1_forecast_skill.html
+- [المختبر 2.2: موسم الجدول الثابت](https://sdaiaacademy.github.io/use-sec-211/labs/D2_2_fixed_schedule.md): اليوم 2، الجلسة 2، 25 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D2_2_fixed_schedule.html
+- [المختبر 2.3: مقارنة جدولي الري](https://sdaiaacademy.github.io/use-sec-211/labs/D2_3_schedule_comparison.md): اليوم 2، الجلسة 3، 25 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D2_3_schedule_comparison.html
+- [المختبر 2.4: جدول السيناريوهات ورسالة المزارع](https://sdaiaacademy.github.io/use-sec-211/labs/D2_4_uncertainty.md): اليوم 2، الجلسة 4، 20 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D2_4_uncertainty.html
+- [المختبر 2.5: التدفق الليلي الأدنى لعشر مناطق](https://sdaiaacademy.github.io/use-sec-211/labs/D2_5_night_flow.md): اليوم 2، الجلسة 5، 20 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D2_5_night_flow.html
+- [المختبر 2.6: كشف التسرب من بيانات العدادات](https://sdaiaacademy.github.io/use-sec-211/labs/D2_6_leak_alerts.md): اليوم 2، الجلسة 6، 25 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D2_6_leak_alerts.html
+- [المختبر 2.7: سجل البيانات والحقوق](https://sdaiaacademy.github.io/use-sec-211/labs/D2_7_data_rights.md): اليوم 2، الجلسة 7، 20 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D2_7_data_rights.html
+- [المختبر 2.8: تقييم الحالات الاثنتي عشرة وترتيبها](https://sdaiaacademy.github.io/use-sec-211/labs/D2_8_opportunity_map.md): اليوم 2، الجلسة 8، 25 دقيقة؛ الصفحة: https://sdaiaacademy.github.io/use-sec-211/labs/D2_8_opportunity_map.html
+
+## ملفات السياق
+
+- [context/course.md](https://sdaiaacademy.github.io/use-sec-211/context/course.md): المقرر كاملًا، لمساعد يقبل ملفًا مرفقًا، نحو 21,234 من الوحدات النصية
+- [context/day1.md](https://sdaiaacademy.github.io/use-sec-211/context/day1.md): اليوم 1، نحو 10,425 من الوحدات النصية
+- [context/day2.md](https://sdaiaacademy.github.io/use-sec-211/context/day2.md): اليوم 2، نحو 9,004 من الوحدات النصية
+- [context/capstone.md](https://sdaiaacademy.github.io/use-sec-211/context/capstone.md): المناقشة الختامية، نحو 1,111 من الوحدات النصية

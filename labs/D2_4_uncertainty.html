@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 2.4 · جدول السيناريوهات ورسالة المزارع · الذكاء الاصطناعي في الزراعة والمياه والبيئة</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D2_4_uncertainty.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day2.html#lab-2-4">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 2.4</span>
+<h1>جدول السيناريوهات ورسالة المزارع</h1>
+<p>من تسعة سيناريوهات جاهزة (ثلاث ترب وثلاثة تنبؤات) تحسب التوفير وفرق أيام الإجهاد، وتكتب جدول المقارنة بمداه، ثم رسالة قصيرة لمزارع تذكر ما نعرفه وما لا نعرفه.</p>
+<div class="meta"><span>20 دقيقة</span><span>اليوم 2</span><span>الجلسة 4: قول عدم اليقين للمزارع</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="2.4">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>جدول السيناريوهات التسعة: التوفير وفرق أيام الإجهاد لكل نوع تربة ولكل تنبؤ.</li>
+    <li>مدى التوفير، والعامل الذي يحركه أكثر.</li>
+    <li>رسالة من أربعة أسطر لمزارع زيتون: ما نعرفه، وما لا نعرفه، وما نطلبه منه.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/start/scenarios.csv" target="_blank"><b>start/scenarios.csv</b><span>تسعة سيناريوهات محسوبة سلفًا: ثلاثة أنواع تربة، وثلاثة مصادر للنظر إلى الأمام</span></a>
+</div>
+<p class="small">كل سيناريو هو الموسم نفسه من المختبر 2.3 بطقس ERA5 الحقيقي، مع تغيير شيء واحد أو اثنين: الماء المتاح في التربة (60 أو 90 أو 120 ملم)، وما تنظر به القاعدة إلى الأمام: التنبؤ الفعلي، أو «تنبؤ كامل» يساوي ما حدث فعلًا، أو المناخ المعتاد. الطقس من Open-Meteo.com (CC BY 4.0)، أُعدّ باستعمال معلومات خدمة كوبرنيكوس لتغير المناخ (2024). المساعد الذكي مسموح بدور المعلّم، وفي الخطوة 4 لمراجعة لغة الرسالة فقط.</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · اقرأ السيناريوهات التسعة <span class="min">دقيقتان</span></h3>
+  <p>الأعمدة: <code>A</code> التربة، <code>B</code> الماء المتاح، <code>C</code> مصدر النظر إلى الأمام، <code>D</code> و<code>E</code> ماء الجدول الثابت وأيام إجهاده، <code>F</code> و<code>G</code> ماء القاعدة وأيام إجهادها.</p>
+</div>
+
+<div class="step">
+  <h3>2 · احسب التوفير وفرق الإجهاد لكل سيناريو <span class="min">5 دقائق</span></h3>
+  <pre class="code" data-file="scenarios.csv"><code>H2  =ROUND((1-F2/D2)*100,1)     saving %
+I2  =E2-G2                      stress days avoided</code></pre>
+  <table>
+    <tr><th>التربة</th><th>التنبؤ الفعلي</th><th>تنبؤ كامل</th><th>المناخ المعتاد</th></tr>
+    <tr><td>رملية (60)</td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>رملية طميية (90)</td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>طميية (120)</td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+  </table>
+</div>
+
+<div class="step">
+  <h3>3 · اكتب المدى، وأي العاملين يحركه أكثر <span class="min">4 دقائق</span></h3>
+  <p>أصغر توفير وأكبره. ثم اقرأ الجدول بالصف وبالعمود: هل يتغير التوفير أكثر حين تغير التربة، أم حين تغير التنبؤ؟</p>
+</div>
+
+<div class="step">
+  <h3>4 · اكتب رسالة المزارع في أربعة أسطر <span class="min">6 دقائق</span></h3>
+  <ol>
+    <li>ما نتوقعه، بمدى لا برقم واحد.</li>
+    <li>ما الذي يجعل الرقم أكبر أو أصغر في مزرعته هو.</li>
+    <li>ما لا نعرفه بعد.</li>
+    <li>ما نطلبه منه، وما يستطيع رفضه.</li>
+  </ol>
+  <p>بلا مصطلحات: لا «TAW» ولا «مهارة» ولا «سيناريو».</p>
+</div>
+
+<div class="step">
+  <h3>5 · تبادل الرسالة مع زميل واقرأ رسالته <span class="min">3 دقائق</span></h3>
+  <p>اقرأ رسالة زميلك كأنك المزارع: هل تعرف ماذا تفعل غدًا؟ هل وُعدت برقم لا يمكن ضمانه؟</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>اكتب ما الذي يجب قياسه في المزرعة نفسها ليضيق المدى، ومن يقيسه، وكم يكلف تقريبًا.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>ما مدى التوفير على السيناريوهات التسعة؟</li>
+  <li>أي العاملين يحرك التوفير أكثر: التربة أم التنبؤ؟</li>
+  <li>في أي تربة يتجنب الجدول الجديد أكثر أيام الإجهاد؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب: المفتاح والفخاخ</summary>
+  <ul>
+    <li><b>التوفير:</b> رملية 9.6% (التنبؤ الفعلي)، 7.7% (تنبؤ كامل)، 9.6% (المناخ المعتاد). رملية طميية وطميية 13.5% في الأعمدة الثلاثة. المدى من 7.7% إلى 13.5%.</li>
+    <li><b>الإجهاد:</b> القاعدة صفر أيام في كل السيناريوهات. الجدول الثابت 20 يومًا في الرملية، و9 في الرملية الطميية، و0 في الطميية.</li>
+    <li><b>العامل الأكبر هو التربة.</b> نوع التنبؤ لا يكاد يغير شيئًا في موسم بلا مطر صيفي. في الرملية يختلف التنبؤ الكامل عن العمودين الآخرين برية واحدة من 30 ملم (1,440 أمام 1,410 ملم): فرق لا يُبنى عليه، وحد المدى الأدنى 7.7% يقوم عليه وحده.</li>
+    <li><b>الرسالة:</b> النموذج في <code>labs/solutions/D2_4_uncertainty.md</code>.</li>
+    <li><b>الفخ:</b> كتابة «ستوفر 13.5%» رقمًا واحدًا، أو كتابة أن التنبؤ الأفضل يوفر أكثر.</li>
+    <li>التحقق: <code>uv run labs/solutions/check.py 2.4</code>.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D2_3_schedule_comparison.html" rel="prev">→ المختبر السابق</a><a href="D2_5_night_flow.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في الزراعة والمياه والبيئة<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 9c39248</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:17:50Z","version":"2027.1.0","commit":"9c39248"},"course":{"id":"use-sec-211","code":"USE-SEC-211","title":"الذكاء الاصطناعي في الزراعة والمياه والبيئة","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-211/","repo":"SDAIAAcademy/use-sec-211","home":"../index.html"},"lab":{"id":"2.4","title":"جدول السيناريوهات ورسالة المزارع","summary":"من تسعة سيناريوهات جاهزة (ثلاث ترب وثلاثة تنبؤات) تحسب التوفير وفرق أيام الإجهاد، وتكتب جدول المقارنة بمداه، ثم رسالة قصيرة لمزارع تذكر ما نعرفه وما لا نعرفه.","minutes":20,"day":2,"unit":"اليوم 2","session":4,"deck":"../slides/day2.html#lab-2-4","prev":"D2_3_schedule_comparison.html","next":"D2_5_night_flow.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

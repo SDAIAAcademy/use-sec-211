@@ -1,0 +1,1195 @@
+{
+ "1.1": {
+  "Q1": 2,
+  "Q2": 6,
+  "Q3": 1,
+  "Q4": 5,
+  "Q5": 8,
+  "Q6": 4,
+  "Q7": 3,
+  "Q8": 7
+ },
+ "1.2": {
+  "scenes": 144,
+  "clear_scenes": 112,
+  "clear_by_month": {
+   "2023-10": 8,
+   "2023-11": 6,
+   "2023-12": 6,
+   "2024-01": 8,
+   "2024-02": 7,
+   "2024-03": 6,
+   "2024-04": 11,
+   "2024-05": 12,
+   "2024-06": 12,
+   "2024-07": 12,
+   "2024-08": 13,
+   "2024-09": 11
+  },
+  "scenes_by_month": {
+   "2023-10": 13,
+   "2023-11": 12,
+   "2023-12": 11,
+   "2024-01": 12,
+   "2024-02": 11,
+   "2024-03": 12,
+   "2024-04": 12,
+   "2024-05": 13,
+   "2024-06": 12,
+   "2024-07": 12,
+   "2024-08": 13,
+   "2024-09": 11
+  },
+  "low_tile_cloud_but_not_clear": 5,
+  "longest_winter_gap_days": 12,
+  "pixels": {
+   "محور دائري كبير": {
+    "all_10": 5000.0,
+    "all_30": 555.6,
+    "all_250": 8.0,
+    "pure_10": 4624,
+    "pure_30": 441,
+    "pure_250": 0
+   },
+   "محور دائري صغير": {
+    "all_10": 1200.0,
+    "all_30": 133.3,
+    "all_250": 1.9,
+    "pure_10": 1024,
+    "pure_30": 81,
+    "pure_250": 0
+   },
+   "مزرعة عائلية": {
+    "all_10": 200.0,
+    "all_30": 22.2,
+    "all_250": 0.3,
+    "pure_10": 144,
+    "pure_30": 4,
+    "pure_250": 0
+   },
+   "حيازة صغيرة أو بستان نخيل": {
+    "all_10": 40.0,
+    "all_30": 4.4,
+    "all_250": 0.1,
+    "pure_10": 16,
+    "pure_30": 0,
+    "pure_250": 0
+   }
+  }
+ },
+ "1.4": {
+  "plots": 65,
+  "flagged": [
+   "P03",
+   "P04",
+   "P05",
+   "P08",
+   "P10",
+   "P14",
+   "P25",
+   "P30",
+   "P41",
+   "P44",
+   "P45",
+   "P51",
+   "P56",
+   "P57",
+   "P59",
+   "P64"
+  ],
+  "features": {
+   "P01": {
+    "winter_max": 0.672,
+    "summer_mean": 0.155,
+    "summer_max": 0.192,
+    "season_max": 0.929
+   },
+   "P02": {
+    "winter_max": 0.568,
+    "summer_mean": 0.226,
+    "summer_max": 0.664,
+    "season_max": 0.912
+   },
+   "P03": {
+    "winter_max": 0.462,
+    "summer_mean": 0.389,
+    "summer_max": 0.564,
+    "season_max": 0.832
+   },
+   "P04": {
+    "winter_max": 0.499,
+    "summer_mean": 0.197,
+    "summer_max": 0.27,
+    "season_max": 0.499
+   },
+   "P05": {
+    "winter_max": 0.638,
+    "summer_mean": 0.513,
+    "summer_max": 0.804,
+    "season_max": 0.859
+   },
+   "P06": {
+    "winter_max": 0.597,
+    "summer_mean": 0.115,
+    "summer_max": 0.136,
+    "season_max": 0.782
+   },
+   "P07": {
+    "winter_max": 0.609,
+    "summer_mean": 0.189,
+    "summer_max": 0.5,
+    "season_max": 0.824
+   },
+   "P08": {
+    "winter_max": 0.168,
+    "summer_mean": 0.091,
+    "summer_max": 0.106,
+    "season_max": 0.168
+   },
+   "P09": {
+    "winter_max": 0.893,
+    "summer_mean": 0.633,
+    "summer_max": 0.963,
+    "season_max": 0.97
+   },
+   "P10": {
+    "winter_max": 0.13,
+    "summer_mean": 0.098,
+    "summer_max": 0.108,
+    "season_max": 0.13
+   },
+   "P11": {
+    "winter_max": 0.887,
+    "summer_mean": 0.566,
+    "summer_max": 0.925,
+    "season_max": 0.946
+   },
+   "P12": {
+    "winter_max": 0.875,
+    "summer_mean": 0.659,
+    "summer_max": 0.939,
+    "season_max": 0.939
+   },
+   "P13": {
+    "winter_max": 0.888,
+    "summer_mean": 0.629,
+    "summer_max": 0.969,
+    "season_max": 0.969
+   },
+   "P14": {
+    "winter_max": 0.489,
+    "summer_mean": 0.318,
+    "summer_max": 0.587,
+    "season_max": 0.703
+   },
+   "P15": {
+    "winter_max": 0.879,
+    "summer_mean": 0.649,
+    "summer_max": 0.932,
+    "season_max": 0.932
+   },
+   "P16": {
+    "winter_max": 0.759,
+    "summer_mean": 0.629,
+    "summer_max": 0.904,
+    "season_max": 0.938
+   },
+   "P17": {
+    "winter_max": 0.798,
+    "summer_mean": 0.633,
+    "summer_max": 0.943,
+    "season_max": 0.943
+   },
+   "P18": {
+    "winter_max": 0.681,
+    "summer_mean": 0.123,
+    "summer_max": 0.146,
+    "season_max": 0.833
+   },
+   "P19": {
+    "winter_max": 0.161,
+    "summer_mean": 0.129,
+    "summer_max": 0.145,
+    "season_max": 0.212
+   },
+   "P20": {
+    "winter_max": 0.674,
+    "summer_mean": 0.537,
+    "summer_max": 0.754,
+    "season_max": 0.855
+   },
+   "P21": {
+    "winter_max": 0.92,
+    "summer_mean": 0.126,
+    "summer_max": 0.147,
+    "season_max": 0.92
+   },
+   "P22": {
+    "winter_max": 0.88,
+    "summer_mean": 0.644,
+    "summer_max": 0.945,
+    "season_max": 0.945
+   },
+   "P23": {
+    "winter_max": 0.893,
+    "summer_mean": 0.631,
+    "summer_max": 0.935,
+    "season_max": 0.935
+   },
+   "P24": {
+    "winter_max": 0.571,
+    "summer_mean": 0.092,
+    "summer_max": 0.112,
+    "season_max": 0.571
+   },
+   "P25": {
+    "winter_max": 0.154,
+    "summer_mean": 0.498,
+    "summer_max": 0.853,
+    "season_max": 0.853
+   },
+   "P26": {
+    "winter_max": 0.667,
+    "summer_mean": 0.122,
+    "summer_max": 0.155,
+    "season_max": 0.676
+   },
+   "P27": {
+    "winter_max": 0.774,
+    "summer_mean": 0.572,
+    "summer_max": 0.879,
+    "season_max": 0.895
+   },
+   "P28": {
+    "winter_max": 0.771,
+    "summer_mean": 0.595,
+    "summer_max": 0.847,
+    "season_max": 0.881
+   },
+   "P29": {
+    "winter_max": 0.83,
+    "summer_mean": 0.644,
+    "summer_max": 0.872,
+    "season_max": 0.872
+   },
+   "P30": {
+    "winter_max": 0.873,
+    "summer_mean": 0.634,
+    "summer_max": 0.94,
+    "season_max": 0.94
+   },
+   "P31": {
+    "winter_max": 0.68,
+    "summer_mean": 0.599,
+    "summer_max": 0.894,
+    "season_max": 0.901
+   },
+   "P32": {
+    "winter_max": 0.131,
+    "summer_mean": 0.084,
+    "summer_max": 0.096,
+    "season_max": 0.131
+   },
+   "P33": {
+    "winter_max": 0.538,
+    "summer_mean": 0.128,
+    "summer_max": 0.238,
+    "season_max": 0.727
+   },
+   "P34": {
+    "winter_max": 0.888,
+    "summer_mean": 0.608,
+    "summer_max": 0.891,
+    "season_max": 0.934
+   },
+   "P35": {
+    "winter_max": 0.706,
+    "summer_mean": 0.157,
+    "summer_max": 0.31,
+    "season_max": 0.928
+   },
+   "P36": {
+    "winter_max": 0.823,
+    "summer_mean": 0.619,
+    "summer_max": 0.919,
+    "season_max": 0.939
+   },
+   "P37": {
+    "winter_max": 0.872,
+    "summer_mean": 0.679,
+    "summer_max": 0.949,
+    "season_max": 0.962
+   },
+   "P38": {
+    "winter_max": 0.188,
+    "summer_mean": 0.62,
+    "summer_max": 0.864,
+    "season_max": 0.864
+   },
+   "P39": {
+    "winter_max": 0.816,
+    "summer_mean": 0.433,
+    "summer_max": 0.714,
+    "season_max": 0.885
+   },
+   "P40": {
+    "winter_max": 0.896,
+    "summer_mean": 0.689,
+    "summer_max": 0.928,
+    "season_max": 0.934
+   },
+   "P41": {
+    "winter_max": 0.738,
+    "summer_mean": 0.337,
+    "summer_max": 0.892,
+    "season_max": 0.916
+   },
+   "P42": {
+    "winter_max": 0.865,
+    "summer_mean": 0.143,
+    "summer_max": 0.254,
+    "season_max": 0.866
+   },
+   "P43": {
+    "winter_max": 0.628,
+    "summer_mean": 0.619,
+    "summer_max": 0.842,
+    "season_max": 0.842
+   },
+   "P44": {
+    "winter_max": 0.762,
+    "summer_mean": 0.428,
+    "summer_max": 0.775,
+    "season_max": 0.775
+   },
+   "P45": {
+    "winter_max": 0.882,
+    "summer_mean": 0.171,
+    "summer_max": 0.197,
+    "season_max": 0.882
+   },
+   "P46": {
+    "winter_max": 0.699,
+    "summer_mean": 0.666,
+    "summer_max": 0.898,
+    "season_max": 0.943
+   },
+   "P47": {
+    "winter_max": 0.882,
+    "summer_mean": 0.142,
+    "summer_max": 0.19,
+    "season_max": 0.882
+   },
+   "P48": {
+    "winter_max": 0.71,
+    "summer_mean": 0.104,
+    "summer_max": 0.118,
+    "season_max": 0.71
+   },
+   "P49": {
+    "winter_max": 0.783,
+    "summer_mean": 0.624,
+    "summer_max": 0.873,
+    "season_max": 0.873
+   },
+   "P50": {
+    "winter_max": 0.657,
+    "summer_mean": 0.111,
+    "summer_max": 0.193,
+    "season_max": 0.657
+   },
+   "P51": {
+    "winter_max": 0.374,
+    "summer_mean": 0.172,
+    "summer_max": 0.213,
+    "season_max": 0.462
+   },
+   "P52": {
+    "winter_max": 0.908,
+    "summer_mean": 0.633,
+    "summer_max": 0.941,
+    "season_max": 0.947
+   },
+   "P53": {
+    "winter_max": 0.146,
+    "summer_mean": 0.092,
+    "summer_max": 0.102,
+    "season_max": 0.155
+   },
+   "P54": {
+    "winter_max": 0.909,
+    "summer_mean": 0.12,
+    "summer_max": 0.149,
+    "season_max": 0.909
+   },
+   "P55": {
+    "winter_max": 0.899,
+    "summer_mean": 0.108,
+    "summer_max": 0.144,
+    "season_max": 0.899
+   },
+   "P56": {
+    "winter_max": 0.617,
+    "summer_mean": 0.356,
+    "summer_max": 0.891,
+    "season_max": 0.904
+   },
+   "P57": {
+    "winter_max": 0.841,
+    "summer_mean": 0.329,
+    "summer_max": 0.595,
+    "season_max": 0.841
+   },
+   "P58": {
+    "winter_max": 0.783,
+    "summer_mean": 0.129,
+    "summer_max": 0.145,
+    "season_max": 0.783
+   },
+   "P59": {
+    "winter_max": 0.565,
+    "summer_mean": 0.389,
+    "summer_max": 0.593,
+    "season_max": 0.593
+   },
+   "P60": {
+    "winter_max": 0.874,
+    "summer_mean": 0.622,
+    "summer_max": 0.954,
+    "season_max": 0.958
+   },
+   "P61": {
+    "winter_max": 0.862,
+    "summer_mean": 0.116,
+    "summer_max": 0.173,
+    "season_max": 0.916
+   },
+   "P62": {
+    "winter_max": 0.893,
+    "summer_mean": 0.711,
+    "summer_max": 0.955,
+    "season_max": 0.955
+   },
+   "P63": {
+    "winter_max": 0.648,
+    "summer_mean": 0.126,
+    "summer_max": 0.176,
+    "season_max": 0.731
+   },
+   "P64": {
+    "winter_max": 0.772,
+    "summer_mean": 0.37,
+    "summer_max": 0.797,
+    "season_max": 0.835
+   },
+   "P65": {
+    "winter_max": 0.622,
+    "summer_mean": 0.577,
+    "summer_max": 0.89,
+    "season_max": 0.906
+   }
+  },
+  "declared": {
+   "P01": "قمح",
+   "P02": "قمح",
+   "P03": "برسيم",
+   "P04": "قمح",
+   "P05": "قمح",
+   "P06": "قمح",
+   "P07": "قمح",
+   "P08": "قمح",
+   "P09": "برسيم",
+   "P10": "قمح",
+   "P11": "برسيم",
+   "P12": "برسيم",
+   "P13": "برسيم",
+   "P14": "برسيم",
+   "P15": "برسيم",
+   "P16": "برسيم",
+   "P17": "برسيم",
+   "P18": "قمح",
+   "P19": "بور",
+   "P20": "برسيم",
+   "P21": "قمح",
+   "P22": "برسيم",
+   "P23": "برسيم",
+   "P24": "قمح",
+   "P25": "قمح",
+   "P26": "قمح",
+   "P27": "برسيم",
+   "P28": "برسيم",
+   "P29": "برسيم",
+   "P30": "قمح",
+   "P31": "برسيم",
+   "P32": "بور",
+   "P33": "قمح",
+   "P34": "برسيم",
+   "P35": "قمح",
+   "P36": "برسيم",
+   "P37": "برسيم",
+   "P38": "علف صيفي",
+   "P39": "برسيم",
+   "P40": "برسيم",
+   "P41": "برسيم",
+   "P42": "قمح",
+   "P43": "برسيم",
+   "P44": "قمح",
+   "P45": "بور",
+   "P46": "برسيم",
+   "P47": "قمح",
+   "P48": "قمح",
+   "P49": "برسيم",
+   "P50": "قمح",
+   "P51": "قمح",
+   "P52": "برسيم",
+   "P53": "بور",
+   "P54": "قمح",
+   "P55": "قمح",
+   "P56": "برسيم",
+   "P57": "برسيم",
+   "P58": "قمح",
+   "P59": "برسيم",
+   "P60": "برسيم",
+   "P61": "قمح",
+   "P62": "برسيم",
+   "P63": "قمح",
+   "P64": "برسيم",
+   "P65": "برسيم"
+  },
+  "observed": {
+   "P01": "قمح",
+   "P02": "قمح",
+   "P03": "غير واضح",
+   "P04": "غير واضح",
+   "P05": "برسيم",
+   "P06": "قمح",
+   "P07": "قمح",
+   "P08": "بور",
+   "P09": "برسيم",
+   "P10": "بور",
+   "P11": "برسيم",
+   "P12": "برسيم",
+   "P13": "برسيم",
+   "P14": "غير واضح",
+   "P15": "برسيم",
+   "P16": "برسيم",
+   "P17": "برسيم",
+   "P18": "قمح",
+   "P19": "بور",
+   "P20": "برسيم",
+   "P21": "قمح",
+   "P22": "برسيم",
+   "P23": "برسيم",
+   "P24": "قمح",
+   "P25": "علف صيفي",
+   "P26": "قمح",
+   "P27": "برسيم",
+   "P28": "برسيم",
+   "P29": "برسيم",
+   "P30": "برسيم",
+   "P31": "برسيم",
+   "P32": "بور",
+   "P33": "قمح",
+   "P34": "برسيم",
+   "P35": "قمح",
+   "P36": "برسيم",
+   "P37": "برسيم",
+   "P38": "علف صيفي",
+   "P39": "برسيم",
+   "P40": "برسيم",
+   "P41": "غير واضح",
+   "P42": "قمح",
+   "P43": "برسيم",
+   "P44": "برسيم",
+   "P45": "قمح",
+   "P46": "برسيم",
+   "P47": "قمح",
+   "P48": "قمح",
+   "P49": "برسيم",
+   "P50": "قمح",
+   "P51": "غير واضح",
+   "P52": "برسيم",
+   "P53": "بور",
+   "P54": "قمح",
+   "P55": "قمح",
+   "P56": "غير واضح",
+   "P57": "غير واضح",
+   "P58": "قمح",
+   "P59": "غير واضح",
+   "P60": "برسيم",
+   "P61": "قمح",
+   "P62": "برسيم",
+   "P63": "قمح",
+   "P64": "غير واضح",
+   "P65": "برسيم"
+  }
+ },
+ "field_checks": {
+  "P03": {
+   "finding": "التصريح صحيح، والنمط غير معتاد",
+   "crop_found": "برسيم"
+  },
+  "P04": {
+   "finding": "التصريح صحيح، والنمط غير معتاد",
+   "crop_found": "قمح"
+  },
+  "P05": {
+   "finding": "زُرع غير المصرّح به",
+   "crop_found": "برسيم"
+  },
+  "P08": {
+   "finding": "زُرع غير المصرّح به",
+   "crop_found": "بور"
+  },
+  "P10": {
+   "finding": "زُرع غير المصرّح به",
+   "crop_found": "بور"
+  },
+  "P14": {
+   "finding": "التصريح صحيح، والنمط غير معتاد",
+   "crop_found": "برسيم"
+  },
+  "P25": {
+   "finding": "زُرع غير المصرّح به",
+   "crop_found": "علف صيفي"
+  },
+  "P30": {
+   "finding": "زُرع غير المصرّح به",
+   "crop_found": "برسيم"
+  },
+  "P41": {
+   "finding": "التصريح صحيح، والنمط غير معتاد",
+   "crop_found": "برسيم"
+  },
+  "P44": {
+   "finding": "زُرع غير المصرّح به",
+   "crop_found": "برسيم"
+  },
+  "P45": {
+   "finding": "زُرع غير المصرّح به",
+   "crop_found": "قمح"
+  },
+  "P51": {
+   "finding": "التصريح صحيح، والنمط غير معتاد",
+   "crop_found": "قمح"
+  },
+  "P56": {
+   "finding": "التصريح صحيح، والنمط غير معتاد",
+   "crop_found": "برسيم"
+  },
+  "P57": {
+   "finding": "التصريح صحيح، والنمط غير معتاد",
+   "crop_found": "برسيم"
+  },
+  "P59": {
+   "finding": "التصريح صحيح، والنمط غير معتاد",
+   "crop_found": "برسيم"
+  },
+  "P64": {
+   "finding": "التصريح صحيح، والنمط غير معتاد",
+   "crop_found": "برسيم"
+  }
+ },
+ "planted": {
+  "P05": "قمح",
+  "P30": "قمح",
+  "P44": "قمح",
+  "P08": "قمح",
+  "P10": "قمح",
+  "P45": "بور",
+  "P25": "قمح"
+ },
+ "1.3": {
+  "plots": [
+   "P09",
+   "P11",
+   "P19",
+   "P21",
+   "P24",
+   "P47"
+  ],
+  "patterns": {
+   "P21": "قمح",
+   "P09": "برسيم",
+   "P19": "بور",
+   "P24": "قمح",
+   "P11": "برسيم",
+   "P47": "قمح"
+  }
+ },
+ "1.5": {
+  "small": 12,
+  "large": 53,
+  "small_flagged": 3,
+  "large_flagged": 13
+ },
+ "1.6": {
+  "points": 200,
+  "matrix": {
+   "مزروعة": {
+    "مزروعة": 43,
+    "جرداء": 12,
+    "مبنية": 1,
+    "عشبية": 0,
+    "شجرية": 4
+   },
+   "جرداء": {
+    "مزروعة": 0,
+    "جرداء": 53,
+    "مبنية": 7,
+    "عشبية": 0,
+    "شجرية": 0
+   },
+   "مبنية": {
+    "مزروعة": 0,
+    "جرداء": 19,
+    "مبنية": 11,
+    "عشبية": 0,
+    "شجرية": 0
+   },
+   "عشبية": {
+    "مزروعة": 27,
+    "جرداء": 3,
+    "مبنية": 0,
+    "عشبية": 0,
+    "شجرية": 0
+   },
+   "شجرية": {
+    "مزروعة": 0,
+    "جرداء": 5,
+    "مبنية": 0,
+    "عشبية": 0,
+    "شجرية": 15
+   }
+  },
+  "correct": 122
+ },
+ "1.7": {
+  "overall": 0.61,
+  "users": {
+   "مزروعة": 0.717,
+   "جرداء": 0.883,
+   "مبنية": 0.367,
+   "عشبية": 0.0,
+   "شجرية": 0.75
+  },
+  "producers": {
+   "مزروعة": 0.614,
+   "جرداء": 0.576,
+   "مبنية": 0.579,
+   "عشبية": null,
+   "شجرية": 0.789
+  },
+  "uses": {
+   "A": "غير مسموح",
+   "B": "غير مسموح",
+   "C": "مسموح",
+   "D": "غير مسموح",
+   "E": "غير مسموح",
+   "F": "غير مسموح"
+  }
+ },
+ "1.8": {
+  "n": {
+   "مزروعة": 60,
+   "جرداء": 60,
+   "مبنية": 30,
+   "عشبية": 30,
+   "شجرية": 20
+  },
+  "half_width": {
+   "مزروعة": 0.114,
+   "جرداء": 0.081,
+   "مبنية": 0.172,
+   "عشبية": 0.0,
+   "شجرية": 0.19
+  },
+  "needed": {
+   "مزروعة": 78,
+   "جرداء": 40,
+   "مبنية": 90,
+   "عشبية": 0,
+   "شجرية": 73
+  },
+  "extra": {
+   "مزروعة": 18,
+   "جرداء": 0,
+   "مبنية": 60,
+   "عشبية": 0,
+   "شجرية": 53
+  }
+ },
+ "2.1": {
+  "mae_lead1": 0.568,
+  "mae_lead2": 0.603,
+  "mae_lead3": 0.624,
+  "mae_clim": 0.776,
+  "bias_lead1": -0.512,
+  "skill_lead1": 0.268,
+  "skill_lead2": 0.223,
+  "skill_lead3": 0.196,
+  "skill_lead1_spring": 0.324,
+  "skill_lead1_summer": 0.179
+ },
+ "2.2": {
+  "water_mm": 1560.5,
+  "irrigations": 82,
+  "stress_days": 9,
+  "drain_mm": 167.6,
+  "water_m3": 624200,
+  "taw": 90.0,
+  "raw": 58.5,
+  "probe_gap_from": "2024-08-11",
+  "drift_planted_from": "2024-07-10",
+  "stress_dates": [
+   "2024-08-04",
+   "2024-08-07",
+   "2024-08-10",
+   "2024-08-13",
+   "2024-08-16"
+  ]
+ },
+ "2.3": {
+  "fixed": {
+   "water_mm": 1560.5,
+   "irrigations": 82,
+   "stress_days": 9,
+   "drain_mm": 167.6
+  },
+  "forecast": {
+   "water_mm": 1350.0,
+   "irrigations": 45,
+   "stress_days": 0,
+   "drain_mm": 0.0
+  },
+  "depth": 30.0,
+  "fixed_drain_file": 167.6,
+  "saving_mm": 210.5,
+  "saving_m3": 84200,
+  "saving_pct": 13.5
+ },
+ "2.4": {
+  "scenarios": {
+   "رملية|التنبؤ الفعلي": {
+    "saving_pct": 9.6,
+    "stress_fixed": 20,
+    "stress_forecast": 0
+   },
+   "رملية|تنبؤ كامل": {
+    "saving_pct": 7.7,
+    "stress_fixed": 20,
+    "stress_forecast": 0
+   },
+   "رملية|المناخ المعتاد": {
+    "saving_pct": 9.6,
+    "stress_fixed": 20,
+    "stress_forecast": 0
+   },
+   "رملية طميية|التنبؤ الفعلي": {
+    "saving_pct": 13.5,
+    "stress_fixed": 9,
+    "stress_forecast": 0
+   },
+   "رملية طميية|تنبؤ كامل": {
+    "saving_pct": 13.5,
+    "stress_fixed": 9,
+    "stress_forecast": 0
+   },
+   "رملية طميية|المناخ المعتاد": {
+    "saving_pct": 13.5,
+    "stress_fixed": 9,
+    "stress_forecast": 0
+   },
+   "طميية|التنبؤ الفعلي": {
+    "saving_pct": 13.5,
+    "stress_fixed": 0,
+    "stress_forecast": 0
+   },
+   "طميية|تنبؤ كامل": {
+    "saving_pct": 13.5,
+    "stress_fixed": 0,
+    "stress_forecast": 0
+   },
+   "طميية|المناخ المعتاد": {
+    "saving_pct": 13.5,
+    "stress_fixed": 0,
+    "stress_forecast": 0
+   }
+  },
+  "saving_min": 7.7,
+  "saving_max": 13.5
+ },
+ "2.5": {
+  "Z01": {
+   "baseline": 5.95,
+   "limit": 7.95,
+   "first_flag": null,
+   "zero_nights": []
+  },
+  "Z02": {
+   "baseline": 6.5,
+   "limit": 8.5,
+   "first_flag": null,
+   "zero_nights": []
+  },
+  "Z03": {
+   "baseline": 4.75,
+   "limit": 6.75,
+   "first_flag": "2024-08-22",
+   "zero_nights": []
+  },
+  "Z04": {
+   "baseline": 5.61,
+   "limit": 7.61,
+   "first_flag": null,
+   "zero_nights": []
+  },
+  "Z05": {
+   "baseline": 5.58,
+   "limit": 7.58,
+   "first_flag": "2024-08-29",
+   "zero_nights": []
+  },
+  "Z06": {
+   "baseline": 3.74,
+   "limit": 5.74,
+   "first_flag": null,
+   "zero_nights": []
+  },
+  "Z07": {
+   "baseline": 3.6,
+   "limit": 5.6,
+   "first_flag": "2024-09-09",
+   "zero_nights": []
+  },
+  "Z08": {
+   "baseline": 6.47,
+   "limit": 8.47,
+   "first_flag": null,
+   "zero_nights": []
+  },
+  "Z09": {
+   "baseline": 2.85,
+   "limit": 4.86,
+   "first_flag": null,
+   "zero_nights": [
+    "2024-09-08",
+    "2024-09-11"
+   ]
+  },
+  "Z10": {
+   "baseline": 6.28,
+   "limit": 8.28,
+   "first_flag": "2024-09-15",
+   "zero_nights": []
+  }
+ },
+ "2.6": {
+  "1": {
+   "precision": 0.027,
+   "recall": 1.0,
+   "per_week": 34.6,
+   "faults": 14
+  },
+  "2": {
+   "precision": 0.058,
+   "recall": 1.0,
+   "per_week": 16.0,
+   "faults": 14
+  },
+  "3": {
+   "precision": 0.138,
+   "recall": 0.917,
+   "per_week": 6.1,
+   "faults": 14
+  },
+  "4": {
+   "precision": 0.247,
+   "recall": 0.75,
+   "per_week": 2.8,
+   "faults": 8
+  },
+  "5": {
+   "precision": 0.324,
+   "recall": 0.479,
+   "per_week": 1.4,
+   "faults": 6
+  },
+  "6": {
+   "precision": 0.486,
+   "recall": 0.354,
+   "per_week": 0.7,
+   "faults": 5
+  },
+  "7": {
+   "precision": 0.556,
+   "recall": 0.312,
+   "per_week": 0.5,
+   "faults": 4
+  },
+  "8": {
+   "precision": 0.667,
+   "recall": 0.208,
+   "per_week": 0.3,
+   "faults": 2
+  },
+  "choice": 4,
+  "water_saved_m3": 77760
+ },
+ "2.7": {
+  "U01": {
+   "readiness": 2,
+   "personal": true
+  },
+  "U02": {
+   "readiness": 2,
+   "personal": true
+  },
+  "U03": {
+   "readiness": 2,
+   "personal": true
+  },
+  "U04": {
+   "readiness": 3,
+   "personal": false
+  },
+  "U05": {
+   "readiness": 3,
+   "personal": false
+  },
+  "U06": {
+   "readiness": 0,
+   "personal": true
+  },
+  "U07": {
+   "readiness": 2,
+   "personal": false
+  },
+  "U08": {
+   "readiness": 1,
+   "personal": true
+  },
+  "U09": {
+   "readiness": 2,
+   "personal": false
+  },
+  "U10": {
+   "readiness": 1,
+   "personal": true
+  },
+  "U11": {
+   "readiness": 2,
+   "personal": false
+  },
+  "U12": {
+   "readiness": 1,
+   "personal": false
+  }
+ },
+ "2.8": {
+  "scores": {
+   "U01": [
+    2,
+    2,
+    2,
+    3
+   ],
+   "U02": [
+    1,
+    2,
+    0,
+    0
+   ],
+   "U03": [
+    3,
+    2,
+    3,
+    2
+   ],
+   "U04": [
+    1,
+    3,
+    3,
+    3
+   ],
+   "U05": [
+    0,
+    3,
+    1,
+    2
+   ],
+   "U06": [
+    1,
+    0,
+    1,
+    0
+   ],
+   "U07": [
+    0,
+    2,
+    3,
+    2
+   ],
+   "U08": [
+    0,
+    1,
+    3,
+    2
+   ],
+   "U09": [
+    1,
+    2,
+    3,
+    2
+   ],
+   "U10": [
+    1,
+    1,
+    1,
+    0
+   ],
+   "U11": [
+    1,
+    2,
+    3,
+    2
+   ],
+   "U12": [
+    1,
+    1,
+    1,
+    2
+   ]
+  },
+  "total": {
+   "U01": 9,
+   "U02": 3,
+   "U03": 10,
+   "U04": 10,
+   "U05": 6,
+   "U06": 2,
+   "U07": 7,
+   "U08": 6,
+   "U09": 8,
+   "U10": 3,
+   "U11": 8,
+   "U12": 5
+  },
+  "ranked": [
+   "U04",
+   "U03",
+   "U01",
+   "U09",
+   "U11",
+   "U07",
+   "U05",
+   "U08",
+   "U12"
+  ],
+  "hold": [
+   "U02",
+   "U06",
+   "U10"
+  ]
+ }
+}

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 2.5 · التدفق الليلي الأدنى لعشر مناطق · الذكاء الاصطناعي في الزراعة والمياه والبيئة</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D2_5_night_flow.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day2.html#lab-2-5">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 2.5</span>
+<h1>التدفق الليلي الأدنى لعشر مناطق</h1>
+<p>من قراءات ساعية لعشر مناطق إمداد على ثمانية أسابيع تحسب التدفق الليلي الأدنى لكل ليلة، وخط أساس كل منطقة، وتجد المناطق التي ارتفع فيها، ثم تفسر كل ارتفاع بسجل الأحداث.</p>
+<div class="meta"><span>20 دقيقة</span><span>اليوم 2</span><span>الجلسة 5: محاسبة المياه والتدفق الليلي</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="2.5">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>أدنى تدفق ليلي لكل منطقة من المناطق العشر في كل ليلة من 56 ليلة.</li>
+    <li>خط أساس كل منطقة وحد التنبيه، والمناطق التي تجاوزته ثلاث ليالٍ متتالية.</li>
+    <li>تفسير لكل ارتفاع: تسرب، أم استهلاك جديد مشروع، أم عطل عداد، أم حدث عابر.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/meters/zone_hourly.csv" target="_blank"><b>meters/zone_hourly.csv</b><span>13,440 قراءة: تدفق كل منطقة في كل ساعة، بالمتر المكعب في الساعة، من 1 أغسطس إلى 25 سبتمبر 2024</span></a>
+  <a href="files/meters/zones.csv" target="_blank"><b>meters/zones.csv</b><span>المناطق العشر، وعدد البيوت والمزارع في كل منها</span></a>
+  <a href="files/meters/zone_events.txt" target="_blank"><b>meters/zone_events.txt</b><span>سجل أحداث غرفة التحكم</span></a>
+</div>
+<p class="small">القراءات اصطناعية، مبنية على نمط استهلاك يومي معروف: ذروة صباحية ومسائية، وأدنى استهلاك بين الواحدة والرابعة فجرًا. المساعد الذكي مسموح بدور المعلّم.</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · اقرأ الملف وسجل الأحداث <span class="min">دقيقتان</span></h3>
+  <p>الأعمدة: <code>A</code> المنطقة، <code>B</code> التاريخ، <code>C</code> الساعة من 0 إلى 23، <code>D</code> التدفق. اقرأ سجل الأحداث كله قبل أن تحسب: ثلاثة أحداث فيه ستحتاجها في الخطوة 5.</p>
+</div>
+
+<div class="step">
+  <h3>2 · احسب أدنى تدفق ليلي لكل منطقة وليلة <span class="min">7 دقائق</span></h3>
+  <p>في ورقة جديدة: المناطق في الصف الأول (<code>Z01</code> إلى <code>Z10</code> من <code>B1</code> إلى <code>K1</code>)، والتواريخ في العمود الأول (56 تاريخًا من <code>A2</code>). ثم:</p>
+  <pre class="code" data-file="night sheet"><code>B2  =MINIFS(hourly!$D:$D, hourly!$A:$A, B$1, hourly!$B:$B, $A2,
+            hourly!$C:$C, "&gt;=1", hourly!$C:$C, "&lt;=4")</code></pre>
+  <p>انسخ الصيغة على الجدول كله. في الساعات بين الواحدة والرابعة ينام أغلب الناس، فما يبقى من تدفق هو الاستهلاك الليلي القليل والفاقد.</p>
+</div>
+
+<div class="step">
+  <h3>3 · احسب خط الأساس وحد التنبيه <span class="min">4 دقائق</span></h3>
+  <pre class="code" data-file="night sheet"><code>baseline  B60  =MEDIAN(B2:B15)               the first 14 nights
+limit     B61  =B60+MAX(2,0.3*B60)</code></pre>
+</div>
+
+<div class="step">
+  <h3>4 · جد المناطق والليالي فوق الحد <span class="min">4 دقائق</span></h3>
+  <p>تنبيه المنطقة: ثلاث ليالٍ متتالية فوق الحد. ليلة واحدة لا تكفي. في جدول ثانٍ بالشكل نفسه، اكتب في الصف 2:</p>
+  <pre class="code" data-file="night sheet"><code>=AND(B2&gt;B$61, B3&gt;B$61, B4&gt;B$61)          TRUE on the first of three nights</code></pre>
+  <p>ارسم أعمدة المناطق العشر في رسم خطي واحد. ابحث أيضًا عن شيء لا يرتفع بل يهبط.</p>
+</div>
+
+<div class="step">
+  <h3>5 · فسّر كل ارتفاع: تسرب أم غيره <span class="min">3 دقائق</span></h3>
+  <table>
+    <tr><th>المنطقة</th><th>أول ليلة في التنبيه</th><th>شكل الارتفاع</th><th>في سجل الأحداث؟</th><th>تفسيرك</th></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+  </table>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>اختر منطقة رأيت فيها تسربًا. قدّر الماء المفقود منذ بدايته حتى آخر يوم في الملف: الفرق بين أدنى تدفق ليلي وخط الأساس، مضروبًا في 24 ساعة، مجموعًا على الأيام. لماذا قد يكون هذا تقديرًا أقل من الحقيقة أو أكثر؟</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>كم منطقة تجاوزت الحد ثلاث ليالٍ متتالية؟</li>
+  <li>أي هذه الارتفاعات ليس تسربًا، وكيف عرفت؟</li>
+  <li>ما الذي حدث في Z09، ولماذا لا يطلق تنبيهًا بهذه القاعدة؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب: المفتاح والفخاخ</summary>
+  <ul>
+    <li><b>أربع مناطق في التنبيه:</b> Z03 من 2024-08-22 (تسرب ثابت يبدأ فجأة)، وZ05 من 2024-08-29 (مزرعة جديدة بتصريح، في سجل الأحداث: ليس تسربًا)، وZ07 من 2024-09-09 (تسرب يكبر تدريجيًّا: بدأ يرتفع نحو 09-03، والحد لم يُتجاوز إلا بعد ستة أيام)، وZ10 من 2024-09-15 (انفجار: قفزة إلى نحو 31 م³/ساعة ثلاث ليالٍ ثم عودة، أي أُصلح بسرعة).</li>
+    <li><b>Z09:</b> أصفار من 2024-09-08 إلى 2024-09-11، ثم استبدال العداد في 09-12: عطل عداد. القاعدة تبحث عن الارتفاع فقط، فلا ترى الصفر. عداد صامت ليس منطقة بلا فاقد.</li>
+    <li><b>Z02:</b> ليلة احتفال واحدة (08-15) فوق الحد، ولا تنبيه لأنها ليلة واحدة. هذا سبب شرط الليالي الثلاث.</li>
+    <li><b>خطوط الأساس:</b> بين 2.85 (Z09) و6.50 (Z02) م³/ساعة. الحد = خط الأساس + 2 في كل المناطق تقريبًا، لأن 0.3 من خط الأساس أقل من 2 فيها كلها.</li>
+    <li><b>الفخ:</b> أخذ أدنى تدفق على اليوم كله بدل ساعات الليل، أو حساب خط الأساس من الأسابيع الثمانية كلها فيدخل فيه التسرب نفسه.</li>
+    <li>التحقق: <code>uv run labs/solutions/check.py 2.5</code>.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D2_4_uncertainty.html" rel="prev">→ المختبر السابق</a><a href="D2_6_leak_alerts.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في الزراعة والمياه والبيئة<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 9c39248</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:17:50Z","version":"2027.1.0","commit":"9c39248"},"course":{"id":"use-sec-211","code":"USE-SEC-211","title":"الذكاء الاصطناعي في الزراعة والمياه والبيئة","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-211/","repo":"SDAIAAcademy/use-sec-211","home":"../index.html"},"lab":{"id":"2.5","title":"التدفق الليلي الأدنى لعشر مناطق","summary":"من قراءات ساعية لعشر مناطق إمداد على ثمانية أسابيع تحسب التدفق الليلي الأدنى لكل ليلة، وخط أساس كل منطقة، وتجد المناطق التي ارتفع فيها، ثم تفسر كل ارتفاع بسجل الأحداث.","minutes":20,"day":2,"unit":"اليوم 2","session":5,"deck":"../slides/day2.html#lab-2-5","prev":"D2_4_uncertainty.html","next":"D2_6_leak_alerts.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

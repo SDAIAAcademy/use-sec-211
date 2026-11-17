@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 2.6 · كشف التسرب من بيانات العدادات · الذكاء الاصطناعي في الزراعة والمياه والبيئة</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D2_6_leak_alerts.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day2.html#lab-2-6">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 2.6</span>
+<h1>كشف التسرب من بيانات العدادات</h1>
+<p>من جدول إنذارات سنة كاملة عند ثماني عتبات وسجل 48 تسربًا مؤكدًا تحسب الدقة والاستدعاء والإنذارات في الأسبوع، وتختار العتبة التي تطيقها طاقة الفريق، وتقدّر الماء الموفّر.</p>
+<div class="meta"><span>25 دقيقة</span><span>اليوم 2</span><span>الجلسة 6: إنذارات تسرب يحتملها الفريق</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="2.6">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>جدول الدقة والاستدعاء والإنذارات في الأسبوع لثماني عتبات.</li>
+    <li>العتبة التي تطيقها طاقة فريق التسربات، بسبب مكتوب.</li>
+    <li>تقدير الماء الموفّر في السنة بالعتبة المختارة، رقمًا يدخل خريطة الفرص في المختبر 2.8.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/meters/alerts_by_threshold.csv" target="_blank"><b>meters/alerts_by_threshold.csv</b><span>سنة من الإنذارات في 60 منطقة إمداد عند ثماني عتبات، وما وُجد عند كل إنذار</span></a>
+  <a href="files/meters/repairs.csv" target="_blank"><b>meters/repairs.csv</b><span>سجل 48 تسربًا مؤكدًا أُصلح في السنة</span></a>
+  <a href="files/meters/crew_capacity.txt" target="_blank"><b>meters/crew_capacity.txt</b><span>طاقة الفريق، ومدة التسرب الذي لا يُكتشف، ومتوسط حجمه</span></a>
+</div>
+<p class="small">البيانات اصطناعية لشبكة أكبر من المختبر 2.5: ستون منطقة على سنة. العتبة: كم يرتفع مؤشر التدفق الليلي الأدنى فوق خط أساس المنطقة قبل أن يصدر إنذار، من 1 (حساس جدًّا) إلى 8 (لا يرى إلا الكبير). المساعد الذكي مسموح بدور المعلّم.</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · اقرأ الجدول وطاقة الفريق <span class="min">3 دقائق</span></h3>
+  <p>الأعمدة: <code>A</code> العتبة، <code>B</code> الإنذارات في السنة، <code>C</code> منها على تسرب مؤكد، <code>D</code> منها على عطل عداد، <code>E</code> منها لم يوجد شيء، <code>F</code> وسيط الأيام من بداية التسرب حتى الإنذار.</p>
+</div>
+
+<div class="step">
+  <h3>2 · احسب الدقة والاستدعاء لكل عتبة <span class="min">7 دقائق</span></h3>
+  <p>الدقة: من الإنذارات، كم كان تسربًا؟ الاستدعاء: من التسربات الثمانية والأربعين، كم أنذرنا به؟</p>
+  <pre class="code" data-file="alerts_by_threshold.csv"><code>G2  =C2/B2          precision
+H2  =C2/48          recall</code></pre>
+</div>
+
+<div class="step">
+  <h3>3 · احسب الإنذارات في الأسبوع <span class="min">3 دقائق</span></h3>
+  <pre class="code" data-file="alerts_by_threshold.csv"><code>I2  =B2/52          alerts a week</code></pre>
+  <table>
+    <tr><th>العتبة</th><th>الدقة</th><th>الاستدعاء</th><th>في الأسبوع</th></tr>
+    <tr><td>3</td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>4</td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>5</td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>6</td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+  </table>
+</div>
+
+<div class="step">
+  <h3>4 · اختر العتبة واكتب سببها <span class="min">5 دقائق</span></h3>
+  <p>الفريق يتحقق من 5 إنذارات في الأسبوع. ما زاد عنها لا يُزار، فلا فائدة من إنذار لا يصل إليه أحد. اختر العتبة، واكتب في سطرين لماذا هي لا التي قبلها ولا التي بعدها.</p>
+</div>
+
+<div class="step">
+  <h3>5 · قدّر الماء الموفّر بالعتبة المختارة <span class="min">7 دقائق</span></h3>
+  <p>التسرب الذي لا يُكتشف يستمر 40 يومًا في المتوسط. الإنذار يختصر ذلك إلى وسيط أيام الإنذار. تقدير تقريبي:</p>
+  <pre class="code" data-file="alerts_by_threshold.csv"><code>saved m3 a year = leaks found x 3 m3/h x 24 h x (40 - median days to alert)</code></pre>
+  <p>اكتب الرقم، وثلاثة أسباب تجعله تقديرًا لا قياسًا.</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>عند العتبة التي اخترتها، كم إنذارًا في السنة سببه عطل عداد؟ اكتب ماذا تفعل بها: تُهمل، أم تُرسل إلى فريق العدادات، أم شيء آخر؟</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>ما الدقة والاستدعاء عند العتبة التي اخترتها؟</li>
+  <li>لماذا لا تختار العتبة 1 التي ترى كل التسربات؟</li>
+  <li>كم مترًا مكعبًا في السنة يوفّر الاختيار تقريبًا؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب: المفتاح والفخاخ</summary>
+  <ul>
+    <li><b>الدقة:</b> 0.027، 0.058، 0.138، 0.247، 0.324، 0.486، 0.556، 0.667 للعتبات 1 إلى 8.</li>
+    <li><b>الاستدعاء:</b> 1، 1، 0.917، 0.75، 0.479، 0.354، 0.312، 0.208.</li>
+    <li><b>في الأسبوع:</b> 34.6، 16، 6.1، 2.8، 1.4، 0.7، 0.5، 0.3.</li>
+    <li><b>الاختيار:</b> العتبة 4، أدنى عتبة لا تتجاوز طاقة الفريق (2.8 في الأسبوع). تجد 36 من 48 تسربًا. العتبة 3 أحسن استدعاء لكنها 6.1 في الأسبوع، فلن تُزار كلها؛ والعتبة 5 تفقد نصف التسربات تقريبًا لتوفير زيارة في الأسبوع.</li>
+    <li><b>الماء الموفّر:</b> 36 × 3 × 24 × (40 − 10) = 77,760 م³ في السنة تقريبًا. أسباب أنه تقدير: متوسط الحجم 3 م³/ساعة لا حجم كل تسرب، و40 يومًا متوسط، والتسرب المؤكد قد يُكتشف بالبلاغ قبل ذلك.</li>
+    <li><b>أعطال العدادات:</b> 8 في السنة عند العتبة 4. ترسل إلى فريق العدادات: العداد المعطل يعمي المنطقة كلها.</li>
+    <li><b>الفخ:</b> اختيار العتبة بأعلى دقة (8): كل إنذار تقريبًا صادق، لكنها لا تجد إلا 10 تسربات من 48.</li>
+    <li>التحقق: <code>uv run labs/solutions/check.py 2.6</code>.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D2_5_night_flow.html" rel="prev">→ المختبر السابق</a><a href="D2_7_data_rights.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في الزراعة والمياه والبيئة<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 9c39248</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:17:50Z","version":"2027.1.0","commit":"9c39248"},"course":{"id":"use-sec-211","code":"USE-SEC-211","title":"الذكاء الاصطناعي في الزراعة والمياه والبيئة","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-211/","repo":"SDAIAAcademy/use-sec-211","home":"../index.html"},"lab":{"id":"2.6","title":"كشف التسرب من بيانات العدادات","summary":"من جدول إنذارات سنة كاملة عند ثماني عتبات وسجل 48 تسربًا مؤكدًا تحسب الدقة والاستدعاء والإنذارات في الأسبوع، وتختار العتبة التي تطيقها طاقة الفريق، وتقدّر الماء الموفّر.","minutes":25,"day":2,"unit":"اليوم 2","session":6,"deck":"../slides/day2.html#lab-2-6","prev":"D2_5_night_flow.html","next":"D2_7_data_rights.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

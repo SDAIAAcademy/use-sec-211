@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 2.7 · سجل البيانات والحقوق · الذكاء الاصطناعي في الزراعة والمياه والبيئة</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D2_7_data_rights.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day2.html#lab-2-7">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 2.7</span>
+<h1>سجل البيانات والحقوق</h1>
+<p>تملأ لكل حالة من اثنتي عشرة حالة استخدام سجل البيانات: هل هي موجودة، وهل تسمح رخصتها، وهل دقتها مقيسة هنا، وهل فيها بيانات شخصية، والمرجعية الوطنية التي تنطبق، ودرجة الجاهزية.</p>
+<div class="meta"><span>20 دقيقة</span><span>اليوم 2</span><span>الجلسة 7: الجفاف والغبار والحر، وحقوق البيانات</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="2.7">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>سجل البيانات والحقوق لاثنتي عشرة حالة استخدام: الوجود، والرخصة، والدقة المقيسة، والبيانات الشخصية، والمرجعية الوطنية.</li>
+    <li>درجة جاهزية البيانات من 0 إلى 3 لكل حالة، بواقعة من السجل لكل درجة.</li>
+    <li>ملاحظة حقوق لكل حالة فيها بيانات شخصية.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/map/use_cases.csv" target="_blank"><b>map/use_cases.csv</b><span>اثنتا عشرة حالة استخدام مقترحة على الهيئة، بأصحابها وادعاءاتها وبياناتها ورخصها</span></a>
+  <a href="files/map/scoring_guide.txt" target="_blank"><b>map/scoring_guide.txt</b><span>دليل التقييم: المعايير الأربعة وقواعد الترتيب</span></a>
+  <a href="files/map/register_template.csv" target="_blank"><b>map/register_template.csv</b><span>السجل فارغًا، صف لكل حالة</span></a>
+</div>
+<p class="small">الحالات اصطناعية، وبعض ادعاءاتها محسوب من مختبرات هذه الورشة: U03 من المختبر 2.3، وU04 من المختبر 2.6. المساعد الذكي مسموح بدور المعلّم: يشرح بندًا في نظام أو سياسة، ولا يملأ السجل.</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · اقرأ حالات الاستخدام ودليل التقييم <span class="min">3 دقائق</span></h3>
+  <p>اقرأ معيار الجاهزية في الدليل بدقة: كل درجة فيه شرط من ثلاثة أجزاء. واقرأ أعمدة <code>data</code> و<code>licence</code> و<code>personal_data</code> لكل حالة.</p>
+</div>
+
+<div class="step">
+  <h3>2 · املأ أعمدة الوجود والرخصة والدقة <span class="min">6 دقائق</span></h3>
+  <ul>
+    <li><code>data_exists</code>: هل البيانات موجودة اليوم، أم تحتاج شراء أو اتفاقية أو جمعًا؟</li>
+    <li><code>licence_allows</code>: هل تسمح الرخصة بالاستعمال المقصود هنا تحديدًا؟ رخصة CC BY 4.0 تسمح بكل استعمال مع ذكر المصدر. الرخصة التجارية قد تسمح بالاستعمال الداخلي وتمنع النشر.</li>
+    <li><code>accuracy_measured_here</code>: هل قسنا دقتها في هذا الإقليم، في مختبرات اليوم الأول أو الثاني؟ اكتب رقم المختبر.</li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3>3 · حدد البيانات الشخصية والمرجعية <span class="min">5 دقائق</span></h3>
+  <table>
+    <tr><th>إن كانت الحالة</th><th>فالمرجعية الأولى</th></tr>
+    <tr><td>تجمع أو تستعمل بيانات تعرّف شخصًا (رقم جوال، رمز مزارع، استهلاك مزرعة ومالكها)</td><td>نظام حماية البيانات الشخصية: غرض مشروع وأساس نظامي، وحق صاحب البيانات في العلم والوصول</td></tr>
+    <tr><td>تنقل بيانات الهيئة إلى جهة أخرى</td><td>سياسة مشاركة البيانات من مكتب إدارة البيانات الوطنية: الغرض المشروع، والوصول المصرّح به، والحاجة إلى المعرفة، واتفاقية مشاركة</td></tr>
+    <tr><td>تستعمل أو تنشر بيانات مفتوحة</td><td>سياسة البيانات المفتوحة: الرخصة وذكر المصدر</td></tr>
+    <tr><td>تبني قرارًا آليًّا على شخص</td><td>مبادئ أخلاقيات الذكاء الاصطناعي من سدايا: الإنسانية، والمساءلة والمسؤولية</td></tr>
+  </table>
+  <p>اكتب في <code>rights_note</code> لكل حالة فيها بيانات شخصية سطرًا: ما الذي يلزم قبل التشغيل؟</p>
+</div>
+
+<div class="step">
+  <h3>4 · أعط كل حالة درجة الجاهزية <span class="min">4 دقائق</span></h3>
+  <p>من الدليل: 3 موجودة ومسموحة ومقيسة هنا؛ 2 موجودة ومسموحة وغير مقيسة؛ 1 تحتاج اتفاقية أو شراء أو جمعًا؛ 0 غير موجودة أو الرخصة تمنع. اكتب الواقعة التي بنيت عليها الدرجة.</p>
+</div>
+
+<div class="step">
+  <h3>5 · قارن مع زميل حالتين <span class="min">دقيقتان</span></h3>
+  <p>اختارا حالتين اختلفتما فيهما، وليقرأ كل منكما واقعته. لا تعدّلا إلا بواقعة.</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>لحالة U10: اكتب ما يلزم قبل مشاركة قراءات عدادات المزارع مع الشركة، بنود الاتفاقية الثلاثة الأهم، وما يُقال للمزارعين.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>كم حالة فيها بيانات شخصية؟</li>
+  <li>لماذا لا تنال U06 أكثر من صفر في الجاهزية مع أن المورد يعرض البيانات جاهزة؟</li>
+  <li>أي الحالات قيست دقة بياناتها في هذه الورشة؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب: المفتاح والفخاخ</summary>
+  <ul>
+    <li><b>البيانات الشخصية (6):</b> U01، U02، U03، U06، U08، U10. رمز المزارع في U01 وU02 بيانات شخصية لأنه يعرّف المزارع داخل الهيئة، وإن لم يكن اسمًا.</li>
+    <li><b>الجاهزية المرجعية:</b> U01 2، U02 2، U03 2، U04 3، U05 3، U06 0، U07 2، U08 1، U09 2، U10 1، U11 2، U12 1.</li>
+    <li><b>وقائع مفتاحية:</b> U04 قيست على سجل الإصلاحات (المختبر 2.6)، وU05 قيست دقتها في الإقليم (المختبر 1.7)، فنالتا 3. U06 رخصتها التجارية تمنع إعادة النشر والإنفاذ يحتاج نشرًا للمزارع، ولم تُختبر: 0. U10 الاتفاقية لم توقع: 1. U12 مخرجات المورد لم تُقس، والدقة المعلنة بلا فئات ولا مكان: 1. U08 أرقام العمال غير مجموعة بعد: 1.</li>
+    <li><b>المرجعيات:</b> نظام حماية البيانات الشخصية لكل حالة فيها بيانات شخصية، وسياسة مشاركة البيانات لـ U10، ومبادئ سدايا (الإنسانية والمساءلة) لـ U02 وU06، وسياسة البيانات المفتوحة لحالات Sentinel-2 وWorldCover وERA5.</li>
+    <li><b>الفخ:</b> «البيانات موجودة» عند المورد تُحسب جاهزة. الجاهزية لاستعمالنا نحن، برخصتنا نحن.</li>
+    <li>الحل الكامل في <code>labs/solutions/D2_7_data_rights.md</code>. التحقق: <code>uv run labs/solutions/check.py 2.7</code>.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D2_6_leak_alerts.html" rel="prev">→ المختبر السابق</a><a href="D2_8_opportunity_map.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في الزراعة والمياه والبيئة<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 9c39248</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:17:50Z","version":"2027.1.0","commit":"9c39248"},"course":{"id":"use-sec-211","code":"USE-SEC-211","title":"الذكاء الاصطناعي في الزراعة والمياه والبيئة","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-211/","repo":"SDAIAAcademy/use-sec-211","home":"../index.html"},"lab":{"id":"2.7","title":"سجل البيانات والحقوق","summary":"تملأ لكل حالة من اثنتي عشرة حالة استخدام سجل البيانات: هل هي موجودة، وهل تسمح رخصتها، وهل دقتها مقيسة هنا، وهل فيها بيانات شخصية، والمرجعية الوطنية التي تنطبق، ودرجة الجاهزية.","minutes":20,"day":2,"unit":"اليوم 2","session":7,"deck":"../slides/day2.html#lab-2-7","prev":"D2_6_leak_alerts.html","next":"D2_8_opportunity_map.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>
