@@ -912,7 +912,7 @@
         },
         {
           "title": "Google DeepMind: GraphCast",
-          "url": "https://deepmind.google/discover/blog/graphcast-ai-model-for-faster-and-more-accurate-global-weather-forecasting/"
+          "url": "https://deepmind.google/blog/graphcast-ai-model-for-faster-and-more-accurate-global-weather-forecasting/"
         },
         {
           "title": "FAO Irrigation and Drainage Paper 56: crop coefficients (chapter 6)",
@@ -924,5 +924,10 @@
         }
       ]
     }
-  ]
+  ],
+  "extensions": {
+    "css": [
+      "assets/course.css"
+    ]
+  }
 }

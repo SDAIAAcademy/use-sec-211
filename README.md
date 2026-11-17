@@ -123,7 +123,7 @@ AI in Agriculture, Water and Environment
 - [IBM and NASA: Prithvi-EO-2.0 model card](https://huggingface.co/ibm-nasa-geospatial/Prithvi-EO-2.0-600M)
 - [IBM and ESA: TerraMind 1.0 model card](https://huggingface.co/ibm-esa-geospatial/TerraMind-1.0-base)
 - [ECMWF: AI forecasts become operational (25 February 2025)](https://www.ecmwf.int/en/about/media-centre/news/2025/ecmwfs-ai-forecasts-become-operational)
-- [Google DeepMind: GraphCast](https://deepmind.google/discover/blog/graphcast-ai-model-for-faster-and-more-accurate-global-weather-forecasting/)
+- [Google DeepMind: GraphCast](https://deepmind.google/blog/graphcast-ai-model-for-faster-and-more-accurate-global-weather-forecasting/)
 - [FAO Irrigation and Drainage Paper 56: crop coefficients (chapter 6)](https://www.fao.org/4/x0490e/x0490e0b.htm)
 - [FAO Irrigation and Drainage Paper 56: water stress coefficient (chapter 8)](https://www.fao.org/4/x0490e/x0490e0e.htm)
 <!-- /academy:sources -->
