@@ -1,37 +1,83 @@
 <article class="lab" data-lab="2.5">
-  <div class="box goal">
-    <h3>الهدف</h3>
-    <p>REPLACE: في النهاية يستطيع المشاركون …</p>
-  </div>
-
-  <h2>ما تحتاجه</h2>
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
   <ul>
-    <li>REPLACE: الملفات والأداة والحساب التي يستخدمها المختبر</li>
+    <li>أدنى تدفق ليلي لكل منطقة من المناطق العشر في كل ليلة من 56 ليلة.</li>
+    <li>خط أساس كل منطقة وحد التنبيه، والمناطق التي تجاوزته ثلاث ليالٍ متتالية.</li>
+    <li>تفسير لكل ارتفاع: تسرب، أم استهلاك جديد مشروع، أم عطل عداد، أم حدث عابر.</li>
   </ul>
+</div>
 
-  <div class="step">
-    <h3>REPLACE: الخطوة الأولى <span class="min">15 د</span></h3>
-    <p>REPLACE: ما يفعله المشارك ولماذا، في جملتين</p>
-    <div class="prompt" data-tool="عرض الصور وتحليلها">REPLACE: الأمر الذي ينسخه المشاركون، والأجزاء التي يغيّرونها <span class="ph">ملوّنة</span></div>
-  </div>
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/meters/zone_hourly.csv" target="_blank"><b>meters/zone_hourly.csv</b><span>13,440 قراءة: تدفق كل منطقة في كل ساعة، بالمتر المكعب في الساعة، من 1 أغسطس إلى 25 سبتمبر 2024</span></a>
+  <a href="files/meters/zones.csv" target="_blank"><b>meters/zones.csv</b><span>المناطق العشر، وعدد البيوت والمزارع في كل منها</span></a>
+  <a href="files/meters/zone_events.txt" target="_blank"><b>meters/zone_events.txt</b><span>سجل أحداث غرفة التحكم</span></a>
+</div>
+<p class="small">القراءات اصطناعية، مبنية على نمط استهلاك يومي معروف: ذروة صباحية ومسائية، وأدنى استهلاك بين الواحدة والرابعة فجرًا. المساعد الذكي مسموح بدور المعلّم.</p>
 
-  <div class="step">
-    <h3>REPLACE: الخطوة الثانية <span class="min">10 د</span></h3>
-    <p>REPLACE: ما يفعله المشارك ولماذا، في جملتين</p>
-  </div>
+<h2>الخطوات</h2>
 
-  <div class="step stretch">
-    <h3>✱ إضافي</h3>
-    <p>REPLACE: توسعة لمن ينهي مبكرًا</p>
-  </div>
+<div class="step">
+  <h3>1 · اقرأ الملف وسجل الأحداث <span class="min">3 دقائق</span></h3>
+  <p>الأعمدة: <code>A</code> المنطقة، <code>B</code> التاريخ، <code>C</code> الساعة من 0 إلى 23، <code>D</code> التدفق. اقرأ سجل الأحداث كله قبل أن تحسب: ثلاثة أحداث فيه ستحتاجها في الخطوة 5.</p>
+</div>
 
-  <h2>أسئلة تحقق</h2>
-  <ol class="checks">
-    <li>REPLACE: سؤال يبيّن أن المختبر نجح</li>
-  </ol>
+<div class="step">
+  <h3>2 · احسب أدنى تدفق ليلي لكل منطقة وليلة <span class="min">8 دقائق</span></h3>
+  <p>في ورقة جديدة: المناطق في الصف الأول (<code>Z01</code> إلى <code>Z10</code> من <code>B1</code> إلى <code>K1</code>)، والتواريخ في العمود الأول (56 تاريخًا من <code>A2</code>). ثم:</p>
+  <pre class="code" data-file="night sheet"><code>B2  =MINIFS(hourly!$D:$D, hourly!$A:$A, B$1, hourly!$B:$B, $A2,
+            hourly!$C:$C, "&gt;=1", hourly!$C:$C, "&lt;=4")</code></pre>
+  <p>انسخ الصيغة على الجدول كله. في الساعات بين الواحدة والرابعة ينام أغلب الناس، فما يبقى من تدفق هو الاستهلاك الليلي القليل والفاقد.</p>
+</div>
 
-  <details class="instructor">
-    <summary>للمدرّب</summary>
-    <p>REPLACE: مفتاح الإجابة والفخاخ والأخطاء الشائعة</p>
-  </details>
+<div class="step">
+  <h3>3 · احسب خط الأساس وحد التنبيه <span class="min">5 دقائق</span></h3>
+  <pre class="code" data-file="night sheet"><code>baseline  B60  =MEDIAN(B2:B15)               the first 14 nights
+limit     B61  =B60+MAX(2,0.3*B60)</code></pre>
+</div>
+
+<div class="step">
+  <h3>4 · جد المناطق والليالي فوق الحد <span class="min">5 دقائق</span></h3>
+  <p>تنبيه المنطقة: ثلاث ليالٍ متتالية فوق الحد. ليلة واحدة لا تكفي.</p>
+  <pre class="code" data-file="night sheet"><code>in a second block, row 2:
+=AND(B2&gt;B$61, B3&gt;B$61, B4&gt;B$61)          TRUE on the first of three nights</code></pre>
+  <p>ارسم أعمدة المناطق العشر في رسم خطي واحد. ابحث أيضًا عن شيء لا يرتفع بل يهبط.</p>
+</div>
+
+<div class="step">
+  <h3>5 · فسّر كل ارتفاع: تسرب أم غيره <span class="min">4 دقائق</span></h3>
+  <table>
+    <tr><th>المنطقة</th><th>أول ليلة في التنبيه</th><th>شكل الارتفاع</th><th>في سجل الأحداث؟</th><th>تفسيرك</th></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+  </table>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>اختر منطقة رأيت فيها تسربًا. قدّر الماء المفقود منذ بدايته حتى آخر يوم في الملف: الفرق بين أدنى تدفق ليلي وخط الأساس، مضروبًا في 24 ساعة، مجموعًا على الأيام. لماذا قد يكون هذا تقديرًا أقل من الحقيقة أو أكثر؟</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>كم منطقة تجاوزت الحد ثلاث ليالٍ متتالية؟</li>
+  <li>أي هذه الارتفاعات ليس تسربًا، وكيف عرفت؟</li>
+  <li>ما الذي حدث في Z09، ولماذا لا يطلق تنبيهًا بهذه القاعدة؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب: المفتاح والفخاخ</summary>
+  <ul>
+    <li><b>أربع مناطق في التنبيه:</b> Z03 من 2024-08-22 (تسرب ثابت يبدأ فجأة)، وZ05 من 2024-08-29 (مزرعة جديدة بتصريح، في سجل الأحداث: ليس تسربًا)، وZ07 من 2024-09-09 (تسرب يكبر تدريجيًّا: بدأ يرتفع نحو 09-03، والحد لم يُتجاوز إلا بعد ستة أيام)، وZ10 من 2024-09-15 (انفجار: قفزة إلى نحو 31 م³/ساعة ثلاث ليالٍ ثم عودة، أي أُصلح بسرعة).</li>
+    <li><b>Z09:</b> أصفار من 2024-09-08 إلى 2024-09-11، ثم استبدال العداد في 09-12: عطل عداد. القاعدة تبحث عن الارتفاع فقط، فلا ترى الصفر. عداد صامت ليس منطقة بلا فاقد.</li>
+    <li><b>Z02:</b> ليلة احتفال واحدة (08-15) فوق الحد، ولا تنبيه لأنها ليلة واحدة. هذا سبب شرط الليالي الثلاث.</li>
+    <li><b>خطوط الأساس:</b> بين 2.85 (Z09) و6.50 (Z02) م³/ساعة. الحد = خط الأساس + 2 في كل المناطق تقريبًا، لأن 0.3 من خط الأساس أقل من 2 فيها كلها.</li>
+    <li><b>الفخ:</b> أخذ أدنى تدفق على اليوم كله بدل ساعات الليل، أو حساب خط الأساس من الأسابيع الثمانية كلها فيدخل فيه التسرب نفسه.</li>
+    <li>التحقق: <code>uv run labs/solutions/check.py 2.5</code>.</li>
+  </ul>
+</details>
 </article>

@@ -1,37 +1,81 @@
 <article class="lab" data-lab="2.2">
-  <div class="box goal">
-    <h3>الهدف</h3>
-    <p>REPLACE: في النهاية يستطيع المشاركون …</p>
-  </div>
-
-  <h2>ما تحتاجه</h2>
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
   <ul>
-    <li>REPLACE: الملفات والأداة والحساب التي يستخدمها المختبر</li>
+    <li>ميزان ماء منطقة الجذور يومًا بيوم لمزرعة الهدّار من مارس إلى أكتوبر 2024، بجدولها الثابت.</li>
+    <li>الماء المستعمل بالملم وبالمتر المكعب، وعدد أيام الإجهاد، والتسرب العميق.</li>
+    <li>اليوم الذي بدأ فيه مجس الرطوبة يبتعد عن الميزان، وسطر عما يعنيه ذلك.</li>
   </ul>
+</div>
 
-  <div class="step">
-    <h3>REPLACE: الخطوة الأولى <span class="min">15 د</span></h3>
-    <p>REPLACE: ما يفعله المشارك ولماذا، في جملتين</p>
-    <div class="prompt" data-tool="عرض الصور وتحليلها">REPLACE: الأمر الذي ينسخه المشاركون، والأجزاء التي يغيّرونها <span class="ph">ملوّنة</span></div>
-  </div>
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/farm/farm_profile.txt" target="_blank"><b>farm/farm_profile.txt</b><span>المساحة ومعامل المحصول والماء المتاح والميسّر والجدول الثابت والمجس</span></a>
+  <a href="files/farm/season_2024.csv" target="_blank"><b>farm/season_2024.csv</b><span>245 يومًا: التبخر نتح المرجعي والمطر من ERA5، وري الجدول الثابت، وقراءة المجس</span></a>
+</div>
+<p class="small">الطقس حقيقي: التبخر نتح المرجعي (ET0) والمطر اليوميان من إعادة التحليل ERA5 لنقطة في الإقليم، عبر Open-Meteo (CC BY 4.0). المزرعة وجدولها والمجس اصطناعية. الطريقة طريقة دليل الفاو رقم 56 للري. المساعد الذكي مسموح بدور المعلّم.</p>
 
-  <div class="step">
-    <h3>REPLACE: الخطوة الثانية <span class="min">10 د</span></h3>
-    <p>REPLACE: ما يفعله المشارك ولماذا، في جملتين</p>
-  </div>
+<h2>الخطوات</h2>
 
-  <div class="step stretch">
-    <h3>✱ إضافي</h3>
-    <p>REPLACE: توسعة لمن ينهي مبكرًا</p>
-  </div>
+<div class="step">
+  <h3>1 · اقرأ ملف المزرعة وأعمدة الموسم <span class="min">3 دقائق</span></h3>
+  <p>الأعمدة: <code>A</code> التاريخ، <code>B</code> الشهر، <code>C</code> التبخر نتح المرجعي، <code>D</code> المطر، <code>E</code> ري الجدول الثابت، <code>F</code> قراءة المجس. الصفوف من 2 إلى 246. اكتب من ملف المزرعة: Kc = 0.70، وTAW = 90 ملم، وRAW = 58.5 ملم.</p>
+</div>
 
-  <h2>أسئلة تحقق</h2>
-  <ol class="checks">
-    <li>REPLACE: سؤال يبيّن أن المختبر نجح</li>
-  </ol>
+<div class="step">
+  <h3>2 · احسب الاستنزاف اليومي بالجدول الثابت <span class="min">9 دقائق</span></h3>
+  <p>الاستنزاف: كم ملم نقص من ماء منطقة الجذور عن السعة الحقلية. يزيد بما يستهلكه المحصول، وينقص بالمطر والري. فوق RAW يغلق النبات مسامه فيستهلك أقل (المعامل Ks)، وهذا هو الإجهاد. وما زاد عن السعة يتسرب إلى العمق.</p>
+  <pre class="code" data-file="season_2024.csv"><code>G2  0                                         depletion at the start of the day
+G3  =I2                                       and the same down the column
+H2  =IF(G2&lt;=58.5,1,(90-G2)/(90-58.5))         Ks, 1 means no stress
+I2  =MIN(MAX(G2-D2-E2+H2*0.70*C2,0),90)       depletion at the end of the day
+J2  =MAX(0,-(G2-D2-E2+H2*0.70*C2))            deep drainage</code></pre>
+  <p>انسخ الصف الثاني إلى آخر الموسم، وانسخ <code>G3</code> إلى الأسفل.</p>
+</div>
 
-  <details class="instructor">
-    <summary>للمدرّب</summary>
-    <p>REPLACE: مفتاح الإجابة والفخاخ والأخطاء الشائعة</p>
-  </details>
+<div class="step">
+  <h3>3 · احسب الماء المستعمل وأيام الإجهاد <span class="min">5 دقائق</span></h3>
+  <pre class="code" data-file="season_2024.csv"><code>water mm       =SUM(E2:E246)
+water m3       =SUM(E2:E246)*400        1 mm on 40 ha
+irrigations    =COUNTIF(E2:E246,"&gt;0")
+stress days    =COUNTIF(H2:H246,"&lt;1")
+drainage mm    =SUM(J2:J246)</code></pre>
+  <table>
+    <tr><th>الماء (ملم)</th><th>الماء (م³)</th><th>مرات الري</th><th>أيام الإجهاد</th><th>التسرب العميق (ملم)</th></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+  </table>
+</div>
+
+<div class="step">
+  <h3>4 · قارن المجس بالميزان وجد بداية الانحراف <span class="min">8 دقائق</span></h3>
+  <p>من ملف المزرعة: الرطوبة 0.24 عند السعة الحقلية، وتنخفض 0.00167 لكل ملم استنزاف. احسب ما كان يجب أن يقرأه المجس، والفرق عما قرأه:</p>
+  <pre class="code" data-file="season_2024.csv"><code>K2  =0.24-I2*0.00167          what the probe should read
+L2  =F2-K2                    probe minus balance
+M2  =IF(ABS(L2)&gt;0.02,1,0)
+N2  =SUM(M2:M8)=7             TRUE on the first of seven days in a row</code></pre>
+  <p>ارسم <code>F</code> و<code>K</code> معًا. أول صف يصبح فيه <code>N</code> صحيحًا هو بداية الانحراف الواضح. ثم ارجع في الرسم: متى بدأ الخطّان يفترقان بالعين؟</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>لو صدّق الفريق المجس من يوم الانحراف ولم يروِ إلا حين يقرأ المجس رطوبة أقل من 0.14، كم مرة كان سيروي في أغسطس؟ وماذا كان سيحدث للأشجار؟</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>كم ملم استعمل الجدول الثابت، وكم مترًا مكعبًا؟</li>
+  <li>في أي شهر وقعت أيام الإجهاد، ولماذا مع أن الجدول يروي كل ثلاثة أيام؟</li>
+  <li>من أي يوم يبتعد المجس عن الميزان؟ وأيهما تصدّق، ولماذا؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب: المفتاح والفخاخ</summary>
+  <ul>
+    <li><b>الجدول الثابت:</b> 1,560.5 ملم = 624,200 م³، في 82 مرة ري. أيام الإجهاد 9، أولها 2024-08-04 وكلها في أغسطس. التسرب العميق 167.6 ملم، منها 142.6 ملم من مارس إلى مايو و25 ملم في أكتوبر، حين يزيد الجدول عن حاجة الأشجار.</li>
+    <li><b>المعنى:</b> الجدول الثابت يروي أكثر من اللازم في الربيع (تسرب) وأقل من اللازم في ذروة أغسطس (إجهاد) في الموسم نفسه.</li>
+    <li><b>المجس:</b> الانحراف المزروع في البيانات يبدأ 2024-07-10 ويزيد تدريجيًّا؛ أول سبعة أيام متتالية بفرق أكبر من 0.02 تبدأ 2024-08-11. آخر معايرة في فبراير. المجس ليس «الحقيقة» إلا إذا عويرَ.</li>
+    <li><b>الفخ:</b> نسيان أن <code>G3</code> تساوي <code>I2</code>، فيبدأ كل يوم من الصفر ولا يظهر إجهاد أبدًا. والفخ الثاني: حساب Ks من استنزاف نهاية اليوم بدل بدايته.</li>
+    <li>التحقق: <code>uv run labs/solutions/check.py 2.2</code>.</li>
+  </ul>
+</details>
 </article>
