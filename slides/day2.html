@@ -172,7 +172,7 @@ depletion today = yesterday - rain - irrigation + Ks x Kc x ET0</code></pre>
 </section>
 
 <section class="slide lab" id="lab-2-2" data-auto="lab" data-lab="2.2">
-  <aside class="notes"><p>الفخ الأول: <code>G3</code> يجب أن يساوي <code>I2</code>. الفخ الثاني: Ks من استنزاف بداية اليوم. من يتأخر في الخطوة 2 يأخذ الأعمدة الجاهزة من <code>start/season_fixed.csv</code> وينتقل إلى المجس. الرسم في الخطوة 4 أهم من الصيغة.</p></aside>
+  <aside class="notes"><p>الفخ الأول: <code>G3</code> يجب أن يساوي <code>I2</code>. الفخ الثاني: Ks من استنزاف بداية اليوم. من يتأخر في الخطوة 2 ينسخ العمود <code>fixed_depletion_mm</code> من <code>start/season_fixed.csv</code> (التواريخ نفسها) إلى جانب ملفه، ويستعمله مكان <code>I</code> في خطوة المجس. الرسم في الخطوة 4 أهم من الصيغة.</p></aside>
 </section>
 
 <section class="slide" id="debrief-2-2" data-lo="LO4">
@@ -349,7 +349,7 @@ depletion today = yesterday - rain - irrigation + Ks x Kc x ET0</code></pre>
     <tr><td>طميية (120)</td><td class="num">13.5%</td><td class="num">13.5%</td><td class="num">13.5%</td></tr>
   </table>
   <div class="callout tip mt"><b>الجواب الصادق.</b> التوفير من أن القاعدة تروي بحسب الحاجة. وصفر أيام إجهاد في السيناريوهات التسعة.</div>
-  <aside class="notes"><p>من تشغيل المختبر. التنبؤ الكامل وفّر أقل في الرملية لأن التنبؤ الفعلي يقدّر الحاجة بأقل (انحياز المختبر 2.1)، ولم يظهر إجهاد لأن الهامش كافٍ. لا تقدمه ميزة. في موسم فيه مطر قد يختلف الأمر: قل ذلك. اسأل: ماذا تقيس في المزرعة ليضيق المدى؟ التربة.</p></aside>
+  <aside class="notes"><p>من تشغيل المختبر. في الرملية الفرق بين الأعمدة رية واحدة من 30 ملم (1,440 أمام 1,410 ملم)، فلا يُبنى عليه شيء، وحد المدى الأدنى 7.7% يقوم على تلك الرية وحدها. في موسم فيه مطر قد يختلف الأمر: قل ذلك. اسأل: ماذا تقيس في المزرعة ليضيق المدى؟ التربة.</p></aside>
 </section>
 
 <!-- الجلسة 5 -->
@@ -510,7 +510,7 @@ example: 20 x 2 m3/h x 24 x (30 - 8) = 21,120 m3 a year</code></pre>
 
 <section class="slide" id="debrief-2-6" data-lo="LO5">
   <div class="kicker">بعد المختبر 2.6</div>
-  <h2>العتبة 4: ثلاثة أرباع التسربات بإنذارين ونصف في الأسبوع</h2>
+  <h2>العتبة 4: ثلاثة أرباع التسربات بأقل من ثلاثة إنذارات في الأسبوع</h2>
   <table class="t small">
     <tr><th>العتبة</th><th class="num">الدقة</th><th class="num">الاستدعاء</th><th class="num">في الأسبوع</th></tr>
     <tr><td>3</td><td class="num">0.14</td><td class="num">0.92</td><td class="num">6.1</td></tr>
@@ -611,7 +611,7 @@ example: 20 x 2 m3/h x 24 x (30 - 8) = 21,120 m3 a year</code></pre>
 
 <section class="slide" id="debrief-2-7" data-lo="LO5">
   <div class="kicker">بعد المختبر 2.7</div>
-  <h2>ست حالات فيها بيانات شخصية، وثلاث فقط بيانات مقيسة في الإقليم</h2>
+  <h2>ست حالات فيها بيانات شخصية، واثنتان فقط بياناتهما مقيسة في الإقليم</h2>
   <div class="cols cols-3">
     <div class="card c-teal"><h4>جاهزية 3</h4><p class="small mb0">U04 (سجل الإصلاحات، 2.6)، وU05 (دقة الخريطة، 1.7).</p></div>
     <div class="card c-amber"><h4>جاهزية 1</h4><p class="small mb0">U08 (أرقام العمال)، وU10 (اتفاقية لم توقع)، وU12 (دقة المورد بلا فئات).</p></div>
