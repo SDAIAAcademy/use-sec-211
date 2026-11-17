@@ -352,6 +352,8 @@ def l28():
 
 
 def main():
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     wanted = sys.argv[1:] or list(RUN)
     bad = 0
     for lid in wanted:

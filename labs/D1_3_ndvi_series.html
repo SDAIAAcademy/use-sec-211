@@ -1,37 +1,80 @@
 <article class="lab" data-lab="1.3">
-  <div class="box goal">
-    <h3>الهدف</h3>
-    <p>REPLACE: في النهاية يستطيع المشاركون …</p>
-  </div>
-
-  <h2>ما تحتاجه</h2>
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
   <ul>
-    <li>REPLACE: الملفات والأداة والحساب التي يستخدمها المختبر</li>
+    <li>سلسلة مؤشر الغطاء النباتي (NDVI) لست قطع حقيقية على سنة كاملة، محسوبة بيدك ومنقّاة من المواعيد الغائمة.</li>
+    <li>لكل قطعة: أعلى قيمة وموعدها، وشهر بداية الخضرة وشهر انتهائها، والمحصول الذي يشبهه نمطها في تقويم المحاصيل.</li>
   </ul>
+</div>
 
-  <div class="step">
-    <h3>REPLACE: الخطوة الأولى <span class="min">15 د</span></h3>
-    <p>REPLACE: ما يفعله المشارك ولماذا، في جملتين</p>
-    <div class="prompt" data-tool="عرض الصور وتحليلها">REPLACE: الأمر الذي ينسخه المشاركون، والأجزاء التي يغيّرونها <span class="ph">ملوّنة</span></div>
-  </div>
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/imagery/plots_reflectance.csv" target="_blank"><b>imagery/plots_reflectance.csv</b><span>65 قطعة في 144 موعدًا: نسبة الصافي فوق القطعة، ومتوسط الانعكاس الأحمر وتحت الأحمر القريب</span></a>
+  <a href="files/imagery/crop_calendar.txt" target="_blank"><b>imagery/crop_calendar.txt</b><span>النمط المتوقع لكل محصول في الإقليم</span></a>
+</div>
+<p class="small">القطع محاور دائرية حقيقية وجدها مؤلف المقرر آليًّا في صور Sentinel-2، والانعكاس متوسط البكسلات الصافية داخل كل محور (نطاق B04 الأحمر وB08 تحت الأحمر القريب، بدقة 10 أمتار). القطع أرقام ومساحات فقط، بلا إحداثيات. يحتوي الملف على بيانات Copernicus Sentinel معدّلة (2023 و2024). الأداة جدول بيانات يرسم خطًّا بيانيًّا. المساعد الذكي مسموح بدور المعلّم.</p>
 
-  <div class="step">
-    <h3>REPLACE: الخطوة الثانية <span class="min">10 د</span></h3>
-    <p>REPLACE: ما يفعله المشارك ولماذا، في جملتين</p>
-  </div>
+<h2>الخطوات</h2>
 
-  <div class="step stretch">
-    <h3>✱ إضافي</h3>
-    <p>REPLACE: توسعة لمن ينهي مبكرًا</p>
-  </div>
+<div class="step">
+  <h3>1 · صفّ الملف على القطع الست <span class="min">4 دقائق</span></h3>
+  <p>القطع: <b>P09</b> و<b>P11</b> و<b>P19</b> و<b>P21</b> و<b>P24</b> و<b>P47</b>. استعمل عامل التصفية على العمود <code>A</code>، أو انسخ صفوفها إلى ورقة جديدة (144 صفًّا لكل قطعة).</p>
+</div>
 
-  <h2>أسئلة تحقق</h2>
-  <ol class="checks">
-    <li>REPLACE: سؤال يبيّن أن المختبر نجح</li>
-  </ol>
+<div class="step">
+  <h3>2 · احسب المؤشر في عمود جديد <span class="min">5 دقائق</span></h3>
+  <p>النبات الأخضر يمتص الأحمر ويعكس تحت الأحمر القريب بقوة، والتربة الجرداء تعكسهما بقدر متقارب. المؤشر يقيس هذا الفرق بين ناقص واحد وواحد.</p>
+  <pre class="code" data-file="plots_reflectance.csv"><code>G2  =IF(E2="","",(F2-E2)/(F2+E2))      NDVI = (NIR - red) / (NIR + red)</code></pre>
+</div>
 
-  <details class="instructor">
-    <summary>للمدرّب</summary>
-    <p>REPLACE: مفتاح الإجابة والفخاخ والأخطاء الشائعة</p>
-  </details>
+<div class="step">
+  <h3>3 · أسقط المواعيد غير الصافية <span class="min">4 دقائق</span></h3>
+  <p>موعد صافٍ: نسبة الصافي فوق القطعة 0.9 أو أكثر. الغيم الرقيق وظله يخفضان المؤشر فيبدو المحصول كأنه حُصد.</p>
+  <pre class="code" data-file="plots_reflectance.csv"><code>H2  =IF(AND(D2&gt;=0.9,G2&lt;&gt;""),G2,NA())   NA() leaves a gap in the chart</code></pre>
+</div>
+
+<div class="step">
+  <h3>4 · ارسم سلسلة كل قطعة <span class="min">6 دقائق</span></h3>
+  <p>خط بياني: التاريخ على المحور الأفقي، والعمود <code>H</code> على الرأسي، من 0 إلى 1. قطعة في كل رسم، أو القطع الست في رسم واحد بألوان مختلفة.</p>
+  <table>
+    <tr><th>القطعة</th><th>أعلى قيمة وموعدها</th><th>تبدأ الخضرة</th><th>تنتهي</th><th>يشبه</th></tr>
+    <tr><td>P09</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>P11</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>P19</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>P21</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>P24</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>P47</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+  </table>
+</div>
+
+<div class="step">
+  <h3>5 · طابق كل نمط بتقويم المحاصيل <span class="min">6 دقائق</span></h3>
+  <p>اقرأ <code>crop_calendar.txt</code> واكتب في العمود الأخير المحصول الذي يشبهه النمط. «يشبه» لا «هو»: الصورة تقول متى كان الحقل أخضر، لا ماذا زُرع فيه.</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>ارسم القطعة P09 مرة ثانية من العمود <code>G</code> دون إسقاط غير الصافي. أين كان الرسم سيخدعك، وبماذا؟</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>متى بلغت القطعة P21 ذروتها، ومتى انتهت خضرتها؟</li>
+  <li>بماذا يختلف نمط P47 عن P21، وهل يغير ذلك المحصول الذي يشبهه؟</li>
+  <li>ما أعلى قيمة بلغتها P19، ولماذا لا تعني أن فيها محصولًا؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب: المفتاح والفخاخ</summary>
+  <ul>
+    <li><b>P09 وP11</b> برسيم: خضرة عالية طوال السنة (P09 بين 0.81 و0.97 في كل شهر)، مع انخفاضات قصيرة بعد الحشّ (P11 تنزل إلى 0.49 في ديسمبر ثم تعود).</li>
+    <li><b>P21</b> قمح: أرض جرداء في أكتوبر ونوفمبر (0.12 إلى 0.16)، تخضر في ديسمبر، ذروتها 0.92 في 2024-02-13، وتنتهي في مايو (0.22).</li>
+    <li><b>P47</b> قمح متأخر: يخضر في يناير، ذروته 0.88 في 2024-03-22، ويُحصد في مايو. التأخر لا يغير الشبه.</li>
+    <li><b>P24</b> قمح ضعيف أو متأخر جدًّا: ذروته 0.57 فقط في 2024-03-22. نمط صحيح بمستوى أدنى: محصول خفيف أو جزء من المحور غير مزروع.</li>
+    <li><b>P19</b> بور: لا تتجاوز 0.21 (في مايو)، وهي قيمة الأرض الجرداء وبعض الأعشاب بعد المطر.</li>
+    <li><b>فخ الغيوم:</b> في P09 ثلاثة مواعيد غير صافية تنزل إلى 0.17 وسط قيم فوق 0.8: من لا يسقطها يرى «حصادًا» لم يحدث.</li>
+    <li><b>فخ آخر:</b> كتابة «قمح» بدل «يشبه القمح». الصورة لا ترى النوع؛ تلك وظيفة الزيارة.</li>
+    <li>التحقق: <code>uv run labs/solutions/check.py 1.3</code>.</li>
+  </ul>
+</details>
 </article>
