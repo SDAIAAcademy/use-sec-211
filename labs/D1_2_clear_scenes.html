@@ -10,20 +10,20 @@
 
 <h2>ما تحتاجه</h2>
 <div class="files">
-  <a href="files/imagery/scenes.csv" target="_blank"><b>imagery/scenes.csv</b><span>144 مشهدًا حقيقيًّا من Sentinel-2 فوق نافذة الإقليم: التاريخ، والقمر، ونسبة الغيم في المشهد كله، ونسبة الصافي فوق النافذة</span></a>
+  <a href="files/imagery/scenes.csv" target="_blank"><b>imagery/scenes.csv</b><span>144 مشهدًا حقيقيًّا من Sentinel-2 فوق نافذة الإقليم التوضيحي: التاريخ، والقمر، ونسبة الغيم في المشهد كله، ونسبة الصافي فوق النافذة</span></a>
   <a href="files/imagery/plot_sizes.csv" target="_blank"><b>imagery/plot_sizes.csv</b><span>أربعة أحجام نموذجية من القطع في الإقليم</span></a>
 </div>
-<p class="small">قائمة المشاهد حقيقية: مشاهد Sentinel-2 من المستوى 2A لمربع واحد من شبكة القمر فوق نافذة من مزارع المحاور الدائرية في شمال المملكة، من فهرس Earth Search العام. «نسبة الصافي فوق النافذة» حسبها مؤلف المقرر من طبقة تصنيف المشهد (SCL) المرافقة لكل صورة. يحتوي الملف على بيانات Copernicus Sentinel معدّلة (2023 و2024).</p>
+<p class="small">قائمة المشاهد حقيقية: مشاهد Sentinel-2 من المستوى 2A لمربع واحد من شبكة القمر فوق نافذة من مزارع المحاور الدائرية، من فهرس Earth Search العام. لا يذكر المقرر موقع النافذة: المكان والقطع في المختبرات التالية توضيحية. «نسبة الصافي فوق النافذة» حسبها مؤلف المقرر من طبقة تصنيف المشهد (SCL) المرافقة لكل صورة. يحتوي الملف على بيانات Copernicus Sentinel معدّلة (2023 و2024).</p>
 
 <h2>الخطوات</h2>
 
 <div class="step">
-  <h3>1 · افتح قائمة المشاهد واقرأ أعمدتها <span class="min">3 دقائق</span></h3>
+  <h3>1 · افتح قائمة المشاهد واقرأ أعمدتها <span class="min">دقيقتان</span></h3>
   <p><code>C</code> نسبة الغيم في المشهد كله (نحو 110 في 110 كم)، و<code>D</code> نسبة البكسلات الصافية فوق نافذتنا الصغيرة. سنعد المشهد صافيًا إذا كانت <code>D</code> تسعين أو أكثر.</p>
 </div>
 
 <div class="step">
-  <h3>2 · عد المشاهد الصافية لكل شهر <span class="min">7 دقائق</span></h3>
+  <h3>2 · عد المشاهد الصافية لكل شهر <span class="min">6 دقائق</span></h3>
   <pre class="code" data-file="scenes.csv"><code>E2  =IF(D2&gt;=90,1,0)          clear over the window
 F2  =LEFT(TEXT(A2,"yyyy-mm-dd"),7)   the month
 per month: =SUMIFS(E:E,F:F,"2024-01")  and =COUNTIFS(F:F,"2024-01")</code></pre>
@@ -37,13 +37,13 @@ per month: =SUMIFS(E:E,F:F,"2024-01")  and =COUNTIFS(F:F,"2024-01")</code></pre>
 </div>
 
 <div class="step">
-  <h3>3 · جد المشاهد التي يضلل فيها رقم الغيم <span class="min">5 دقائق</span></h3>
+  <h3>3 · جد المشاهد التي يضلل فيها رقم الغيم <span class="min">4 دقائق</span></h3>
   <p>المشهد الذي يقل غيمه الكلي عن 20 ولا يبلغ صافي نافذتنا 90: من يختار الصور برقم المشهد وحده سيقبلها.</p>
   <pre class="code" data-file="scenes.csv"><code>=COUNTIFS(C:C,"&lt;20",D:D,"&lt;90")</code></pre>
 </div>
 
 <div class="step">
-  <h3>4 · احسب البكسلات النقية لكل حجم ودقة <span class="min">6 دقائق</span></h3>
+  <h3>4 · احسب البكسلات النقية لكل حجم ودقة <span class="min">5 دقائق</span></h3>
   <p>البكسل النقي يقع كله داخل القطعة. تقريب كافٍ: قطعة مربعة بالمساحة نفسها، ونستبعد صفًّا من البكسلات على كل حافة. الدقات: 10 أمتار (Sentinel-2)، و30 مترًا (Landsat)، و250 مترًا (MODIS).</p>
   <pre class="code" data-file="plot_sizes.csv"><code>C2  =MAX(0,FLOOR(SQRT(B2*10000)/10,1)-2)^2     10 m
 D2  =MAX(0,FLOOR(SQRT(B2*10000)/30,1)-2)^2     30 m
@@ -51,7 +51,7 @@ E2  =MAX(0,FLOOR(SQRT(B2*10000)/250,1)-2)^2    250 m</code></pre>
 </div>
 
 <div class="step">
-  <h3>5 · اكتب أي مصدر يكفي لكل حجم <span class="min">4 دقائق</span></h3>
+  <h3>5 · اكتب أي مصدر يكفي لكل حجم <span class="min">3 دقائق</span></h3>
   <p>قاعدة عمل: تحتاج نحو عشرة بكسلات نقية على الأقل لتثق بمتوسط القطعة. لكل حجم: أي الدقات الثلاث تكفي؟ ثم سطر لندوى الشملان: هل تكفي الصور الصافية في الشتاء لرصد محصول شتوي؟</p>
 </div>
 

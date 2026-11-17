@@ -14,24 +14,24 @@
   <a href="files/landcover/campaign_costs.txt" target="_blank"><b>landcover/campaign_costs.txt</b><span>الميزانية والتكلفة والهدف والصيغة</span></a>
   <a href="files/landcover/proposed_uses.csv" target="_blank"><b>landcover/proposed_uses.csv</b><span>الاستخدامات المقترحة، لتعرف أي الفئات أهم</span></a>
 </div>
-<p class="small">الأرقام من الخريطة المفتوحة ESA WorldCover 2021 ومرجع من صور Sentinel-2، كما في المختبرين 1.6 و1.7. الميزانية والتكلفة اصطناعيتان. المساعد الذكي مسموح بدور المعلّم.</p>
+<p class="small">الأرقام من الخريطة المفتوحة ESA WorldCover 2021 (© ESA WorldCover project 2021، برخصة CC BY 4.0) ومرجع من صور Sentinel-2 (يحتوي على بيانات Copernicus Sentinel معدّلة، 2021)، كما في المختبرين 1.6 و1.7. الميزانية والتكلفة اصطناعيتان. المساعد الذكي مسموح بدور المعلّم.</p>
 
 <h2>الخطوات</h2>
 
 <div class="step">
-  <h3>1 · احسب نصف عرض الفترة لكل فئة <span class="min">6 دقائق</span></h3>
+  <h3>1 · احسب نصف عرض الفترة لكل فئة <span class="min">5 دقائق</span></h3>
   <pre class="code" data-file="accuracy_table.csv"><code>E2  =1.96*SQRT(C2*(1-C2)/B2)      half width of the 95% interval</code></pre>
   <p>فئة دقتها صفر أو واحد تعطي صفرًا هنا، وهذا لا يعني يقينًا: الصيغة التقريبية تنهار عند الطرفين. ماذا تفعل بفئة كل نقاطها خطأ؟</p>
 </div>
 
 <div class="step">
-  <h3>2 · احسب النقاط اللازمة لنصف عرض 0.10 <span class="min">6 دقائق</span></h3>
+  <h3>2 · احسب النقاط اللازمة لنصف عرض 0.10 <span class="min">5 دقائق</span></h3>
   <pre class="code" data-file="accuracy_table.csv"><code>F2  =ROUNDUP(1.96^2*C2*(1-C2)/0.10^2,0)   points needed
 G2  =MAX(0,F2-B2)                          extra points</code></pre>
 </div>
 
 <div class="step">
-  <h3>3 · وزّع 120 زيارة <span class="min">8 دقائق</span></h3>
+  <h3>3 · وزّع 120 زيارة <span class="min">6 دقائق</span></h3>
   <p>مجموع النقاط الإضافية قد يزيد عن الميزانية. رتّب الفئات بحسب الاستخدامات التي تعتمد عليها وقربها من أن تصبح مسموحة، وتذكر أن النقطة في الأرض الجرداء البعيدة تحسب زيارتين.</p>
   <table>
     <tr><th>الفئة</th><th>نقاط إضافية لازمة</th><th>زيارات في خطتك</th><th>السبب</th></tr>
@@ -43,7 +43,7 @@ G2  =MAX(0,F2-B2)                          extra points</code></pre>
 </div>
 
 <div class="step">
-  <h3>4 · اكتب قواعد الحملة <span class="min">5 دقائق</span></h3>
+  <h3>4 · اكتب قواعد الحملة <span class="min">4 دقائق</span></h3>
   <p>ثلاث قواعد على الأقل: متى تُجمع النقاط بالنسبة إلى سنة الخريطة، ومن يسجّل الفئة وماذا يرى قبل التسجيل، وكيف تُختار النقاط داخل كل فئة.</p>
 </div>
 

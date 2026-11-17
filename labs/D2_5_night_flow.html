@@ -19,12 +19,12 @@
 <h2>الخطوات</h2>
 
 <div class="step">
-  <h3>1 · اقرأ الملف وسجل الأحداث <span class="min">3 دقائق</span></h3>
+  <h3>1 · اقرأ الملف وسجل الأحداث <span class="min">دقيقتان</span></h3>
   <p>الأعمدة: <code>A</code> المنطقة، <code>B</code> التاريخ، <code>C</code> الساعة من 0 إلى 23، <code>D</code> التدفق. اقرأ سجل الأحداث كله قبل أن تحسب: ثلاثة أحداث فيه ستحتاجها في الخطوة 5.</p>
 </div>
 
 <div class="step">
-  <h3>2 · احسب أدنى تدفق ليلي لكل منطقة وليلة <span class="min">8 دقائق</span></h3>
+  <h3>2 · احسب أدنى تدفق ليلي لكل منطقة وليلة <span class="min">7 دقائق</span></h3>
   <p>في ورقة جديدة: المناطق في الصف الأول (<code>Z01</code> إلى <code>Z10</code> من <code>B1</code> إلى <code>K1</code>)، والتواريخ في العمود الأول (56 تاريخًا من <code>A2</code>). ثم:</p>
   <pre class="code" data-file="night sheet"><code>B2  =MINIFS(hourly!$D:$D, hourly!$A:$A, B$1, hourly!$B:$B, $A2,
             hourly!$C:$C, "&gt;=1", hourly!$C:$C, "&lt;=4")</code></pre>
@@ -32,13 +32,13 @@
 </div>
 
 <div class="step">
-  <h3>3 · احسب خط الأساس وحد التنبيه <span class="min">5 دقائق</span></h3>
+  <h3>3 · احسب خط الأساس وحد التنبيه <span class="min">4 دقائق</span></h3>
   <pre class="code" data-file="night sheet"><code>baseline  B60  =MEDIAN(B2:B15)               the first 14 nights
 limit     B61  =B60+MAX(2,0.3*B60)</code></pre>
 </div>
 
 <div class="step">
-  <h3>4 · جد المناطق والليالي فوق الحد <span class="min">5 دقائق</span></h3>
+  <h3>4 · جد المناطق والليالي فوق الحد <span class="min">4 دقائق</span></h3>
   <p>تنبيه المنطقة: ثلاث ليالٍ متتالية فوق الحد. ليلة واحدة لا تكفي.</p>
   <pre class="code" data-file="night sheet"><code>in a second block, row 2:
 =AND(B2&gt;B$61, B3&gt;B$61, B4&gt;B$61)          TRUE on the first of three nights</code></pre>
@@ -46,7 +46,7 @@ limit     B61  =B60+MAX(2,0.3*B60)</code></pre>
 </div>
 
 <div class="step">
-  <h3>5 · فسّر كل ارتفاع: تسرب أم غيره <span class="min">4 دقائق</span></h3>
+  <h3>5 · فسّر كل ارتفاع: تسرب أم غيره <span class="min">3 دقائق</span></h3>
   <table>
     <tr><th>المنطقة</th><th>أول ليلة في التنبيه</th><th>شكل الارتفاع</th><th>في سجل الأحداث؟</th><th>تفسيرك</th></tr>
     <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
